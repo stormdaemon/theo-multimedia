@@ -1,0 +1,9 @@
+# Ne pas versionner les modules node
+node_modules/
+
+# Autres exclusions recommandées
+.env
+.next/
+out/
+dist/
+*.log

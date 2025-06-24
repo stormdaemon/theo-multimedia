@@ -1,0 +1,11 @@
+# Netlify configuration for static Next.js export
+[build]
+  command = "npm install --legacy-peer-deps && npm run build"
+  publish = "out"
+
+# Redirect all 404s to the root (if you rely on client-side routing for some paths)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
