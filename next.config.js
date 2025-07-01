@@ -1,13 +1,10 @@
-// Next.js configuration enabling static HTML export
+// Next.js configuration for SSR deployment on Netlify
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Generate static HTML for each page at build time
-  output: 'export',
-  // Optional: add a trailing slash so relative asset links work on static hosts
-  trailingSlash: true,
-  // Disable image optimization for static export
+  // Enable image optimization with Netlify Image CDN
   images: {
-    unoptimized: true,
+    // Netlify will handle image optimization automatically
+    unoptimized: false,
   },
   // Transpile packages that have module resolution issues
   transpilePackages: ['react-apple-emojis'],
