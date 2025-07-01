@@ -1,15 +1,10 @@
-# Netlify configuration for Next.js SSR deployment
+# Netlify configuration for Next.js SSR
 [build]
-  command = "npm ci && npm run build"
+  command = "npm run build"
   
 [build.environment]
   NODE_VERSION = "18"
-  NEXT_TELEMETRY_DISABLED = "1"
 
-# Use the Netlify Next.js plugin for SSR support
+# Next.js plugin for SSR
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Ensure no static redirects interfere with SSR
-[context.production]
-  command = "npm ci && npm run build"
