@@ -51,7 +51,7 @@ const PortfolioPage = () => {
     <>
       <Head>
         <title>Portfolio | Théo Multimédia - Réalisations Web Angoulême</title>
-        <meta name="description" content="Découvrez nos réalisations web : sites internet modernes, e-commerce et projets digitaux créés pour nos clients à Angoulême. Portfolio Théo Multimédia." />
+        <meta name="description" content="Portfolio Théo Multimédia : réalisations web, sites internet modernes et projets e-commerce créés pour nos clients Angoulême." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Portfolio | Théo Multimédia - Réalisations Web Angoulême" />

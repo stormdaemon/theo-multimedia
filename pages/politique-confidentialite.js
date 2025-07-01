@@ -6,7 +6,7 @@ const PolitiqueConfidentialite = () => {
     <div className="min-h-screen bg-background">
       <Head>
         <title>Politique de Confidentialité | Théo Multimédia - RGPD</title>
-        <meta name="description" content="Politique de confidentialité de Théo Multimédia. Protection de vos données personnelles et respect de votre vie privée selon le RGPD et la législation." />
+        <meta name="description" content="Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Politique de confidentialité | Théo Multimédia" />

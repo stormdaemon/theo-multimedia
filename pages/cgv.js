@@ -6,7 +6,7 @@ const CGV = () => {
     <div className="min-h-screen bg-background">
       <Head>
         <title>CGV | Théo Multimédia - Conditions Générales de Vente</title>
-        <meta name="description" content="Conditions générales de vente de Théo Multimédia. Modalités de prestations web, tarifs et conditions contractuelles pour nos services digitaux à Angoulême." />
+        <meta name="description" content="Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />

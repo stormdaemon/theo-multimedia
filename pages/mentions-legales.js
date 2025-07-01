@@ -6,7 +6,7 @@ const MentionsLegales = () => {
     <div className="min-h-screen bg-background">
       <Head>
         <title>Mentions Légales | Théo Multimédia - Informations Légales</title>
-        <meta name="description" content="Mentions légales de Théo Multimédia. Informations légales, éditeur du site, hébergement et conditions d'utilisation de nos services web à Angoulême." />
+        <meta name="description" content="Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Mentions légales | Théo Multimédia" />

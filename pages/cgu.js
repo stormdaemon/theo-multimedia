@@ -6,7 +6,7 @@ const CGU = () => {
     <div className="min-h-screen bg-background">
       <Head>
         <title>CGU | Théo Multimédia - Conditions Générales d'Utilisation</title>
-        <meta name="description" content="Conditions générales d'utilisation de Théo Multimédia. Informations légales sur l'utilisation de nos services web et solutions digitales à Angoulême." />
+        <meta name="description" content="Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales." />
       </Head>
 
       <main className="container mx-auto px-4 py-16">

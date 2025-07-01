@@ -37,7 +37,7 @@ const AboutPage = () => {
     <>
       <Head>
         <title>À Propos | Théo Multimédia - Développeur Web Angoulême</title>
-        <meta name="description" content="Découvrez Théo, développeur web passionné à Angoulême. Spécialisé en création de sites modernes, SEO et solutions digitales sur-mesure pour entreprises." />
+        <meta name="description" content="Théo, développeur web passionné Angoulême. Spécialisé création sites modernes, SEO et solutions digitales sur-mesure entreprises." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />

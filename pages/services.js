@@ -91,7 +91,7 @@ const ServicesPage = () => {
     <>
       <Head>
         <title>Services Web | Théo Multimédia - Sites Internet & SEO Angoulême</title>
-        <meta name="description" content="Services web complets à Angoulême : création de sites internet, webdesign moderne, SEO, e-commerce et maintenance. Solutions digitales sur-mesure pour entreprises." />
+        <meta name="description" content="Services web Angoulême : création sites internet, webdesign, SEO, e-commerce et maintenance. Solutions digitales sur-mesure." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />

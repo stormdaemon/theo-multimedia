@@ -112,7 +112,7 @@ const Home = () => {
       
       <Head>
         <title>Théo Multimédia Agence Web Angoulême Sites Internet & SEO</title>
-        <meta name="description" content="Agence web à Angoulême spécialisée en création de sites internet, webdesign moderne, SEO et e-commerce. Solutions digitales sur-mesure pour PME et entrepreneurs." />
+        <meta name="description" content="Agence web Angoulême : création sites internet, webdesign moderne, SEO et e-commerce. Solutions digitales sur-mesure pour PME." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.theomultimedia.com/" />

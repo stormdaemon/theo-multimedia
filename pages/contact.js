@@ -369,7 +369,7 @@ const ContactPage = () => {
     <>
       <Head>
         <title>Contact | Théo Multimédia - Devis Gratuit Angoulême</title>
-        <meta name="description" content="Contactez Théo Multimédia à Angoulême pour votre projet web. Devis gratuit pour création de sites internet, SEO et solutions digitales sur-mesure." />
+        <meta name="description" content="Contactez Théo Multimédia Angoulême pour votre projet web. Devis gratuit création sites internet, SEO et solutions digitales." />
 
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Contact | Théo Multimédia - Devis Gratuit Angoulême" />
