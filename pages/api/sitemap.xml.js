@@ -4,7 +4,7 @@ export default function handler(req, res) {
   const currentDate = new Date().toISOString();
   
   // Define your site's base URL
-  const baseUrl = 'https://theomultimedia.com';
+  const baseUrl = 'https://theo-multimedia.com';
   
   // Define all your pages with their priorities and change frequencies
   const pages = [
