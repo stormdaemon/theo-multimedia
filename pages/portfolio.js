@@ -4,7 +4,7 @@ const projects = [
   {
     title: 'Révélation Radio',
     category: 'Site vitrine',
-    description: "Site vitrine pour une web radio catholique, présentation des émissions, lecteur audio intégéré",
+    description: "Site vitrine pour une web radio catholique, présentation des émissions, lecteur audio intégré",
     imageUrl: '/revelation.png',
     url: null,
   },
