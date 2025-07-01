@@ -182,7 +182,7 @@ const Home = () => {
               as="h2"
             />
             <KineticText 
-              text="Création de sites web & SEO"
+              text=" - Création de sites web & SEO"
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent block"
               delay={0.5}
               as="h3"
