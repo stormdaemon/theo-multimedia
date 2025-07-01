@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { FiMenu, FiX } from 'react-icons/fi';
+
 import ThemeToggle from './ThemeToggle';
 
 const navItems = [
@@ -51,7 +51,7 @@ const Navbar = ({ isScrolled }) => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center space-x-2" onClick={closeMenu}>
-              <img src="https://i.postimg.cc/FR4fgrXM/theo-multimedia-logo.png" alt="Logo Théo Multimédia" className="w-12 h-12 rounded-full object-cover shadow-md border border-accent" />
+              <img src="/theo_multimedia_logo.png" alt="Logo Théo Multimédia" className="w-12 h-12 rounded-full object-cover shadow-md border border-accent" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -88,9 +88,13 @@ const Navbar = ({ isScrolled }) => {
                 aria-label="Toggle menu"
               >
                 {isOpen ? (
-                  <FiX className="w-6 h-6" />
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 ) : (
-                  <FiMenu className="w-6 h-6" />
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
                 )}
               </button>
             </div>

@@ -5,6 +5,16 @@ const nextConfig = {
   output: 'export',
   // Optional: add a trailing slash so relative asset links work on static hosts
   trailingSlash: true,
+  // Transpile packages that have module resolution issues
+  transpilePackages: ['react-apple-emojis'],
+  // Configure webpack to handle module resolution
+  webpack: (config) => {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
+    return config;
+  },
 };
 
 module.exports = nextConfig;

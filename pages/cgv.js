@@ -5,9 +5,9 @@ const CGV = () => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
-        <title>Conditions Générales de Vente (CGV) | Théo Multimédia</title>
-        <meta name="description" content="Conditions Générales de Vente du site Théo Multimédia. Découvrez les modalités de prestation, paiement, livraison, propriété intellectuelle et garanties." />
-        <meta name="keywords" content="CGV, conditions générales de vente, prestations, paiement, propriété intellectuelle, Théo Multimédia, freelance, Silicon Valley" />
+        <title>CGV | Théo Multimédia - Conditions Générales de Vente</title>
+        <meta name="description" content="Conditions générales de vente de Théo Multimédia. Modalités de prestations web, tarifs et conditions contractuelles pour nos services digitaux à Angoulême." />
+
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />
         <meta property="og:description" content="CGV Théo Multimédia : modalités de prestation, paiement, propriété intellectuelle, garanties et responsabilités." />
@@ -61,8 +61,8 @@ const CGV = () => {
               <p>N° SIRET : 884 758 970 00039</p>
               <p>N° TVA intracommunautaire : FR59884758970</p>
               <p>16000 Angoulême, France</p>
-              <p>Email : contact@theomultimedia.com</p>
-              <p>Téléphone : +33 1 23 45 67 89</p>
+              <p>Email : contact@theo-multimedia.com</p>
+              <p>Téléphone : +33 7 68 51 95 68</p>
             </section>
 
             <section className="mb-12">

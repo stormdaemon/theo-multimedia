@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FaCode, FaPaintBrush, FaRocket, FaSearch, FaMobileAlt, FaChartLine, FaServer } from 'react-icons/fa';
-import { FiArrowRight } from 'react-icons/fi';
+import { Emoji } from 'react-apple-emojis';
 
 const services = [
   {
-    icon: <FaPaintBrush className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="artist-palette" width={32} />,
     title: 'Webdesign & UX/UI à Angoulême',
     description: "Je conçois des interfaces web modernes, créatives et intuitives à Angoulême, optimisées pour l’expérience utilisateur, le branding, l’identité visuelle et la conversion. Responsive design, accessibilité, design mobile first et animations interactives.",
     features: [
@@ -16,7 +15,7 @@ const services = [
     ]
   },
   {
-    icon: <FaCode className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="laptop" width={32} />,
     title: 'Création de site internet à Angoulême',
     description: "Développement de sites vitrines, e-commerce, applications web sur-mesure, refonte, optimisation SEO, sécurité, rapidité, solutions digitales pour entreprises, PME, associations et entrepreneurs en Charente et Nouvelle-Aquitaine.",
     features: [
@@ -27,7 +26,7 @@ const services = [
     ]
   },
   {
-    icon: <FaMobileAlt className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="mobile-phone" width={32} />,
     title: 'Applications mobiles & web app',
     description: "Création d’applications mobiles iOS/Android et web app performantes, ergonomiques et sécurisées. Solutions cloud, intégration API, design mobile first, expérience utilisateur optimale.",
     features: [
@@ -38,7 +37,7 @@ const services = [
     ]
   },
   {
-    icon: <FaSearch className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="magnifying-glass-tilted-left" width={32} />,
     title: 'SEO & Référencement naturel à Angoulême',
     description: "Optimisation SEO avancée, référencement local Angoulême, Google My Business, rédaction web, netlinking, stratégie de contenu, audit SEO, Core Web Vitals, visibilité Google et moteurs de recherche.",
     features: [
@@ -49,7 +48,7 @@ const services = [
     ]
   },
   {
-    icon: <FaChartLine className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="bar-chart" width={32} />,
     title: 'Analyse & Performance digitale',
     description: "Analyse de données, Google Analytics, A/B testing, optimisation des performances web, tableaux de bord, suivi SEO, amélioration continue pour booster votre présence digitale à Angoulême.",
     features: [
@@ -60,7 +59,7 @@ const services = [
     ]
   },
   {
-    icon: <FaServer className="w-8 h-8 text-accent" />,
+    icon: <Emoji name="desktop-computer" width={32} />,
     title: 'Hébergement sécurisé & Maintenance web',
     description: "Hébergement web haute disponibilité, maintenance proactive, sauvegardes automatiques, sécurité, monitoring, support technique, SSL, cloud, protection des données à Angoulême et partout en France.",
     features: [
@@ -91,14 +90,14 @@ const ServicesPage = () => {
   return (
     <>
       <Head>
-        <title>Services agence web Angoulême | Création site internet, webdesign, SEO, branding, e-commerce | Théo Multimédia</title>
-        <meta name="description" content="Découvrez tous les services de l'agence web Théo Multimédia à Angoulême : création de site internet, webdesign, référencement naturel (SEO), identité visuelle, branding, e-commerce, UX/UI, maintenance, hébergement, stratégie digitale, communication digitale, solutions sur-mesure pour entreprises, PME, associations et entrepreneurs en Charente et Nouvelle-Aquitaine." />
-        <meta name="keywords" content="agence web Angoulême, webdesign Angoulême, création site internet Angoulême, agence digitale Angoulême, développement web Angoulême, refonte site internet, site vitrine Angoulême, site e-commerce Angoulême, référencement naturel Angoulême, SEO Angoulême, UX design Angoulême, UI design Angoulême, identité visuelle Angoulême, graphisme Angoulême, communication digitale Angoulême, stratégie digitale Angoulême, webdesigner Angoulême, développeur web Angoulême, site responsive Angoulême, site WordPress Angoulême, site sur-mesure Angoulême, maintenance site internet Angoulême, hébergement web Angoulême, audit SEO Angoulême, optimisation SEO Angoulême, Google My Business Angoulême, réseaux sociaux Angoulême, community management Angoulême, marketing digital Angoulême, création logo Angoulême, charte graphique Angoulême, print Angoulême, flyers Angoulême, carte de visite Angoulême, agence communication Angoulême, landing page Angoulême, newsletter Angoulême, emailing Angoulême, boutique en ligne Angoulême, site mobile Angoulême, web app Angoulême, application web Angoulême, web responsive Angoulême, site rapide Angoulême, site sécurisé Angoulême, SSL Angoulême, Google Analytics Angoulême, Google Ads Angoulême, campagne publicitaire Angoulême, rédaction web Angoulême, contenu optimisé SEO Angoulême, storytelling Angoulême, site professionnel Angoulême, site entreprise Angoulême, site association Angoulême, site événementiel Angoulême, portfolio Angoulême, site créatif Angoulême, site moderne Angoulême, site performant Angoulême, site intuitif Angoulême, expérience utilisateur Angoulême, accessibilité web Angoulême, design mobile first Angoulême, design interactif Angoulême, animation web Angoulême, Framer Motion Angoulême, React Angoulême, Next.js Angoulême, Tailwind CSS Angoulême, JavaScript Angoulême, HTML Angoulême, CSS Angoulême, site rapide au chargement Angoulême, site optimisé Google Angoulême, site internet pas cher Angoulême, site internet professionnel Angoulême, site internet clé en main Angoulême, site internet personnalisé Angoulême, agence webdesign Angoulême, agence web Théo Multimédia, Théo Multimédia Angoulême, créateur site internet Angoulême, freelance web Angoulême, expert web Angoulême, accompagnement digital Angoulême, conseil digital Angoulême, digitalisation entreprise Angoulême, solutions digitales Angoulême, innovation web Angoulême, transformation digitale Angoulême, visibilité internet Angoulême, présence en ligne Angoulême, référencement Google Angoulême, web agency Angoulême, web agency France, web agency Nouvelle-Aquitaine, agence web Nouvelle-Aquitaine" />
+        <title>Services Web | Théo Multimédia - Sites Internet & SEO Angoulême</title>
+        <meta name="description" content="Services web complets à Angoulême : création de sites internet, webdesign moderne, SEO, e-commerce et maintenance. Solutions digitales sur-mesure pour entreprises." />
+
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.theomultimedia.com/services" />
-        <meta property="og:title" content="Services agence web Angoulême | Création site internet, webdesign, SEO, branding, e-commerce | Théo Multimédia" />
-        <meta property="og:description" content="Agence web à Angoulême : création de site internet, webdesign, SEO, identité visuelle, e-commerce, UX/UI, maintenance, hébergement, solutions digitales sur-mesure. Demandez un devis gratuit pour booster votre présence en ligne !" />
+        <meta property="og:title" content="Services Web | Théo Multimédia - Sites Internet & SEO Angoulême" />
+        <meta property="og:description" content="Services web complets à Angoulême : création de sites internet, webdesign moderne, SEO, e-commerce et maintenance. Solutions digitales sur-mesure pour entreprises." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.theomultimedia.com/services" />
         <meta property="og:image" content="https://www.theomultimedia.com/og-services.jpg" />
@@ -169,22 +168,17 @@ const ServicesPage = () => {
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
+                <h2 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h2>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
                 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2">
                   {service.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-sm text-muted-foreground">
-                      <FiArrowRight className="w-4 h-4 mr-2 text-accent" />
+                      <Emoji name="right-arrow" width={16} className="mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                
-                <button className="text-sm font-medium text-accent hover:text-accent/80 flex items-center transition-colors">
-                  En savoir plus
-                  <FiArrowRight className="ml-2 w-4 h-4" />
-                </button>
               </motion.div>
             ))}
           </motion.div>

@@ -5,9 +5,9 @@ const MentionsLegales = () => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
-        <title>Mentions légales | Théo Multimédia</title>
-        <meta name="description" content="Mentions légales du site Théo Multimédia : informations sur l'éditeur, l'hébergement, la propriété intellectuelle et les conditions d'utilisation." />
-        <meta name="keywords" content="mentions légales, éditeur, propriété intellectuelle, hébergement, Théo Multimédia, Silicon Valley" />
+        <title>Mentions Légales | Théo Multimédia - Informations Légales</title>
+        <meta name="description" content="Mentions légales de Théo Multimédia. Informations légales, éditeur du site, hébergement et conditions d'utilisation de nos services web à Angoulême." />
+
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Mentions légales | Théo Multimédia" />
         <meta property="og:description" content="Consultez les mentions légales du site Théo Multimédia : éditeur, hébergeur, droits et responsabilités." />
@@ -46,7 +46,7 @@ const MentionsLegales = () => {
           <div className="prose prose-invert max-w-none">
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">1. Éditeur du site</h2>
-              <p>J'édite le site internet <strong>www.theomultimedia.fr</strong> :</p>
+              <p>J'édite le site internet <strong>www.theo-multimedia.com</strong> :</p>
               <address className="not-italic mt-4 space-y-1">
                 <p>Monsieur Théo LAFONT</p>
                 <p>Entreprise individuelle</p>
@@ -54,8 +54,8 @@ const MentionsLegales = () => {
                 <p>N° TVA intracommunautaire : FR59884758970</p>
                 <p>Code APE : 4791B - Vente à distance sur catalogue spécialisé</p>
                 <p>16000 Angoulême, France</p>
-                <p>Email : contact@theomultimedia.com</p>
-                <p>Téléphone : +33 1 23 45 67 89</p>
+                <p>Email : contact@theo-multimedia.com</p>
+                <p>Téléphone : +33 7 68 51 95 68</p>
               </address>
             </section>
 
@@ -81,7 +81,7 @@ const MentionsLegales = () => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">5. Données personnelles</h2>
-              <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : contact@theomultimedia.com</p>
+              <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : contact@theo-multimedia.com</p>
               <p className="mt-4">Pour plus d'informations sur la manière dont je traite vos données, consultez notre <a href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</a>.</p>
             </section>
 
@@ -99,8 +99,8 @@ const MentionsLegales = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">8. Contact</h2>
               <p>Pour toute question ou demande d'information concernant le site, ou tout signalement de contenu ou d'activités illicites, contactez-moi :</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Par email : <a href="mailto:contact@theomultimedia.com" className="text-accent hover:underline">contact@theomultimedia.com</a></li>
-                <li>Par téléphone : <a href="tel:+33123456789" className="text-accent hover:underline">+33 1 23 45 67 89</a></li>
+                <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
+                <li>Par téléphone : <a href="tel:+33123456789" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
                 <li>Par courrier : 16000 Angoulême, France</li>
               </ul>
             </section>

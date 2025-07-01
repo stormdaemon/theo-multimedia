@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { Emoji } from 'react-apple-emojis';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
@@ -29,9 +29,9 @@ export default function ThemeToggle() {
       aria-label="Basculer entre le mode clair et sombre"
     >
       {theme === 'dark' ? (
-        <FiSun className="w-5 h-5 text-foreground" />
+        <Emoji name="sun-with-face" width={20} />
       ) : (
-        <FiMoon className="w-5 h-5 text-foreground" />
+        <Emoji name="new-moon-face" width={20} />
       )}
     </button>
   );

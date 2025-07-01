@@ -5,9 +5,9 @@ const PolitiqueConfidentialite = () => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
-        <title>Politique de confidentialité | Théo Multimédia</title>
-        <meta name="description" content="Politique de confidentialité du site Théo Multimédia : gestion des données personnelles, cookies, sécurité et droits des utilisateurs." />
-        <meta name="keywords" content="politique de confidentialité, données personnelles, cookies, sécurité, Théo Multimédia, RGPD, Silicon Valley" />
+        <title>Politique de Confidentialité | Théo Multimédia - RGPD</title>
+        <meta name="description" content="Politique de confidentialité de Théo Multimédia. Protection de vos données personnelles et respect de votre vie privée selon le RGPD et la législation." />
+
         <meta name="author" content="Théo LAFONT" />
         <meta property="og:title" content="Politique de confidentialité | Théo Multimédia" />
         <meta property="og:description" content="Découvrez comment Théo Multimédia protège vos données personnelles et respecte votre vie privée. Politique conforme RGPD." />
@@ -58,8 +58,8 @@ const PolitiqueConfidentialite = () => {
               <address className="not-italic mt-2 mb-4">
                 <p>Monsieur Théo LAFONT</p>
                 <p>16000 Angoulême, France</p>
-                <p>Email : contact@theomultimedia.com</p>
-                <p>Téléphone : +33 1 23 45 67 89</p>
+                <p>Email : contact@theo-multimedia.com</p>
+                <p>Téléphone : +33 7 68 51 95 68</p>
                 <p>N° SIRET : 884 758 970 00039</p>
               </address>
             </section>
@@ -147,7 +147,7 @@ const PolitiqueConfidentialite = () => {
                 <li>Droit d'opposition</li>
                 <li>Définir des directives relatives au sort de vos données après votre décès</li>
               </ul>
-              <p className="mt-4">Pour exercer ces droits, contactez-moi à l'adresse : contact@theomultimedia.com</p>
+              <p className="mt-4">Pour exercer ces droits, contactez-moi à l'adresse : contact@theo-multimedia.com</p>
               <p className="mt-2">Vous avez également le droit d'introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
             </section>
 
@@ -160,7 +160,7 @@ const PolitiqueConfidentialite = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">11. Contact</h2>
               <p>Pour toute question concernant cette politique de confidentialité, vous pouvez me contacter :</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Par email : <a href="mailto:contact@theomultimedia.com" className="text-accent hover:underline">contact@theomultimedia.com</a></li>
+                <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
                 <li>Par courrier : 16000 Angoulême, France</li>
               </ul>
             </section>

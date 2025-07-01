@@ -21,7 +21,7 @@ const socialLinks = [
   {
     name: 'Email',
     icon: <FiMail className="w-5 h-5" />,
-    href: 'mailto:contact@theomultimedia.com',
+    href: 'mailto:contact@theo-multimedia.com',
   },
 ];
 
@@ -123,31 +123,77 @@ const Footer = () => {
               </div>
             ))}
             
-            {/* Newsletter */}
+            {/* Articles & Ressources */}
             <div className="space-y-4">
-              <h3 className="text-foreground font-semibold text-lg">Newsletter</h3>
-              <p className="text-foreground/60">Restez informé de nos dernières actualités et offres spéciales.</p>
-              <form className="space-y-3">
-                <div className="relative">
-                  <input
-                    type="email"
-                    placeholder="Votre adresse email"
-                    className="w-full px-4 py-3 rounded-lg bg-muted/50 border border-border/50 text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-accent to-purple-600 text-white font-medium py-3 px-6 rounded-lg hover:opacity-90 transition-opacity duration-200 flex items-center justify-center space-x-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              <h3 className="text-foreground font-semibold text-lg">Articles & Ressources</h3>
+              <p className="text-foreground/60">Découvrez nos derniers articles sur le web et le digital.</p>
+              <ul className="space-y-3">
+                <motion.li 
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
-                  <span>S'inscrire</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </motion.button>
-              </form>
+                  <a 
+                    href="https://www.codeur.com/blog/tendances-seo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-foreground/60 hover:text-accent transition-colors duration-200 text-sm"
+                  >
+                    Tendances SEO 2025
+                  </a>
+                </motion.li>
+                <motion.li 
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <a 
+                    href="https://www.wildcodeschool.com/blog/top-10-des-tendances-ui-et-ux-de-2025" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-foreground/60 hover:text-accent transition-colors duration-200 text-sm"
+                  >
+                    Tendances UI/UX 2025
+                  </a>
+                </motion.li>
+                <motion.li 
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <a 
+                    href="https://www.acseo.fr/ui-ux-design-2/4-tendances-ui-ux-design-2025/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-foreground/60 hover:text-accent transition-colors duration-200 text-sm"
+                  >
+                    Design UX/UI 2025
+                  </a>
+                </motion.li>
+                <motion.li 
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <a 
+                    href="https://monsieurnumerique.com/blogue/optimiser-vitesse-site-web/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-foreground/60 hover:text-accent transition-colors duration-200 text-sm"
+                  >
+                    Optimiser la vitesse web
+                  </a>
+                </motion.li>
+                <motion.li 
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <a 
+                    href="https://optimizeinsight.com/site-web-rapide-cruciale-2025/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-foreground/60 hover:text-accent transition-colors duration-200 text-sm"
+                  >
+                    Performance web 2025
+                  </a>
+                </motion.li>
+              </ul>
             </div>
           </div>
           
