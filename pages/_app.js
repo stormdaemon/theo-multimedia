@@ -6,7 +6,14 @@ import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
-import emojiData from '../emoji-data.json';
+// Use dynamic import for better build compatibility
+let emojiData;
+try {
+  emojiData = require('react-apple-emojis/src/data.json');
+} catch (error) {
+  // Fallback for build environments
+  emojiData = {};
+}
 
 const inter = Inter({
   subsets: ['latin'],
