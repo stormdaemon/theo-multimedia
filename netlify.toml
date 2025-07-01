@@ -1,6 +1,8 @@
 # Netlify configuration for Next.js SSR deployment
 [build]
   command = "npm ci && npm run build"
+  # No publish directory needed for SSR - the plugin handles everything
+  publish = "."
   
 [build.environment]
   NODE_VERSION = "18"
