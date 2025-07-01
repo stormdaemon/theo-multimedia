@@ -5,6 +5,10 @@ const nextConfig = {
   output: 'export',
   // Optional: add a trailing slash so relative asset links work on static hosts
   trailingSlash: true,
+  // Disable image optimization for static export
+  images: {
+    unoptimized: true,
+  },
   // Transpile packages that have module resolution issues
   transpilePackages: ['react-apple-emojis'],
   // Configure webpack to handle module resolution
