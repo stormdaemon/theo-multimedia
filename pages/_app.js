@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
-import emojiData from 'react-apple-emojis/src/data.json';
+import emojiData from '../emoji-data.json';
 
 const inter = Inter({
   subsets: ['latin'],
