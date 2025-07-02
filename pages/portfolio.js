@@ -28,6 +28,20 @@ const projects = [
     description: "Successeur de Révélation Radio, nouvelle web radio de la même équipe, expérience audio enrichie et design repensé.",
     imageUrl: '/heavenradio.png',
     url: 'https://heavenradio.fr/',
+  },
+  {
+    title: 'BR16BATIMENT',
+    category: 'Site vitrine',
+    description: "Site vitrine pour un artisan batiment, présentation des services, portfolio et contact.",
+    imageUrl: '/BR16BAPTIMENT.png',
+    url: 'https://br16batiment.netlify.app/',
+  },
+  {
+    title: 'La Batpême Catholique',
+    category: 'Landing page',
+    description: "Landing page de génération de Lead pour accompagné les peronnes vers le baptême",
+    imageUrl: '/baptemecatholique.png',
+    url: 'https://lebaptemecatholique.fr/',
   }
 ];
 
