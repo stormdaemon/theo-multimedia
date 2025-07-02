@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+
+# Disallow admin or private areas if any
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://theo-multimedia.com/sitemap.xml

@@ -1,11 +1,13 @@
-# Netlify configuration for static Next.js export
+# Netlify configuration for Next.js SSR
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "out"
+  command = "npm ci && npm run build"
+  publish = ".next"
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+  NEXT_TELEMETRY_DISABLED = "1"
 
-# Redirect all 404s to the root (if you rely on client-side routing for some paths)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
+# Next.js plugin for SSR
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

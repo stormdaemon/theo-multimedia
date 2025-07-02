@@ -5,8 +5,8 @@ const CGU = () => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
-        <title>Conditions Générales d'Utilisation - Théo Multimédia</title>
-        <meta name="description" content="Conditions Générales d'Utilisation du site Théo Multimédia" />
+        <title>CGU | Théo Multimédia - Conditions Générales d'Utilisation</title>
+        <meta name="description" content="Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales." />
       </Head>
 
       <main className="container mx-auto px-4 py-16">
@@ -38,8 +38,8 @@ const CGU = () => {
                 <p>N° SIRET : 884 758 970 00039</p>
                 <p>N° TVA intracommunautaire : FR59884758970</p>
                 <p>16000 Angoulême, France</p>
-                <p>Email : contact@theomultimedia.com</p>
-                <p>Téléphone : +33 1 23 45 67 89</p>
+                <p>Email : contact@theo-multimedia.com</p>
+                <p>Téléphone : +33 7 68 51 95 68</p>
               </address>
               <p className="mt-4">Je suis le directeur de la publication : Théo LAFONT</p>
               <p>J'héberge ce site chez O2SWITCH - Chem. des Pardiaux 63000 Clermont-Ferrand</p>
@@ -115,8 +115,8 @@ const CGU = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 12 - Contact</h2>
               <p>Pour toute question ou demande d'information concernant le Site, ou tout signalement de contenu ou d'activités illicites, vous pouvez me contacter :</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Par email : <a href="mailto:contact@theomultimedia.com" className="text-accent hover:underline">contact@theomultimedia.com</a></li>
-                <li>Par téléphone : <a href="tel:+33123456789" className="text-accent hover:underline">+33 1 23 45 67 89</a></li>
+                <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
+                <li>Par téléphone : <a href="tel:+33123456789" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
                 <li>Par courrier : 16000 Angoulême, France</li>
               </ul>
             </section>
