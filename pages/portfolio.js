@@ -37,12 +37,19 @@ const projects = [
     url: 'https://br16batiment.netlify.app/',
   },
   {
-    title: 'La Batpême Catholique',
-    category: 'Landing page',
-    description: "Landing page de génération de Lead pour accompagné les peronnes vers le baptême",
-    imageUrl: '/baptemecatholique.png',
-    url: 'https://lebaptemecatholique.fr/',
-  }
+    title: "Le Baptême Catholique",
+    category: "Landing page",
+    description: "Landing page de génération de leads pour accompagner les personnes vers le baptême",
+    imageUrl: "/baptemecatholique.png",
+    url: "https://lebaptemecatholique.fr/"
+  },
+  {
+    title: "TRACKWARS",
+    category: "Jeu de blind test musical",
+    description: "Jeu de blind test conçu pour les professionnels de l'événementiel",
+    imageUrl: "/trackwars.png",
+    url: "https://trackwars.fr/"
+  }  
 ];
 
 const containerVariants = {
