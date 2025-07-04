@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Emoji } from 'react-apple-emojis';
 import { FaArrowRight } from 'react-icons/fa';
 import Head from 'next/head';
-import Footer from '../components/Footer';
+
 
 // Import des nouveaux composants UX/UI 2025
 import { InteractiveButton, InteractiveCard } from '../components/MicroInteractions';
@@ -178,12 +178,12 @@ const Home = () => {
             <h1 className="sr-only">Théo Multimédia - Agence web à Angoulême spécialisée en création de sites internet et SEO</h1>
             <KineticText 
               text="Agence web à Angoulême"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight text-accent"
               as="h2"
             />
             <KineticText 
               text=" - Création de sites web & SEO"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent block"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-accent block"
               delay={0.5}
               as="h3"
             />
@@ -390,8 +390,6 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
         </div>
       </section>
       
-      {/* Footer */}
-      <Footer />
     </div>
   </>
   );

@@ -184,4 +184,88 @@
   .underline-effect:hover::after {
     width: 100%;
   }
+
+  /* Apply hover effects only on devices that support hover */
+  @media (hover: hover) {
+    .hover\:scale-110:hover {
+      transform: scale(1.1);
+    }
+    
+    .hover\:translate-x-1:hover {
+      transform: translateX(0.25rem);
+    }
+    
+    .hover\:bg-accent\/90:hover {
+      background-color: hsl(var(--accent) / 0.9);
+    }
+    
+    .hover\:bg-accent:hover {
+      background-color: hsl(var(--accent));
+    }
+    
+    .hover\:bg-white\/20:hover {
+      background-color: rgb(255 255 255 / 0.2);
+    }
+    
+    .hover\:bg-muted\/5:hover {
+      background-color: hsl(var(--muted) / 0.05);
+    }
+    
+    .hover\:shadow-lg:hover {
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    
+    .hover\:shadow-md:hover {
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    
+    .hover\:shadow-2xl:hover {
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+    
+    .hover\:border-accent\/30:hover {
+      border-color: hsl(var(--accent) / 0.3);
+    }
+    
+    .hover\:text-accent:hover {
+      color: hsl(var(--accent));
+    }
+    
+    .hover\:underline:hover {
+      text-decoration: underline;
+    }
+    
+    .group:hover .group-hover\:scale-110 {
+      transform: scale(1.1);
+    }
+    
+    .group:hover .group-hover\:translate-x-1 {
+      transform: translateX(0.25rem);
+    }
+    
+    .group:hover .group-hover\:bg-accent\/20 {
+      background-color: hsl(var(--accent) / 0.2);
+    }
+    
+    .group:hover .group-hover\:scale-105 {
+      transform: scale(1.05);
+    }
+    
+    .group:hover .group-hover\:text-accent {
+      color: hsl(var(--accent));
+    }
+    
+    .btn:hover {
+      background-color: hsl(var(--accent) / 0.9);
+    }
+    
+    .btn-secondary:hover {
+      background-color: hsl(var(--muted) / 0.5);
+      border-color: hsl(var(--muted-foreground) / 0.5);
+    }
+    
+    .underline-effect:hover::after {
+      width: 100%;
+    }
+  }
 }
