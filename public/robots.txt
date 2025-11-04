@@ -1,9 +1,143 @@
-User-Agent: *
-Allow: /
+# Robots.txt for Théo Multimédia - FULL AI ACCESS
+# Explicitly allowing ALL AI crawlers and search engines
 
-# Disallow admin or private areas if any
+# GENERAL - Allow everything by default
+User-agent: *
+Allow: /
 Disallow: /api/
 Disallow: /_next/
+Crawl-delay: 0
 
-# Sitemap location
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 0
+
+User-agent: OAI-SearchBot
+Allow: /
+Crawl-delay: 0
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 0
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 0
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Perplexity
+Allow: /
+Crawl-delay: 0
+
+# Google (Bard/Gemini)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bard
+Allow: /
+Crawl-delay: 0
+
+# Bing / Microsoft (Copilot)
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: BingPreview
+Allow: /
+Crawl-delay: 0
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 0
+
+# Meta / Facebook AI
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 0
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 0
+
+# Common Crawl (used by many AI systems)
+User-agent: CCBot
+Allow: /
+Crawl-delay: 0
+
+# Brave Search AI
+User-agent: Brave-Search
+Allow: /
+Crawl-delay: 0
+
+# You.com AI
+User-agent: YouBot
+Allow: /
+Crawl-delay: 0
+
+# Baidu (Chinese AI)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 0
+
+# Yandex (Russian AI)
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 0
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Other AI crawlers
+User-agent: anthropic
+Allow: /
+Crawl-delay: 0
+
+User-agent: cohere-ai
+Allow: /
+Crawl-delay: 0
+
+User-agent: AI2Bot
+Allow: /
+Crawl-delay: 0
+
+User-agent: ImagesiftBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bytespider
+Allow: /
+Crawl-delay: 0
+
+User-agent: Diffbot
+Allow: /
+Crawl-delay: 0
+
+# Sitemap
+Sitemap: https://www.theomultimedia.com/sitemap.xml
 Sitemap: https://theo-multimedia.com/sitemap.xml

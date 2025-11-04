@@ -1,0 +1,12 @@
+# Netlify Headers - Allow AI Crawlers
+# This ensures AI bots are never blocked at the HTTP level
+
+/*
+  X-Robots-Tag: all
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Allow all bots and AI crawlers
+  Access-Control-Allow-Origin: *
+  # Explicitly allow common AI user agents
+  X-AI-Crawlers-Allowed: GPTBot, ChatGPT-User, PerplexityBot, Claude-Web, anthropic-ai, Google-Extended, Bingbot, Applebot, CCBot
