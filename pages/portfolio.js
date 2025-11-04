@@ -282,14 +282,14 @@ const PortfolioPage = () => {
                   Discutons de votre vision.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
-                    Démarrer mon projet
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-6 sm:px-10 py-4 sm:py-5 bg-white text-accent rounded-full text-base sm:text-lg font-medium hover:scale-105 transition-transform">
+                    Démarrer
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </Link>
-                  <Link href="/services" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
-                    Voir mes services
+                  <Link href="/services" className="inline-flex items-center justify-center gap-2 px-6 sm:px-10 py-4 sm:py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full text-base sm:text-lg font-medium hover:bg-white/20 transition-all">
+                    Voir services
                   </Link>
                 </div>
               </div>

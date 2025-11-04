@@ -426,10 +426,10 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                 à atteindre vos objectifs en ligne.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
+                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5">
                   Me contacter
                 </Link>
-                <Link href="/about" className="btn btn-secondary text-lg px-10 py-5">
+                <Link href="/about" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5">
                   En savoir plus
                 </Link>
               </div>

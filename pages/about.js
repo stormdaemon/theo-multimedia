@@ -242,11 +242,11 @@ const AboutPage = () => {
                 et de rencontrer des entrepreneurs passionnés.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
-                  Parlons de votre projet
+                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Discuter du projet
                 </Link>
-                <Link href="/portfolio" className="btn btn-secondary text-lg px-10 py-5">
-                  Voir mon travail
+                <Link href="/portfolio" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Voir le portfolio
                 </Link>
               </div>
             </motion.div>
