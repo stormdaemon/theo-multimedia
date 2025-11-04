@@ -1,399 +1,401 @@
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Emoji } from 'react-apple-emojis';
-import { FaArrowRight } from 'react-icons/fa';
 import Head from 'next/head';
 import Footer from '../components/Footer';
 
-// Import des nouveaux composants UX/UI 2025
-import { InteractiveButton, InteractiveCard } from '../components/MicroInteractions';
-import { ParallaxCard, KineticText, BentoGrid, BentoCard, AnimatedProgress } from '../components/ModernEffects';
-import { AccessibleButton } from '../components/AccessibilityEnhanced';
-import { OptimizedImage, LazyContent, PerformanceMonitor } from '../components/PerformanceOptimized';
-
 const Home = () => {
-  const ref = useRef(null);
-  const heroRef = useRef(null);
-  const [heroHeight, setHeroHeight] = useState('100vh');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const calculateHeroHeight = () => {
-      const header = document.querySelector('header');
-      if (header && heroRef.current) {
-        const headerHeight = header.getBoundingClientRect().height;
-        // On soustrait 1px pour éviter tout débordement dû aux arrondis de calcul
-        setHeroHeight(`calc(100vh - ${headerHeight}px - 1px)`);
-        
-        // Ajustement du padding top pour que le contenu soit collé à la navbar
-        const heroContent = heroRef.current.firstElementChild;
-        if (heroContent) {
-          heroContent.style.paddingTop = '0';
-        }
-      }
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
-    // On attend que le DOM soit complètement chargé
-    const timer = setTimeout(calculateHeroHeight, 0);
-    
-    // On réajuste lors du redimensionnement
-    window.addEventListener('resize', calculateHeroHeight);
-    
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('resize', calculateHeroHeight);
-    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-  
+
   const features = [
     {
-      title: "Création de site internet à Angoulême",
-      description: "Développement de sites vitrines, e-commerce, applications web sur-mesure, refonte, responsive design, accessibilité, performance, sécurité, optimisation SEO, Google, WordPress, solutions digitales pour PME, entreprises, associations et entrepreneurs à Angoulême et partout en France.",
-      icon: <Emoji name="laptop" width={28} />
+      title: "Sites web sur mesure",
+      description: "Je crée des sites internet qui reflètent votre identité et convertissent vos visiteurs en clients. Design moderne, responsive et optimisé.",
+      icon: "💻"
     },
     {
-      title: "Webdesign & UX/UI professionnel",
-      description: "Design web créatif, identité visuelle, branding, expérience utilisateur (UX), interface intuitive (UI), maquettes interactives, charte graphique, animation web, mobile first, design moderne et attractif pour booster la visibilité de votre marque à Angoulême.",
-      icon: <Emoji name="mobile-phone" width={28} />
+      title: "Design & Expérience",
+      description: "J'accorde une attention particulière à chaque détail pour créer des interfaces intuitives et des expériences utilisateur mémorables.",
+      icon: "✨"
     },
     {
-      title: "Référencement naturel (SEO) & Performance",
-      description: "Optimisation SEO avancée, audit, stratégie de contenu, rédaction web optimisée, référencement local, Google My Business, netlinking, rapidité de chargement, Core Web Vitals, visibilité sur Google et moteurs de recherche.",
-      icon: <Emoji name="bar-chart" width={28} />
+      title: "Référencement naturel",
+      description: "J'optimise votre présence en ligne pour vous rendre visible sur Google. Des résultats mesurables et durables.",
+      icon: "🚀"
     },
     {
-      title: "Hébergement sécurisé & Maintenance",
-      description: "Hébergement web haute disponibilité, maintenance proactive, sauvegardes automatiques, mises à jour de sécurité, support technique, SSL, monitoring, solutions cloud, protection des données, accompagnement digital à Angoulême et partout en France.",
-      icon: <Emoji name="desktop-computer" width={28} />
+      title: "Support & Maintenance",
+      description: "Je vous accompagne sur le long terme avec un support réactif et des mises à jour régulières pour votre tranquillité d'esprit.",
+      icon: "🛡️"
     }
   ];
-  
-  const stats = [
-    { value: "50+", label: "Sites internet, e-commerce & webdesign réalisés à Angoulême" },
-    { value: "95%", label: "Clients satisfaits (SEO, branding, UX/UI, digital)" },
-    { value: "99.9%", label: "Taux de disponibilité (hébergement sécurisé, maintenance)" },
-    { value: "+10", label: "ans d’expertises en création digitale, SEO, web à Angoulême" }
-  ];
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  const projects = [
+    { name: "E-commerce Mode", category: "Boutique en ligne" },
+    { name: "Portfolio Architecte", category: "Site vitrine" },
+    { name: "Application SaaS", category: "Web app" },
+    { name: "Restaurant", category: "Site vitrine" }
+  ];
 
   return (
     <>
-      {/* Moniteur de performance pour le développement */}
-      <PerformanceMonitor onMetrics={(metrics) => {
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Performance Metrics:', metrics);
-        }
-      }} />
-      
       <Head>
-        <title>Théo Multimédia Agence Web Angoulême Sites Internet & SEO</title>
-        <meta name="description" content="Agence web Angoulême : création sites internet, webdesign moderne, SEO et e-commerce. Solutions digitales sur-mesure pour PME." />
+        <title>Théo Multimédia - Votre site web en 24h | Création de sites internet à Angoulême</title>
+        <meta name="description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.theomultimedia.com/" />
-        <meta property="og:title" content="Théo Multimédia | Agence Web Angoulême - Sites Internet & SEO" />
-        <meta property="og:description" content="Agence web à Angoulême spécialisée en création de sites internet, webdesign moderne, SEO et e-commerce. Solutions digitales sur-mesure pour PME et entrepreneurs." />
+        <meta property="og:title" content="Théo Multimédia - Votre site web en 24h" />
+        <meta property="og:description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.theomultimedia.com/" />
         <meta property="og:image" content="https://www.theomultimedia.com/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Théo Multimédia - Agence Web Angoulême" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Théo Multimédia | Agence Web Angoulême - Sites Internet & SEO" />
-        <meta name="twitter:description" content="Agence web à Angoulême spécialisée en création de sites internet, webdesign moderne, SEO et e-commerce. Solutions digitales sur-mesure pour PME et entrepreneurs." />
-        <meta name="twitter:image" content="https://www.theomultimedia.com/og-image.jpg" />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Théo Multimédia",
-          "url": "https://www.theomultimedia.com/",
-          "author": {
-            "@type": "Person",
-            "name": "Théo LAFONT"
-          },
-          "description": "Je conçois et développe des sites internet, applications web et solutions digitales innovantes pour entrepreneurs, PME et associations.",
-          "inLanguage": "fr-FR"
-        }
-        `}</script>
       </Head>
-      <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative flex items-start justify-center px-4 py-32 overflow-hidden"
-        style={{ minHeight: heroHeight, height: heroHeight }}
-        aria-label="Section d'accueil principale"
-      >
-        {/* Background gradient */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background/30" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/10 via-background to-background" />
-        </div>
 
-        <div className="container mx-auto relative z-10 max-w-6xl">
-          <motion.div 
-            className="max-w-5xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="flex justify-center mb-6">
+      <div className="overflow-hidden bg-background">
+        {/* Hero Section - Apple Style */}
+        <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
+
+          {/* Animated cursor follower */}
+          <motion.div
+            className="pointer-events-none fixed inset-0 z-0"
+            animate={{
+              background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--accent) / 0.05), transparent 40%)`
+            }}
+            transition={{ type: "tween", ease: "linear", duration: 0.2 }}
+          />
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-8"
+            >
+              {/* 24h Badge - Super prominent */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
+                transition={{ delay: 0.2 }}
+                className="flex justify-center"
               >
-                <span className="w-2 h-2 rounded-full bg-accent mr-2 animate-pulse"></span>
-                <span className="text-sm font-medium text-accent">Je suis actuellement disponible pour de nouveaux projets</span>
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent/10 border border-accent/20">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                  </span>
+                  <span className="text-sm font-medium text-accent">Livraison en 24 heures</span>
+                </div>
               </motion.div>
-            </div>
-            
-            <h1 className="sr-only">Théo Multimédia - Agence web à Angoulême spécialisée en création de sites internet et SEO</h1>
-            <KineticText 
-              text="Agence web à Angoulême"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent"
-              as="h2"
-            />
-            <KineticText 
-              text=" - Création de sites web & SEO"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent block"
-              delay={0.5}
-              as="h3"
-            />
-            
-            <motion.p 
-              className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            >
-Spécialiste en création de sites internet, webdesign et référencement (SEO) à Angoulême. Développement sur-mesure, responsive et optimisé pour Google.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-            >
-              <Link href="/contact" className="w-full sm:w-64">
-                <div className="w-full h-12 px-6 py-3 bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg font-medium text-lg flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group">
-                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  <span>Démarrer un projet</span>
+
+              {/* Main Heading - Large Apple-style typography */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-none"
+              >
+                Votre site web.
+                <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
+                  En 24 heures.
+                </span>
+              </motion.h1>
+
+              {/* Subheading */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light"
+              >
+                Je transforme vos idées en expériences digitales exceptionnelles.
+                Design moderne, développement rapide, résultats garantis.
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+              >
+                <Link href="/contact" className="btn btn-primary text-base px-8 py-4">
+                  Démarrer mon projet
+                </Link>
+                <Link href="/portfolio" className="btn btn-secondary text-base px-8 py-4">
+                  Voir mes créations
+                </Link>
+              </motion.div>
+
+              {/* Trust indicators */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="flex items-center justify-center gap-8 pt-12 text-sm text-foreground/50"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">⚡</span>
+                  <span>Rapide</span>
                 </div>
-              </Link>
-              <Link href="/portfolio" className="w-full sm:w-64">
-                <div className="w-full h-12 px-6 py-3 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground rounded-lg font-medium text-lg flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group">
-                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  <span>Voir mes réalisations</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">🎨</span>
+                  <span>Design moderne</span>
                 </div>
-              </Link>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">🔒</span>
+                  <span>Sécurisé</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center p-2"
+            >
+              <div className="w-1 h-2 bg-foreground/40 rounded-full" />
             </motion.div>
           </motion.div>
+        </section>
 
-          {/* Animated grid background */}
-          <div className="absolute inset-0 -z-10 opacity-20">
-            <div className="absolute inset-0 bg-grid-white/[0.05] [mask-image:linear-gradient(0deg,transparent,black,transparent)]" />
+        {/* Large 24h Delivery Section */}
+        <section className="py-32 px-6 bg-gradient-to-br from-accent via-blue-500 to-accent relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 opacity-20">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-white rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  opacity: [0.3, 0.8, 0.3]
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: Math.random() * 2
+                }}
+              />
+            ))}
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute left-1/2 -translate-x-1/2 mb-4" style={{bottom: '2rem'}}>
-          <div className="animate-bounce w-8 h-12 border-2 border-foreground/20 rounded-full flex justify-center items-start p-1">
-            <div className="w-1 h-3 bg-foreground/70 rounded-full animate-pulse" />
+          <div className="container mx-auto max-w-5xl relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center text-white space-y-8"
+            >
+              <div className="text-7xl md:text-9xl font-bold mb-4">24h</div>
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
+                De l'idée au site en ligne
+              </h2>
+              <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+                Vous avez besoin d'un site rapidement ? Je m'engage à livrer votre projet
+                en 24 heures. Sans compromis sur la qualité.
+              </p>
+              <div className="pt-8">
+                <Link href="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
+                  Je veux mon site en 24h
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Section Fonctionnalités avec Bento Grid */}
-      <LazyContent className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex justify-center mb-6">
-              <span className="inline-block px-4 py-2 text-sm font-medium rounded-full bg-accent/10 text-accent">
-                Mes expertises
-              </span>
+        {/* Services Section */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-20"
+            >
+              <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Ce que je fais
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
+                Des solutions complètes pour propulser votre présence en ligne
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  className="group"
+                >
+                  <div className="h-full p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
+                    <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                    <p className="text-foreground/60 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <KineticText 
-              text="Des solutions complètes pour votre présence en ligne"
-              className="text-3xl md:text-4xl font-bold mb-4"
-            />
-            <motion.p 
-              className="text-xl text-foreground/80 mb-8 max-w-2xl mx-auto"
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 px-6 bg-muted/30">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid md:grid-cols-4 gap-12">
+              {[
+                { value: "50+", label: "Projets livrés" },
+                { value: "24h", label: "Délai de livraison" },
+                { value: "100%", label: "Satisfaction client" },
+                { value: "10+", label: "Années d'expertise" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  className="text-center"
+                >
+                  <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent to-blue-500 mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-foreground/60">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Work Section */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-7xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-between items-end mb-16"
+            >
+              <div>
+                <h2 className="text-5xl md:text-6xl font-semibold mb-4 tracking-tight">
+                  Mes derniers projets
+                </h2>
+                <p className="text-xl text-foreground/60 font-light">
+                  Des réalisations qui parlent d'elles-mêmes
+                </p>
+              </div>
+              <Link href="/portfolio" className="hidden md:inline-flex items-center gap-2 text-accent hover:gap-4 transition-all">
+                Voir tous les projets
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group cursor-pointer"
+                >
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-gradient-to-br from-accent/20 to-blue-500/20 mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-6xl opacity-20">🖥️</div>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-2 group-hover:text-accent transition-colors">
+                    {project.name}
+                  </h3>
+                  <p className="text-foreground/60">{project.category}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-center mt-12 md:hidden"
             >
-              Je conçois et développe des solutions web sur mesure pour vous aider à vous démarquer en ligne et à atteindre vos objectifs numériques.
-            </motion.p>
-            <p className="text-foreground/60 max-w-2xl mx-auto">
-              Je combine créativité et technologie pour vous offrir des solutions numériques sur mesure qui répondent à vos objectifs business.
-            </p>
-          </motion.div>
-
-          <BentoGrid columns={4} className="max-w-6xl mx-auto">
-            {features.map((feature, index) => {
-              return (
-                <BentoCard
-                  key={index}
-                  size="normal"
-                  className="group h-full"
-                >
-                  <ParallaxCard intensity={0.05} className="h-full flex flex-col">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                    <p className="text-foreground/60 flex-grow">{feature.description}</p>
-                  </ParallaxCard>
-                </BentoCard>
-              );
-            })}
-          </BentoGrid>
-        </div>
-      </LazyContent>
-
-      {/* Stats Section avec effets modernes */}
-      <LazyContent className="py-20 bg-gradient-to-br from-accent via-accent/90 to-purple-600 text-white relative overflow-hidden">
-        {/* Effet de grain et texture */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <KineticText 
-              text="Résultats concrets"
-              className="text-3xl md:text-4xl font-bold mb-4"
-            />
-          </motion.div>
-          
-          <BentoGrid columns={4} className="max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
-              <BentoCard
-                key={index}
-                className="text-center bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20"
-              >
-                <ParallaxCard intensity={0.03}>
-                  <motion.div 
-                    className="text-4xl md:text-5xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ 
-                      type: 'spring', 
-                      stiffness: 200, 
-                      damping: 10,
-                      delay: index * 0.1 
-                    }}
-                  >
-                    {stat.value}
-                  </motion.div>
-                  <motion.div 
-                    className="text-lg opacity-90"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 0.9, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                  >
-                    {stat.label}
-                  </motion.div>
-                </ParallaxCard>
-              </BentoCard>
-            ))}
-          </BentoGrid>
-        </div>
-      </LazyContent>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-accent/5 to-purple-500/5 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-            <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-accent/10 blur-3xl" />
-            <div className="absolute -left-20 -bottom-20 w-64 h-64 rounded-full bg-purple-500/10 blur-3xl" />
-            
-            <div className="relative z-10 text-center max-w-3xl mx-auto">
-              <motion.h2 
-                className="text-3xl md:text-4xl font-bold mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6 }}
-              >
-                Prêt à donner vie à votre projet ?
-              </motion.h2>
-              <motion.p 
-                className="text-foreground/70 mb-8 text-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                Contactez-moi dès aujourd'hui pour discuter de votre projet et voir comment je peux vous aider à atteindre vos objectifs numériques.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex justify-center"
-              >
-                <Link href="/contact" className="btn btn-primary group">
-                  <span>Me contacter</span>
-                  <Emoji name="right-arrow" width={16} className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-            </div>
+              <Link href="/portfolio" className="btn btn-secondary">
+                Voir tous les projets
+              </Link>
+            </motion.div>
           </div>
-        </div>
-      </section>
-      
-      {/* Footer */}
-      <Footer />
-    </div>
-  </>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border"
+            >
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
+                Prêt à lancer<br />votre projet ?
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
+                Discutons de votre projet et voyons comment je peux vous aider
+                à atteindre vos objectifs en ligne.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
+                  Me contacter
+                </Link>
+                <Link href="/about" className="btn btn-secondary text-lg px-10 py-5">
+                  En savoir plus
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
+    </>
   );
 };
 
