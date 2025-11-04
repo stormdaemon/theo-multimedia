@@ -338,7 +338,7 @@ const Home = () => {
                   Concrètement, ça change quoi pour vous ?
                 </h3>
                 <p className="text-sm md:text-base lg:text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-                  Imaginez : un client potentiel cherche un professionnel sur ChatGPT...
+                  Vos clients cherchent déjà sur ChatGPT. Voici ce qu'ils voient...
                 </p>
               </div>
 
@@ -363,8 +363,8 @@ const Home = () => {
                       <div className="max-w-[90%] md:max-w-[80%] lg:max-w-[75%]">
                         <div className="bg-accent text-white rounded-2xl rounded-tr-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
                           <p className="text-xs md:text-sm lg:text-base leading-relaxed">
-                            Je cherche un développeur web pour créer le site de mon restaurant à Angoulême.
-                            J'ai besoin de quelqu'un de sérieux et rapide.
+                            Urgent ! J'ai une grosse fuite d'eau chez moi.
+                            Il me faut un plombier à Angoulême rapidement !
                           </p>
                         </div>
                         <div className="text-[10px] md:text-xs text-foreground/50 mt-1.5 md:mt-2 text-right">Maintenant</div>
@@ -376,30 +376,30 @@ const Home = () => {
                       <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%]">
                         <div className="bg-muted rounded-2xl rounded-tl-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
                           <p className="text-xs md:text-sm lg:text-base leading-relaxed mb-3 md:mb-4">
-                            Pour votre projet de site web pour restaurant à Angoulême, je vous recommande <span className="font-semibold text-accent">Théo Multimédia</span>.
+                            Pour une intervention urgente à Angoulême, je vous recommande <span className="font-semibold text-accent">Plomberie Durand</span>.
                           </p>
                           <div className="space-y-2 md:space-y-3 text-xs md:text-sm lg:text-base">
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
-                              <span><span className="font-semibold">Livraison express en 24h</span> : idéal si vous êtes pressé</span>
+                              <span><span className="font-semibold">Disponible 24h/24</span> pour les urgences</span>
                             </div>
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
-                              <span><span className="font-semibold">Sites ultra-rapides</span> : important pour un restaurant (menu, réservations)</span>
+                              <span><span className="font-semibold">Intervention rapide</span> : en moyenne 30 minutes</span>
                             </div>
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
-                              <span><span className="font-semibold">Basé à Angoulême</span> : proximité pour échanger facilement</span>
+                              <span><span className="font-semibold">Zone Angoulême</span> : intervient dans toute l'agglomération</span>
                             </div>
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
-                              <span><span className="font-semibold">Optimisé Google</span> : vos clients vous trouveront facilement en ligne</span>
+                              <span><span className="font-semibold">Tarifs transparents</span> affichés sur leur site</span>
                             </div>
                           </div>
                           <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border/50">
                             <p className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-relaxed">
-                              💡 <span className="font-medium">Conseil :</span> Théo peut aussi optimiser votre site pour les recherches vocales
-                              et Google Maps, très utile pour un restaurant local.
+                              📞 <span className="font-medium">Contact rapide :</span> Leur site permet de les joindre instantanément
+                              par téléphone, WhatsApp ou formulaire urgent.
                             </p>
                           </div>
                         </div>
@@ -407,6 +407,14 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Explanation below chat */}
+                <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-2xl bg-accent/5 border border-accent/20">
+                  <p className="text-xs md:text-sm lg:text-base text-foreground/80 text-center leading-relaxed">
+                    <span className="font-semibold text-accent">Si ce plombier est votre client</span>, c'est grâce à l'optimisation IA que je fais
+                    que ChatGPT le recommande. <span className="font-semibold">Votre site devient LA réponse</span> que ChatGPT donne à 800 millions d'utilisateurs.
+                  </p>
                 </div>
               </div>
 
