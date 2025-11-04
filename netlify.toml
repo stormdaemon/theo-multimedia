@@ -1,13 +1,12 @@
 # Netlify configuration for Next.js SSR
 [build]
   command = "npm ci && npm run build"
-  publish = ".next"
-  
+  # Do not specify publish - let @netlify/plugin-nextjs handle it
+
 [build.environment]
   NODE_VERSION = "18"
-  NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Next.js plugin for SSR
+# Next.js plugin for SSR - handles everything automatically
 [[plugins]]
   package = "@netlify/plugin-nextjs"
