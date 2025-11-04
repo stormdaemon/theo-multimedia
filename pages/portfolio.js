@@ -104,15 +104,15 @@ const PortfolioPage = () => {
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Mes réalisations<br />
+                Sites qui<br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  qui inspirent
+                  cartonnent vraiment
                 </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Une sélection de projets qui reflètent ma passion pour le design,
-                le développement et l'innovation digitale.
+                Ultra-rapides, éco-conçus, et optimisés pour convertir.
+                Voici des projets qui génèrent des résultats réels.
               </p>
             </motion.div>
           </div>
@@ -218,9 +218,9 @@ const PortfolioPage = () => {
           <div className="container mx-auto max-w-5xl">
             <div className="grid md:grid-cols-3 gap-12 text-center">
               {[
-                { value: `${projects.length}+`, label: "Projets réalisés" },
-                { value: "100%", label: "Clients satisfaits" },
-                { value: "24h", label: "Livraison possible" }
+                { value: "3x", label: "Plus rapide" },
+                { value: "+40%", label: "De conversions" },
+                { value: "-60%", label: "Empreinte CO2" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -295,8 +295,6 @@ const PortfolioPage = () => {
             </motion.div>
           </div>
         </section>
-
-        
       </div>
     </>
   );
