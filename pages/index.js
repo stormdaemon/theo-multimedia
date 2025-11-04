@@ -39,10 +39,30 @@ const Home = () => {
   ];
 
   const projects = [
-    { name: "E-commerce Mode", category: "Boutique en ligne" },
-    { name: "Portfolio Architecte", category: "Site vitrine" },
-    { name: "Application SaaS", category: "Web app" },
-    { name: "Restaurant", category: "Site vitrine" }
+    {
+      name: "Fesch 2025",
+      category: "Site promotionnel",
+      imageUrl: "/fesch.png",
+      url: "https://fesch2025.fr/"
+    },
+    {
+      name: "Heaven Radio",
+      category: "Web radio",
+      imageUrl: "/heavenradio.png",
+      url: "https://heavenradio.fr/"
+    },
+    {
+      name: "TRACKWARS",
+      category: "Application web",
+      imageUrl: "/trackwars.png",
+      url: "https://trackwars.fr/"
+    },
+    {
+      name: "Le Baptême Catholique",
+      category: "Landing page",
+      imageUrl: "/baptemecatholique.png",
+      url: "https://lebaptemecatholique.fr/"
+    }
   ];
 
   return (
@@ -336,11 +356,24 @@ const Home = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className="group cursor-pointer"
+                  onClick={() => project.url && window.open(project.url, '_blank')}
                 >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-gradient-to-br from-accent/20 to-blue-500/20 mb-4">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl opacity-20">🖥️</div>
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-muted mb-4">
+                    {project.imageUrl && (
+                      <img
+                        src={project.imageUrl}
+                        alt={project.name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {project.url && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="px-8 py-4 bg-white text-accent rounded-full font-medium hover:scale-110 transition-transform">
+                            Voir le projet
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <h3 className="text-2xl font-semibold mb-2 group-hover:text-accent transition-colors">
