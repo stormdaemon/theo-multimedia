@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -17,24 +16,24 @@ const Home = () => {
 
   const features = [
     {
-      title: "Sites web sur mesure",
-      description: "Je crée des sites internet qui reflètent votre identité et convertissent vos visiteurs en clients. Design moderne, responsive et optimisé.",
-      icon: "💻"
+      title: "Sites ultra-rapides",
+      description: "Je conçois des sites 3x plus rapides que la moyenne. Résultat ? Vos visiteurs restent, Google vous adore, et votre empreinte carbone diminue. Performance et écologie, main dans la main.",
+      icon: "⚡"
     },
     {
-      title: "Design & Expérience",
-      description: "J'accorde une attention particulière à chaque détail pour créer des interfaces intuitives et des expériences utilisateur mémorables.",
-      icon: "✨"
+      title: "Design qui convertit",
+      description: "Chaque bouton, chaque couleur est pensé pour transformer vos visiteurs en clients. J'utilise les dernières techniques de design persuasif pour maximiser vos résultats.",
+      icon: "🎯"
     },
     {
-      title: "Référencement naturel",
-      description: "J'optimise votre présence en ligne pour vous rendre visible sur Google. Des résultats mesurables et durables.",
-      icon: "🚀"
+      title: "Visible sur Google",
+      description: "J'optimise votre site pour qu'il apparaisse en première page de Google. Pas de jargon technique : je rends votre entreprise facile à trouver par vos clients.",
+      icon: "🔍"
     },
     {
-      title: "Support & Maintenance",
-      description: "Je vous accompagne sur le long terme avec un support réactif et des mises à jour régulières pour votre tranquillité d'esprit.",
-      icon: "🛡️"
+      title: "Éco-responsable",
+      description: "Sites légers et performants = moins d'énergie consommée. J'optimise chaque ligne de code pour réduire l'impact environnemental de votre présence en ligne.",
+      icon: "🌱"
     }
   ];
 
@@ -139,8 +138,8 @@ const Home = () => {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light"
               >
-                Je transforme vos idées en expériences digitales exceptionnelles.
-                Design moderne, développement rapide, résultats garantis.
+                Sites ultra-rapides, design qui convertit, et démarche éco-responsable.
+                Je transforme votre idée en business qui cartonne en ligne.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -167,15 +166,15 @@ const Home = () => {
               >
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
-                  <span>Rapide</span>
+                  <span>3x plus rapide</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🎨</span>
-                  <span>Design moderne</span>
+                  <span className="text-2xl">🌱</span>
+                  <span>Éco-conçu</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🔒</span>
-                  <span>Sécurisé</span>
+                  <span className="text-2xl">📈</span>
+                  <span>Convertit mieux</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -233,11 +232,12 @@ const Home = () => {
             >
               <div className="text-7xl md:text-9xl font-bold mb-4">24h</div>
               <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
-                De l'idée au site en ligne
+                Votre site en ligne demain
               </h2>
               <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-                Vous avez besoin d'un site rapidement ? Je m'engage à livrer votre projet
-                en 24 heures. Sans compromis sur la qualité.
+                Lancement de produit ? Événement urgent ? Opportunité business ?
+                Je livre votre site professionnel en 24h. Ultra-rapide, optimisé pour Google,
+                et prêt à convertir vos visiteurs en clients.
               </p>
               <div className="pt-8">
                 <Link href="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
@@ -262,10 +262,10 @@ const Home = () => {
               className="text-center mb-20"
             >
               <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
-                Ce que je fais
+                Pourquoi mes sites performent mieux
               </h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Des solutions complètes pour propulser votre présence en ligne
+                Performance, conversion et écologie : les trois piliers de ma méthode
               </p>
             </motion.div>
 
@@ -299,10 +299,10 @@ const Home = () => {
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-4 gap-12">
               {[
-                { value: "50+", label: "Projets livrés" },
-                { value: "24h", label: "Délai de livraison" },
-                { value: "100%", label: "Satisfaction client" },
-                { value: "10+", label: "Années d'expertise" }
+                { value: "3x", label: "Plus rapides que la moyenne" },
+                { value: "24h", label: "Pour être en ligne" },
+                { value: "-60%", label: "D'empreinte carbone" },
+                { value: "+40%", label: "De conversions en moyenne" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -408,11 +408,11 @@ const Home = () => {
               className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border"
             >
               <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
-                Prêt à lancer<br />votre projet ?
+                Prêt à booster<br />votre business ?
               </h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Discutons de votre projet et voyons comment je peux vous aider
-                à atteindre vos objectifs en ligne.
+                Un site qui charge en 1 seconde, qui convertit 40% mieux, et qui respecte la planète.
+                Parlons de votre projet maintenant.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
@@ -425,8 +425,6 @@ const Home = () => {
             </motion.div>
           </div>
         </section>
-
-        <Footer />
       </div>
     </>
   );

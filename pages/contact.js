@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const contactInfo = [
   {
@@ -311,7 +310,7 @@ const ContactPage = () => {
           </div>
         </section>
 
-        <Footer />
+        
       </div>
     </>
   );

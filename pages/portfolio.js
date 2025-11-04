@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 import Link from 'next/link';
 
 const projects = [
@@ -297,7 +296,7 @@ const PortfolioPage = () => {
           </div>
         </section>
 
-        <Footer />
+        
       </div>
     </>
   );

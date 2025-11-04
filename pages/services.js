@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const services = [
   {
@@ -329,7 +328,7 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        <Footer />
+        
       </div>
     </>
   );

@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const values = [
   {
@@ -253,7 +252,7 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <Footer />
+        
       </div>
     </>
   );
