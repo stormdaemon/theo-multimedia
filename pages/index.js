@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
-
+import SEO, { createOrganizationSchema, createWebPageSchema, createFAQSchema } from '../components/SEO';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -15,50 +14,87 @@ const Home = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Updated features with conversion/tech/ecology focus
   const features = [
     {
-      title: "Sites web sur mesure",
-      description: "Je crée des sites internet qui reflètent votre identité et convertissent vos visiteurs en clients. Design moderne, responsive et optimisé.",
-      icon: "💻"
+      title: "Sites ultra-rapides",
+      description: "Je conçois des sites 3x plus rapides que la moyenne. Temps de chargement < 1 seconde. Vos visiteurs restent, Google vous aime, vous vendez plus.",
+      icon: "⚡"
     },
     {
-      title: "Design & Expérience",
-      description: "J'accorde une attention particulière à chaque détail pour créer des interfaces intuitives et des expériences utilisateur mémorables.",
-      icon: "✨"
+      title: "Design qui convertit",
+      description: "Chaque bouton, chaque couleur est pensé pour transformer vos visiteurs en clients. +40% de conversions en moyenne grâce au design persuasif.",
+      icon: "🎯"
     },
     {
-      title: "Référencement naturel",
-      description: "J'optimise votre présence en ligne pour vous rendre visible sur Google. Des résultats mesurables et durables.",
-      icon: "🚀"
+      title: "Visible sur Google",
+      description: "J'optimise votre site pour qu'il apparaisse en première page Google. Mots-clés stratégiques, contenu optimisé, résultats mesurables.",
+      icon: "🔍"
     },
     {
-      title: "Support & Maintenance",
-      description: "Je vous accompagne sur le long terme avec un support réactif et des mises à jour régulières pour votre tranquillité d'esprit.",
-      icon: "🛡️"
+      title: "Éco-responsable",
+      description: "Je code léger pour réduire de 60% l'empreinte carbone de votre site. Bon pour la planète, bon pour votre image, bon pour vos performances.",
+      icon: "🌱"
     }
   ];
 
   const projects = [
-    { name: "E-commerce Mode", category: "Boutique en ligne" },
-    { name: "Portfolio Architecte", category: "Site vitrine" },
-    { name: "Application SaaS", category: "Web app" },
-    { name: "Restaurant", category: "Site vitrine" }
+    { name: "Heaven Radio", category: "Web radio", image: "/heavenradio.png" },
+    { name: "Fesch 2025", category: "Site promotionnel", image: "/fesch.png" },
+    { name: "Le Baptême Catholique", category: "Landing page", image: "/baptemecatholique.png" },
+    { name: "TRACKWARS", category: "Application web", image: "/trackwars.png" }
   ];
+
+  // FAQ data for AI search optimization
+  const faqs = [
+    {
+      question: "C'est vraiment livré en 24 heures ?",
+      answer: "Oui ! Pour les projets standards (site vitrine, landing page), je livre en 24 heures chrono. Site fonctionnel, design professionnel, optimisé pour mobile et Google. Parfait pour les lancements urgents ou les opportunités business qui ne peuvent pas attendre."
+    },
+    {
+      question: "Pourquoi les sites sont 3x plus rapides ?",
+      answer: "Code optimisé, images compressées intelligemment, technologies modernes (React, Next.js). Résultat : chargement en moins d'une seconde. Les visiteurs restent, Google booste votre référencement, vous vendez plus."
+    },
+    {
+      question: "Comment ça marche, l'éco-conception web ?",
+      answer: "Code léger = moins de données transférées = moins d'énergie consommée. Mes sites utilisent 60% d'énergie en moins que la moyenne. C'est bon pour la planète, ça améliore vos performances, et ça renforce votre image de marque responsable."
+    },
+    {
+      question: "Qu'est-ce que le design qui convertit ?",
+      answer: "Design persuasif basé sur la psychologie utilisateur. Chaque couleur, chaque bouton, chaque texte est optimisé pour guider le visiteur vers l'action. Résultat : +40% de conversions en moyenne (demandes de devis, achats, inscriptions)."
+    }
+  ];
+
+  // Schema markup for Google and AI search
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createOrganizationSchema(),
+      createWebPageSchema(
+        'Théo Multimédia - Votre site web en 24h',
+        'Je crée votre site internet ultra-rapide, éco-responsable et optimisé pour convertir. Livraison en 24h. Sites 3x plus rapides, +40% de conversions, -60% d\'empreinte carbone.',
+        'https://www.theomultimedia.com'
+      ),
+      createFAQSchema(faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer
+      })))
+    ]
+  };
 
   return (
     <>
-      <Head>
-        <title>Théo Multimédia - Votre site web en 24h | Création de sites internet à Angoulême</title>
-        <meta name="description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/" />
-        <meta property="og:title" content="Théo Multimédia - Votre site web en 24h" />
-        <meta property="og:description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-image.jpg" />
-      </Head>
+      <SEO
+        title="Votre site web en 24h | Création de sites internet ultra-rapides"
+        description="Je crée votre site internet ultra-rapide, éco-responsable et optimisé pour convertir. Livraison en 24h. Sites 3x plus rapides, +40% de conversions, -60% d'empreinte carbone. Basé à Angoulême."
+        canonical="/"
+        schema={schemas}
+        additionalMetaTags={[
+          { name: 'keywords', content: 'création site web, site internet 24h, développeur web Angoulême, site rapide, SEO, éco-conception web, design conversion' },
+          { name: 'geo.region', content: 'FR-16' },
+          { name: 'geo.placename', content: 'Angoulême' },
+        ]}
+      />
 
       <div className="overflow-hidden bg-background">
         {/* Hero Section - Apple Style */}
@@ -97,42 +133,6 @@ const Home = () => {
                   <span className="text-sm font-medium text-accent">Livraison en 24 heures</span>
                 </div>
               </motion.div>
-<<<<<<< HEAD
-            </div>
-            
-            <h1 className="sr-only">Théo Multimédia - Agence web à Angoulême spécialisée en création de sites internet et SEO</h1>
-            <KineticText 
-              text="Agence web à Angoulême"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight text-accent"
-              as="h2"
-            />
-            <KineticText 
-              text=" - Création de sites web & SEO"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-accent block"
-              delay={0.5}
-              as="h3"
-            />
-            
-            <motion.p 
-              className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            >
-Spécialiste en création de sites internet, webdesign et référencement (SEO) à Angoulême. Développement sur-mesure, responsive et optimisé pour Google.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-            >
-              <Link href="/contact" className="w-full sm:w-64">
-                <div className="w-full h-12 px-6 py-3 bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg font-medium text-lg flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group">
-                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  <span>Démarrer un projet</span>
-=======
 
               {/* Main Heading - Large Apple-style typography */}
               <motion.h1
@@ -155,8 +155,8 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light"
               >
-                Je transforme vos idées en expériences digitales exceptionnelles.
-                Design moderne, développement rapide, résultats garantis.
+                3x plus rapide que la moyenne. +40% de conversions. -60% d'empreinte carbone.
+                <br />Je crée des sites qui cartonnent vraiment.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -166,11 +166,11 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                 transition={{ delay: 0.7, duration: 0.8 }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
               >
-                <Link href="/contact" className="btn btn-primary text-base px-8 py-4">
-                  Démarrer mon projet
+                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5">
+                  Me contacter
                 </Link>
-                <Link href="/portfolio" className="btn btn-secondary text-base px-8 py-4">
-                  Voir mes créations
+                <Link href="/portfolio" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5">
+                  En savoir plus
                 </Link>
               </motion.div>
 
@@ -183,16 +183,15 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
               >
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
-                  <span>Rapide</span>
->>>>>>> claude/redesign-ui-apple-style-011CUoPCVTWxPnPeXkAX7Y55
+                  <span>3x plus rapide</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🎨</span>
-                  <span>Design moderne</span>
+                  <span className="text-2xl">🌱</span>
+                  <span>Éco-conçu</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">🔒</span>
-                  <span>Sécurisé</span>
+                  <span className="text-2xl">📈</span>
+                  <span>+40% conversions</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -253,11 +252,11 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                 De l'idée au site en ligne
               </h2>
               <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-                Vous avez besoin d'un site rapidement ? Je m'engage à livrer votre projet
-                en 24 heures. Sans compromis sur la qualité.
+                Lancement urgent ? Opportunité business ? Je livre votre site professionnel,
+                ultra-rapide et optimisé en 24 heures chrono. Sans compromis sur la qualité.
               </p>
               <div className="pt-8">
-                <Link href="/contact" className="inline-flex items-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
+                <Link href="/contact" className="inline-flex items-center gap-2 px-6 sm:px-10 py-4 sm:py-5 bg-white text-accent rounded-full text-base sm:text-lg font-medium hover:scale-105 transition-transform">
                   Je veux mon site en 24h
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -279,10 +278,11 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
               className="text-center mb-20"
             >
               <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
-                Ce que je fais
+                Sites qui cartonnent vraiment
               </h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Des solutions complètes pour propulser votre présence en ligne
+                Performance, conversion, écologie. Mes sites sont conçus pour transformer
+                vos visiteurs en clients fidèles.
               </p>
             </motion.div>
 
@@ -316,10 +316,10 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-4 gap-12">
               {[
-                { value: "50+", label: "Projets livrés" },
-                { value: "24h", label: "Délai de livraison" },
-                { value: "100%", label: "Satisfaction client" },
-                { value: "10+", label: "Années d'expertise" }
+                { value: "3x", label: "Plus rapide" },
+                { value: "+40%", label: "De conversions" },
+                { value: "-60%", label: "Empreinte CO2" },
+                { value: "24h", label: "Livraison express" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -339,8 +339,47 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
           </div>
         </section>
 
-        {/* Recent Work Section */}
+        {/* FAQ Section - Optimized for AI Search */}
         <section className="py-32 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Questions fréquentes
+              </h2>
+              <p className="text-xl text-foreground/60 font-light">
+                Tout ce que vous devez savoir sur mes services
+              </p>
+            </motion.div>
+
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 rounded-3xl bg-card border border-border hover:border-accent/30 transition-all duration-300"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">
+                    {faq.question}
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Work Section */}
+        <section className="py-32 px-6 bg-muted/30">
           <div className="container mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -353,7 +392,7 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                   Mes derniers projets
                 </h2>
                 <p className="text-xl text-foreground/60 font-light">
-                  Des réalisations qui parlent d'elles-mêmes
+                  Des sites qui génèrent des résultats réels
                 </p>
               </div>
               <Link href="/portfolio" className="hidden md:inline-flex items-center gap-2 text-accent hover:gap-4 transition-all">
@@ -374,11 +413,16 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                   transition={{ delay: index * 0.1 }}
                   className="group cursor-pointer"
                 >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-gradient-to-br from-accent/20 to-blue-500/20 mb-4">
+                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-muted mb-4">
+                    {project.image && (
+                      <img
+                        src={project.image}
+                        alt={`${project.name} - ${project.category} créé par Théo Multimédia`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl opacity-20">🖥️</div>
-                    </div>
                   </div>
                   <h3 className="text-2xl font-semibold mb-2 group-hover:text-accent transition-colors">
                     {project.name}
@@ -399,13 +443,6 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
               </Link>
             </motion.div>
           </div>
-<<<<<<< HEAD
-        </div>
-      </section>
-      
-    </div>
-  </>
-=======
         </section>
 
         {/* CTA Section */}
@@ -436,11 +473,8 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
             </motion.div>
           </div>
         </section>
-
-        <Footer />
       </div>
     </>
->>>>>>> claude/redesign-ui-apple-style-011CUoPCVTWxPnPeXkAX7Y55
   );
 };
 

@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
-import Head from 'next/head';
-import Footer from '../components/Footer';
+import SEO, { createWebPageSchema, createFAQSchema } from '../components/SEO';
 
 const contactInfo = [
   {
@@ -27,12 +26,64 @@ const contactInfo = [
 const ContactPage = () => {
   const [state, handleSubmit] = useForm("mblypyew");
 
+  // FAQ data for AI search optimization
+  const faqs = [
+    {
+      question: "Quel est le délai de réponse ?",
+      answer: "Je réponds à tous les messages dans les 24 heures maximum. Pour les demandes urgentes, précisez-le dans votre message et je vous recontacterai en priorité."
+    },
+    {
+      question: "Quel est le budget minimum pour un projet ?",
+      answer: "Les tarifs varient selon la complexité. Un site vitrine commence à partir de 500€. Une landing page optimisée à partir de 300€. Livraison 24h disponible avec supplément. Devis gratuit et sans engagement."
+    },
+    {
+      question: "La livraison en 24h est-elle vraiment possible ?",
+      answer: "Oui ! Pour les projets standards (landing page, site vitrine simple), je livre en 24h chrono. Sites fonctionnels, optimisés, prêts à convertir. Parfait pour les lancements urgents."
+    },
+    {
+      question: "Proposez-vous un accompagnement après livraison ?",
+      answer: "Oui, support inclus : réponse sous 24h, mises à jour sécurité, sauvegardes quotidiennes. Forfaits maintenance disponibles pour évolutions régulières de votre site."
+    }
+  ];
+
+  // Schema markup for contact page
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createWebPageSchema(
+        'Contact - Parlons de votre projet',
+        'Contactez-moi pour votre projet web. Réponse sous 24h. Livraison express disponible. Devis gratuit et sans engagement.',
+        'https://www.theomultimedia.com/contact'
+      ),
+      createFAQSchema(faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer
+      }))),
+      {
+        '@type': 'ContactPage',
+        url: 'https://www.theomultimedia.com/contact',
+        mainEntity: {
+          '@type': 'Organization',
+          name: 'Théo Multimédia',
+          email: 'contact@theomultimedia.com',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Angoulême',
+            addressCountry: 'FR'
+          }
+        }
+      }
+    ]
+  };
+
   if (state.succeeded) {
     return (
       <>
-        <Head>
-          <title>Message envoyé ! | Théo Multimédia</title>
-        </Head>
+        <SEO
+          title="Message envoyé !"
+          description="Votre message a bien été envoyé. Je vous répondrai dans les 24 heures."
+          canonical="/contact"
+        />
         <div className="min-h-screen flex items-center justify-center bg-background px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -70,17 +121,15 @@ const ContactPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Contact - Parlons de votre projet | Théo Multimédia</title>
-        <meta name="description" content="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/contact" />
-        <meta property="og:title" content="Contact | Théo Multimédia" />
-        <meta property="og:description" content="Contactez-moi pour discuter de votre projet web." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/contact" />
-      </Head>
+      <SEO
+        title="Contact - Parlons de votre projet"
+        description="Contactez-moi pour votre projet web. Réponse sous 24h garantie. Livraison express en 24h disponible. Sites ultra-rapides, éco-responsables, optimisés pour convertir. Devis gratuit."
+        canonical="/contact"
+        schema={schemas}
+        additionalMetaTags={[
+          { name: 'keywords', content: 'contact développeur web, devis site internet, Angoulême, livraison 24h, création site rapide' },
+        ]}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}

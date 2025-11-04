@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Head from 'next/head';
-import Footer from '../components/Footer';
+import SEO, { createWebPageSchema, createOrganizationSchema } from '../components/SEO';
 
 const values = [
   {
@@ -34,19 +33,48 @@ const skills = [
 ];
 
 const AboutPage = () => {
+  // Schema markup
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createOrganizationSchema(),
+      createWebPageSchema(
+        'À Propos - Qui suis-je ? | Théo Multimédia',
+        'Sites 3x plus rapides, +40% de conversions, -60% d\'empreinte carbone. Basé à Angoulême, je crée des sites ultra-rapides et éco-responsables depuis plus de 10 ans.',
+        'https://www.theomultimedia.com/about'
+      ),
+      {
+        '@type': 'Person',
+        '@id': 'https://www.theomultimedia.com/about#theo',
+        name: 'Théo LAFONT',
+        jobTitle: 'Développeur Web & Expert SEO',
+        description: 'Spécialiste en création de sites ultra-rapides, éco-responsables et optimisés pour la conversion.',
+        url: 'https://www.theomultimedia.com/about',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Angoulême',
+          addressCountry: 'FR'
+        },
+        knowsAbout: ['Développement Web', 'SEO', 'Éco-conception', 'Design UX', 'React', 'Next.js'],
+        alumniOf: {
+          '@type': 'EducationalOrganization',
+          name: 'Formation développement web'
+        }
+      }
+    ]
+  };
+
   return (
     <>
-      <Head>
-        <title>À Propos - Qui suis-je ? | Théo Multimédia</title>
-        <meta name="description" content="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/about" />
-        <meta property="og:title" content="À Propos - Qui suis-je ? | Théo Multimédia" />
-        <meta property="og:description" content="Je suis Théo, développeur web passionné à Angoulême." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/about" />
-      </Head>
+      <SEO
+        title="À Propos - Qui suis-je ?"
+        description="Sites 3x plus rapides, +40% de conversions, -60% d'empreinte carbone. Basé à Angoulême, je crée des sites ultra-rapides, éco-responsables et optimisés pour convertir depuis plus de 10 ans."
+        canonical="/about"
+        schema={schemas}
+        additionalMetaTags={[
+          { name: 'keywords', content: 'Théo LAFONT, développeur web Angoulême, expert SEO, éco-conception web, sites rapides' },
+        ]}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}

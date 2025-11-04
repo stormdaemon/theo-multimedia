@@ -1,9 +1,32 @@
-User-Agent: *
-Allow: /
+# Robots.txt for Théo Multimédia
+# Optimized for Google and AI search engines (ChatGPT, Perplexity, Claude, etc.)
 
-# Disallow admin or private areas if any
+User-agent: *
+Allow: /
 Disallow: /api/
 Disallow: /_next/
 
+# AI Search Crawlers - Explicitly allow for AI SEO
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # Sitemap location
-Sitemap: https://theo-multimedia.com/sitemap.xml
+Sitemap: https://www.theomultimedia.com/sitemap.xml

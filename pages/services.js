@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Head from 'next/head';
-import Footer from '../components/Footer';
+import SEO, { createWebPageSchema, createServiceSchema, createFAQSchema } from '../components/SEO';
 
 const services = [
   {
@@ -97,19 +96,61 @@ const process = [
 ];
 
 const ServicesPage = () => {
+  // FAQ data for AI search optimization
+  const faqs = [
+    {
+      question: "Pourquoi choisir un site ultra-rapide ?",
+      answer: "Un site qui charge en < 1 seconde garde vos visiteurs. 53% des utilisateurs quittent un site qui met plus de 3 secondes à charger. Sites rapides = moins d'abandons + meilleur référencement Google + plus de ventes."
+    },
+    {
+      question: "Qu'est-ce que le design qui convertit concrètement ?",
+      answer: "Design persuasif basé sur la psychologie utilisateur : couleurs stratégiques, boutons d'action optimisés, parcours utilisateur fluide, A/B testing. Résultat mesuré : +40% de conversions (demandes de contact, achats, inscriptions)."
+    },
+    {
+      question: "Comment je deviens visible sur Google ?",
+      answer: "Audit SEO complet, mots-clés stratégiques identifiés, contenu optimisé pour Google, structure technique parfaite, suivi mensuel de vos positions. Pas de jargon : je vous explique tout simplement ce qui marche."
+    },
+    {
+      question: "L'éco-conception, c'est quoi exactement ?",
+      answer: "Code léger et optimisé qui consomme 60% d'énergie en moins. Moins de données = moins de CO2. C'est bon pour la planète, ça améliore vos performances (sites plus rapides), et ça renforce votre image responsable."
+    }
+  ];
+
+  // Schema markup for services
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createWebPageSchema(
+        'Mes Services - Création de sites web ultra-rapides en 24h',
+        'Sites internet 3x plus rapides, design qui convertit +40%, visible sur Google, éco-responsable -60% CO2. Livraison express en 24h disponible.',
+        'https://www.theomultimedia.com/services'
+      ),
+      {
+        '@type': 'ItemList',
+        itemListElement: services.map((service, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: createServiceSchema(service.title, service.description)
+        }))
+      },
+      createFAQSchema(faqs.map(faq => ({
+        question: faq.question,
+        answer: faq.answer
+      })))
+    ]
+  };
+
   return (
     <>
-      <Head>
-        <title>Mes Services - Création de sites web en 24h | Théo Multimédia</title>
-        <meta name="description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/services" />
-        <meta property="og:title" content="Mes Services - Création de sites web | Théo Multimédia" />
-        <meta property="og:description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/services" />
-      </Head>
+      <SEO
+        title="Mes Services - Création de sites web en 24h"
+        description="Je crée votre site internet ultra-rapide, éco-responsable et optimisé pour convertir. Livraison en 24h. Sites 3x plus rapides, +40% de conversions, SEO inclus. Angoulême."
+        canonical="/services"
+        schema={schemas}
+        additionalMetaTags={[
+          { name: 'keywords', content: 'création site web 24h, site rapide, SEO, éco-conception, design conversion, développement web, Angoulême' },
+        ]}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}
@@ -266,6 +307,45 @@ const ServicesPage = () => {
                   {index < process.length - 1 && (
                     <div className="hidden lg:block absolute top-8 -right-4 w-8 h-0.5 bg-accent/20" />
                   )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - Optimized for AI Search */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+                Questions fréquentes
+              </h2>
+              <p className="text-xl text-foreground/60 font-light">
+                Tout ce que vous devez savoir sur mes services
+              </p>
+            </motion.div>
+
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 rounded-3xl bg-card border border-border hover:border-accent/30 transition-all duration-300"
+                >
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">
+                    {faq.question}
+                  </h3>
+                  <p className="text-foreground/70 leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </motion.div>
               ))}
             </div>

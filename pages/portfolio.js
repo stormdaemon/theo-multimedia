@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Head from 'next/head';
-import Footer from '../components/Footer';
 import Link from 'next/link';
+import SEO, { createWebPageSchema } from '../components/SEO';
 
 const projects = [
   {
@@ -71,19 +70,43 @@ const PortfolioPage = () => {
     ? projects
     : projects.filter(p => p.category === filter);
 
+  // Schema markup for portfolio
+  const schemas = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createWebPageSchema(
+        'Mon Portfolio - Sites qui cartonnent vraiment',
+        'Découvrez mes réalisations : sites 3x plus rapides, +40% de conversions, -60% CO2. Web radios, landing pages, applications web et sites vitrines ultra-performants.',
+        'https://www.theomultimedia.com/portfolio'
+      ),
+      {
+        '@type': 'CollectionPage',
+        name: 'Portfolio Théo Multimédia',
+        description: 'Collection de projets web ultra-rapides et éco-responsables',
+        url: 'https://www.theomultimedia.com/portfolio',
+        hasPart: projects.map(project => ({
+          '@type': 'CreativeWork',
+          name: project.title,
+          description: project.description,
+          image: `https://www.theomultimedia.com${project.imageUrl}`,
+          url: project.url,
+          keywords: project.tags.join(', ')
+        }))
+      }
+    ]
+  };
+
   return (
     <>
-      <Head>
-        <title>Mon Portfolio - Mes réalisations | Théo Multimédia</title>
-        <meta name="description" content="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/portfolio" />
-        <meta property="og:title" content="Mon Portfolio | Théo Multimédia" />
-        <meta property="og:description" content="Découvrez mes réalisations web et digitales." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/portfolio" />
-      </Head>
+      <SEO
+        title="Mon Portfolio - Mes réalisations"
+        description="Sites 3x plus rapides, +40% de conversions, -60% CO2. Découvrez mes réalisations : web radios, landing pages, applications web et sites vitrines ultra-performants créés pour mes clients."
+        canonical="/portfolio"
+        schema={schemas}
+        additionalMetaTags={[
+          { name: 'keywords', content: 'portfolio web, réalisations, sites rapides, web radio, landing page, application web, Angoulême' },
+        ]}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}
