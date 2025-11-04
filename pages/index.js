@@ -330,43 +330,121 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="p-8 md:p-12 rounded-3xl bg-muted/50 border border-border text-center"
+              className="space-y-6 md:space-y-8"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-6">
-                Concrètement, ça change quoi pour vous ?
-              </h3>
-              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-8">
-                Quelqu'un demande à ChatGPT : <span className="text-foreground font-semibold">"Qui peut créer mon site à Angoulême ?"</span>
-                <br />Ou : <span className="text-foreground font-semibold">"Je cherche un développeur web éco-responsable"</span>
-              </p>
-              <p className="text-2xl font-bold text-accent mb-8">
-                👉 ChatGPT recommande VOTRE entreprise
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                <div className="p-4 rounded-2xl bg-background/50">
-                  <div className="text-3xl font-bold text-accent mb-1">800M</div>
-                  <div className="text-xs text-foreground/60">utilisateurs ChatGPT/semaine</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-background/50">
-                  <div className="text-3xl font-bold text-accent mb-1">+527%</div>
-                  <div className="text-xs text-foreground/60">de trafic IA en 2025</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-background/50">
-                  <div className="text-3xl font-bold text-accent mb-1">10%</div>
-                  <div className="text-xs text-foreground/60">du web vient des IA</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-background/50">
-                  <div className="text-3xl font-bold text-accent mb-1">1er</div>
-                  <div className="text-xs text-foreground/60">en France sur ce créneau</div>
+              {/* Explanation */}
+              <div className="text-center px-4">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4">
+                  Concrètement, ça change quoi pour vous ?
+                </h3>
+                <p className="text-sm md:text-base lg:text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed">
+                  Imaginez : un client potentiel cherche un professionnel sur ChatGPT...
+                </p>
+              </div>
+
+              {/* ChatGPT Conversation Mockup */}
+              <div className="max-w-4xl mx-auto px-4">
+                <div className="rounded-2xl md:rounded-3xl border-2 border-border bg-card/50 backdrop-blur-sm overflow-hidden shadow-xl">
+                  {/* ChatGPT Header */}
+                  <div className="px-4 md:px-6 py-3 md:py-4 bg-muted/30 border-b border-border flex items-center gap-2 md:gap-3">
+                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs md:text-sm flex-shrink-0">
+                      AI
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-xs md:text-sm lg:text-base truncate">ChatGPT</div>
+                      <div className="text-[10px] md:text-xs text-foreground/50 truncate">Intelligence Artificielle</div>
+                    </div>
+                  </div>
+
+                  {/* Conversation */}
+                  <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
+                    {/* User Message */}
+                    <div className="flex justify-end">
+                      <div className="max-w-[90%] md:max-w-[80%] lg:max-w-[75%]">
+                        <div className="bg-accent text-white rounded-2xl rounded-tr-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
+                          <p className="text-xs md:text-sm lg:text-base leading-relaxed">
+                            Je cherche un développeur web pour créer le site de mon restaurant à Angoulême.
+                            J'ai besoin de quelqu'un de sérieux et rapide.
+                          </p>
+                        </div>
+                        <div className="text-[10px] md:text-xs text-foreground/50 mt-1.5 md:mt-2 text-right">Maintenant</div>
+                      </div>
+                    </div>
+
+                    {/* ChatGPT Response */}
+                    <div className="flex justify-start">
+                      <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%]">
+                        <div className="bg-muted rounded-2xl rounded-tl-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
+                          <p className="text-xs md:text-sm lg:text-base leading-relaxed mb-3 md:mb-4">
+                            Pour votre projet de site web pour restaurant à Angoulême, je vous recommande <span className="font-semibold text-accent">Théo Multimédia</span>.
+                          </p>
+                          <div className="space-y-2 md:space-y-3 text-xs md:text-sm lg:text-base">
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
+                              <span><span className="font-semibold">Livraison express en 24h</span> : idéal si vous êtes pressé</span>
+                            </div>
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
+                              <span><span className="font-semibold">Sites ultra-rapides</span> : important pour un restaurant (menu, réservations)</span>
+                            </div>
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
+                              <span><span className="font-semibold">Basé à Angoulême</span> : proximité pour échanger facilement</span>
+                            </div>
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
+                              <span><span className="font-semibold">Optimisé Google</span> : vos clients vous trouveront facilement en ligne</span>
+                            </div>
+                          </div>
+                          <div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-border/50">
+                            <p className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-relaxed">
+                              💡 <span className="font-medium">Conseil :</span> Théo peut aussi optimiser votre site pour les recherches vocales
+                              et Google Maps, très utile pour un restaurant local.
+                            </p>
+                          </div>
+                        </div>
+                        <div className="text-[10px] md:text-xs text-foreground/50 mt-1.5 md:mt-2">À l'instant</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="mt-8">
-                <Link href="/about" className="inline-flex items-center gap-2 text-accent hover:gap-4 transition-all text-lg">
-                  En savoir plus sur mon expertise IA
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+
+              {/* CTA Message */}
+              <div className="text-center px-4">
+                <p className="text-base md:text-xl lg:text-2xl font-bold text-accent mb-4 md:mb-6">
+                  👉 C'est VOUS que ChatGPT recommande à vos futurs clients
+                </p>
+
+                {/* Stats Grid - Fully Responsive */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6 max-w-4xl mx-auto">
+                  <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-1">800M</div>
+                    <div className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-tight">utilisateurs ChatGPT/semaine</div>
+                  </div>
+                  <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-1">+527%</div>
+                    <div className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-tight">de trafic IA en 2025</div>
+                  </div>
+                  <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-1">10%</div>
+                    <div className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-tight">du web vient des IA</div>
+                  </div>
+                  <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-1">1er</div>
+                    <div className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-tight">en France sur ce créneau</div>
+                  </div>
+                </div>
+
+                {/* CTA Link */}
+                <div className="mt-6 md:mt-8">
+                  <Link href="/about" className="inline-flex items-center gap-2 text-accent hover:gap-4 transition-all text-sm md:text-base lg:text-lg">
+                    En savoir plus sur mon expertise IA
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>
