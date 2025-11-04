@@ -111,6 +111,122 @@ const AboutPage = () => {
           </div>
         </section>
 
+        {/* AI SEO Expertise Section */}
+        <section className="py-32 px-6 bg-gradient-to-br from-accent/5 via-background to-background">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                <span className="text-sm font-medium text-accent">Expertise unique</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Visible sur <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">ChatGPT</span> et Google
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
+                Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA.
+                Je maîtrise les deux pour que vous soyez trouvé partout.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl bg-card border border-border"
+              >
+                <div className="text-5xl mb-6">🔍</div>
+                <h3 className="text-2xl font-semibold mb-4">Référencement Google classique</h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">
+                  C'est la base : mots-clés, contenu optimisé, structure technique parfaite.
+                  Résultat : vous apparaissez quand vos clients tapent vos services sur Google.
+                </p>
+                <ul className="space-y-3 text-foreground/70">
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Première page Google sur vos mots-clés stratégiques</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Trafic qualifié qui cherche exactement vos services</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Suivi mensuel de vos positions et résultats</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30"
+              >
+                <div className="text-5xl mb-6">🤖</div>
+                <h3 className="text-2xl font-semibold mb-4">
+                  Référencement IA{' '}
+                  <span className="text-sm font-normal text-accent">(ChatGPT, Perplexity)</span>
+                </h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">
+                  C'est l'avenir (et déjà le présent) : 800 millions de personnes utilisent ChatGPT chaque semaine.
+                  J'optimise votre site pour que les IA vous recommandent à leurs utilisateurs.
+                </p>
+                <ul className="space-y-3 text-foreground/70">
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>ChatGPT recommande votre entreprise quand on lui demande</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Perplexity cite votre site dans ses réponses (+527% de visibilité)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Contenu structuré pour être compris et cité par les IA</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 md:p-12 rounded-3xl bg-muted/50 border border-border text-center"
+            >
+              <h3 className="text-2xl md:text-3xl font-semibold mb-4">
+                Pourquoi c'est important pour vous ?
+              </h3>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-6">
+                Imaginez : quelqu'un demande à ChatGPT <span className="text-foreground font-semibold">"Qui peut créer mon site internet à Angoulême ?"</span> ou
+                <span className="text-foreground font-semibold"> "Je cherche un développeur web éco-responsable"</span>.
+              </p>
+              <p className="text-xl font-semibold text-accent mb-6">
+                Si votre site est optimisé pour l'IA, c'est VOUS que ChatGPT recommande. 🎯
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">800M</div>
+                  <div className="text-sm text-foreground/60">utilisateurs ChatGPT/semaine</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">+527%</div>
+                  <div className="text-sm text-foreground/60">de trafic venant des IA en 2025</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">10%</div>
+                  <div className="text-sm text-foreground/60">du trafic web vient déjà des IA</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Values Section */}
         <section className="py-32 px-6 bg-muted/30">
           <div className="container mx-auto max-w-6xl">
@@ -240,11 +356,11 @@ const AboutPage = () => {
                 et de rencontrer des entrepreneurs passionnés.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
-                  Parlons de votre projet
+                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Discuter du projet
                 </Link>
-                <Link href="/portfolio" className="btn btn-secondary text-lg px-10 py-5">
-                  Voir mon travail
+                <Link href="/portfolio" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Voir le portfolio
                 </Link>
               </div>
             </motion.div>
