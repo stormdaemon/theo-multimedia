@@ -97,42 +97,6 @@ const Home = () => {
                   <span className="text-sm font-medium text-accent">Livraison en 24 heures</span>
                 </div>
               </motion.div>
-<<<<<<< HEAD
-            </div>
-            
-            <h1 className="sr-only">Théo Multimédia - Agence web à Angoulême spécialisée en création de sites internet et SEO</h1>
-            <KineticText 
-              text="Agence web à Angoulême"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 leading-tight text-accent"
-              as="h2"
-            />
-            <KineticText 
-              text=" - Création de sites web & SEO"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight text-accent block"
-              delay={0.5}
-              as="h3"
-            />
-            
-            <motion.p 
-              className="text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            >
-Spécialiste en création de sites internet, webdesign et référencement (SEO) à Angoulême. Développement sur-mesure, responsive et optimisé pour Google.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row justify-center gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-            >
-              <Link href="/contact" className="w-full sm:w-64">
-                <div className="w-full h-12 px-6 py-3 bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg font-medium text-lg flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group">
-                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  <span>Démarrer un projet</span>
-=======
 
               {/* Main Heading - Large Apple-style typography */}
               <motion.h1
@@ -184,7 +148,6 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
                   <span>Rapide</span>
->>>>>>> claude/redesign-ui-apple-style-011CUoPCVTWxPnPeXkAX7Y55
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">🎨</span>
@@ -399,13 +362,6 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
               </Link>
             </motion.div>
           </div>
-<<<<<<< HEAD
-        </div>
-      </section>
-      
-    </div>
-  </>
-=======
         </section>
 
         {/* CTA Section */}
@@ -440,7 +396,6 @@ Spécialiste en création de sites internet, webdesign et référencement (SEO) 
         <Footer />
       </div>
     </>
->>>>>>> claude/redesign-ui-apple-style-011CUoPCVTWxPnPeXkAX7Y55
   );
 };
 
