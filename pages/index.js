@@ -251,6 +251,127 @@ const Home = () => {
           </div>
         </section>
 
+        {/* AI SEO Expertise Section - Priority 2 */}
+        <section className="py-32 px-6 relative overflow-hidden">
+          {/* Subtle animated background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-background to-background" />
+
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                <span className="text-sm font-medium text-accent">Expertise unique en France</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Visible sur <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">ChatGPT</span> et Google
+              </h2>
+              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
+                Vos clients vous cherchent sur Google... mais aussi sur ChatGPT.
+                <br />Je maîtrise les deux pour que vous soyez trouvé partout.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="p-8 rounded-3xl bg-card border border-border"
+              >
+                <div className="text-5xl mb-6">🔍</div>
+                <h3 className="text-2xl font-semibold mb-4">Google SEO</h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">
+                  Première page Google sur vos mots-clés. Vos clients tapent votre service, ils vous trouvent.
+                </p>
+                <div className="flex items-center gap-3 text-foreground/70">
+                  <span className="text-accent">✓</span>
+                  <span>Trafic qualifié et gratuit</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30 relative overflow-hidden"
+              >
+                {/* Glow effect */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />
+
+                <div className="text-5xl mb-6 relative">🤖</div>
+                <h3 className="text-2xl font-semibold mb-4 relative">
+                  Référencement IA
+                  <span className="ml-2 text-xs font-normal px-2 py-1 rounded-full bg-accent/20 text-accent">NOUVEAU</span>
+                </h3>
+                <p className="text-foreground/60 leading-relaxed mb-6 relative">
+                  ChatGPT recommande votre entreprise. 800M d'utilisateurs par semaine vous découvrent.
+                </p>
+                <div className="space-y-3 relative">
+                  <div className="flex items-center gap-3 text-foreground/70">
+                    <span className="text-accent">✓</span>
+                    <span>ChatGPT cite votre site</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-foreground/70">
+                    <span className="text-accent">✓</span>
+                    <span>+527% de visibilité IA</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="p-8 md:p-12 rounded-3xl bg-muted/50 border border-border text-center"
+            >
+              <h3 className="text-2xl md:text-3xl font-semibold mb-6">
+                Concrètement, ça change quoi pour vous ?
+              </h3>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-8">
+                Quelqu'un demande à ChatGPT : <span className="text-foreground font-semibold">"Qui peut créer mon site à Angoulême ?"</span>
+                <br />Ou : <span className="text-foreground font-semibold">"Je cherche un développeur web éco-responsable"</span>
+              </p>
+              <p className="text-2xl font-bold text-accent mb-8">
+                👉 ChatGPT recommande VOTRE entreprise
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div className="p-4 rounded-2xl bg-background/50">
+                  <div className="text-3xl font-bold text-accent mb-1">800M</div>
+                  <div className="text-xs text-foreground/60">utilisateurs ChatGPT/semaine</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-background/50">
+                  <div className="text-3xl font-bold text-accent mb-1">+527%</div>
+                  <div className="text-xs text-foreground/60">de trafic IA en 2025</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-background/50">
+                  <div className="text-3xl font-bold text-accent mb-1">10%</div>
+                  <div className="text-xs text-foreground/60">du web vient des IA</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-background/50">
+                  <div className="text-3xl font-bold text-accent mb-1">1er</div>
+                  <div className="text-xs text-foreground/60">en France sur ce créneau</div>
+                </div>
+              </div>
+              <div className="mt-8">
+                <Link href="/about" className="inline-flex items-center gap-2 text-accent hover:gap-4 transition-all text-lg">
+                  En savoir plus sur mon expertise IA
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Services Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl">
