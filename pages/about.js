@@ -1,109 +1,260 @@
 import { motion } from 'framer-motion';
-import { Emoji } from 'react-apple-emojis';
-
+import Link from 'next/link';
+import Head from 'next/head';
+import Footer from '../components/Footer';
 
 const values = [
   {
-    icon: <Emoji name="light-bulb" width={48} />,
-    title: 'Innovation web & digitale',
-    description: "J’innove sans cesse pour proposer des solutions web, sites internet, branding et expériences digitales à la pointe, adaptées aux besoins des entreprises, PME et entrepreneurs à Angoulême et partout en France.",
+    icon: "💡",
+    title: 'Innovation',
+    description: "J'explore constamment les nouvelles technologies et les tendances design pour offrir des solutions modernes et performantes.",
   },
   {
-    icon: <Emoji name="busts-in-silhouette" width={48} />,
-    title: 'Collaboration & accompagnement',
-    description: "Chaque projet web, site vitrine, e-commerce ou refonte est co-construit avec vous : écoute, conseils, accompagnement digital personnalisé, pour un résultat sur-mesure qui valorise votre activité et votre image de marque.",
+    icon: "🎯",
+    title: 'Excellence',
+    description: "Chaque projet est traité avec le plus grand soin. Je ne livre que des solutions dont je suis fier.",
   },
   {
-    icon: <Emoji name="red-heart" width={48} />,
-    title: 'Passion du webdesign',
-    description: "Le webdesign, la création de sites internet, l’UX/UI, le référencement naturel (SEO) et la performance digitale sont ma passion. J’apporte un soin extrême à chaque détail pour garantir un site moderne, intuitif, performant et visible sur Google.",
+    icon: "❤️",
+    title: 'Passion',
+    description: "Le développement web est ma passion. J'aime créer des expériences numériques qui font la différence.",
   },
+  {
+    icon: "🤝",
+    title: 'Collaboration',
+    description: "Je travaille en étroite collaboration avec mes clients pour comprendre leurs besoins et dépasser leurs attentes.",
+  }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
-};
-
-const itemVariants = {
-  hidden: { x: -50, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
-import Head from 'next/head';
+const skills = [
+  { name: 'Design & UX/UI', level: 95 },
+  { name: 'Développement Web', level: 98 },
+  { name: 'SEO & Performance', level: 92 },
+  { name: 'Gestion de Projet', level: 90 },
+];
 
 const AboutPage = () => {
   return (
     <>
       <Head>
-        <title>À Propos | Théo Multimédia - Développeur Web Angoulême</title>
-        <meta name="description" content="Théo, développeur web passionné Angoulême. Spécialisé création sites modernes, SEO et solutions digitales sur-mesure entreprises." />
-
+        <title>À Propos - Qui suis-je ? | Théo Multimédia</title>
+        <meta name="description" content="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.theomultimedia.com/about" />
-        <meta property="og:title" content="À Propos | Théo Multimédia - Développeur Web Angoulême" />
-        <meta property="og:description" content="Découvrez Théo, développeur web passionné à Angoulême. Spécialisé en création de sites modernes, SEO et solutions digitales sur-mesure pour entreprises." />
+        <meta property="og:title" content="À Propos - Qui suis-je ? | Théo Multimédia" />
+        <meta property="og:description" content="Je suis Théo, développeur web passionné à Angoulême." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.theomultimedia.com/about" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-about.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:site_name" content="Théo Multimédia - Agence Web Angoulême" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="À Propos | Théo Multimédia - Développeur Web Angoulême" />
-        <meta name="twitter:description" content="Découvrez Théo, développeur web passionné à Angoulême. Spécialisé en création de sites modernes, SEO et solutions digitales sur-mesure pour entreprises." />
-        <meta name="twitter:image" content="https://www.theomultimedia.com/og-about.jpg" />
-        <meta name="ai-summary" content="À propos de Théo Multimédia : agence web à Angoulême, expert création site internet, webdesign, SEO, branding, accompagnement digital pour entreprises et entrepreneurs." />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "name": "À propos Théo Multimédia",
-          "author": {
-            "@type": "Person",
-            "name": "Théo LAFONT"
-          },
-          "description": "À propos de Théo Multimédia : agence web à Angoulême, expert création site internet, webdesign, SEO, branding, accompagnement digital pour entreprises et entrepreneurs.",
-          "inLanguage": "fr-FR"
-        }
-        `}</script>
       </Head>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        exit={{ opacity: 0 }}
-        variants={containerVariants}
-        className="container mx-auto px-4 py-24"
-      >
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div variants={itemVariants}>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-4">
-              Qui suis-<span className="text-accent">je</span> ?
-            </h1>
-            <p className="text-lg text-foreground/80 mb-6">
-              Je suis Théo, créateur de Théo Multimédia, agence web à Angoulême spécialisée en création de site internet, webdesign, SEO, branding, UX/UI, e-commerce, identité visuelle et solutions digitales sur-mesure. Ma mission : booster la visibilité, la performance et la notoriété des entreprises, PME, associations et entrepreneurs en Charente et Nouvelle-Aquitaine grâce à des sites modernes, performants, sécurisés et optimisés pour Google.
-            </p>
-            <p className="text-gray-400">
-              Je crois en un web ouvert, accessible, rapide et innovant. Chaque projet est conçu pour offrir une expérience utilisateur optimale, un référencement naturel efficace, une identité forte et une présence digitale durable. Mon expertise couvre le développement web, le design interactif, la stratégie digitale, la maintenance et l’accompagnement personnalisé.
-            </p>
-          </motion.div>
-          <motion.div variants={itemVariants} className="w-full flex items-center justify-center">
-            <img src="/theo_multimedia.png" alt="Théo Multimédia" className="rounded-xl shadow-lg border-2 border-accent w-full max-w-xs object-cover" />
-          </motion.div>
-        </div>
-      <motion.div variants={containerVariants} className="mt-24">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">Mes Valeurs Fondamentales</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <motion.div key={index} variants={itemVariants} className="text-center p-6">
-              <div className="flex justify-center mb-4">{value.icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-2">{value.title}</h3>
-              <p className="text-gray-400">{value.description}</p>
+
+      <div className="bg-background">
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-6">
+          <div className="container mx-auto max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
+              >
+                <span className="text-sm font-medium text-accent">À propos</span>
+              </motion.div>
+
+              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
+                Créateur d'expériences<br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
+                  digitales mémorables
+                </span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
+                Basé à Angoulême, je transforme des idées en sites web exceptionnels
+                depuis plus de 10 ans.
+              </p>
             </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </motion.div>
+          </div>
+        </section>
+
+        {/* Story Section */}
+        <section className="py-20 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div className="space-y-6 text-lg text-foreground/70 leading-relaxed">
+                <p>
+                  Bonjour ! Je suis <span className="text-foreground font-semibold">Théo</span>,
+                  développeur web et designer passionné. Mon parcours dans le digital a commencé
+                  il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer.
+                </p>
+                <p>
+                  Ce qui me distingue ? <span className="text-accent font-semibold">Mon engagement total</span> dans
+                  chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences
+                  qui captivent, engagent et convertissent.
+                </p>
+                <p>
+                  Que ce soit pour une startup qui lance son premier site ou une entreprise établie
+                  qui souhaite se réinventer, j'apporte la même attention aux détails et la même
+                  passion pour l'excellence.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Values Section */}
+        <section className="py-32 px-6 bg-muted/30">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-20"
+            >
+              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+                Mes valeurs
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
+                Ce qui guide mon travail au quotidien
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((value, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 rounded-3xl bg-card border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10"
+                >
+                  <div className="text-5xl mb-6">{value.icon}</div>
+                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                  <p className="text-foreground/60 leading-relaxed">
+                    {value.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+                Mon expertise
+              </h2>
+              <p className="text-xl text-foreground/60 font-light">
+                Des compétences affûtées par des années d'expérience
+              </p>
+            </motion.div>
+
+            <div className="space-y-8">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="space-y-3"
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-medium">{skill.name}</span>
+                    <span className="text-sm text-foreground/60">{skill.level}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
+                      className="h-full bg-gradient-to-r from-accent to-blue-500 rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 px-6 bg-gradient-to-br from-accent via-blue-500 to-accent">
+          <div className="container mx-auto max-w-5xl">
+            <div className="grid md:grid-cols-4 gap-12 text-center text-white">
+              {[
+                { value: "10+", label: "Années d'expérience" },
+                { value: "50+", label: "Projets réalisés" },
+                { value: "100%", label: "Clients satisfaits" },
+                { value: "24h", label: "Livraison possible" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <div className="text-5xl md:text-6xl font-bold mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-white/80">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-32 px-6">
+          <div className="container mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border"
+            >
+              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
+                Travaillons ensemble
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
+                Je suis toujours enthousiaste à l'idée de nouveaux projets
+                et de rencontrer des entrepreneurs passionnés.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
+                  Parlons de votre projet
+                </Link>
+                <Link href="/portfolio" className="btn btn-secondary text-lg px-10 py-5">
+                  Voir mon travail
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <Footer />
+      </div>
     </>
   );
 };
