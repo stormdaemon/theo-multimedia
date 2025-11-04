@@ -22,7 +22,7 @@ const services = [
     features: [
       '+40% de conversions en moyenne',
       'Parcours utilisateur optimisé',
-      'Boutons d'action stratégiques',
+      "Boutons d'action stratégiques",
       'A/B testing inclus'
     ]
   },
@@ -42,7 +42,7 @@ const services = [
     title: 'Éco-responsable',
     description: "Internet pollue autant que l'aviation. Je conçois des sites légers qui consomment 60% d'énergie en moins. Bon pour la planète, et pour votre image.",
     features: [
-      '-60% d'empreinte carbone',
+      "-60% d'empreinte carbone",
       'Code optimisé et léger',
       'Images compressées intelligemment',
       'Hébergement vert disponible'
@@ -53,7 +53,7 @@ const services = [
     title: 'E-commerce performant',
     description: "Vendez en ligne sans complications. Boutique rapide, paiement sécurisé, gestion simple. Tout est pensé pour que vous vendiez plus.",
     features: [
-      'Panier optimisé (moins d'abandons)',
+      "Panier optimisé (moins d'abandons)",
       'Paiements sécurisés multiples',
       'Gestion de stock automatique',
       'Intégration livraison'
