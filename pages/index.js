@@ -1,18 +1,12 @@
 import { motion } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Head from 'next/head';
 
-const Home = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+// Client-only mouse effect
+const MouseCursorEffect = dynamic(() => import('../components/MouseCursorEffect'), { ssr: false });
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+const Home = () => {
 
   const features = [
     {
@@ -80,34 +74,18 @@ const Home = () => {
       </Head>
 
       <div className="overflow-hidden bg-background">
+        {/* Client-only mouse cursor effect */}
+        <MouseCursorEffect />
+
         {/* Hero Section - Apple Style */}
         <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
           {/* Subtle gradient background */}
           <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
 
-          {/* Animated cursor follower */}
-          <motion.div
-            className="pointer-events-none fixed inset-0 z-0"
-            animate={{
-              background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--accent) / 0.05), transparent 40%)`
-            }}
-            transition={{ type: "tween", ease: "linear", duration: 0.2 }}
-          />
-
           <div className="container mx-auto max-w-6xl relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-8"
-            >
+            <div className="text-center space-y-8">
               {/* 24h Badge - Super prominent */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="flex justify-center"
-              >
+              <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent/10 border border-accent/20">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -115,55 +93,35 @@ const Home = () => {
                   </span>
                   <span className="text-sm font-medium text-accent">Livraison en 24 heures</span>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Main Heading - Large Apple-style typography */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-none"
-              >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-none">
                 Votre site web.
                 <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
                   En 24 heures.
                 </span>
-              </motion.h1>
+              </h1>
 
               {/* Subheading */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light"
-              >
+              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light">
                 Sites ultra-rapides, design qui convertit, et démarche éco-responsable.
                 Je transforme votre idée en business qui cartonne en ligne.
-              </motion.p>
+              </p>
 
               {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-              >
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Link href="/contact" className="btn btn-primary text-base px-8 py-4">
                   Démarrer mon projet
                 </Link>
                 <Link href="/portfolio" className="btn btn-secondary text-base px-8 py-4">
                   Voir mes créations
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Trust indicators */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                className="flex items-center justify-center gap-8 pt-12 text-sm text-foreground/50"
-              >
+              <div className="flex items-center justify-center gap-8 pt-12 text-sm text-foreground/50">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
                   <span>3x plus rapide</span>
@@ -176,8 +134,8 @@ const Home = () => {
                   <span className="text-2xl">📈</span>
                   <span>Convertit mieux</span>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
 
           {/* Scroll indicator */}
