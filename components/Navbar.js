@@ -12,30 +12,36 @@ const navItems = [
   { name: 'Contact', path: '/contact' },
 ];
 
-const Navbar = ({ isScrolled }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { pathname } = useRouter();
 
   useEffect(() => {
-    setMounted(true);
+    // Handle scroll detection client-side only
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    if (!isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+    // Protect document access for SSR
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = !isOpen ? 'hidden' : 'unset';
     }
   };
 
   const closeMenu = () => {
     setIsOpen(false);
-    document.body.style.overflow = 'unset';
+    // Protect document access for SSR
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'unset';
+    }
   };
-
-  if (!mounted) return null;
 
   return (
     <>

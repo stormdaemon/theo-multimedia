@@ -1,18 +1,23 @@
-// Next.js 16 configuration optimized for performance
+// Next.js 16 configuration optimized for performance and SSR
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Image optimization with modern formats
+  // CRITICAL: Ne pas utiliser output: 'export' - cela désactive le SSR.
+  // Laisser 'output' non défini active le SSR avec getServerSideProps.
+
+  // Optimisation des images avec les formats modernes
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000, // 1 year
+    minimumCacheTTL: 31536000, // 1 an
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Optimize package imports (Next.js 16 feature)
+  // Transpiler les packages qui posent des problèmes de résolution de modules
+  transpilePackages: ['react-apple-emojis'],
+
+  // Optimiser les imports de packages (Next.js 16)
   experimental: {
     optimizePackageImports: [
       'framer-motion',
@@ -21,22 +26,22 @@ const nextConfig = {
     ],
   },
 
-  // Compiler optimizations
+  // Optimisations du compilateur
   compiler: {
-    // Remove console logs in production
+    // Supprimer les console.log en production
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
   },
 
-  // Production optimizations
+  // Optimisations de production
   reactStrictMode: true,
   poweredByHeader: false,
 
-  // Turbopack is now default in Next.js 16, empty config to silence warning
+  // Turbopack est par défaut dans Next.js 16
   turbopack: {},
 
-  // Headers for security and caching
+  // Headers pour la sécurité et le cache (version assouplie pour les crawlers)
   async headers() {
     return [
       {
@@ -55,20 +60,8 @@ const nextConfig = {
             value: 'nosniff',
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },

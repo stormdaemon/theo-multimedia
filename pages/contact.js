@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const contactInfo = [
   {
@@ -102,15 +101,15 @@ const ContactPage = () => {
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Parlons de<br />
+                Un site qui<br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  votre projet
+                  cartonne ?
                 </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Je suis disponible pour discuter de vos idées et vous aider
-                à les concrétiser. Réponse garantie sous 24h.
+                Site ultra-rapide, éco-conçu, qui convertit 40% mieux ?
+                Discutons de votre projet. Je réponds en moins de 24h.
               </p>
             </motion.div>
           </div>
@@ -279,20 +278,20 @@ const ContactPage = () => {
             <div className="space-y-4">
               {[
                 {
-                  q: "Quel est votre délai de réponse ?",
-                  a: "Je réponds à tous les messages dans les 24 heures, souvent bien plus rapidement."
+                  q: "C'est vraiment 3x plus rapide ?",
+                  a: "Oui. Sites optimisés, code léger, images compressées. Résultat : chargement < 1 seconde. Google adore, vos visiteurs aussi."
                 },
                 {
-                  q: "Proposez-vous vraiment une livraison en 24h ?",
-                  a: "Oui ! Pour certains types de projets, je peux livrer en 24h. Contactez-moi pour vérifier si votre projet est éligible."
+                  q: "Comment ça marche, l'éco-conception ?",
+                  a: "Code léger = moins de données transférées = moins d'énergie. Sites 60% moins gourmands que la moyenne. Bon pour la planète, bon pour votre image."
                 },
                 {
-                  q: "Quels sont vos tarifs ?",
-                  a: "Mes tarifs varient selon la complexité du projet. Partagez vos besoins et je vous ferai un devis personnalisé gratuit."
+                  q: "Livraison en 24h, c'est sérieux ?",
+                  a: "Oui, pour les sites landing page et vitrines. Parfait pour lancements urgents ou événements. Qualité garantie."
                 },
                 {
-                  q: "Travaillez-vous avec des clients internationaux ?",
-                  a: "Absolument ! Je travaille avec des clients partout en France et à l'international."
+                  q: "Ça coûte combien ?",
+                  a: "Ça dépend de votre projet. Décrivez-moi vos besoins, je vous fais un devis clair en 24h. Sans jargon, sans surprise."
                 }
               ].map((faq, index) => (
                 <motion.div
@@ -310,11 +309,19 @@ const ContactPage = () => {
             </div>
           </div>
         </section>
-
-        <Footer />
       </div>
     </>
   );
 };
+
+/**
+ * Enable Server-Side Rendering
+ * Ensures AI crawlers and search engines see server-rendered HTML
+ */
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
 
 export default ContactPage;

@@ -1,36 +1,35 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 
 const values = [
   {
-    icon: "💡",
-    title: 'Innovation',
-    description: "J'explore constamment les nouvelles technologies et les tendances design pour offrir des solutions modernes et performantes.",
+    icon: "⚡",
+    title: 'Performance',
+    description: "Sites 3x plus rapides que la moyenne. Chaque milliseconde compte : vos visiteurs restent, Google vous aime, vous vendez plus.",
   },
   {
-    icon: "🎯",
-    title: 'Excellence',
-    description: "Chaque projet est traité avec le plus grand soin. Je ne livre que des solutions dont je suis fier.",
+    icon: "🌱",
+    title: 'Écologie',
+    description: "Internet pollue. Je code léger pour réduire de 60% l'empreinte carbone de vos sites. Bon pour la planète, bon pour votre image.",
   },
   {
-    icon: "❤️",
-    title: 'Passion',
-    description: "Le développement web est ma passion. J'aime créer des expériences numériques qui font la différence.",
+    icon: "📈",
+    title: 'Conversion',
+    description: "Des sites qui transforment vos visiteurs en clients. Design persuasif, parcours optimisés : +40% de conversions en moyenne.",
   },
   {
-    icon: "🤝",
-    title: 'Collaboration',
-    description: "Je travaille en étroite collaboration avec mes clients pour comprendre leurs besoins et dépasser leurs attentes.",
+    icon: "💬",
+    title: 'Clarté',
+    description: "Zéro jargon technique. Je vous explique tout simplement, vous comprenez parfaitement, vous décidez en confiance.",
   }
 ];
 
 const skills = [
-  { name: 'Design & UX/UI', level: 95 },
-  { name: 'Développement Web', level: 98 },
-  { name: 'SEO & Performance', level: 92 },
-  { name: 'Gestion de Projet', level: 90 },
+  { name: 'Sites ultra-rapides', level: 98 },
+  { name: 'Design qui convertit', level: 95 },
+  { name: 'Visible sur Google', level: 93 },
+  { name: 'Éco-conception', level: 90 },
 ];
 
 const AboutPage = () => {
@@ -68,15 +67,15 @@ const AboutPage = () => {
               </motion.div>
 
               <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Créateur d'expériences<br />
+                Sites qui chargent en 1s<br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  digitales mémorables
+                  et qui cartonnent
                 </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Basé à Angoulême, je transforme des idées en sites web exceptionnels
-                depuis plus de 10 ans.
+                Basé à Angoulême, je crée des sites ultra-rapides, éco-responsables,
+                et optimisés pour convertir depuis plus de 10 ans.
               </p>
             </motion.div>
           </div>
@@ -94,20 +93,135 @@ const AboutPage = () => {
             >
               <div className="space-y-6 text-lg text-foreground/70 leading-relaxed">
                 <p>
-                  Bonjour ! Je suis <span className="text-foreground font-semibold">Théo</span>,
-                  développeur web et designer passionné. Mon parcours dans le digital a commencé
-                  il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer.
+                  Salut ! Je suis <span className="text-foreground font-semibold">Théo</span>, et je crée des sites web
+                  qui cartonnent. Pas juste des sites "jolis" — des sites qui <span className="text-accent font-semibold">génèrent des résultats business</span>.
                 </p>
                 <p>
-                  Ce qui me distingue ? <span className="text-accent font-semibold">Mon engagement total</span> dans
-                  chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences
-                  qui captivent, engagent et convertissent.
+                  Ma spécialité ? <span className="text-accent font-semibold">Sites 3x plus rapides</span> que la moyenne,
+                  qui convertissent 40% mieux, tout en réduisant de 60% l'empreinte carbone.
+                  Performance + Conversion + Écologie = Sites qui durent et qui rapportent.
                 </p>
                 <p>
-                  Que ce soit pour une startup qui lance son premier site ou une entreprise établie
-                  qui souhaite se réinventer, j'apporte la même attention aux détails et la même
-                  passion pour l'excellence.
+                  J'ai arrêté de parler "code" et "techno". Je parle <span className="text-foreground font-semibold">résultats</span> :
+                  plus de visiteurs qui restent, plus de clients qui achètent, moins d'énergie gaspillée.
+                  Simple, clair, efficace.
                 </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* AI SEO Expertise Section */}
+        <section className="py-32 px-6 bg-gradient-to-br from-accent/5 via-background to-background">
+          <div className="container mx-auto max-w-6xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                <span className="text-sm font-medium text-accent">Expertise unique</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Visible sur <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">ChatGPT</span> et Google
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
+                Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA.
+                Je maîtrise les deux pour que vous soyez trouvé partout.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl bg-card border border-border"
+              >
+                <div className="text-5xl mb-6">🔍</div>
+                <h3 className="text-2xl font-semibold mb-4">Référencement Google classique</h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">
+                  C'est la base : mots-clés, contenu optimisé, structure technique parfaite.
+                  Résultat : vous apparaissez quand vos clients tapent vos services sur Google.
+                </p>
+                <ul className="space-y-3 text-foreground/70">
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Première page Google sur vos mots-clés stratégiques</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Trafic qualifié qui cherche exactement vos services</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Suivi mensuel de vos positions et résultats</span>
+                  </li>
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30"
+              >
+                <div className="text-5xl mb-6">🤖</div>
+                <h3 className="text-2xl font-semibold mb-4">
+                  Référencement IA{' '}
+                  <span className="text-sm font-normal text-accent">(ChatGPT, Perplexity)</span>
+                </h3>
+                <p className="text-foreground/60 leading-relaxed mb-6">
+                  C'est l'avenir (et déjà le présent) : 800 millions de personnes utilisent ChatGPT chaque semaine.
+                  J'optimise votre site pour que les IA vous recommandent à leurs utilisateurs.
+                </p>
+                <ul className="space-y-3 text-foreground/70">
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>ChatGPT recommande votre entreprise quand on lui demande</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Perplexity cite votre site dans ses réponses (+527% de visibilité)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-accent mt-1">✓</span>
+                    <span>Contenu structuré pour être compris et cité par les IA</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 md:p-12 rounded-3xl bg-muted/50 border border-border text-center"
+            >
+              <h3 className="text-2xl md:text-3xl font-semibold mb-4">
+                Pourquoi c'est important pour vous ?
+              </h3>
+              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-6">
+                Imaginez : quelqu'un demande à ChatGPT <span className="text-foreground font-semibold">"Qui peut créer mon site internet à Angoulême ?"</span> ou
+                <span className="text-foreground font-semibold"> "Je cherche un développeur web éco-responsable"</span>.
+              </p>
+              <p className="text-xl font-semibold text-accent mb-6">
+                Si votre site est optimisé pour l'IA, c'est VOUS que ChatGPT recommande. 🎯
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">800M</div>
+                  <div className="text-sm text-foreground/60">utilisateurs ChatGPT/semaine</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">+527%</div>
+                  <div className="text-sm text-foreground/60">de trafic venant des IA en 2025</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-accent mb-2">10%</div>
+                  <div className="text-sm text-foreground/60">du trafic web vient déjà des IA</div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -202,10 +316,10 @@ const AboutPage = () => {
           <div className="container mx-auto max-w-5xl">
             <div className="grid md:grid-cols-4 gap-12 text-center text-white">
               {[
-                { value: "10+", label: "Années d'expérience" },
-                { value: "50+", label: "Projets réalisés" },
-                { value: "100%", label: "Clients satisfaits" },
-                { value: "24h", label: "Livraison possible" }
+                { value: "3x", label: "Plus rapide" },
+                { value: "+40%", label: "De conversions" },
+                { value: "-60%", label: "De CO2" },
+                { value: "24h", label: "Livraison express" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -242,21 +356,29 @@ const AboutPage = () => {
                 et de rencontrer des entrepreneurs passionnés.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Link href="/contact" className="btn btn-primary text-lg px-10 py-5">
-                  Parlons de votre projet
+                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Discuter du projet
                 </Link>
-                <Link href="/portfolio" className="btn btn-secondary text-lg px-10 py-5">
-                  Voir mon travail
+                <Link href="/portfolio" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
+                  Voir le portfolio
                 </Link>
               </div>
             </motion.div>
           </div>
         </section>
-
-        <Footer />
       </div>
     </>
   );
 };
+
+/**
+ * Enable Server-Side Rendering
+ * Ensures AI crawlers and search engines see server-rendered HTML
+ */
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
 
 export default AboutPage;
