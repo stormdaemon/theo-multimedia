@@ -12,9 +12,10 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Headers to allow AI crawlers
+# Ultra-permissive headers for AI crawler access
+# NO security headers that could block bots
 [[headers]]
   for = "/*"
   [headers.values]
     X-Robots-Tag = "all"
-    X-AI-Crawlers = "allowed"
+    Access-Control-Allow-Origin = "*"
