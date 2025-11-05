@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import Footer from '../components/Footer';
 import Link from 'next/link';
 
@@ -164,10 +165,14 @@ const PortfolioPage = () => {
                 >
                   <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-muted mb-6">
                     {project.imageUrl && (
-                      <img
+                      <Image
                         src={project.imageUrl}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={85}
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        priority={false}
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">

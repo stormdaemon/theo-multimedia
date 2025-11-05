@@ -41,9 +41,9 @@ function MyApp({ Component, pageProps, router }) {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="icon" href="/favicon.ico" />
-          {/* Preconnect to external domains for faster loading */}
+          {/* Preconnect to Google Fonts for faster loading */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         </Head>
         <Layout>
           <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
