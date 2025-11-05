@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { Emoji } from 'react-apple-emojis';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
@@ -21,18 +20,15 @@ export default function ThemeToggle() {
     );
   }
 
-
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-accent/10 transition-colors duration-200"
       aria-label="Basculer entre le mode clair et sombre"
     >
-      {theme === 'dark' ? (
-        <Emoji name="sun-with-face" width={20} />
-      ) : (
-        <Emoji name="new-moon-face" width={20} />
-      )}
+      <span className="text-2xl" role="img" aria-hidden="true">
+        {theme === 'dark' ? '☀️' : '🌙'}
+      </span>
     </button>
   );
 }
