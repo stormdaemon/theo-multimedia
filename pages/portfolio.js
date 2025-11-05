@@ -300,4 +300,14 @@ const PortfolioPage = () => {
   );
 };
 
+/**
+ * Enable Server-Side Rendering
+ * Ensures AI crawlers and search engines see server-rendered HTML
+ */
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
 export default PortfolioPage;

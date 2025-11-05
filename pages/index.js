@@ -637,4 +637,19 @@ const Home = () => {
   );
 };
 
+/**
+ * Enable Server-Side Rendering for this page
+ * Without this, Next.js generates a static HTML file at build time
+ * With this, the page is rendered on the server for each request
+ * This ensures AI crawlers see fresh, server-rendered content
+ */
+export async function getServerSideProps() {
+  return {
+    props: {
+      // Props are empty because we don't need dynamic data
+      // But this function's presence enables SSR
+    },
+  };
+}
+
 export default Home;
