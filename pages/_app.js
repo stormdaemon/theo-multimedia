@@ -1,4 +1,6 @@
-import { Inter, Space_Grotesk } from 'next/font/google';
+// Import self-hosted fonts via Fontsource (no Google Fonts API calls during build)
+import '@fontsource/inter/latin.css';
+import '@fontsource/space-grotesk/latin.css';
 import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { AnimatePresence } from 'framer-motion';
@@ -14,18 +16,6 @@ try {
   // Fallback for build environments
   emojiData = {};
 }
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-heading',
-  display: 'swap',
-});
 
 function MyApp({ Component, pageProps, router }) {
   const [mounted, setMounted] = useState(false);
@@ -43,8 +33,8 @@ function MyApp({ Component, pageProps, router }) {
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
         <style jsx global>{`
           :root {
-            --font-sans: ${inter.style.fontFamily};
-            --font-heading: ${spaceGrotesk.style.fontFamily};
+            --font-sans: 'Inter', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
           }
         `}</style>
         <Head>
