@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import '@fontsource/inter/latin.css';
 import '@fontsource/space-grotesk/latin.css';
 import '../styles/globals.css';
@@ -7,17 +8,23 @@ import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
 
-// Utilisation d'un import dynamique pour la compatibilité du build
+// ... (le reste des imports et de la logique emojiData)
 let emojiData;
 try {
   emojiData = require('react-apple-emojis/src/data.json');
 } catch (error) {
-  // Fallback pour les environnements de build
   emojiData = {};
 }
 
 function MyApp({ Component, pageProps, router }) {
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Ne rend le contenu dépendant du thème que côté client
+  const renderContent = () => (
     <EmojiProvider data={emojiData}>
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} suppressHydrationWarning>
         <Head>
@@ -34,6 +41,10 @@ function MyApp({ Component, pageProps, router }) {
       </ThemeProvider>
     </EmojiProvider>
   );
+
+  // Pendant le SSR et l'hydratation initiale, on peut rendre un loader ou null
+  // pour éviter les erreurs. Ici, on ne rend rien pour la simplicité.
+  return mounted ? renderContent() : null;
 }
 
 export default MyApp;
