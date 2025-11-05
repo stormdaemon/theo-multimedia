@@ -6,21 +6,17 @@ const nextConfig = {
 
   // Enable image optimization with Netlify Image CDN
   images: {
-    // Netlify will handle image optimization automatically
     unoptimized: false,
   },
 
   // Transpile packages that have module resolution issues
   transpilePackages: ['react-apple-emojis'],
 
-  // Disable static page generation optimization
-  // Force dynamic rendering for all pages with getServerSideProps
-  experimental: {
-    // Disable ISR memory cache to ensure fresh SSR
-    isrMemoryCacheSize: 0,
-  },
+  // Next.js 16: Turbopack is now default, acknowledge we're using it
+  turbopack: {},
 
-  // Configure webpack to handle module resolution
+  // Configure webpack for fallback resolution
+  // Note: Turbopack is used by default in Next.js 16, this is for compatibility
   webpack: (config) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
