@@ -5,7 +5,6 @@ import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
 // Use dynamic import for better build compatibility
@@ -18,19 +17,9 @@ try {
 }
 
 function MyApp({ Component, pageProps, router }) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <EmojiProvider data={emojiData}>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} suppressHydrationWarning>
         <style jsx global>{`
           :root {
             --font-sans: 'Inter', sans-serif;
