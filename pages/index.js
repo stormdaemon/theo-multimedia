@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Head from 'next/head';
 
-// Client-only mouse effect
+// Client-only animated components - loaded after SSR
 const MouseCursorEffect = dynamic(() => import('../components/MouseCursorEffect'), { ssr: false });
+const AnimatedWrapper = dynamic(() => import('../components/AnimatedWrapper'), { ssr: false });
+const FloatingDots = dynamic(() => import('../components/FloatingDots'), { ssr: false });
 
 const Home = () => {
 
@@ -138,56 +139,21 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center p-2"
-            >
+          {/* Scroll indicator - static for SSR */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center p-2">
               <div className="w-1 h-2 bg-foreground/40 rounded-full" />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </section>
 
         {/* Large 24h Delivery Section */}
         <section className="py-32 px-6 bg-gradient-to-br from-accent via-blue-500 to-accent relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-20">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-white rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.3, 0.8, 0.3]
-                }}
-                transition={{
-                  duration: 3 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2
-                }}
-              />
-            ))}
-          </div>
+          {/* Animated background elements - client only */}
+          <FloatingDots count={20} />
 
           <div className="container mx-auto max-w-5xl relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center text-white space-y-8"
-            >
+            <div className="text-center text-white space-y-8">
               <div className="text-7xl md:text-9xl font-bold mb-4">24h</div>
               <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
                 Votre site en ligne demain
@@ -205,7 +171,7 @@ const Home = () => {
                   </svg>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -215,12 +181,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-background to-background" />
 
           <div className="container mx-auto max-w-6xl relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
                 <span className="text-sm font-medium text-accent">Expertise unique en France</span>
               </div>
@@ -231,16 +192,10 @@ const Home = () => {
                 Vos clients vous cherchent sur Google... mais aussi sur ChatGPT.
                 <br />Je maîtrise les deux pour que vous soyez trouvé partout.
               </p>
-            </motion.div>
+            </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="p-8 rounded-3xl bg-card border border-border"
-              >
+              <div className="p-8 rounded-3xl bg-card border border-border">
                 <div className="text-5xl mb-6">🔍</div>
                 <h3 className="text-2xl font-semibold mb-4">Google SEO</h3>
                 <p className="text-foreground/60 leading-relaxed mb-6">
@@ -250,15 +205,9 @@ const Home = () => {
                   <span className="text-accent">✓</span>
                   <span>Trafic qualifié et gratuit</span>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30 relative overflow-hidden"
-              >
+              <div className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30 relative overflow-hidden">
                 {/* Glow effect */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />
 
@@ -280,16 +229,10 @@ const Home = () => {
                     <span>+527% de visibilité IA</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="space-y-6 md:space-y-8"
-            >
+            <div className="space-y-6 md:space-y-8">
               {/* Explanation */}
               <div className="text-center px-4">
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4">
@@ -412,36 +355,26 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Services Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-20"
-            >
+            <div className="text-center mb-20">
               <h2 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
                 Pourquoi mes sites performent mieux
               </h2>
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
                 Performance, conversion et écologie : les trois piliers de ma méthode
               </p>
-            </motion.div>
+            </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
                   className="group"
                 >
                   <div className="h-full p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10">
@@ -453,7 +386,7 @@ const Home = () => {
                       {feature.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -469,19 +402,15 @@ const Home = () => {
                 { value: "-60%", label: "D'empreinte carbone" },
                 { value: "+40%", label: "De conversions en moyenne" }
               ].map((stat, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
                   className="text-center"
                 >
                   <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent to-blue-500 mb-2">
                     {stat.value}
                   </div>
                   <div className="text-foreground/60">{stat.label}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -490,12 +419,7 @@ const Home = () => {
         {/* Recent Work Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex justify-between items-end mb-16"
-            >
+            <div className="flex justify-between items-end mb-16">
               <div>
                 <h2 className="text-5xl md:text-6xl font-semibold mb-4 tracking-tight">
                   Mes derniers projets
@@ -510,16 +434,12 @@ const Home = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-            </motion.div>
+            </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className="group cursor-pointer"
                   onClick={() => project.url && window.open(project.url, '_blank')}
                 >
@@ -545,33 +465,22 @@ const Home = () => {
                     {project.name}
                   </h3>
                   <p className="text-foreground/60">{project.category}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center mt-12 md:hidden"
-            >
+            <div className="text-center mt-12 md:hidden">
               <Link href="/portfolio" className="btn btn-secondary">
                 Voir tous les projets
               </Link>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border"
-            >
+            <div className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border">
               <h2 className="text-4xl md:text-6xl font-semibold tracking-tight">
                 Prêt à booster<br />votre business ?
               </h2>
@@ -587,7 +496,7 @@ const Home = () => {
                   En savoir plus
                 </Link>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </div>

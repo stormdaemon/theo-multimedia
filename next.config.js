@@ -8,14 +8,6 @@ const nextConfig = {
   },
   // Transpile packages that have module resolution issues
   transpilePackages: ['react-apple-emojis'],
-  // Configure webpack to handle module resolution
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    };
-    return config;
-  },
 };
 
 module.exports = nextConfig;
