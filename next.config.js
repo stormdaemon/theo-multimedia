@@ -11,19 +11,6 @@ const nextConfig = {
 
   // Transpile packages that have module resolution issues
   transpilePackages: ['react-apple-emojis'],
-
-  // Next.js 16: Turbopack is now default, acknowledge we're using it
-  turbopack: {},
-
-  // Configure webpack for fallback resolution
-  // Note: Turbopack is used by default in Next.js 16, this is for compatibility
-  webpack: (config) => {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-    };
-    return config;
-  },
 };
 
 module.exports = nextConfig;
