@@ -1,0 +1,26 @@
+name: Fetch Check
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment
+        run: |
+          echo "Runner: $(uname -a)"
+          echo "Node: $(node -v || true)"
+      - name: Fetch homepage
+        run: |
+          set -e
+          echo '--- HEAD ---'
+          curl -sS -I https://theo-multimedia.com | sed -n '1,40p'
+          echo '--- BODY (first 80 lines) ---'
+          curl -sS https://theo-multimedia.com | sed -n '1,80p'
+      - name: Fetch services
+        run: |
+          set -e
+          echo '--- HEAD /services ---'
+          curl -sS -I https://theo-multimedia.com/services | sed -n '1,40p'
+          echo '--- BODY /services (first 80 lines) ---'
+          curl -sS https://theo-multimedia.com/services | sed -n '1,80p'
