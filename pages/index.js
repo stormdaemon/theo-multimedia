@@ -412,8 +412,8 @@ const Home = () => {
                 {/* Explanation below chat */}
                 <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-2xl bg-accent/5 border border-accent/20">
                   <p className="text-xs md:text-sm lg:text-base text-foreground/80 text-center leading-relaxed">
-                    <span className="font-semibold text-accent">Si ce plombier est votre client</span>, c'est grâce à l'optimisation IA que je fais
-                    que ChatGPT le recommande. <span className="font-semibold">Votre site devient LA réponse</span> que ChatGPT donne à 800 millions d'utilisateurs.
+                    <span className="font-semibold text-accent">Voici comment vos clients vont vous trouver.</span> Grâce à l'optimisation IA,
+                    <span className="font-semibold"> votre site devient LA réponse</span> que ChatGPT donne à 800 millions d'utilisateurs qui cherchent vos services.
                   </p>
                 </div>
               </div>
