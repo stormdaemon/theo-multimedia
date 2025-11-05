@@ -1,20 +1,19 @@
 # Netlify configuration for Next.js SSR
 [build]
   command = "npm ci && npm run build"
-  publish = ".next"
+  # Le 'publish' directory est géré automatiquement par le plugin Next.js
 
 [build.environment]
   NODE_VERSION = "20.18.0"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Next.js plugin for SSR
+# Next.js plugin for SSR - handles everything automatically
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 # Ultra-permissive headers for AI crawler access
-# NO security headers that could block bots
 [[headers]]
   for = "/*"
   [headers.values]
     X-Robots-Tag = "all"
-    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Origin = "*"```

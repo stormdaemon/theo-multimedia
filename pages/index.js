@@ -75,17 +75,12 @@ const Home = () => {
       </Head>
 
       <div className="overflow-hidden bg-background">
-        {/* Client-only mouse cursor effect */}
         <MouseCursorEffect />
 
-        {/* Hero Section - Apple Style */}
         <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
-          {/* Subtle gradient background */}
           <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
-
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center space-y-8">
-              {/* 24h Badge - Super prominent */}
               <div className="flex justify-center">
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent/10 border border-accent/20">
                   <span className="relative flex h-3 w-3">
@@ -96,7 +91,6 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Main Heading - Large Apple-style typography */}
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight leading-none">
                 Votre site web.
                 <br />
@@ -105,13 +99,11 @@ const Home = () => {
                 </span>
               </h1>
 
-              {/* Subheading */}
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light">
                 Sites ultra-rapides, design qui convertit, et démarche éco-responsable.
                 Je transforme votre idée en business qui cartonne en ligne.
               </p>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Link href="/contact" className="btn btn-primary text-base px-8 py-4">
                   Démarrer mon projet
@@ -121,7 +113,6 @@ const Home = () => {
                 </Link>
               </div>
 
-              {/* Trust indicators */}
               <div className="flex items-center justify-center gap-8 pt-12 text-sm text-foreground/50">
                 <div className="flex items-center gap-2">
                   <span className="text-2xl">⚡</span>
@@ -139,7 +130,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Scroll indicator - static for SSR */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
             <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center p-2">
               <div className="w-1 h-2 bg-foreground/40 rounded-full" />
@@ -147,11 +137,8 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Large 24h Delivery Section */}
         <section className="py-32 px-6 bg-gradient-to-br from-accent via-blue-500 to-accent relative overflow-hidden">
-          {/* Animated background elements - client only */}
           <FloatingDots count={20} />
-
           <div className="container mx-auto max-w-5xl relative z-10">
             <div className="text-center text-white space-y-8">
               <div className="text-7xl md:text-9xl font-bold mb-4">24h</div>
@@ -175,11 +162,8 @@ const Home = () => {
           </div>
         </section>
 
-        {/* AI SEO Expertise Section - Priority 2 */}
         <section className="py-32 px-6 relative overflow-hidden">
-          {/* Subtle animated background */}
           <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-background to-background" />
-
           <div className="container mx-auto max-w-6xl relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
@@ -208,9 +192,7 @@ const Home = () => {
               </div>
 
               <div className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30 relative overflow-hidden">
-                {/* Glow effect */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />
-
                 <div className="text-5xl mb-6 relative">🤖</div>
                 <h3 className="text-2xl font-semibold mb-4 relative">
                   Référencement IA
@@ -233,7 +215,6 @@ const Home = () => {
             </div>
 
             <div className="space-y-6 md:space-y-8">
-              {/* Explanation */}
               <div className="text-center px-4">
                 <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4">
                   Concrètement, ça change quoi pour vous ?
@@ -242,11 +223,8 @@ const Home = () => {
                   Vos clients cherchent déjà sur ChatGPT. Voici ce qu'ils voient...
                 </p>
               </div>
-
-              {/* ChatGPT Conversation Mockup */}
               <div className="max-w-4xl mx-auto px-4">
                 <div className="rounded-2xl md:rounded-3xl border-2 border-border bg-card/50 backdrop-blur-sm overflow-hidden shadow-xl">
-                  {/* ChatGPT Header */}
                   <div className="px-4 md:px-6 py-3 md:py-4 bg-muted/30 border-b border-border flex items-center gap-2 md:gap-3">
                     <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white font-bold text-xs md:text-sm flex-shrink-0">
                       AI
@@ -256,10 +234,7 @@ const Home = () => {
                       <div className="text-[10px] md:text-xs text-foreground/50 truncate">Intelligence Artificielle</div>
                     </div>
                   </div>
-
-                  {/* Conversation */}
                   <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-                    {/* User Message */}
                     <div className="flex justify-end">
                       <div className="max-w-[90%] md:max-w-[80%] lg:max-w-[75%]">
                         <div className="bg-accent text-white rounded-2xl rounded-tr-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
@@ -271,8 +246,6 @@ const Home = () => {
                         <div className="text-[10px] md:text-xs text-foreground/50 mt-1.5 md:mt-2 text-right">Maintenant</div>
                       </div>
                     </div>
-
-                    {/* ChatGPT Response */}
                     <div className="flex justify-start">
                       <div className="max-w-[90%] md:max-w-[85%] lg:max-w-[80%]">
                         <div className="bg-muted rounded-2xl rounded-tl-sm px-3 md:px-4 lg:px-6 py-2.5 md:py-3 lg:py-4">
@@ -309,8 +282,6 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Explanation below chat */}
                 <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-2xl bg-accent/5 border border-accent/20">
                   <p className="text-xs md:text-sm lg:text-base text-foreground/80 text-center leading-relaxed">
                     <span className="font-semibold text-accent">Voici comment vos clients vont vous trouver.</span> Grâce à l'optimisation IA,
@@ -318,14 +289,10 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-
-              {/* CTA Message */}
               <div className="text-center px-4">
                 <p className="text-base md:text-xl lg:text-2xl font-bold text-accent mb-4 md:mb-6">
                   👉 C'est VOUS que ChatGPT recommande à vos futurs clients
                 </p>
-
-                {/* Stats Grid - Fully Responsive */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6 max-w-4xl mx-auto">
                   <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-background/50 border border-border">
                     <div className="text-xl md:text-2xl lg:text-3xl font-bold text-accent mb-1">800M</div>
@@ -344,8 +311,6 @@ const Home = () => {
                     <div className="text-[10px] md:text-xs lg:text-sm text-foreground/60 leading-tight">en France sur ce créneau</div>
                   </div>
                 </div>
-
-                {/* CTA Link */}
                 <div className="mt-6 md:mt-8">
                   <Link href="/about" className="inline-flex items-center gap-2 text-accent hover:gap-4 transition-all text-sm md:text-base lg:text-lg">
                     En savoir plus sur mon expertise IA
@@ -359,7 +324,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Services Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-20">
@@ -370,7 +334,6 @@ const Home = () => {
                 Performance, conversion et écologie : les trois piliers de ma méthode
               </p>
             </div>
-
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
                 <div
@@ -392,7 +355,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
         <section className="py-20 px-6 bg-muted/30">
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-4 gap-12">
@@ -416,7 +378,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Recent Work Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-7xl">
             <div className="flex justify-between items-end mb-16">
@@ -477,7 +438,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-4xl">
             <div className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border">
@@ -504,18 +464,9 @@ const Home = () => {
   );
 };
 
-/**
- * Enable Server-Side Rendering for this page
- * Without this, Next.js generates a static HTML file at build time
- * With this, the page is rendered on the server for each request
- * This ensures AI crawlers see fresh, server-rendered content
- */
 export async function getServerSideProps() {
   return {
-    props: {
-      // Props are empty because we don't need dynamic data
-      // But this function's presence enables SSR
-    },
+    props: {},
   };
 }
 
