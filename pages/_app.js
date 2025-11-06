@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
+import ClientOnlyAnimatePresence from '../components/ClientOnlyAnimatePresence';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
@@ -25,8 +26,10 @@ function MyApp({ Component, pageProps, router }) {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           </Head>
           <Layout>
-            {/* Render Component directly for SSR - animations happen client-side */}
-            <Component {...pageProps} key={router.asPath} />
+            {/* SSR-safe AnimatePresence: renders children directly on server, adds animations on client */}
+            <ClientOnlyAnimatePresence>
+              <Component {...pageProps} key={router.asPath} />
+            </ClientOnlyAnimatePresence>
           </Layout>
         </ThemeProvider>
       </EmojiProvider>
