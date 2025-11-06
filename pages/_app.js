@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
-import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from 'next-themes';
 import Head from 'next/head';
 import { EmojiProvider } from 'react-apple-emojis';
@@ -26,9 +25,8 @@ function MyApp({ Component, pageProps, router }) {
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           </Head>
           <Layout>
-            <AnimatePresence mode="wait" onExitComplete={() => typeof window !== 'undefined' && window.scrollTo(0, 0)}>
-              <Component {...pageProps} key={router.asPath} />
-            </AnimatePresence>
+            {/* Render Component directly for SSR - animations happen client-side */}
+            <Component {...pageProps} key={router.asPath} />
           </Layout>
         </ThemeProvider>
       </EmojiProvider>
