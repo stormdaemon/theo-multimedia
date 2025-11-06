@@ -22,5 +22,5 @@
   directory = "netlify/functions"
 
 [[edge_functions]]
-  function = "ai-allow"
+  function = "add-headers"
   path = "/*"
