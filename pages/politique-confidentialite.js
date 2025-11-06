@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
-const PolitiqueConfidentialite = () => {
+const PolitiqueConfidentialite = ({ baseUrl }) => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
@@ -12,12 +13,13 @@ const PolitiqueConfidentialite = () => {
         <meta property="og:title" content="Politique de confidentialité | Théo Multimédia" />
         <meta property="og:description" content="Découvrez comment Théo Multimédia protège vos données personnelles et respecte votre vie privée. Politique conforme RGPD." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/politique-confidentialite" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-privacy.jpg" />
+        <link rel="canonical" href={`${baseUrl}/politique-confidentialite`} />
+        <meta property="og:url" content={`${baseUrl}/politique-confidentialite`} />
+        <meta property="og:image" content={`${baseUrl}/og-privacy.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Politique de confidentialité | Théo Multimédia" />
         <meta name="twitter:description" content="Politique de confidentialité : gestion des données, cookies, sécurité, droits utilisateurs. Protection et transparence garanties." />
-        <meta name="twitter:image" content="https://www.theomultimedia.com/og-privacy.jpg" />
+        <meta name="twitter:image" content={`${baseUrl}/og-privacy.jpg`} />
         <meta name="ai-summary" content="Politique de confidentialité Théo Multimédia : gestion des données, cookies, sécurité, droits utilisateurs. Transparence et conformité RGPD." />
         <script type="application/ld+json">{`
         {
@@ -172,3 +174,9 @@ const PolitiqueConfidentialite = () => {
 };
 
 export default PolitiqueConfidentialite;
+
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
+  return { props: { baseUrl } }
+}

@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
-const MentionsLegales = () => {
+const MentionsLegales = ({ baseUrl }) => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
@@ -12,12 +13,13 @@ const MentionsLegales = () => {
         <meta property="og:title" content="Mentions légales | Théo Multimédia" />
         <meta property="og:description" content="Consultez les mentions légales du site Théo Multimédia : éditeur, hébergeur, droits et responsabilités." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/mentions-legales" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-legal.jpg" />
+        <link rel="canonical" href={`${baseUrl}/mentions-legales`} />
+        <meta property="og:url" content={`${baseUrl}/mentions-legales`} />
+        <meta property="og:image" content={`${baseUrl}/og-legal.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mentions légales | Théo Multimédia" />
         <meta name="twitter:description" content="Mentions légales du site Théo Multimédia : éditeur, hébergeur, propriété intellectuelle, responsabilités." />
-        <meta name="twitter:image" content="https://www.theomultimedia.com/og-legal.jpg" />
+        <meta name="twitter:image" content={`${baseUrl}/og-legal.jpg`} />
         <meta name="ai-summary" content="Mentions légales du site Théo Multimédia : informations éditeur, hébergeur, droits, responsabilités et conditions d'utilisation." />
         <script type="application/ld+json">{`
         {
@@ -114,3 +116,9 @@ const MentionsLegales = () => {
 };
 
 export default MentionsLegales;
+
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
+  return { props: { baseUrl } }
+}

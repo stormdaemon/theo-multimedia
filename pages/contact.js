@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const contactInfo = [
   {
     icon: "📧",
     title: "Email",
-    value: "contact@theomultimedia.com",
-    link: "mailto:contact@theomultimedia.com"
+    value: "contact@theo-multimedia.com",
+    link: "mailto:contact@theo-multimedia.com"
   },
   {
     icon: "📍",
@@ -23,7 +24,7 @@ const contactInfo = [
   }
 ];
 
-const ContactPage = () => {
+const ContactPage = ({ baseUrl }) => {
   const [state, handleSubmit] = useForm("mblypyew");
 
   if (state.succeeded) {
@@ -74,11 +75,11 @@ const ContactPage = () => {
         <meta name="description" content="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/contact" />
+        <link rel="canonical" href={`${baseUrl}/contact`} />
         <meta property="og:title" content="Contact | Théo Multimédia" />
         <meta property="og:description" content="Contactez-moi pour discuter de votre projet web." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/contact" />
+        <meta property="og:url" content={`${baseUrl}/contact`} />
       </Head>
 
       <div className="bg-background">
@@ -318,9 +319,11 @@ const ContactPage = () => {
  * Enable Server-Side Rendering
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: {},
+    props: { baseUrl },
   };
 }
 

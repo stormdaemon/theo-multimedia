@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const services = [
   {
@@ -95,7 +96,7 @@ const process = [
   }
 ];
 
-const ServicesPage = () => {
+const ServicesPage = ({ baseUrl }) => {
   return (
     <>
       <Head>
@@ -103,11 +104,11 @@ const ServicesPage = () => {
         <meta name="description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/services" />
+        <link rel="canonical" href={`${baseUrl}/services`} />
         <meta property="og:title" content="Mes Services - Création de sites web | Théo Multimédia" />
         <meta property="og:description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/services" />
+        <meta property="og:url" content={`${baseUrl}/services`} />
       </Head>
 
       <div className="bg-background">
@@ -338,9 +339,11 @@ const ServicesPage = () => {
  * Enable Server-Side Rendering
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: {},
+    props: { baseUrl },
   };
 }
 

@@ -25,7 +25,7 @@ const CGU = () => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 1 - Objet</h2>
-              <p>Les présentes conditions générales d'utilisation (ci-après dénommées "CGU") définissent les modalités de mise à disposition de mes services sur le site <strong>www.theomultimedia.com</strong> (ci-après dénommé "le Site") et les conditions d'utilisation du Site par l'Utilisateur.</p>
+              <p>Les présentes conditions générales d'utilisation (ci-après dénommées "CGU") définissent les modalités de mise à disposition de mes services sur le site <strong>theo-multimedia.com</strong> (ci-après dénommé "le Site") et les conditions d'utilisation du Site par l'Utilisateur.</p>
               <p className="mt-4">Tout accès et/ou utilisation du Site suppose l'acceptation et le respect de l'ensemble des termes des présentes CGU et leur acceptation inconditionnelle. Elles constituent donc un contrat entre moi (Théo Multimédia) et l'Utilisateur.</p>
             </section>
 
@@ -49,7 +49,7 @@ const CGU = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 3 - Définitions</h2>
               <p>La présente clause a pour objet de définir les différents termes essentiels du contrat :</p>
               <ul className="list-disc pl-6 mt-2 space-y-2">
-                <li><strong>Site</strong> : désigne le site accessible à l'adresse www.theomultimedia.com ainsi que l'ensemble de ses sous-domaines.</li>
+                <li><strong>Site</strong> : désigne le site accessible à l'adresse theo-multimedia.com ainsi que l'ensemble de ses sous-domaines.</li>
                 <li><strong>Éditeur</strong> : désigne la personne morale ou physique qui édite et met à disposition le Site, en l'occurrence Théo Multimédia.</li>
                 <li><strong>Utilisateur</strong> : désigne toute personne qui utilise le Site ou l'un des services proposés sur le Site.</li>
                 <li><strong>Contenu Utilisateur</strong> : désigne les données transmises par l'Utilisateur au sein du Site.</li>

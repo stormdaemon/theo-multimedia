@@ -1,7 +1,7 @@
 // Dynamic sitemap generation for SEO
-const SITE_URL = 'https://www.theomultimedia.com';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
-function generateSiteMap() {
+function generateSiteMap(baseUrl) {
   const pages = [
     { url: '', changefreq: 'weekly', priority: '1.0' },
     { url: '/about', changefreq: 'monthly', priority: '0.8' },
@@ -16,10 +16,10 @@ function generateSiteMap() {
        .map(({ url, changefreq, priority }) => {
          return `
        <url>
-           <loc>${SITE_URL}${url}</loc>
-           <lastmod>${new Date().toISOString()}</lastmod>
-           <changefreq>${changefreq}</changefreq>
-           <priority>${priority}</priority>
+          <loc>${baseUrl}${url}</loc>
+          <lastmod>${new Date().toISOString()}</lastmod>
+          <changefreq>${changefreq}</changefreq>
+          <priority>${priority}</priority>
        </url>
      `;
        })
@@ -32,8 +32,10 @@ function SiteMap() {
   // getServerSideProps will handle this
 }
 
-export async function getServerSideProps({ res }) {
-  const sitemap = generateSiteMap();
+export async function getServerSideProps({ req, res }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
+  const sitemap = generateSiteMap(baseUrl);
 
   res.setHeader('Content-Type', 'text/xml');
   res.write(sitemap);

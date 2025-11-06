@@ -9,6 +9,8 @@ const SEOHead = ({
   ogImage = '/og-image.jpg',
   noindex = false 
 }) => {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')
+  const fullCanonical = canonical && canonical.startsWith('http') ? canonical : (canonical ? `${siteUrl}${canonical}` : undefined)
   return (
     <Head>
       <title>{title}</title>
@@ -17,16 +19,16 @@ const SEOHead = ({
       <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
       
       {/* Canonical link without superfluous attributes */}
-      {canonical && (
-        <link rel="canonical" href={canonical} />
+      {fullCanonical && (
+        <link rel="canonical" href={fullCanonical} />
       )}
       
       {/* Open Graph tags */}
       <meta property="og:title" content={ogTitle || title} />
       <meta property="og:description" content={ogDescription || description} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
       <meta property="og:type" content="website" />
-      {canonical && <meta property="og:url" content={canonical} />}
+      {fullCanonical && <meta property="og:url" content={fullCanonical} />}
       
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -48,6 +48,10 @@ const nextConfig = {
         source: '/:path*',
         headers: [
           {
+            key: 'Vary',
+            value: 'User-Agent',
+          },
+          {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
           },

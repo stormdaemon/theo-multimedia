@@ -16,7 +16,7 @@ const SEO = ({
 }) => {
   const siteName = 'Théo Multimédia';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
-  const siteUrl = 'https://www.theomultimedia.com';
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
@@ -80,9 +80,9 @@ export const createOrganizationSchema = () => ({
   '@type': 'ProfessionalService',
   name: 'Théo Multimédia',
   description: 'Création de sites internet ultra-rapides, éco-responsables et optimisés pour convertir. Livraison en 24h disponible.',
-  url: 'https://www.theomultimedia.com',
-  logo: 'https://www.theomultimedia.com/theo_multimedia_logo.png',
-  image: 'https://www.theomultimedia.com/theo_multimedia.png',
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com'),
+  logo: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')}/theo_multimedia_logo.png`,
+  image: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')}/theo_multimedia.png`,
   founder: {
     '@type': 'Person',
     name: 'Théo LAFONT',
@@ -112,7 +112,7 @@ export const createWebPageSchema = (title, description, url) => ({
   isPartOf: {
     '@type': 'WebSite',
     name: 'Théo Multimédia',
-    url: 'https://www.theomultimedia.com',
+    url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com'),
   },
 });
 
@@ -123,7 +123,7 @@ export const createServiceSchema = (serviceName, description) => ({
   provider: {
     '@type': 'ProfessionalService',
     name: 'Théo Multimédia',
-    url: 'https://www.theomultimedia.com',
+    url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com'),
   },
   description: description,
   areaServed: 'FR',
@@ -149,7 +149,7 @@ export const createBreadcrumbSchema = (items) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: item.name,
-    item: `https://www.theomultimedia.com${item.url}`,
+    item: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')}${item.url}`,
   })),
 });
 
@@ -170,7 +170,7 @@ export const createArticleSchema = (title, description, image, datePublished, da
     name: 'Théo Multimédia',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.theomultimedia.com/theo_multimedia_logo.png',
+      url: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')}/theo_multimedia_logo.png`,
     },
   },
 });

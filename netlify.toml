@@ -1,16 +1,26 @@
 # Netlify configuration for Next.js 16+
-# Le plugin est supprimé pour laisser le "Next.js Runtime" natif de Netlify gérer le SSR.
+
 [build]
   command = "npm run build"
-  # Le répertoire 'publish' est automatiquement détecté par le Next.js Runtime.
+  # publish = ".next" # optional, Next.js runtime auto-detects
 
 [build.environment]
-  NODE_VERSION = "20.9.0" # Utilisation de la version minimale recommandée pour Next.js 16
+  NODE_VERSION = "20.9.0"
   NEXT_TELEMETRY_DISABLED = "1"
 
-# Les headers restent inchangés
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Additional headers (global); detailed headers can live in public/_headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Robots-Tag = "all"
-    Access-Control-Allow-Origin = "*"```
+    Access-Control-Allow-Origin = "*"
+
+[functions]
+  directory = "netlify/functions"
+
+[[edge_functions]]
+  function = "ai-allow"
+  path = "/*"

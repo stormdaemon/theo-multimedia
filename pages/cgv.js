@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
-const CGV = () => {
+const CGV = ({ baseUrl }) => {
   return (
     <div className="min-h-screen bg-background">
       <Head>
@@ -12,12 +13,13 @@ const CGV = () => {
         <meta property="og:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />
         <meta property="og:description" content="CGV Théo Multimédia : modalités de prestation, paiement, propriété intellectuelle, garanties et responsabilités." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/cgv" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-cgv.jpg" />
+        <link rel="canonical" href={`${baseUrl}/cgv`} />
+        <meta property="og:url" content={`${baseUrl}/cgv`} />
+        <meta property="og:image" content={`${baseUrl}/og-cgv.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />
         <meta name="twitter:description" content="CGV Théo Multimédia : prestations, paiement, propriété intellectuelle, garanties, responsabilités. Informations complètes et transparentes." />
-        <meta name="twitter:image" content="https://www.theomultimedia.com/og-cgv.jpg" />
+        <meta name="twitter:image" content={`${baseUrl}/og-cgv.jpg`} />
         <meta name="ai-summary" content="CGV Théo Multimédia : prestations, paiement, propriété intellectuelle, garanties, responsabilités. Toutes les informations contractuelles pour vos projets web." />
         <script type="application/ld+json">{`
         {
@@ -67,7 +69,7 @@ const CGV = () => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 3 - Description des prestations</h2>
-              <p>Je propose des services de création de sites internet, de développement web et de conseil en communication digitale. Les caractéristiques essentielles de mes prestations sont décrites sur le site www.theomultimedia.com.</p>
+              <p>Je propose des services de création de sites internet, de développement web et de conseil en communication digitale. Les caractéristiques essentielles de mes prestations sont décrites sur le site theo-multimedia.com.</p>
               <p className="mt-4">Je me réserve le droit de modifier mes prestations à tout moment, étant entendu que les commandes en cours seront honorées sur la base des conditions en vigueur au moment de la commande.</p>
             </section>
 
@@ -157,3 +159,9 @@ const CGV = () => {
 };
 
 export default CGV;
+
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
+  return { props: { baseUrl } }
+}

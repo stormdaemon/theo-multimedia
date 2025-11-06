@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const values = [
   {
@@ -32,7 +33,7 @@ const skills = [
   { name: 'Éco-conception', level: 90 },
 ];
 
-const AboutPage = () => {
+const AboutPage = ({ baseUrl }) => {
   return (
     <>
       <Head>
@@ -40,11 +41,13 @@ const AboutPage = () => {
         <meta name="description" content="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/about" />
+        <link rel="canonical" href={`${baseUrl}/about`} />
+        <meta property="og:url" content={`${baseUrl}/about`} />
+        <link rel="canonical" href={`${baseUrl}/about`} />
         <meta property="og:title" content="À Propos - Qui suis-je ? | Théo Multimédia" />
         <meta property="og:description" content="Je suis Théo, développeur web passionné à Angoulême." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/about" />
+        <meta property="og:url" content={`${baseUrl}/about`} />
       </Head>
 
       <div className="bg-background">
@@ -375,9 +378,11 @@ const AboutPage = () => {
  * Enable Server-Side Rendering
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: {},
+    props: { baseUrl },
   };
 }
 

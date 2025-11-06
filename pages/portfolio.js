@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,7 +9,7 @@ const projects = [
   // ... (contenu de la liste `projects` inchangé)
 ];
 
-const PortfolioPage = () => {
+const PortfolioPage = ({ baseUrl }) => {
   const [filter, setFilter] = useState('all');
   const categories = ['all', 'Site vitrine', 'Web radio', 'Application web', 'Landing page'];
 
@@ -23,11 +24,11 @@ const PortfolioPage = () => {
         <meta name="description" content="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/portfolio" />
+        <link rel="canonical" href={`${baseUrl}/portfolio`} />
         <meta property="og:title" content="Mon Portfolio | Théo Multimédia" />
         <meta property="og:description" content="Découvrez mes réalisations web et digitales." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/portfolio" />
+        <meta property="og:url" content={`${baseUrl}/portfolio`} />
       </Head>
 
       <div className="bg-background">
@@ -244,9 +245,11 @@ const PortfolioPage = () => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: {},
+    props: { baseUrl },
   };
 }
 

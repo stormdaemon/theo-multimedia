@@ -1,13 +1,14 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Head from 'next/head';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 // Client-only animated components - loaded after SSR
 const MouseCursorEffect = dynamic(() => import('../components/MouseCursorEffect'), { ssr: false });
 const AnimatedWrapper = dynamic(() => import('../components/AnimatedWrapper'), { ssr: false });
 const FloatingDots = dynamic(() => import('../components/FloatingDots'), { ssr: false });
 
-const Home = () => {
+const Home = ({ baseUrl }) => {
 
   const features = [
     {
@@ -66,12 +67,12 @@ const Home = () => {
         <meta name="description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO." />
         <meta name="author" content="Théo LAFONT" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.theomultimedia.com/" />
+        <link rel="canonical" href={`${baseUrl}/`} />
         <meta property="og:title" content="Théo Multimédia - Votre site web en 24h" />
         <meta property="og:description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.theomultimedia.com/" />
-        <meta property="og:image" content="https://www.theomultimedia.com/og-image.jpg" />
+        <meta property="og:url" content={`${baseUrl}/`} />
+        <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
       </Head>
 
       <div className="overflow-hidden bg-background">
@@ -464,9 +465,11 @@ const Home = () => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: {},
+    props: { baseUrl },
   };
 }
 
