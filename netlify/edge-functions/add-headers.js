@@ -6,6 +6,7 @@ export default async (request, context) => {
   const headers = new Headers(response.headers);
   headers.set('X-AI-Access', 'allow');
   headers.set('Access-Control-Allow-Origin', '*');
+  headers.set('X-Robots-Tag', 'all');
 
   if (!headers.has('Cache-Control')) {
     headers.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');

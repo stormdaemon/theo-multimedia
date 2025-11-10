@@ -8,6 +8,10 @@ function generateSiteMap(baseUrl) {
     { url: '/services', changefreq: 'weekly', priority: '0.9' },
     { url: '/portfolio', changefreq: 'weekly', priority: '0.9' },
     { url: '/contact', changefreq: 'monthly', priority: '0.8' },
+    { url: '/mentions-legales', changefreq: 'yearly', priority: '0.3' },
+    { url: '/politique-confidentialite', changefreq: 'yearly', priority: '0.3' },
+    { url: '/cgu', changefreq: 'yearly', priority: '0.3' },
+    { url: '/cgv', changefreq: 'yearly', priority: '0.3' },
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
