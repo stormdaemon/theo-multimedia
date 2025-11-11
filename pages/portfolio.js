@@ -7,7 +7,54 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const projects = [
-  // ... (contenu de la liste `projects` inchangé)
+  {
+    title: 'Révélation Radio',
+    category: 'Site vitrine',
+    description: "Site vitrine pour une web radio catholique avec présentation des émissions et lecteur audio intégré. Design moderne et expérience utilisateur optimisée.",
+    imageUrl: '/revelation.png',
+    url: null,
+    tags: ['Design', 'Audio', 'Responsive']
+  },
+  {
+    title: 'Fesch 2025',
+    category: 'Site vitrine',
+    description: 'Site promotionnel pour le documentaire "Fesch 2025, du non-sens au Mystère" réalisé par Samuel Armnius. Design cinématographique et immersif.',
+    imageUrl: '/fesch.png',
+    url: 'https://fesch2025.fr/',
+    tags: ['Design', 'Marketing', 'Vidéo']
+  },
+  {
+    title: 'Heaven Radio',
+    category: 'Web radio',
+    description: "Successeur de Révélation Radio, nouvelle web radio avec expérience audio enrichie et design repensé. Interface moderne et intuitive.",
+    imageUrl: '/heavenradio.png',
+    url: 'https://heavenradio.fr/',
+    tags: ['Audio', 'Streaming', 'Design']
+  },
+  {
+    title: 'BR16BATIMENT',
+    category: 'Site vitrine',
+    description: "Site vitrine professionnel pour un artisan bâtiment avec présentation des services, portfolio de réalisations et formulaire de contact.",
+    imageUrl: '/BR16BAPTIMENT.png',
+    url: 'https://br16batiment.netlify.app/',
+    tags: ['Vitrine', 'SEO', 'Responsive']
+  },
+  {
+    title: "Le Baptême Catholique",
+    category: "Landing page",
+    description: "Landing page de génération de leads pour accompagner les personnes vers le baptême. Design épuré et parcours utilisateur optimisé.",
+    imageUrl: "/baptemecatholique.png",
+    url: "https://lebaptemecatholique.fr/",
+    tags: ['Landing', 'Conversion', 'SEO']
+  },
+  {
+    title: "TRACKWARS",
+    category: "Application web",
+    description: "Jeu de blind test musical innovant conçu pour les professionnels de l'événementiel. Interface ludique et performante.",
+    imageUrl: "/trackwars.png",
+    url: "https://trackwars.fr/",
+    tags: ['Gaming', 'React', 'Audio']
+  }
 ];
 
 const PortfolioPage = ({ baseUrl, isCrawler }) => {
