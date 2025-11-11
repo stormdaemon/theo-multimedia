@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const values = [
@@ -34,8 +34,8 @@ const skills = [
 ];
 
 const AboutPage = ({ baseUrl }) => {
-  // Create structured data schemas
-  const organizationSchema = createOrganizationSchema();
+  // Create LOCAL SEO structured data schemas
+  const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
     'À Propos - Qui suis-je ?',
     'Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans.',
@@ -44,7 +44,7 @@ const AboutPage = ({ baseUrl }) => {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [organizationSchema, aboutPageSchema]
+    '@graph': [localBusinessSchema, aboutPageSchema]
   };
 
   return (
@@ -54,6 +54,7 @@ const AboutPage = ({ baseUrl }) => {
         description="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans."
         canonical="/about"
         schema={schema}
+        enableLocalSEO={true}
       />
 
       <div className="bg-background">

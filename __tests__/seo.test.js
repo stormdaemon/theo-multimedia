@@ -55,7 +55,12 @@ describe('JSON-LD Structured Data Tests', () => {
   test('Index page uses JSON-LD schema', () => {
     const indexPath = path.join(__dirname, '../pages/index.js');
     const indexContent = fs.readFileSync(indexPath, 'utf8');
-    expect(indexContent).toContain('createOrganizationSchema');
+
+    // Accept either LocalBusiness or Organization schema (2025 local SEO)
+    const hasSchema = indexContent.includes('createLocalBusinessSchema') ||
+                      indexContent.includes('createOrganizationSchema');
+    expect(hasSchema).toBe(true);
+
     expect(indexContent).toContain('createWebPageSchema');
     expect(indexContent).toContain('@graph');
   });
@@ -63,7 +68,12 @@ describe('JSON-LD Structured Data Tests', () => {
   test('About page uses JSON-LD schema', () => {
     const aboutPath = path.join(__dirname, '../pages/about.js');
     const aboutContent = fs.readFileSync(aboutPath, 'utf8');
-    expect(aboutContent).toContain('createOrganizationSchema');
+
+    // Accept either LocalBusiness or Organization schema (2025 local SEO)
+    const hasSchema = aboutContent.includes('createLocalBusinessSchema') ||
+                      aboutContent.includes('createOrganizationSchema');
+    expect(hasSchema).toBe(true);
+
     expect(aboutContent).toContain('createWebPageSchema');
   });
 });
