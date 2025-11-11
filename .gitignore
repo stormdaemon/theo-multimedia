@@ -10,3 +10,6 @@ dist/
 
 # Netlify CLI
 .netlify/
+
+# SEO test reports
+seo_report_*.json
