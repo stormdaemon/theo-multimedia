@@ -7,6 +7,11 @@
 [build.environment]
   NODE_VERSION = "20.19.0"
   NEXT_TELEMETRY_DISABLED = "1"
+  # CRITICAL: Disable auto-generated Edge Functions that block crawlers
+  # The @netlify/plugin-nextjs automatically creates Edge Functions for middleware
+  # This causes 502/504 timeouts for all bots (Googlebot, Gemini, ChatGPT)
+  # Reference: https://docs.netlify.com/frameworks/next-js/overview/
+  NEXT_DISABLE_NETLIFY_EDGE = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
