@@ -10,7 +10,7 @@ const projects = [
   // ... (contenu de la liste `projects` inchangé)
 ];
 
-const PortfolioPage = ({ baseUrl }) => {
+const PortfolioPage = ({ baseUrl, isCrawler }) => {
   const [filter, setFilter] = useState('all');
   const categories = ['all', 'Site vitrine', 'Web radio', 'Application web', 'Landing page'];
 
@@ -38,8 +38,8 @@ const PortfolioPage = ({ baseUrl }) => {
         schema={schema}
       />
 
-      {/* Content for AI crawlers without JavaScript */}
       <CrawlerPageContent
+        isCrawler={isCrawler}
         title="Mon Portfolio - Mes réalisations"
         description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux ultra-rapides, éco-conçus, et optimisés pour convertir."
         sections={[
@@ -294,10 +294,16 @@ const PortfolioPage = ({ baseUrl }) => {
 };
 
 export async function getServerSideProps({ req }) {
+  const { isCrawler } = await import('../lib/isCrawler')
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
   const baseUrl = getSiteUrlFromHeaders(req)
+  const userAgent = req.headers['user-agent'] || '';
+  const isBot = isCrawler(userAgent);
   return {
-    props: { baseUrl },
+    props: { 
+      baseUrl,
+      isCrawler: isBot
+    },
   };
 }
 

@@ -36,7 +36,7 @@ const skills = [
   { name: 'Éco-conception', level: 90 },
 ];
 
-const AboutPage = ({ baseUrl, disableAnimations }) => {
+const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
   // Create LOCAL SEO structured data schemas
   const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
@@ -60,8 +60,8 @@ const AboutPage = ({ baseUrl, disableAnimations }) => {
         enableLocalSEO={true}
       />
 
-      {/* Content for AI crawlers without JavaScript */}
       <CrawlerPageContent
+        isCrawler={isCrawler}
         title="À Propos - Théo Multimédia"
         description="Je suis Théo, développeur web passionné à Angoulême. Je crée des sites ultra-rapides, éco-responsables, et optimisés pour convertir depuis plus de 10 ans."
         sections={[
@@ -437,13 +437,14 @@ const AboutPage = ({ baseUrl, disableAnimations }) => {
  */
 export async function getServerSideProps({ req }) {
   const userAgent = req.headers['user-agent'] || '';
-  const disableAnimations = isCrawler(userAgent);
+  const isBot = isCrawler(userAgent);
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
   const baseUrl = getSiteUrlFromHeaders(req)
   return {
     props: { 
       baseUrl,
-      disableAnimations 
+      disableAnimations: isBot,
+      isCrawler: isBot
     },
   };
 }

@@ -25,7 +25,7 @@ const contactInfo = [
   }
 ];
 
-const ContactPage = ({ baseUrl }) => {
+const ContactPage = ({ baseUrl, isCrawler }) => {
   const [state, handleSubmit] = useForm("mblypyew");
 
   const organizationSchema = createOrganizationSchema();
@@ -92,8 +92,8 @@ const ContactPage = ({ baseUrl }) => {
         schema={schema}
       />
 
-      {/* Content for AI crawlers without JavaScript */}
       <CrawlerPageContent
+        isCrawler={isCrawler}
         title="Contact - Parlons de votre projet"
         description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express 24h disponible pour les urgences."
         sections={[
@@ -371,10 +371,16 @@ const ContactPage = ({ baseUrl }) => {
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
 export async function getServerSideProps({ req }) {
+  const { isCrawler } = await import('../lib/isCrawler')
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
   const baseUrl = getSiteUrlFromHeaders(req)
+  const userAgent = req.headers['user-agent'] || '';
+  const isBot = isCrawler(userAgent);
   return {
-    props: { baseUrl },
+    props: { 
+      baseUrl,
+      isCrawler: isBot
+    },
   };
 }
 

@@ -97,7 +97,7 @@ const process = [
   }
 ];
 
-const ServicesPage = ({ baseUrl }) => {
+const ServicesPage = ({ baseUrl, isCrawler }) => {
   const organizationSchema = createOrganizationSchema();
   const servicesPageSchema = createWebPageSchema(
     'Mes Services',
@@ -118,8 +118,8 @@ const ServicesPage = ({ baseUrl }) => {
         schema={schema}
       />
 
-      {/* Content for AI crawlers without JavaScript */}
       <CrawlerPageContent
+        isCrawler={isCrawler}
         title="Mes Services - Création de sites web en 24h"
         description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
         sections={[
@@ -374,10 +374,16 @@ const ServicesPage = ({ baseUrl }) => {
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
 export async function getServerSideProps({ req }) {
+  const { isCrawler } = await import('../lib/isCrawler')
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
   const baseUrl = getSiteUrlFromHeaders(req)
+  const userAgent = req.headers['user-agent'] || '';
+  const isBot = isCrawler(userAgent);
   return {
-    props: { baseUrl },
+    props: { 
+      baseUrl,
+      isCrawler: isBot
+    },
   };
 }
 
