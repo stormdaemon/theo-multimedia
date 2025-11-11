@@ -12,7 +12,7 @@ const Home = ({ baseUrl }) => {
   // Create structured data schemas
   const organizationSchema = createOrganizationSchema();
   const webPageSchema = createWebPageSchema(
-    'Théo Multimédia - Votre site web en 24h | Création de sites internet à Angoulême',
+    'Site web en 24h | Création sites internet Angoulême',
     'Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO.',
     baseUrl
   );
@@ -76,7 +76,7 @@ const Home = ({ baseUrl }) => {
   return (
     <>
       <SEO
-        title="Votre site web en 24h | Création de sites internet à Angoulême"
+        title="Site web en 24h | Création sites internet Angoulême"
         description="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO."
         canonical="/"
         ogImage="/og-image.jpg"
