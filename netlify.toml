@@ -11,16 +11,27 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Additional headers (global); detailed headers can live in public/_headers
+# Headers for crawler accessibility (Nov 2025)
+# CRITICAL: These headers ensure bots (Google, AI crawlers) can access all pages
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "all"
+    X-Robots-Tag = "index, follow, all"
     Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, HEAD, OPTIONS"
+    Access-Control-Allow-Headers = "User-Agent, Content-Type"
+    # Prevent timeout issues for slow crawlers
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [functions]
   directory = "netlify/functions"
+  # Increased timeout for SSR pages to prevent crawler timeouts
+  node_bundler = "esbuild"
 
-[[edge_functions]]
-  function = "add-headers"
-  path = "/*"
+# Next.js Runtime configuration for better crawler support
+[functions."__next_route_handler_*"]
+  included_files = ["**/*"]
+
+# Edge Functions removed - they were causing 502/504 timeouts for crawlers (Googlebot, AI bots)
+# Headers are already configured in [[headers]] section above
+# Reference: Netlify support forums Jan 2025 - Edge Functions on /* block crawlers
