@@ -8,6 +8,30 @@ import Link from 'next/link';
 
 const projects = [
   {
+    title: 'SOS Chrétiens d\'Occident',
+    category: 'Site vitrine',
+    description: "Association catholique de défense de la liberté religieuse. Site vitrine avec veille sur la christianophobie, système d'adhésion et formulaire de contact. Design engagé et impactant.",
+    imageUrl: '/sos_chretien_d_occident.png',
+    url: 'https://soschretiensdoccident.fr/',
+    tags: ['Associatif', 'SEO', 'Conversion']
+  },
+  {
+    title: 'Institut Irénée',
+    category: 'Application web',
+    description: "Plateforme de formation en ligne pour l'apologétique catholique. Système d'inscription, espace étudiant et gestion de formations diplômantes. Interface pédagogique et professionnelle.",
+    imageUrl: '/irenee_institut.png',
+    url: 'https://www.irenee-institut.org/',
+    tags: ['E-learning', 'React', 'Authentication']
+  },
+  {
+    title: 'Ultreia Event',
+    category: 'Site vitrine',
+    description: "Agence de communication catholique spécialisée en diffusion multi-stream et événementiel. Site vitrine professionnel avec présentation des services et portfolio de partenaires.",
+    imageUrl: '/ultreia_event.png',
+    url: 'https://ultreiaevent.com/',
+    tags: ['Agence', 'Marketing', 'Design']
+  },
+  {
     title: 'Révélation Radio',
     category: 'Site vitrine',
     description: "Site vitrine pour une web radio catholique avec présentation des émissions et lecteur audio intégré. Design moderne et expérience utilisateur optimisée.",
@@ -97,6 +121,9 @@ const PortfolioPage = ({ baseUrl, isCrawler }) => {
           {
             title: "Projets récents",
             items: [
+              "SOS Chrétiens d'Occident - Association catholique de défense de la liberté religieuse (https://soschretiensdoccident.fr/)",
+              "Institut Irénée - Plateforme de formation en apologétique catholique (https://www.irenee-institut.org/)",
+              "Ultreia Event - Agence de communication catholique spécialisée en événementiel (https://ultreiaevent.com/)",
               "Fesch 2025 - Site promotionnel moderne et performant (https://fesch2025.fr/)",
               "Heaven Radio - Web radio professionnelle avec streaming en direct (https://heavenradio.fr/)",
               "TRACKWARS - Application web interactive pour les passionnés de musique (https://trackwars.fr/)",
