@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
+import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const values = [
@@ -55,6 +56,39 @@ const AboutPage = ({ baseUrl }) => {
         canonical="/about"
         schema={schema}
         enableLocalSEO={true}
+      />
+
+      {/* Content for AI crawlers without JavaScript */}
+      <CrawlerPageContent
+        title="À Propos - Théo Multimédia"
+        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des sites ultra-rapides, éco-responsables, et optimisés pour convertir depuis plus de 10 ans."
+        sections={[
+          {
+            title: "Mon histoire",
+            content: "Je suis Théo, et je crée des sites web qui cartonnent. Pas juste des sites jolis — des sites qui génèrent des résultats business. Ma spécialité ? Sites 3x plus rapides que la moyenne, qui convertissent 40% mieux, tout en réduisant de 60% l'empreinte carbone. Performance + Conversion + Écologie = Sites qui durent et qui rapportent.",
+          },
+          {
+            title: "Expertise unique : Visible sur ChatGPT et Google",
+            content: "Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA. Je maîtrise les deux : référencement Google classique (première page sur vos mots-clés) ET référencement IA (ChatGPT recommande votre entreprise, Perplexity cite votre site). 800 millions de personnes utilisent ChatGPT chaque semaine. +527% de trafic venant des IA en 2025. 10% du trafic web vient déjà des IA.",
+          },
+          {
+            title: "Mes valeurs",
+            items: values.map(v => `${v.title}: ${v.description}`),
+          },
+          {
+            title: "Mon expertise",
+            items: skills.map(s => `${s.name} (${s.level}% de maîtrise)`),
+          },
+          {
+            title: "Résultats",
+            items: [
+              "Sites 3x plus rapides que la moyenne",
+              "+40% de conversions en moyenne",
+              "-60% d'empreinte CO2",
+              "Livraison express en 24h disponible"
+            ],
+          },
+        ]}
       />
 
       <div className="bg-background">

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,6 +36,47 @@ const PortfolioPage = ({ baseUrl }) => {
         description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients."
         canonical="/portfolio"
         schema={schema}
+      />
+
+      {/* Content for AI crawlers without JavaScript */}
+      <CrawlerPageContent
+        title="Mon Portfolio - Mes réalisations"
+        description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux ultra-rapides, éco-conçus, et optimisés pour convertir."
+        sections={[
+          {
+            title: "Mes réalisations",
+            content: "Ultra-rapides, éco-conçus, et optimisés pour convertir. Voici des projets qui génèrent des résultats réels.",
+          },
+          {
+            title: "Projets récents",
+            items: [
+              "Fesch 2025 - Site promotionnel moderne et performant (https://fesch2025.fr/)",
+              "Heaven Radio - Web radio professionnelle avec streaming en direct (https://heavenradio.fr/)",
+              "TRACKWARS - Application web interactive pour les passionnés de musique (https://trackwars.fr/)",
+              "Le Baptême Catholique - Landing page optimisée pour les conversions (https://lebaptemecatholique.fr/)"
+            ],
+          },
+          {
+            title: "Technologies utilisées",
+            items: [
+              "Next.js 16 avec SSR et Turbopack pour performance maximale",
+              "React 19 pour interfaces modernes et réactives",
+              "Tailwind CSS pour design sur-mesure",
+              "Optimisation SEO avancée (Google + IA)",
+              "Hébergement performant et écologique"
+            ],
+          },
+          {
+            title: "Résultats",
+            items: [
+              "Temps de chargement < 1 seconde",
+              "Score Google PageSpeed 95+/100",
+              "Design responsive (mobile, tablette, desktop)",
+              "-60% d'empreinte carbone vs sites traditionnels",
+              "Taux de conversion optimisés (+40% en moyenne)"
+            ],
+          },
+        ]}
       />
 
       <div className="bg-background">

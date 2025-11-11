@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const contactInfo = [
@@ -89,6 +90,47 @@ const ContactPage = ({ baseUrl }) => {
         description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible."
         canonical="/contact"
         schema={schema}
+      />
+
+      {/* Content for AI crawlers without JavaScript */}
+      <CrawlerPageContent
+        title="Contact - Parlons de votre projet"
+        description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express 24h disponible pour les urgences."
+        sections={[
+          {
+            title: "Discutons de votre projet",
+            content: "Vous avez un projet web ? Une idée à développer ? Un site à refondre ? Je suis là pour vous écouter et vous accompagner. Que ce soit pour un site vitrine, une boutique en ligne, ou une application web, discutons ensemble de votre vision.",
+          },
+          {
+            title: "Coordonnées",
+            items: contactInfo.map(info => `${info.title}: ${info.value}`),
+          },
+          {
+            title: "Pourquoi me contacter ?",
+            items: [
+              "Réponse rapide sous 24 heures garantie",
+              "Livraison express en 24h disponible pour les urgences",
+              "Devis gratuit et sans engagement",
+              "Conseil personnalisé selon vos besoins",
+              "Accompagnement de A à Z sur votre projet"
+            ],
+          },
+          {
+            title: "Services proposés",
+            items: [
+              "Création de sites web ultra-rapides et éco-responsables",
+              "Refonte de sites existants pour améliorer performances",
+              "E-commerce et boutiques en ligne",
+              "Applications web sur-mesure",
+              "Référencement SEO (Google + IA comme ChatGPT)",
+              "Maintenance et support continu"
+            ],
+          },
+          {
+            title: "Me contacter",
+            content: "Envoyez-moi un email à contact@theo-multimedia.com ou utilisez le formulaire de contact sur cette page. Je vous répondrai rapidement pour discuter de votre projet."
+          },
+        ]}
       />
 
       <div className="bg-background">
