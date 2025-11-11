@@ -13,7 +13,7 @@ export function proxy(request: NextRequest) {
     reqHeaders.set('accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
     reqHeaders.set('x-ai-access', 'allow')
 
-    const res = NextResponse.next({ request: { headers: reqHeaders } })
+    const res = NextResponse.rewrite(request.nextUrl, { request: { headers: reqHeaders } })
     res.headers.set('X-Robots-Tag', 'all')  // SEO: Allow indexation
     res.headers.set('X-AI-Access', 'allow')
     res.headers.set('Vary', 'User-Agent')
