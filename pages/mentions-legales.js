@@ -1,40 +1,28 @@
 import { motion } from 'framer-motion';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const MentionsLegales = ({ baseUrl }) => {
+  const organizationSchema = createOrganizationSchema();
+  const legalPageSchema = createWebPageSchema(
+    'Mentions légales',
+    'Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web.',
+    `${baseUrl}/mentions-legales`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, legalPageSchema]
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Head>
-        <title>Mentions Légales | Théo Multimédia - Informations Légales</title>
-        <meta name="description" content="Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web." />
-
-        <meta name="author" content="Théo LAFONT" />
-        <meta property="og:title" content="Mentions légales | Théo Multimédia" />
-        <meta property="og:description" content="Consultez les mentions légales du site Théo Multimédia : éditeur, hébergeur, droits et responsabilités." />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href={`${baseUrl}/mentions-legales`} />
-        <meta property="og:url" content={`${baseUrl}/mentions-legales`} />
-        <meta property="og:image" content={`${baseUrl}/og-legal.jpg`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mentions légales | Théo Multimédia" />
-        <meta name="twitter:description" content="Mentions légales du site Théo Multimédia : éditeur, hébergeur, propriété intellectuelle, responsabilités." />
-        <meta name="twitter:image" content={`${baseUrl}/og-legal.jpg`} />
-        <meta name="ai-summary" content="Mentions légales du site Théo Multimédia : informations éditeur, hébergeur, droits, responsabilités et conditions d'utilisation." />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Mentions légales Théo Multimédia",
-          "author": {
-            "@type": "Person",
-            "name": "Théo LAFONT"
-          },
-          "description": "Mentions légales du site Théo Multimédia : informations éditeur, hébergeur, droits, responsabilités et conditions d'utilisation.",
-          "inLanguage": "fr-FR"
-        }
-        `}</script>
-      </Head>
+      <SEO
+        title="Mentions Légales | Théo Multimédia - Informations Légales"
+        description="Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web."
+        canonical="/mentions-legales"
+        schema={schema}
+        ogImage="/og-legal.jpg"
+      />
 
       <main className="container mx-auto px-4 py-16">
         <motion.div

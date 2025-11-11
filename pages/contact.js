@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useForm, ValidationError } from '@formspree/react';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const contactInfo = [
@@ -27,12 +27,26 @@ const contactInfo = [
 const ContactPage = ({ baseUrl }) => {
   const [state, handleSubmit] = useForm("mblypyew");
 
+  const organizationSchema = createOrganizationSchema();
+  const contactPageSchema = createWebPageSchema(
+    'Contact',
+    'Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible.',
+    `${baseUrl}/contact`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, contactPageSchema]
+  };
+
   if (state.succeeded) {
     return (
       <>
-        <Head>
-          <title>Message envoyé ! | Théo Multimédia</title>
-        </Head>
+        <SEO
+          title="Message envoyé !"
+          description="Merci pour votre message. Je vous répondrai dans les 24 heures."
+          canonical="/contact"
+          schema={schema}
+        />
         <div className="min-h-screen flex items-center justify-center bg-background px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -70,17 +84,12 @@ const ContactPage = ({ baseUrl }) => {
 
   return (
     <>
-      <Head>
-        <title>Contact - Parlons de votre projet | Théo Multimédia</title>
-        <meta name="description" content="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseUrl}/contact`} />
-        <meta property="og:title" content="Contact | Théo Multimédia" />
-        <meta property="og:description" content="Contactez-moi pour discuter de votre projet web." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseUrl}/contact`} />
-      </Head>
+      <SEO
+        title="Contact - Parlons de votre projet"
+        description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible."
+        canonical="/contact"
+        schema={schema}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}

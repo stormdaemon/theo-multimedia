@@ -1,40 +1,28 @@
 import { motion } from 'framer-motion';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const CGV = ({ baseUrl }) => {
+  const organizationSchema = createOrganizationSchema();
+  const cgvPageSchema = createWebPageSchema(
+    'Conditions Générales de Vente',
+    'Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux.',
+    `${baseUrl}/cgv`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, cgvPageSchema]
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Head>
-        <title>CGV | Théo Multimédia - Conditions Générales de Vente</title>
-        <meta name="description" content="Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux." />
-
-        <meta name="author" content="Théo LAFONT" />
-        <meta property="og:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />
-        <meta property="og:description" content="CGV Théo Multimédia : modalités de prestation, paiement, propriété intellectuelle, garanties et responsabilités." />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href={`${baseUrl}/cgv`} />
-        <meta property="og:url" content={`${baseUrl}/cgv`} />
-        <meta property="og:image" content={`${baseUrl}/og-cgv.jpg`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Conditions Générales de Vente (CGV) | Théo Multimédia" />
-        <meta name="twitter:description" content="CGV Théo Multimédia : prestations, paiement, propriété intellectuelle, garanties, responsabilités. Informations complètes et transparentes." />
-        <meta name="twitter:image" content={`${baseUrl}/og-cgv.jpg`} />
-        <meta name="ai-summary" content="CGV Théo Multimédia : prestations, paiement, propriété intellectuelle, garanties, responsabilités. Toutes les informations contractuelles pour vos projets web." />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Conditions Générales de Vente Théo Multimédia",
-          "author": {
-            "@type": "Person",
-            "name": "Théo LAFONT"
-          },
-          "description": "CGV Théo Multimédia : prestations, paiement, propriété intellectuelle, garanties, responsabilités. Toutes les informations contractuelles pour vos projets web.",
-          "inLanguage": "fr-FR"
-        }
-        `}</script>
-      </Head>
+      <SEO
+        title="CGV | Théo Multimédia - Conditions Générales de Vente"
+        description="Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux."
+        canonical="/cgv"
+        schema={schema}
+        ogImage="/og-cgv.jpg"
+      />
 
       <main className="container mx-auto px-4 py-16">
         <motion.div

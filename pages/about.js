@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const values = [
@@ -34,21 +34,27 @@ const skills = [
 ];
 
 const AboutPage = ({ baseUrl }) => {
+  // Create structured data schemas
+  const organizationSchema = createOrganizationSchema();
+  const aboutPageSchema = createWebPageSchema(
+    'À Propos - Qui suis-je ?',
+    'Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans.',
+    `${baseUrl}/about`
+  );
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, aboutPageSchema]
+  };
+
   return (
     <>
-      <Head>
-        <title>À Propos - Qui suis-je ? | Théo Multimédia</title>
-        <meta name="description" content="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseUrl}/about`} />
-        <meta property="og:url" content={`${baseUrl}/about`} />
-        <link rel="canonical" href={`${baseUrl}/about`} />
-        <meta property="og:title" content="À Propos - Qui suis-je ? | Théo Multimédia" />
-        <meta property="og:description" content="Je suis Théo, développeur web passionné à Angoulême." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseUrl}/about`} />
-      </Head>
+      <SEO
+        title="À Propos - Qui suis-je ?"
+        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans."
+        canonical="/about"
+        schema={schema}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}

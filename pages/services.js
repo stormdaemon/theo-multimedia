@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const services = [
@@ -97,19 +97,25 @@ const process = [
 ];
 
 const ServicesPage = ({ baseUrl }) => {
+  const organizationSchema = createOrganizationSchema();
+  const servicesPageSchema = createWebPageSchema(
+    'Mes Services',
+    'Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême.',
+    `${baseUrl}/services`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, servicesPageSchema]
+  };
+
   return (
     <>
-      <Head>
-        <title>Mes Services - Création de sites web en 24h | Théo Multimédia</title>
-        <meta name="description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseUrl}/services`} />
-        <meta property="og:title" content="Mes Services - Création de sites web | Théo Multimédia" />
-        <meta property="og:description" content="Je crée votre site internet en 24h. Design, développement, SEO et maintenance." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseUrl}/services`} />
-      </Head>
+      <SEO
+        title="Mes Services - Création de sites web en 24h"
+        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        canonical="/services"
+        schema={schema}
+      />
 
       <div className="bg-background">
         {/* Hero Section */}

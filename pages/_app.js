@@ -1,3 +1,5 @@
+import '@fontsource/inter';
+import '@fontsource/space-grotesk';
 import '../styles/globals.css';
 import Layout from '../components/Layout';
 import ClientOnlyAnimatePresence from '../components/ClientOnlyAnimatePresence';
@@ -22,8 +24,6 @@ function MyApp({ Component, pageProps, router }) {
           <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="icon" href="/favicon.ico" />
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           </Head>
           <Layout>
             {/* SSR-safe AnimatePresence: renders children directly on server, adds animations on client */}
