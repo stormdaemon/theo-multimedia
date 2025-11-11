@@ -37,6 +37,8 @@ const nextConfig = {
   // Optimisations de production
   reactStrictMode: true,
   poweredByHeader: false,
+  compress: true, // Enable gzip compression
+  productionBrowserSourceMaps: false, // Disable source maps in production
 
   // Turbopack est par défaut dans Next.js 16
   turbopack: {},
