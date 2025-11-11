@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const services = [
@@ -115,6 +116,33 @@ const ServicesPage = ({ baseUrl }) => {
         description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
         canonical="/services"
         schema={schema}
+      />
+
+      {/* Content for AI crawlers without JavaScript */}
+      <CrawlerPageContent
+        title="Mes Services - Création de sites web en 24h"
+        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        sections={[
+          {
+            title: "Votre site en ligne demain - Livraison 24h",
+            content: "Lancement urgent ? Opportunité business ? Je livre votre site professionnel, rapide et optimisé en 24 heures chrono.",
+          },
+          {
+            title: "Comment je peux vous aider",
+            items: services.map(s => ({
+              title: s.title,
+              description: `${s.description} Inclus : ${s.features.join(', ')}`,
+            })),
+          },
+          {
+            title: "Ma méthodologie",
+            items: process.map(p => `${p.step}. ${p.title}: ${p.description}`),
+          },
+          {
+            title: "Prêt à démarrer ?",
+            content: "Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs. Contactez-moi pour parler de votre projet ou consultez mon portfolio.",
+          },
+        ]}
       />
 
       <div className="bg-background">

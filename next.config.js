@@ -24,6 +24,8 @@ const nextConfig = {
       'react-icons',
       '@heroicons/react',
     ],
+    // Use system TLS certificates for font downloads
+    turbopackUseSystemTlsCerts: true,
   },
 
   // Optimisations du compilateur
