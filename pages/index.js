@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 // Client-only animated components - loaded after SSR
@@ -9,6 +9,19 @@ const AnimatedWrapper = dynamic(() => import('../components/AnimatedWrapper'), {
 const FloatingDots = dynamic(() => import('../components/FloatingDots'), { ssr: false });
 
 const Home = ({ baseUrl }) => {
+  // Create structured data schemas
+  const organizationSchema = createOrganizationSchema();
+  const webPageSchema = createWebPageSchema(
+    'Théo Multimédia - Votre site web en 24h | Création de sites internet à Angoulême',
+    'Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO.',
+    baseUrl
+  );
+
+  // Combine schemas in a graph
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, webPageSchema]
+  };
 
   const features = [
     {
@@ -62,18 +75,13 @@ const Home = ({ baseUrl }) => {
 
   return (
     <>
-      <Head>
-        <title>Théo Multimédia - Votre site web en 24h | Création de sites internet à Angoulême</title>
-        <meta name="description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseUrl}/`} />
-        <meta property="og:title" content="Théo Multimédia - Votre site web en 24h" />
-        <meta property="og:description" content="Je crée votre site internet professionnel en 24h. Agence web à Angoulême." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseUrl}/`} />
-        <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
-      </Head>
+      <SEO
+        title="Votre site web en 24h | Création de sites internet à Angoulême"
+        description="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO."
+        canonical="/"
+        ogImage="/og-image.jpg"
+        schema={schema}
+      />
 
       <div className="overflow-hidden bg-background">
         <MouseCursorEffect />

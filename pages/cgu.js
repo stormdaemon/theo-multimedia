@@ -1,13 +1,26 @@
 import { motion } from 'framer-motion';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 
-const CGU = () => {
+const CGU = ({ baseUrl }) => {
+  const organizationSchema = createOrganizationSchema();
+  const cguPageSchema = createWebPageSchema(
+    'Conditions Générales d\'Utilisation',
+    'Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales.',
+    `${baseUrl}/cgu`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, cguPageSchema]
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Head>
-        <title>CGU | Théo Multimédia - Conditions Générales d'Utilisation</title>
-        <meta name="description" content="Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales." />
-      </Head>
+      <SEO
+        title="CGU | Théo Multimédia - Conditions Générales d'Utilisation"
+        description="Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales."
+        canonical="/cgu"
+        schema={schema}
+      />
 
       <main className="container mx-auto px-4 py-16">
         <motion.div
@@ -128,3 +141,9 @@ const CGU = () => {
 };
 
 export default CGU;
+
+export async function getServerSideProps({ req }) {
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
+  const baseUrl = getSiteUrlFromHeaders(req)
+  return { props: { baseUrl } }
+}

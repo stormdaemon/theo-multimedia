@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,19 +17,25 @@ const PortfolioPage = ({ baseUrl }) => {
     ? projects
     : projects.filter(p => p.category === filter);
 
+  const organizationSchema = createOrganizationSchema();
+  const portfolioPageSchema = createWebPageSchema(
+    'Mon Portfolio',
+    'Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j\'ai créés pour mes clients.',
+    `${baseUrl}/portfolio`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, portfolioPageSchema]
+  };
+
   return (
     <>
-      <Head>
-        <title>Mon Portfolio - Mes réalisations | Théo Multimédia</title>
-        <meta name="description" content="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients." />
-        <meta name="author" content="Théo LAFONT" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={`${baseUrl}/portfolio`} />
-        <meta property="og:title" content="Mon Portfolio | Théo Multimédia" />
-        <meta property="og:description" content="Découvrez mes réalisations web et digitales." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${baseUrl}/portfolio`} />
-      </Head>
+      <SEO
+        title="Mon Portfolio - Mes réalisations"
+        description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients."
+        canonical="/portfolio"
+        schema={schema}
+      />
 
       <div className="bg-background">
         <section className="pt-32 pb-20 px-6">

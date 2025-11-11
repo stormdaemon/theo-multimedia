@@ -1,40 +1,28 @@
 import { motion } from 'framer-motion';
-import Head from 'next/head';
+import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 const PolitiqueConfidentialite = ({ baseUrl }) => {
+  const organizationSchema = createOrganizationSchema();
+  const privacyPageSchema = createWebPageSchema(
+    'Politique de confidentialité',
+    'Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD.',
+    `${baseUrl}/politique-confidentialite`
+  );
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [organizationSchema, privacyPageSchema]
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Head>
-        <title>Politique de Confidentialité | Théo Multimédia - RGPD</title>
-        <meta name="description" content="Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD." />
-
-        <meta name="author" content="Théo LAFONT" />
-        <meta property="og:title" content="Politique de confidentialité | Théo Multimédia" />
-        <meta property="og:description" content="Découvrez comment Théo Multimédia protège vos données personnelles et respecte votre vie privée. Politique conforme RGPD." />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href={`${baseUrl}/politique-confidentialite`} />
-        <meta property="og:url" content={`${baseUrl}/politique-confidentialite`} />
-        <meta property="og:image" content={`${baseUrl}/og-privacy.jpg`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Politique de confidentialité | Théo Multimédia" />
-        <meta name="twitter:description" content="Politique de confidentialité : gestion des données, cookies, sécurité, droits utilisateurs. Protection et transparence garanties." />
-        <meta name="twitter:image" content={`${baseUrl}/og-privacy.jpg`} />
-        <meta name="ai-summary" content="Politique de confidentialité Théo Multimédia : gestion des données, cookies, sécurité, droits utilisateurs. Transparence et conformité RGPD." />
-        <script type="application/ld+json">{`
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Politique de confidentialité Théo Multimédia",
-          "author": {
-            "@type": "Person",
-            "name": "Théo LAFONT"
-          },
-          "description": "Politique de confidentialité Théo Multimédia : gestion des données, cookies, sécurité, droits utilisateurs. Transparence et conformité RGPD.",
-          "inLanguage": "fr-FR"
-        }
-        `}</script>
-      </Head>
+      <SEO
+        title="Politique de Confidentialité | Théo Multimédia - RGPD"
+        description="Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD."
+        canonical="/politique-confidentialite"
+        schema={schema}
+        ogImage="/og-privacy.jpg"
+      />
 
       <main className="container mx-auto px-4 py-16">
         <motion.div
