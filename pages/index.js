@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import Image from 'next/image';
+import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 // Client-only animated components - loaded after SSR
@@ -9,18 +10,18 @@ const AnimatedWrapper = dynamic(() => import('../components/AnimatedWrapper'), {
 const FloatingDots = dynamic(() => import('../components/FloatingDots'), { ssr: false });
 
 const Home = ({ baseUrl }) => {
-  // Create structured data schemas
-  const organizationSchema = createOrganizationSchema();
+  // Create LOCAL SEO structured data schemas (2025)
+  const localBusinessSchema = createLocalBusinessSchema();
   const webPageSchema = createWebPageSchema(
     'Site web en 24h | Création sites internet Angoulême',
     'Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO.',
     baseUrl
   );
 
-  // Combine schemas in a graph
+  // Combine schemas in a graph for maximum local SEO power
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [organizationSchema, webPageSchema]
+    '@graph': [localBusinessSchema, webPageSchema]
   };
 
   const features = [
@@ -81,6 +82,7 @@ const Home = ({ baseUrl }) => {
         canonical="/"
         ogImage="/og-image.jpg"
         schema={schema}
+        enableLocalSEO={true}
       />
 
       <div className="overflow-hidden bg-background">
@@ -415,10 +417,14 @@ const Home = ({ baseUrl }) => {
                 >
                   <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-muted mb-4">
                     {project.imageUrl && (
-                      <img
+                      <Image
                         src={project.imageUrl}
                         alt={project.name}
+                        width={800}
+                        height={500}
+                        quality={85}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">

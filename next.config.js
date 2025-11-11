@@ -43,7 +43,7 @@ const nextConfig = {
   // Turbopack est par défaut dans Next.js 16
   turbopack: {},
 
-  // Headers pour la sécurité et le cache (version assouplie pour les crawlers)
+  // Headers pour la sécurité et le cache optimisé (2025 PageSpeed)
   async headers() {
     return [
       {
@@ -71,6 +71,46 @@ const nextConfig = {
           },
         ],
       },
+      // Aggressive caching for static images (PageSpeed optimization)
+      {
+        source: '/:path*.{jpg,jpeg,png,webp,avif,gif,svg,ico}',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, s-maxage=31536000, immutable',
+          },
+        ],
+      },
+      // Aggressive caching for fonts
+      {
+        source: '/:path*.{woff,woff2,ttf,otf,eot}',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Caching for CSS and JS (with revalidation)
+      {
+        source: '/_next/static/css/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/chunks/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Public assets
       {
         source: '/public/:path*',
         headers: [
