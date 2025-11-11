@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+
+// Next.js 16: Force SSR (Nov 2025 requirement)
+export const dynamic = 'force-dynamic';
 
 const CGU = ({ baseUrl }) => {
   const organizationSchema = createOrganizationSchema();

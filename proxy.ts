@@ -14,6 +14,7 @@ export function proxy(request: NextRequest) {
     reqHeaders.set('x-ai-access', 'allow')
 
     const res = NextResponse.next({ request: { headers: reqHeaders } })
+    res.headers.set('X-Robots-Tag', 'all')  // SEO: Allow indexation
     res.headers.set('X-AI-Access', 'allow')
     res.headers.set('Vary', 'User-Agent')
     res.headers.set('Content-Type', 'text/html; charset=utf-8')
@@ -21,7 +22,11 @@ export function proxy(request: NextRequest) {
     if (!res.headers.get('Cache-Control')) res.headers.set('Cache-Control', 'public, max-age=60')
     return res
   }
-  return NextResponse.next()
+
+  // For non-AI requests, still add X-Robots-Tag
+  const response = NextResponse.next()
+  response.headers.set('X-Robots-Tag', 'all')  // SEO: Allow indexation for all bots
+  return response
 }
 
 export const config = {
