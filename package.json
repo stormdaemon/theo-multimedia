@@ -13,8 +13,6 @@
     "lighthouse": "lhci autorun"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/space-grotesk": "^5.2.10",
     "@formspree/react": "^3.0.0",
     "@heroicons/react": "^2.1.1",
     "clsx": "^2.1.0",

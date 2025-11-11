@@ -1,5 +1,3 @@
-import '@fontsource/inter';
-import '@fontsource/space-grotesk';
 import '../styles/globals.css';
 import Layout from '../components/Layout';
 import ClientOnlyAnimatePresence from '../components/ClientOnlyAnimatePresence';
