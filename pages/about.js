@@ -2,7 +2,9 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import ConditionalMotion from '../components/ConditionalMotion';
+import { isCrawler } from '../lib/isCrawler';
 
 const values = [
   {
@@ -34,7 +36,7 @@ const skills = [
   { name: 'Éco-conception', level: 90 },
 ];
 
-const AboutPage = ({ baseUrl }) => {
+const AboutPage = ({ baseUrl, disableAnimations }) => {
   // Create LOCAL SEO structured data schemas
   const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
@@ -95,20 +97,22 @@ const AboutPage = ({ baseUrl }) => {
         {/* Hero Section */}
         <section className="pt-32 pb-20 px-6">
           <div className="container mx-auto max-w-5xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center space-y-6"
             >
-              <motion.div
+              <ConditionalMotion
+                disableAnimations={disableAnimations}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
               >
                 <span className="text-sm font-medium text-accent">À propos</span>
-              </motion.div>
+              </ConditionalMotion>
 
               <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
                 Sites qui chargent en 1s<br />
@@ -121,14 +125,15 @@ const AboutPage = ({ baseUrl }) => {
                 Basé à Angoulême, je crée des sites ultra-rapides, éco-responsables,
                 et optimisés pour convertir depuis plus de 10 ans.
               </p>
-            </motion.div>
+            </ConditionalMotion>
           </div>
         </section>
 
         {/* Story Section */}
         <section className="py-20 px-6">
           <div className="container mx-auto max-w-4xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -151,14 +156,15 @@ const AboutPage = ({ baseUrl }) => {
                   Simple, clair, efficace.
                 </p>
               </div>
-            </motion.div>
+            </ConditionalMotion>
           </div>
         </section>
 
         {/* AI SEO Expertise Section */}
         <section className="py-32 px-6 bg-gradient-to-br from-accent/5 via-background to-background">
           <div className="container mx-auto max-w-6xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -174,10 +180,11 @@ const AboutPage = ({ baseUrl }) => {
                 Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA.
                 Je maîtrise les deux pour que vous soyez trouvé partout.
               </p>
-            </motion.div>
+            </ConditionalMotion>
 
             <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <motion.div
+              <ConditionalMotion
+                disableAnimations={disableAnimations}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -203,9 +210,10 @@ const AboutPage = ({ baseUrl }) => {
                     <span>Suivi mensuel de vos positions et résultats</span>
                   </li>
                 </ul>
-              </motion.div>
+              </ConditionalMotion>
 
-              <motion.div
+              <ConditionalMotion
+                disableAnimations={disableAnimations}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -234,10 +242,11 @@ const AboutPage = ({ baseUrl }) => {
                     <span>Contenu structuré pour être compris et cité par les IA</span>
                   </li>
                 </ul>
-              </motion.div>
+              </ConditionalMotion>
             </div>
 
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -267,14 +276,15 @@ const AboutPage = ({ baseUrl }) => {
                   <div className="text-sm text-foreground/60">du trafic web vient déjà des IA</div>
                 </div>
               </div>
-            </motion.div>
+            </ConditionalMotion>
           </div>
         </section>
 
         {/* Values Section */}
         <section className="py-32 px-6 bg-muted/30">
           <div className="container mx-auto max-w-6xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -286,11 +296,12 @@ const AboutPage = ({ baseUrl }) => {
               <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
                 Ce qui guide mon travail au quotidien
               </p>
-            </motion.div>
+            </ConditionalMotion>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <motion.div
+                <ConditionalMotion
+                  disableAnimations={disableAnimations}
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -303,7 +314,7 @@ const AboutPage = ({ baseUrl }) => {
                   <p className="text-foreground/60 leading-relaxed">
                     {value.description}
                   </p>
-                </motion.div>
+                </ConditionalMotion>
               ))}
             </div>
           </div>
@@ -312,7 +323,8 @@ const AboutPage = ({ baseUrl }) => {
         {/* Skills Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-4xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -324,11 +336,12 @@ const AboutPage = ({ baseUrl }) => {
               <p className="text-xl text-foreground/60 font-light">
                 Des compétences affûtées par des années d'expérience
               </p>
-            </motion.div>
+            </ConditionalMotion>
 
             <div className="space-y-8">
               {skills.map((skill, index) => (
-                <motion.div
+                <ConditionalMotion
+                  disableAnimations={disableAnimations}
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -341,7 +354,8 @@ const AboutPage = ({ baseUrl }) => {
                     <span className="text-sm text-foreground/60">{skill.level}%</span>
                   </div>
                   <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <motion.div
+                    <ConditionalMotion
+                      disableAnimations={disableAnimations}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
@@ -349,7 +363,7 @@ const AboutPage = ({ baseUrl }) => {
                       className="h-full bg-gradient-to-r from-accent to-blue-500 rounded-full"
                     />
                   </div>
-                </motion.div>
+                </ConditionalMotion>
               ))}
             </div>
           </div>
@@ -365,7 +379,8 @@ const AboutPage = ({ baseUrl }) => {
                 { value: "-60%", label: "De CO2" },
                 { value: "24h", label: "Livraison express" }
               ].map((stat, index) => (
-                <motion.div
+                <ConditionalMotion
+                  disableAnimations={disableAnimations}
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -376,7 +391,7 @@ const AboutPage = ({ baseUrl }) => {
                     {stat.value}
                   </div>
                   <div className="text-white/80">{stat.label}</div>
-                </motion.div>
+                </ConditionalMotion>
               ))}
             </div>
           </div>
@@ -385,7 +400,8 @@ const AboutPage = ({ baseUrl }) => {
         {/* CTA Section */}
         <section className="py-32 px-6">
           <div className="container mx-auto max-w-4xl">
-            <motion.div
+            <ConditionalMotion
+              disableAnimations={disableAnimations}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -407,7 +423,7 @@ const AboutPage = ({ baseUrl }) => {
                   Voir le portfolio
                 </Link>
               </div>
-            </motion.div>
+            </ConditionalMotion>
           </div>
         </section>
       </div>
@@ -420,10 +436,15 @@ const AboutPage = ({ baseUrl }) => {
  * Ensures AI crawlers and search engines see server-rendered HTML
  */
 export async function getServerSideProps({ req }) {
+  const userAgent = req.headers['user-agent'] || '';
+  const disableAnimations = isCrawler(userAgent);
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
   const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: { baseUrl },
+    props: { 
+      baseUrl,
+      disableAnimations 
+    },
   };
 }
 
