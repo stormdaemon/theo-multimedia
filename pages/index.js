@@ -14,7 +14,7 @@ const Home = ({ baseUrl }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const webPageSchema = createWebPageSchema(
     'Site web en 24h | Création sites internet Angoulême',
-    'Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO.',
+    'Je crée votre site internet professionnel en 24h. Agence web à Angoulême (Charente, Nouvelle-Aquitaine) spécialisée en création de sites, design et référencement SEO.',
     baseUrl
   );
 
@@ -78,7 +78,7 @@ const Home = ({ baseUrl }) => {
     <>
       <SEO
         title="Site web en 24h | Création sites internet Angoulême"
-        description="Je crée votre site internet professionnel en 24h. Agence web à Angoulême spécialisée en création de sites, design et référencement SEO."
+        description="Je crée votre site internet professionnel en 24h. Agence web à Angoulême (Charente, Nouvelle-Aquitaine) spécialisée en création de sites, design et référencement SEO."
         canonical="/"
         ogImage="/og-image.jpg"
         schema={schema}
@@ -112,7 +112,7 @@ const Home = ({ baseUrl }) => {
 
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed font-light">
                 Sites ultra-rapides, design qui convertit, et démarche éco-responsable.
-                Je transforme votre idée en business qui cartonne en ligne.
+                Agence web à Angoulême, en Charente (Nouvelle-Aquitaine), je transforme votre idée en business qui cartonne en ligne.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -274,7 +274,7 @@ const Home = ({ baseUrl }) => {
                             </div>
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
-                              <span><span className="font-semibold">Zone Angoulême</span> : intervient dans toute l'agglomération</span>
+                              <span><span className="font-semibold">Zone Angoulême et Charente</span> : intervient dans toute l'agglomération</span>
                             </div>
                             <div className="flex items-start gap-1.5 md:gap-2">
                               <span className="text-accent mt-0.5 md:mt-1 flex-shrink-0 text-sm md:text-base">✓</span>
