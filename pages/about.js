@@ -8,32 +8,32 @@ import { isCrawler } from '../lib/isCrawler';
 
 const values = [
   {
-    icon: "⚡",
-    title: 'Performance',
-    description: "Sites 3x plus rapides que la moyenne. Chaque milliseconde compte : vos visiteurs restent, Google vous aime, vous vendez plus.",
+    icon: "💡",
+    title: 'Innovation',
+    description: "J'explore constamment les nouvelles technologies et les tendances design pour offrir des solutions modernes et performantes.",
   },
   {
-    icon: "🌱",
-    title: 'Écologie',
-    description: "Internet pollue. Je code léger pour réduire de 60% l'empreinte carbone de vos sites. Bon pour la planète, bon pour votre image.",
+    icon: "🎯",
+    title: 'Excellence',
+    description: "Chaque projet est traité avec le plus grand soin. Je ne livre que des solutions dont je suis fier.",
   },
   {
-    icon: "📈",
-    title: 'Conversion',
-    description: "Des sites qui transforment vos visiteurs en clients. Design persuasif, parcours optimisés : +40% de conversions en moyenne.",
+    icon: "❤️",
+    title: 'Passion',
+    description: "Le développement web est ma passion. J'aime créer des expériences numériques qui font la différence.",
   },
   {
-    icon: "💬",
-    title: 'Clarté',
-    description: "Zéro jargon technique. Je vous explique tout simplement, vous comprenez parfaitement, vous décidez en confiance.",
+    icon: "🤝",
+    title: 'Collaboration',
+    description: "Je travaille en étroite collaboration avec mes clients pour comprendre leurs besoins et dépasser leurs attentes.",
   }
 ];
 
 const skills = [
-  { name: 'Sites ultra-rapides', level: 98 },
-  { name: 'Design qui convertit', level: 95 },
-  { name: 'Visible sur Google', level: 93 },
-  { name: 'Éco-conception', level: 90 },
+  { name: 'Design & UX/UI', level: 95 },
+  { name: 'Développement Web', level: 98 },
+  { name: 'SEO & Performance', level: 92 },
+  { name: 'Gestion de Projet', level: 90 },
 ];
 
 const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
@@ -63,15 +63,11 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
       <CrawlerPageContent
         isCrawler={isCrawler}
         title="À Propos - Théo Multimédia"
-        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des sites ultra-rapides, éco-responsables, et optimisés pour convertir depuis plus de 10 ans."
+        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans."
         sections={[
           {
             title: "Mon histoire",
-            content: "Je suis Théo, et je crée des sites web qui cartonnent. Pas juste des sites jolis — des sites qui génèrent des résultats business. Ma spécialité ? Sites 3x plus rapides que la moyenne, qui convertissent 40% mieux, tout en réduisant de 60% l'empreinte carbone. Performance + Conversion + Écologie = Sites qui durent et qui rapportent.",
-          },
-          {
-            title: "Expertise unique : Visible sur ChatGPT et Google",
-            content: "Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA. Je maîtrise les deux : référencement Google classique (première page sur vos mots-clés) ET référencement IA (ChatGPT recommande votre entreprise, Perplexity cite votre site). 800 millions de personnes utilisent ChatGPT chaque semaine. +527% de trafic venant des IA en 2025. 10% du trafic web vient déjà des IA.",
+            content: "Je suis Théo, développeur web et designer passionné. Mon parcours dans le digital a commencé il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer. Ce qui me distingue ? Mon engagement total dans chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences qui captivent, engagent et convertissent. Que ce soit pour une startup qui lance son premier site ou une entreprise établie qui souhaite se réinventer, j'apporte la même attention aux détails et la même passion pour l'excellence.",
           },
           {
             title: "Mes valeurs",
@@ -82,11 +78,11 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
             items: skills.map(s => `${s.name} (${s.level}% de maîtrise)`),
           },
           {
-            title: "Résultats",
+            title: "Expérience",
             items: [
-              "Sites 3x plus rapides que la moyenne",
-              "+40% de conversions en moyenne",
-              "-60% d'empreinte CO2",
+              "Plus de 10 années d'expérience",
+              "Plus de 50 projets réalisés",
+              "100% de clients satisfaits",
               "Livraison express en 24h disponible"
             ],
           },
@@ -115,15 +111,15 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
               </ConditionalMotion>
 
               <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Sites qui chargent en 1s<br />
+                Créateur d'expériences<br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  et qui cartonnent
+                  digitales mémorables
                 </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Basé à Angoulême, je crée des sites ultra-rapides, éco-responsables,
-                et optimisés pour convertir depuis plus de 10 ans.
+                Basé à Angoulême, je transforme des idées en sites web exceptionnels
+                depuis plus de 10 ans.
               </p>
             </ConditionalMotion>
           </div>
@@ -142,18 +138,19 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
             >
               <div className="space-y-6 text-lg text-foreground/70 leading-relaxed">
                 <p>
-                  Salut ! Je suis <span className="text-foreground font-semibold">Théo</span>, et je crée des sites web
-                  qui cartonnent. Pas juste des sites "jolis" — des sites qui <span className="text-accent font-semibold">génèrent des résultats business</span>.
+                  Bonjour ! Je suis <span className="text-foreground font-semibold">Théo</span>,
+                  développeur web et designer passionné. Mon parcours dans le digital a commencé
+                  il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer.
                 </p>
                 <p>
-                  Ma spécialité ? <span className="text-accent font-semibold">Sites 3x plus rapides</span> que la moyenne,
-                  qui convertissent 40% mieux, tout en réduisant de 60% l'empreinte carbone.
-                  Performance + Conversion + Écologie = Sites qui durent et qui rapportent.
+                  Ce qui me distingue ? <span className="text-accent font-semibold">Mon engagement total</span> dans
+                  chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences
+                  qui captivent, engagent et convertissent.
                 </p>
                 <p>
-                  J'ai arrêté de parler "code" et "techno". Je parle <span className="text-foreground font-semibold">résultats</span> :
-                  plus de visiteurs qui restent, plus de clients qui achètent, moins d'énergie gaspillée.
-                  Simple, clair, efficace.
+                  Que ce soit pour une startup qui lance son premier site ou une entreprise établie
+                  qui souhaite se réinventer, j'apporte la même attention aux détails et la même
+                  passion pour l'excellence.
                 </p>
               </div>
             </ConditionalMotion>
@@ -256,8 +253,8 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
                 Pourquoi c'est important pour vous ?
               </h3>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-6">
-                Imaginez : quelqu'un demande à ChatGPT <span className="text-foreground font-semibold">"Qui peut créer mon site internet à Angoulême ?"</span> ou
-                <span className="text-foreground font-semibold"> "Je cherche un développeur web éco-responsable"</span>.
+                Imaginez : vos clients demandent à ChatGPT <span className="text-foreground font-semibold">"Trouve-moi un coiffeur à Angoulême"</span> ou
+                <span className="text-foreground font-semibold"> "Je cherche un serrurier disponible la nuit"</span>.
               </p>
               <p className="text-xl font-semibold text-accent mb-6">
                 Si votre site est optimisé pour l'IA, c'est VOUS que ChatGPT recommande. 🎯
