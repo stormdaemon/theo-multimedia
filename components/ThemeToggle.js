@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // Effet pour éviter l'hydratation non concordante
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
     return (
-      <button className="w-10 h-10 rounded-full flex items-center justify-center">
-        <div className="w-5 h-5 rounded-full border-2 border-transparent" />
+      <button className="w-9 h-9 rounded-lg flex items-center justify-center" aria-hidden="true">
+        <div className="w-4 h-4" />
       </button>
     );
   }
@@ -22,13 +21,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-accent/10 transition-colors duration-200"
+      className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
       aria-label="Basculer entre le mode clair et sombre"
     >
       {theme === 'dark' ? (
-        <SunIcon className="w-5 h-5" />
+        <Sun className="w-4 h-4" />
       ) : (
-        <MoonIcon className="w-5 h-5" />
+        <Moon className="w-4 h-4" />
       )}
     </button>
   );

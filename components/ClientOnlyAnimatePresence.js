@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { useRouter } from 'next/router';
 
 // Client-only wrapper for AnimatePresence that doesn't block SSR

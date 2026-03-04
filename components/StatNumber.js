@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "motion/react";
 
 export default function StatNumber({ value, label, blurColor = "#a855f7" }) {
   const ref = useRef(null);

@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
 
 // Composant pour les effets de parallaxe 3D

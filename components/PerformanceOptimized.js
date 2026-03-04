@@ -1,4 +1,4 @@
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation } from 'motion/react';
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 

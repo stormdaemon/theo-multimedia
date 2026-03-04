@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useRef } from 'react';
-import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ChevronDown, X } from 'lucide-react';
 
 // Hook pour la détection des préférences d'accessibilité
 export const useAccessibilityPreferences = () => {
@@ -266,7 +266,7 @@ export const AccessibleInput = ({
             exit={{ opacity: 0, y: -10 }}
             role="alert"
           >
-            <XMarkIcon className="w-4 h-4" />
+            <X className="w-4 h-4" />
             <span>{error}</span>
           </motion.p>
         )}
@@ -334,7 +334,7 @@ export const AccessibleNotification = ({
               className="ml-4 text-current hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-current rounded"
               aria-label="Fermer la notification"
             >
-              <XMarkIcon className="w-5 h-5" />
+              <X className="w-5 h-5" />
             </button>
           </div>
           

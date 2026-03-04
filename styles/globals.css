@@ -1,277 +1,113 @@
+@import "tailwindcss";
 
+/* Class-based dark mode for next-themes */
+@custom-variant dark (&:is(.dark *));
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Content sources */
+@source "../pages/**/*.{js,jsx}";
+@source "../components/**/*.{js,jsx}";
 
-@layer base {
-  :root {
-    /* Apple-style Light Theme - Ultra clean */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 221 83% 53%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 221 83% 53%;
-    --radius: 0.75rem;
-  }
+/* ─── Design Tokens ─── */
+@theme {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-outfit), ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  .dark {
-    /* Apple-style Dark Theme - Pure blacks with subtle grays */
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 213 94% 68%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 213 94% 68%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 213 94% 68%;
-  }
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--card-bg);
+  --color-card-foreground: var(--card-fg);
+  --color-muted: var(--muted-bg);
+  --color-muted-foreground: var(--muted-fg);
+  --color-border: var(--border-c);
+  --color-accent: var(--accent-c);
+  --color-accent-foreground: var(--accent-fg-c);
+
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-slide-up: slide-up 0.6s ease-out both;
+  --animate-marquee: marquee 30s linear infinite;
 }
 
+/* ─── Light Theme ─── */
+:root {
+  --bg: #fafaf9;
+  --fg: #1c1917;
+  --card-bg: #ffffff;
+  --card-fg: #1c1917;
+  --muted-bg: #f5f5f4;
+  --muted-fg: #78716c;
+  --border-c: #e7e5e4;
+  --accent-c: #ea580c;
+  --accent-fg-c: #ffffff;
+}
+
+/* ─── Dark Theme ─── */
+.dark {
+  --bg: #0c0a09;
+  --fg: #fafaf9;
+  --card-bg: #1c1917;
+  --card-fg: #fafaf9;
+  --muted-bg: #292524;
+  --muted-fg: #a8a29e;
+  --border-c: #44403c;
+  --accent-c: #f97316;
+  --accent-fg-c: #ffffff;
+}
+
+/* ─── Base Styles ─── */
 @layer base {
-  * {
-    border-color: hsl(var(--border));
+  *, ::after, ::before, ::backdrop {
+    border-color: var(--border-c);
   }
+
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  ::selection {
+    background-color: var(--accent-c);
+    color: var(--accent-fg-c);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--muted-fg);
+    border-radius: 3px;
   }
 }
 
-@layer components {
-  /* Custom Scrollbar */
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--muted-foreground) / 0.3);
-    border-radius: 9999px;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(var(--muted-foreground) / 0.5);
-  }
+/* ─── Keyframes ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  /* Animations */
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
-  }
+@keyframes slide-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-  @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
-  /* Glass Effect */
-  .glass {
-    background-color: hsl(var(--background) / 0.5);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border: 1px solid hsl(var(--border) / 0.5);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
-
-  /* Card Hover Effect */
-  .card-hover {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-  }
-  
-  .card-hover:hover {
-    --tw-translate-y: -0.25rem;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    --tw-shadow: 0 25px 50px -12px rgb(236 72 153 / 0.1);
-    --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  /* Apple-style Button Styles */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 2rem;
-    border-radius: 980px;
-    font-size: 1.0625rem;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
-    border: none;
-  }
-
-  .btn-primary:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 16px -4px hsl(var(--accent) / 0.4);
-  }
-
-  .btn-secondary {
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
-  }
-
-  .btn-secondary:hover {
-    background-color: hsl(var(--muted));
-    transform: scale(1.02);
-  }
-
-  /* Custom Underline */
-  .underline-effect {
-    position: relative;
-    display: inline-block;
-  }
-
-  .underline-effect::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: hsl(var(--accent));
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-  }
-
-  .underline-effect:hover::after {
-    width: 100%;
-  }
-
-  /* Apply hover effects only on devices that support hover */
-  @media (hover: hover) {
-    .hover\:scale-110:hover {
-      transform: scale(1.1);
-    }
-    
-    .hover\:translate-x-1:hover {
-      transform: translateX(0.25rem);
-    }
-    
-    .hover\:bg-accent\/90:hover {
-      background-color: hsl(var(--accent) / 0.9);
-    }
-    
-    .hover\:bg-accent:hover {
-      background-color: hsl(var(--accent));
-    }
-    
-    .hover\:bg-white\/20:hover {
-      background-color: rgb(255 255 255 / 0.2);
-    }
-    
-    .hover\:bg-muted\/5:hover {
-      background-color: hsl(var(--muted) / 0.05);
-    }
-    
-    .hover\:shadow-lg:hover {
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    }
-    
-    .hover\:shadow-md:hover {
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    }
-    
-    .hover\:shadow-2xl:hover {
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    }
-    
-    .hover\:border-accent\/30:hover {
-      border-color: hsl(var(--accent) / 0.3);
-    }
-    
-    .hover\:text-accent:hover {
-      color: hsl(var(--accent));
-    }
-    
-    .hover\:underline:hover {
-      text-decoration: underline;
-    }
-    
-    .group:hover .group-hover\:scale-110 {
-      transform: scale(1.1);
-    }
-    
-    .group:hover .group-hover\:translate-x-1 {
-      transform: translateX(0.25rem);
-    }
-    
-    .group:hover .group-hover\:bg-accent\/20 {
-      background-color: hsl(var(--accent) / 0.2);
-    }
-    
-    .group:hover .group-hover\:scale-105 {
-      transform: scale(1.05);
-    }
-    
-    .group:hover .group-hover\:text-accent {
-      color: hsl(var(--accent));
-    }
-    
-    .btn:hover {
-      background-color: hsl(var(--accent) / 0.9);
-    }
-    
-    .btn-secondary:hover {
-      background-color: hsl(var(--muted) / 0.5);
-      border-color: hsl(var(--muted-foreground) / 0.5);
-    }
-    
-    .underline-effect:hover::after {
-      width: 100%;
-    }
-  }
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
