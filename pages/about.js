@@ -256,7 +256,7 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-4 grid grid-cols-3 gap-4"
+              className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3"
             >
               {[
                 { value: '800M', label: 'utilisateurs ChatGPT/semaine' },
@@ -371,7 +371,7 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
+              className="p-6 sm:p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
             >
               <div className="relative z-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">

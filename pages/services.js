@@ -205,9 +205,9 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                 <Clock className="w-10 h-10 text-accent" />
               </div>
               <div>
-                <div className="flex items-baseline gap-3 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-2">
                   <span className="text-4xl md:text-5xl font-extrabold text-accent font-[var(--font-heading)]">24h</span>
-                  <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight">
                     Votre site en ligne demain
                   </h2>
                 </div>
@@ -333,7 +333,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-10 md:p-16 rounded-xl border border-border bg-card text-center"
+              className="p-6 sm:p-10 md:p-16 rounded-xl border border-border bg-card text-center"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
                 Pret a demarrer ?
@@ -345,14 +345,14 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-accent-foreground rounded-lg text-lg font-medium hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-accent text-accent-foreground rounded-lg text-base sm:text-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   Parler de mon projet
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-background border border-border text-foreground rounded-lg text-lg font-medium hover:bg-muted transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-background border border-border text-foreground rounded-lg text-base sm:text-lg font-medium hover:bg-muted transition-colors"
                 >
                   Voir mon portfolio
                 </Link>
