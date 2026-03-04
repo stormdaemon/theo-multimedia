@@ -1,24 +1,25 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useState } from 'react';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, ExternalLink, Lock } from 'lucide-react';
+import SEO, { createLocalBusinessSchema, createWebPageSchema, createBreadcrumbSchema } from '../components/SEO';
+import { CrawlerPageContent } from '../components/CrawlerContent';
+import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 
 const projects = [
   {
-    title: 'SOS Chrétiens d\'Occident',
+    title: 'SOS Chretiens d\'Occident',
     category: 'Site vitrine',
-    description: "Association catholique de défense de la liberté religieuse. Site vitrine avec veille sur la christianophobie, système d'adhésion et formulaire de contact. Design engagé et impactant.",
+    description: "Site vitrine pour une association de defense de la liberte religieuse. Veille, systeme d'adhesion et formulaire de contact. Design engageant et impactant, optimise SEO.",
     imageUrl: '/sos_chretien_d_occident.png',
     url: 'https://soschretiensdoccident.fr/',
     tags: ['Associatif', 'SEO', 'Conversion']
   },
   {
-    title: 'Institut Irénée',
+    title: 'Institut Irenee',
     category: 'Application web',
-    description: "Plateforme de formation en ligne pour l'apologétique catholique. Système d'inscription, espace étudiant et gestion de formations diplômantes. Interface pédagogique et professionnelle.",
+    description: "Plateforme de formation en ligne avec systeme d'inscription, espace etudiant et gestion de formations diplomantes. Interface pedagogique et performante.",
     imageUrl: '/irenee_institut.png',
     url: 'https://www.irenee-institut.org/',
     tags: ['E-learning', 'React', 'Authentication']
@@ -26,15 +27,15 @@ const projects = [
   {
     title: 'Ultreia Event',
     category: 'Site vitrine',
-    description: "Agence de communication catholique spécialisée en diffusion multi-stream et événementiel. Site vitrine professionnel avec présentation des services et portfolio de partenaires.",
+    description: "Agence de communication specialisee en diffusion multi-stream et evenementiel. Site vitrine professionnel avec presentation des services et portfolio de partenaires.",
     imageUrl: '/ultreia_event.png',
     url: 'https://ultreiaevent.com/',
     tags: ['Agence', 'Marketing', 'Design']
   },
   {
-    title: 'Révélation Radio',
+    title: 'Revelation Radio',
     category: 'Site vitrine',
-    description: "Site vitrine pour une web radio catholique avec présentation des émissions et lecteur audio intégré. Design moderne et expérience utilisateur optimisée.",
+    description: "Site vitrine pour une web radio avec presentation des emissions et lecteur audio integre. Design moderne et experience utilisateur optimisee.",
     imageUrl: '/revelation.png',
     url: null,
     tags: ['Design', 'Audio', 'Responsive']
@@ -42,15 +43,15 @@ const projects = [
   {
     title: 'Fesch 2025',
     category: 'Site vitrine',
-    description: 'Site promotionnel pour le documentaire "Fesch 2025, du non-sens au Mystère" réalisé par Samuel Armnius. Design cinématographique et immersif.',
+    description: 'Site promotionnel pour le documentaire "Fesch 2025, du non-sens au Mystere". Design cinematographique et immersif, optimise pour le partage social.',
     imageUrl: '/fesch.png',
     url: 'https://fesch2025.fr/',
-    tags: ['Design', 'Marketing', 'Vidéo']
+    tags: ['Design', 'Marketing', 'Video']
   },
   {
     title: 'Heaven Radio',
     category: 'Web radio',
-    description: "Successeur de Révélation Radio, nouvelle web radio avec expérience audio enrichie et design repensé. Interface moderne et intuitive.",
+    description: "Web radio avec experience audio enrichie et design repense. Interface moderne, intuitive, streaming en temps reel et navigation fluide.",
     imageUrl: '/heavenradio.png',
     url: 'https://heavenradio.fr/',
     tags: ['Audio', 'Streaming', 'Design']
@@ -58,15 +59,15 @@ const projects = [
   {
     title: 'BR16BATIMENT',
     category: 'Site vitrine',
-    description: "Site vitrine professionnel pour un artisan bâtiment avec présentation des services, portfolio de réalisations et formulaire de contact.",
+    description: "Site vitrine professionnel pour un artisan batiment. Presentation des services, portfolio de realisations et formulaire de contact. SEO local optimise.",
     imageUrl: '/BR16BAPTIMENT.png',
     url: 'https://br16batiment.netlify.app/',
-    tags: ['Vitrine', 'SEO', 'Responsive']
+    tags: ['Vitrine', 'SEO Local', 'Responsive']
   },
   {
-    title: "Le Baptême Catholique",
+    title: "Le Bapteme Catholique",
     category: "Landing page",
-    description: "Landing page de génération de leads pour accompagner les personnes vers le baptême. Design épuré et parcours utilisateur optimisé.",
+    description: "Landing page de generation de leads avec design epure et parcours utilisateur optimise pour la conversion. Taux de conversion ameliore de +40%.",
     imageUrl: "/baptemecatholique.png",
     url: "https://lebaptemecatholique.fr/",
     tags: ['Landing', 'Conversion', 'SEO']
@@ -74,14 +75,14 @@ const projects = [
   {
     title: "TRACKWARS",
     category: "Application web",
-    description: "Jeu de blind test musical innovant conçu pour les professionnels de l'événementiel. Interface ludique et performante.",
+    description: "Jeu de blind test musical innovant pour les professionnels de l'evenementiel. Interface ludique, temps reel et performante.",
     imageUrl: "/trackwars.png",
     url: "https://trackwars.fr/",
     tags: ['Gaming', 'React', 'Audio']
   }
 ];
 
-const PortfolioPage = ({ baseUrl, isCrawler }) => {
+const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const [filter, setFilter] = useState('all');
   const categories = ['all', 'Site vitrine', 'Web radio', 'Application web', 'Landing page'];
 
@@ -89,119 +90,112 @@ const PortfolioPage = ({ baseUrl, isCrawler }) => {
     ? projects
     : projects.filter(p => p.category === filter);
 
-  const organizationSchema = createOrganizationSchema();
+  const localBusinessSchema = createLocalBusinessSchema();
   const portfolioPageSchema = createWebPageSchema(
-    'Mon Portfolio',
-    'Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j\'ai créés pour mes clients.',
+    'Portfolio - Realisations Web a Angouleme',
+    'Decouvrez les sites internet, applications web et projets digitaux crees par Theo Multimedia. Sites ultra-rapides, eco-concus et optimises pour Google et les IA.',
     `${baseUrl}/portfolio`
   );
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: 'Accueil', url: '/' },
+    { name: 'Portfolio', url: '/portfolio' },
+  ]);
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [organizationSchema, portfolioPageSchema]
+    '@graph': [localBusinessSchema, portfolioPageSchema, breadcrumbSchema]
   };
 
   return (
     <>
       <SEO
-        title="Mon Portfolio - Mes réalisations"
-        description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux que j'ai créés pour mes clients."
+        title="Portfolio - Sites Web et Applications sur Mesure"
+        description="Decouvrez mes realisations : sites internet ultra-rapides, applications web et projets digitaux optimises pour Google et les IA. Angouleme, Charente."
         canonical="/portfolio"
         schema={schema}
       />
 
       <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="Mon Portfolio - Mes réalisations"
-        description="Découvrez mes réalisations : sites internet modernes, applications web et projets digitaux ultra-rapides, éco-conçus, et optimisés pour convertir."
+        isCrawler={isCrawlerBot}
+        title="Portfolio - Realisations de Theo Multimedia"
+        description="Decouvrez les sites internet, applications web et projets digitaux crees par Theo Multimedia, agence web a Angouleme. Chaque projet est ultra-rapide, eco-concu et optimise pour le referencement Google et les moteurs de recherche IA."
         sections={[
           {
-            title: "Mes réalisations",
-            content: "Ultra-rapides, éco-conçus, et optimisés pour convertir. Voici des projets qui génèrent des résultats réels.",
+            title: "Nos realisations web",
+            content: "Chaque projet est concu pour performer : temps de chargement inferieur a 1 seconde, score Google PageSpeed 95+/100, design responsive, eco-conception, et optimisation SEO complete pour Google et les intelligences artificielles.",
           },
           {
-            title: "Projets récents",
+            title: "Projets clients",
+            items: projects.filter(p => p.url).map(p => `${p.title} - ${p.category}: ${p.description} (${p.url})`),
+          },
+          {
+            title: "Technologies utilisees",
             items: [
-              "SOS Chrétiens d'Occident - Association catholique de défense de la liberté religieuse (https://soschretiensdoccident.fr/)",
-              "Institut Irénée - Plateforme de formation en apologétique catholique (https://www.irenee-institut.org/)",
-              "Ultreia Event - Agence de communication catholique spécialisée en événementiel (https://ultreiaevent.com/)",
-              "Fesch 2025 - Site promotionnel moderne et performant (https://fesch2025.fr/)",
-              "Heaven Radio - Web radio professionnelle avec streaming en direct (https://heavenradio.fr/)",
-              "TRACKWARS - Application web interactive pour les passionnés de musique (https://trackwars.fr/)",
-              "Le Baptême Catholique - Landing page optimisée pour les conversions (https://lebaptemecatholique.fr/)"
+              "Next.js avec rendu serveur (SSR) pour performance et SEO optimal",
+              "React pour interfaces modernes et reactives",
+              "Tailwind CSS pour design sur-mesure et responsive",
+              "Optimisation SEO avancee Google et IA (ChatGPT, Perplexity, Gemini)",
+              "Eco-conception web : sites 60% plus legers que la moyenne",
             ],
           },
           {
-            title: "Technologies utilisées",
+            title: "Resultats obtenus",
             items: [
-              "Next.js 16 avec SSR et Turbopack pour performance maximale",
-              "React 19 pour interfaces modernes et réactives",
-              "Tailwind CSS pour design sur-mesure",
-              "Optimisation SEO avancée (Google + IA)",
-              "Hébergement performant et écologique"
-            ],
-          },
-          {
-            title: "Résultats",
-            items: [
-              "Temps de chargement < 1 seconde",
+              "Temps de chargement inferieur a 1 seconde",
               "Score Google PageSpeed 95+/100",
-              "Design responsive (mobile, tablette, desktop)",
-              "-60% d'empreinte carbone vs sites traditionnels",
-              "Taux de conversion optimisés (+40% en moyenne)"
+              "Design responsive mobile, tablette et desktop",
+              "-60% d'empreinte carbone par rapport aux sites traditionnels",
+              "+40% de taux de conversion en moyenne",
             ],
           },
         ]}
       />
 
       <div className="bg-background">
-        <section className="pt-32 pb-20 px-6">
-          <div className="container mx-auto max-w-6xl">
+        {/* ─── HERO ─── */}
+        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+          <div className="max-w-6xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-6"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
-              >
-                <span className="text-sm font-medium text-accent">Portfolio</span>
-              </motion.div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="text-xs font-medium text-accent uppercase tracking-wider">Portfolio</span>
+              </div>
 
-              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Sites qui<br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  cartonnent vraiment
-                </span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6" data-speakable="true">
+                Des sites qui<br />
+                <span className="text-accent">generent des resultats.</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Ultra-rapides, éco-conçus, et optimisés pour convertir.
-                Voici des projets qui génèrent des résultats réels.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                Ultra-rapides, eco-concus, optimises pour convertir.
+                Chaque projet est pense pour performer sur Google et les IA.
               </p>
             </motion.div>
           </div>
         </section>
 
-        <section className="py-12 px-6">
-          <div className="container mx-auto max-w-6xl">
+        {/* ─── FILTERS ─── */}
+        <section className="py-6 px-6">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-3"
+              transition={{ delay: 0.3 }}
+              className="flex flex-wrap gap-2"
             >
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     filter === cat
-                      ? 'bg-accent text-accent-foreground shadow-lg shadow-accent/20'
-                      : 'bg-card border border-border hover:border-accent/30 text-foreground/70 hover:text-foreground'
+                      ? 'bg-accent text-accent-foreground'
+                      : 'bg-card border border-border text-muted-foreground hover:border-accent/30 hover:text-foreground'
                   }`}
                 >
                   {cat === 'all' ? 'Tous les projets' : cat}
@@ -211,69 +205,65 @@ const PortfolioPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-7xl">
-            <motion.div
-              layout
-              className="grid md:grid-cols-2 gap-8"
-            >
+        {/* ─── PROJECTS GRID ─── */}
+        <section className="py-16 md:py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <motion.div layout className="grid md:grid-cols-2 gap-6">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.title}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ delay: index * 0.08, duration: 0.5 }}
                   className="group"
                 >
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-muted mb-6">
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-muted mb-4">
                     {project.imageUrl && (
                       <Image
                         src={project.imageUrl}
-                        alt={project.title}
+                        alt={`${project.title} - ${project.category} par Theo Multimedia`}
                         fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         quality={85}
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                        priority={false}
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      {project.url && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-4 bg-white text-accent rounded-full font-medium hover:scale-110 transition-transform"
-                          >
-                            Voir le projet
-                          </a>
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-lg text-sm font-medium hover:scale-105 transition-transform"
+                        >
+                          Voir le projet
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white rounded-lg text-sm font-medium backdrop-blur-sm">
+                          <Lock className="w-3.5 h-3.5" />
+                          Projet confidentiel
                         </div>
                       )}
                     </div>
-                    {!project.url && (
-                      <div className="absolute top-4 right-4 px-4 py-2 bg-black/50 backdrop-blur-sm text-white text-sm rounded-full">
-                        Projet confidentiel
-                      </div>
-                    )}
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-accent font-medium">{project.category}</span>
-                      <div className="h-1 w-1 rounded-full bg-foreground/20" />
+                      <span className="text-xs text-accent font-medium uppercase tracking-wider">{project.category}</span>
+                      <div className="h-1 w-1 rounded-full bg-border" />
                       <div className="flex gap-2">
                         {project.tags.slice(0, 2).map((tag) => (
-                          <span key={tag} className="text-xs text-foreground/50">{tag}</span>
+                          <span key={tag} className="text-xs text-muted-foreground">{tag}</span>
                         ))}
                       </div>
                     </div>
-                    <h3 className="text-2xl font-semibold group-hover:text-accent transition-colors">
+                    <h3 className="text-xl font-semibold font-[var(--font-heading)] group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-foreground/60 leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -283,79 +273,62 @@ const PortfolioPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
-        <section className="py-20 px-6 bg-muted/30">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-3 gap-12 text-center">
+        {/* ─── STATS ─── */}
+        <section className="py-16 px-6 bg-card border-y border-border">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-3 gap-4">
               {[
-                { value: "3x", label: "Plus rapide" },
-                { value: "+40%", label: "De conversions" },
-                { value: "-60%", label: "Empreinte CO2" }
+                { value: "3x", label: "Plus rapide que la moyenne" },
+                { value: "+40%", label: "Taux de conversion" },
+                { value: "-60%", label: "Empreinte carbone" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
+                  className="text-center p-4"
                 >
-                  <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-accent to-blue-500 mb-2">
+                  <div className="text-3xl md:text-4xl font-bold text-accent font-[var(--font-heading)] mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-foreground/60">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-4xl">
+        {/* ─── CTA ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-accent via-blue-500 to-accent relative overflow-hidden"
+              className="p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
             >
-              <div className="absolute inset-0 opacity-20">
-                {[...Array(15)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -20, 0],
-                      opacity: [0.3, 0.8, 0.3]
-                    }}
-                    transition={{
-                      duration: 2 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2
-                    }}
-                  />
-                ))}
-              </div>
-
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">
                   Votre projet sera le prochain ?
                 </h2>
-                <p className="text-xl text-white/90 max-w-2xl mx-auto font-light mb-10">
-                  Je suis prêt à créer quelque chose d'extraordinaire pour vous.
-                  Discutons de votre vision.
+                <p className="text-accent-foreground/80 text-lg mb-8 max-w-lg mx-auto">
+                  Discutons de votre vision. Devis gratuit, reponse en moins de 24h.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
-                    Démarrer mon projet
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent rounded-lg font-medium hover:bg-white/90 transition-colors"
+                  >
+                    Demarrer mon projet
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <Link href="/services" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
-                    Voir mes services
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-accent-foreground border border-white/20 rounded-lg font-medium hover:bg-white/20 transition-colors"
+                  >
+                    Voir les services
                   </Link>
                 </div>
               </div>
@@ -368,15 +341,14 @@ const PortfolioPage = ({ baseUrl, isCrawler }) => {
 };
 
 export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler')
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
+  const { isCrawler } = await import('../lib/isCrawler');
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
+  const baseUrl = getSiteUrlFromHeaders(req);
   const userAgent = req.headers['user-agent'] || '';
-  const isBot = isCrawler(userAgent);
   return {
-    props: { 
+    props: {
       baseUrl,
-      isCrawler: isBot
+      isCrawler: isCrawler(userAgent),
     },
   };
 }

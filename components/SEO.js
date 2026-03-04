@@ -160,6 +160,25 @@ export const createBreadcrumbSchema = (items) => ({
   })),
 });
 
+export const createOrganizationSchema = () => {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: 'Theo Multimedia',
+    url: siteUrl,
+    email: 'contact@theo-multimedia.com',
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/theo_multimedia_logo.png`, width: 512, height: 512 },
+    founder: {
+      '@type': 'Person',
+      name: 'Theo LAFONT',
+      jobTitle: 'Developpeur Web Full-Stack & Expert SEO',
+    },
+    sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
+  };
+};
+
 export const createHowToSchema = (steps) => ({
   '@context': 'https://schema.org',
   '@type': 'HowTo',

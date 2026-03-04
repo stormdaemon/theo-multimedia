@@ -1,0 +1,32 @@
+# Theo Multimedia
+
+> Agence web basee a Angouleme (Charente, France) specialisee dans la creation de sites internet ultra-rapides, eco-responsables et optimises pour le referencement Google et les moteurs de recherche IA (ChatGPT, Perplexity, Gemini, Claude).
+
+## A propos
+
+Theo Multimedia est fondee par Theo Lafont, developpeur web full-stack avec plus de 10 ans d'experience. L'agence cree des sites internet performants qui chargent en moins de 1 seconde, avec une empreinte carbone 60% inferieure a la moyenne du marche.
+
+## Services
+
+- **Creation de sites internet** : Sites vitrines, landing pages, applications web sur-mesure avec Next.js et React. Livraison express en 24 heures disponible.
+- **Design UX/UI** : Interfaces modernes, responsives et accessibles. Design persuasif qui augmente les conversions de 40% en moyenne.
+- **Referencement SEO Google** : Audit technique, strategie de mots-cles, contenu optimise, netlinking. Objectif premiere page Google.
+- **Referencement IA (GEO)** : Optimisation pour ChatGPT, Perplexity, Gemini et Claude. Balisage schema.org enrichi, contenu structure pour les LLM, llms.txt.
+- **E-commerce** : Boutiques en ligne performantes avec paiement securise et gestion de stock.
+- **Eco-conception web** : Sites legers qui consomment 60% d'energie en moins.
+- **Maintenance et support** : Reponse sous 24h, mises a jour securite, sauvegardes.
+
+## Contact
+
+- Email: contact@theo-multimedia.com
+- Localisation: Angouleme, Charente, Nouvelle-Aquitaine, France
+- Horaires: Lundi au vendredi, 9h-18h
+- Site web: https://theo-multimedia.com
+
+## Pages
+
+- [Accueil](https://theo-multimedia.com/)
+- [Services](https://theo-multimedia.com/services)
+- [Portfolio](https://theo-multimedia.com/portfolio)
+- [A Propos](https://theo-multimedia.com/about)
+- [Contact](https://theo-multimedia.com/contact)
