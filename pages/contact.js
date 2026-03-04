@@ -1,82 +1,102 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
+import Link from 'next/link';
 import { useForm, ValidationError } from '@formspree/react';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { ArrowRight, Mail, MapPin, Clock, Zap, CheckCircle } from 'lucide-react';
+import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema, createBreadcrumbSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 
 const contactInfo = [
   {
-    icon: "📧",
+    icon: Mail,
     title: "Email",
     value: "contact@theo-multimedia.com",
     link: "mailto:contact@theo-multimedia.com"
   },
   {
-    icon: "📍",
+    icon: MapPin,
     title: "Localisation",
-    value: "Angoulême, France",
+    value: "Angouleme, Charente",
     link: null
   },
   {
-    icon: "⚡",
-    title: "Délai de réponse",
+    icon: Clock,
+    title: "Delai de reponse",
     value: "Sous 24 heures",
     link: null
   }
 ];
 
-const ContactPage = ({ baseUrl, isCrawler }) => {
+const faqs = [
+  {
+    question: "Combien coute la creation d'un site internet ?",
+    answer: "Les tarifs dependent de la complexite du projet. Un site vitrine professionnel demarre a partir de 1 000 euros. Une boutique e-commerce ou une application web sur-mesure sera evaluee selon vos besoins specifiques. Contactez-moi pour un devis gratuit et detaille en moins de 24h."
+  },
+  {
+    question: "Livraison en 24h, c'est vraiment possible ?",
+    answer: "Oui, pour les sites vitrines et landing pages. C'est ideal pour les lancements urgents, les evenements ou les opportunites business qui n'attendent pas. La qualite et la performance restent garanties."
+  },
+  {
+    question: "C'est quoi l'eco-conception web ?",
+    answer: "L'eco-conception web consiste a creer des sites legers et optimises qui consomment moins d'energie. Mes sites ont une empreinte carbone 60% inferieure a la moyenne. Resultat : un site plus rapide, un meilleur referencement Google, et un impact positif sur votre image de marque."
+  },
+  {
+    question: "Comment fonctionne le referencement IA (SEO IA) ?",
+    answer: "Le referencement IA (ou GEO - Generative Engine Optimization) consiste a optimiser votre site pour etre cite et recommande par les intelligences artificielles comme ChatGPT, Perplexity et Gemini. J'utilise le balisage schema.org enrichi, du contenu structure et des techniques specifiques pour que les IA comprennent et recommandent votre activite."
+  }
+];
+
+const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const [state, handleSubmit] = useForm("mblypyew");
 
-  const organizationSchema = createOrganizationSchema();
+  const localBusinessSchema = createLocalBusinessSchema();
   const contactPageSchema = createWebPageSchema(
-    'Contact',
-    'Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible.',
+    'Contact - Parlez-nous de votre projet web',
+    'Contactez Theo Multimedia pour discuter de votre projet de site internet. Devis gratuit en 24h. Agence web a Angouleme, specialisee SEO Google et IA.',
     `${baseUrl}/contact`
   );
+  const faqSchema = createFAQSchema(faqs);
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: 'Accueil', url: '/' },
+    { name: 'Contact', url: '/contact' },
+  ]);
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [organizationSchema, contactPageSchema]
+    '@graph': [localBusinessSchema, contactPageSchema, faqSchema, breadcrumbSchema]
   };
 
   if (state.succeeded) {
     return (
       <>
         <SEO
-          title="Message envoyé !"
-          description="Merci pour votre message. Je vous répondrai dans les 24 heures."
+          title="Message envoye - Merci !"
+          description="Merci pour votre message. Je vous repondrai dans les 24 heures."
           canonical="/contact"
           schema={schema}
         />
         <div className="min-h-screen flex items-center justify-center bg-background px-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-2xl"
+            className="text-center max-w-lg"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="text-8xl mb-8"
-            >
-              ✅
-            </motion.div>
-            <h1 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
-              Message reçu !
+            <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mx-auto mb-6">
+              <CheckCircle className="w-8 h-8" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
+              Message recu !
             </h1>
-            <p className="text-xl text-foreground/60 mb-10 font-light">
-              Merci pour votre message. Je vous répondrai dans les 24 heures.
+            <p className="text-lg text-muted-foreground mb-8">
+              Merci pour votre message. Je vous repondrai dans les 24 heures.
             </p>
-            <motion.a
+            <Link
               href="/"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-accent-foreground rounded-full font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
             >
-              Retour à l'accueil
-            </motion.a>
+              Retour a l'accueil
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </div>
       </>
@@ -86,107 +106,101 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
   return (
     <>
       <SEO
-        title="Contact - Parlons de votre projet"
-        description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express disponible."
+        title="Contact - Discutons de votre projet web"
+        description="Contactez Theo Multimedia pour votre projet de site internet a Angouleme. Devis gratuit en 24h. Specialiste SEO Google et IA (ChatGPT, Perplexity). Livraison express disponible."
         canonical="/contact"
         schema={schema}
+        enableLocalSEO={true}
       />
 
       <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="Contact - Parlons de votre projet"
-        description="Contactez-moi pour discuter de votre projet web. Je réponds sous 24h. Livraison express 24h disponible pour les urgences."
+        isCrawler={isCrawlerBot}
+        title="Contact - Theo Multimedia, Agence Web Angouleme"
+        description="Contactez Theo Multimedia pour discuter de votre projet de site internet. Devis gratuit en moins de 24 heures. Agence web basee a Angouleme, Charente, specialisee dans la creation de sites ultra-rapides, eco-responsables et optimises pour le referencement Google et les moteurs de recherche IA."
         sections={[
           {
-            title: "Discutons de votre projet",
-            content: "Vous avez un projet web ? Une idée à développer ? Un site à refondre ? Je suis là pour vous écouter et vous accompagner. Que ce soit pour un site vitrine, une boutique en ligne, ou une application web, discutons ensemble de votre vision.",
+            title: "Parlons de votre projet",
+            content: "Vous avez un projet de site web, de boutique en ligne ou d'application ? Je suis la pour vous ecouter et vous accompagner. Que ce soit pour une creation, une refonte ou une optimisation SEO, discutons ensemble de vos objectifs et de votre vision.",
           },
           {
-            title: "Coordonnées",
-            items: contactInfo.map(info => `${info.title}: ${info.value}`),
-          },
-          {
-            title: "Pourquoi me contacter ?",
+            title: "Coordonnees",
             items: [
-              "Réponse rapide sous 24 heures garantie",
-              "Livraison express en 24h disponible pour les urgences",
-              "Devis gratuit et sans engagement",
-              "Conseil personnalisé selon vos besoins",
-              "Accompagnement de A à Z sur votre projet"
+              "Email : contact@theo-multimedia.com",
+              "Localisation : Angouleme, Charente, Nouvelle-Aquitaine, France",
+              "Delai de reponse : sous 24 heures",
+              "Horaires : lundi au vendredi, 9h-18h",
             ],
           },
           {
-            title: "Services proposés",
+            title: "Services proposes",
             items: [
-              "Création de sites web ultra-rapides et éco-responsables",
-              "Refonte de sites existants pour améliorer performances",
-              "E-commerce et boutiques en ligne",
-              "Applications web sur-mesure",
-              "Référencement SEO (Google + IA comme ChatGPT)",
-              "Maintenance et support continu"
+              "Creation de sites internet ultra-rapides et eco-responsables",
+              "Refonte de sites existants pour ameliorer performances et SEO",
+              "Boutiques e-commerce et solutions de vente en ligne",
+              "Applications web sur-mesure avec React et Next.js",
+              "Referencement SEO Google et IA (ChatGPT, Perplexity, Gemini)",
+              "Livraison express en 24 heures pour sites vitrines et landing pages",
+              "Maintenance et support technique continu",
             ],
           },
           {
-            title: "Me contacter",
-            content: "Envoyez-moi un email à contact@theo-multimedia.com ou utilisez le formulaire de contact sur cette page. Je vous répondrai rapidement pour discuter de votre projet."
+            title: "Questions frequentes",
+            items: faqs.map(f => `${f.question} : ${f.answer}`),
           },
         ]}
       />
 
       <div className="bg-background">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 px-6">
-          <div className="container mx-auto max-w-5xl">
+        {/* ─── HERO ─── */}
+        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+          <div className="max-w-6xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-6"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
-              >
-                <span className="text-sm font-medium text-accent">Contact</span>
-              </motion.div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="text-xs font-medium text-accent uppercase tracking-wider">Contact</span>
+              </div>
 
-              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Un site qui<br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  cartonne ?
-                </span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6" data-speakable="true">
+                Parlons de<br />
+                <span className="text-accent">votre projet.</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Site ultra-rapide, éco-conçu, qui convertit 40% mieux ?
-                Discutons de votre projet. Je réponds en moins de 24h.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                Site ultra-rapide, eco-concu, visible sur Google et les IA ?
+                Devis gratuit en moins de 24h.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Contact Info Cards */}
-        <section className="py-12 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <div className="grid md:grid-cols-3 gap-6">
+        {/* ─── CONTACT INFO ─── */}
+        <section className="py-6 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-4">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.4 }}
-                  className="p-6 rounded-3xl bg-card border border-border text-center"
+                  transition={{ delay: index * 0.1 + 0.3 }}
+                  className="p-5 rounded-xl border border-border bg-card text-center"
                 >
-                  <div className="text-4xl mb-3">{info.icon}</div>
-                  <h3 className="text-sm text-foreground/50 mb-2">{info.title}</h3>
+                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mx-auto mb-3">
+                    <info.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">{info.title}</h3>
                   {info.link ? (
-                    <a href={info.link} className="text-foreground font-medium hover:text-accent transition-colors">
+                    <a href={info.link} className="text-foreground font-medium hover:text-accent transition-colors text-sm">
                       {info.value}
                     </a>
                   ) : (
-                    <p className="text-foreground font-medium">{info.value}</p>
+                    <p className="text-foreground font-medium text-sm">{info.value}</p>
                   )}
                 </motion.div>
               ))}
@@ -194,22 +208,22 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
-        {/* Contact Form */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-2xl">
+        {/* ─── FORM ─── */}
+        <section className="py-16 md:py-24 px-6">
+          <div className="max-w-2xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="p-8 md:p-12 rounded-[3rem] bg-card border border-border"
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="p-8 md:p-10 rounded-2xl bg-card border border-border"
             >
-              <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
+              <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight mb-8 text-center">
                 Envoyez-moi un message
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium mb-1.5">
                     Nom complet
                   </label>
                   <input
@@ -217,14 +231,14 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
                     type="text"
                     name="name"
                     required
-                    className="w-full px-4 py-4 rounded-2xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
                     placeholder="Votre nom"
                   />
                   <ValidationError prefix="Name" field="name" errors={state.errors} />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-1.5">
                     Email
                   </label>
                   <input
@@ -232,54 +246,54 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
                     type="email"
                     name="email"
                     required
-                    className="w-full px-4 py-4 rounded-2xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
                     placeholder="votre@email.com"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Téléphone <span className="text-foreground/40">(optionnel)</span>
+                  <label htmlFor="phone" className="block text-sm font-medium mb-1.5">
+                    Telephone <span className="text-muted-foreground">(optionnel)</span>
                   </label>
                   <input
                     id="phone"
                     type="tel"
                     name="phone"
-                    className="w-full px-4 py-4 rounded-2xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
                     placeholder="+33 6 12 34 56 78"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-medium mb-2">
-                    Budget estimé
+                  <label htmlFor="budget" className="block text-sm font-medium mb-1.5">
+                    Budget estime
                   </label>
                   <select
                     id="budget"
                     name="budget"
                     required
-                    className="w-full px-4 py-4 rounded-2xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
                   >
-                    <option value="">Sélectionnez une fourchette</option>
-                    <option value="1000-3000">1 000€ - 3 000€</option>
-                    <option value="3000-5000">3 000€ - 5 000€</option>
-                    <option value="5000-10000">5 000€ - 10 000€</option>
-                    <option value="10000+">Plus de 10 000€</option>
+                    <option value="">Selectionnez une fourchette</option>
+                    <option value="1000-3000">1 000 - 3 000 euros</option>
+                    <option value="3000-5000">3 000 - 5 000 euros</option>
+                    <option value="5000-10000">5 000 - 10 000 euros</option>
+                    <option value="10000+">Plus de 10 000 euros</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium mb-1.5">
                     Parlez-moi de votre projet
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows="6"
-                    className="w-full px-4 py-4 rounded-2xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
-                    placeholder="Décrivez votre projet, vos objectifs, vos besoins..."
+                    rows="5"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-sm"
+                    placeholder="Decrivez votre projet, vos objectifs, vos besoins..."
                   />
                   <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
@@ -289,73 +303,58 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
                     type="checkbox"
                     id="urgent"
                     name="urgent"
-                    className="mt-1 w-5 h-5 rounded border-border text-accent focus:ring-2 focus:ring-accent/20"
+                    className="mt-1 w-4 h-4 rounded border-border text-accent focus:ring-2 focus:ring-accent/20"
                   />
-                  <label htmlFor="urgent" className="text-sm text-foreground/70">
-                    ⚡ <span className="font-medium text-accent">Livraison express 24h</span> - J'ai besoin de mon site rapidement
+                  <label htmlFor="urgent" className="text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Zap className="w-3.5 h-3.5 text-accent" />
+                      <span className="font-medium text-accent">Livraison express 24h</span>
+                    </span>
+                    {' '} — J'ai besoin de mon site rapidement
                   </label>
                 </div>
 
-                <motion.button
+                <button
                   type="submit"
                   disabled={state.submitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-5 bg-accent text-accent-foreground rounded-full font-medium text-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:shadow-2xl hover:shadow-accent/20"
+                  className="w-full py-3.5 bg-accent text-accent-foreground rounded-xl font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:opacity-90"
                 >
                   {state.submitting ? "Envoi en cours..." : "Envoyer mon message"}
-                </motion.button>
+                </button>
               </form>
             </motion.div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-32 px-6 bg-muted/30">
-          <div className="container mx-auto max-w-4xl">
+        {/* ─── FAQ ─── */}
+        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
-                Questions fréquentes
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
+                Questions frequentes
               </h2>
-              <p className="text-xl text-foreground/60 font-light">
-                Tout ce que vous devez savoir
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Tout ce que vous devez savoir avant de demarrer.
               </p>
             </motion.div>
 
             <div className="space-y-4">
-              {[
-                {
-                  q: "C'est vraiment 3x plus rapide ?",
-                  a: "Oui. Sites optimisés, code léger, images compressées. Résultat : chargement < 1 seconde. Google adore, vos visiteurs aussi."
-                },
-                {
-                  q: "Comment ça marche, l'éco-conception ?",
-                  a: "Code léger = moins de données transférées = moins d'énergie. Sites 60% moins gourmands que la moyenne. Bon pour la planète, bon pour votre image."
-                },
-                {
-                  q: "Livraison en 24h, c'est sérieux ?",
-                  a: "Oui, pour les sites landing page et vitrines. Parfait pour lancements urgents ou événements. Qualité garantie."
-                },
-                {
-                  q: "Ça coûte combien ?",
-                  a: "Ça dépend de votre projet. Décrivez-moi vos besoins, je vous fais un devis clair en 24h. Sans jargon, sans surprise."
-                }
-              ].map((faq, index) => (
+              {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-3xl bg-card border border-border"
+                  transition={{ delay: index * 0.08 }}
+                  className="p-6 rounded-xl border border-border bg-background"
                 >
-                  <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
-                  <p className="text-foreground/60">{faq.a}</p>
+                  <h3 className="text-base font-semibold font-[var(--font-heading)] mb-2">{faq.question}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </motion.div>
               ))}
             </div>
@@ -366,20 +365,15 @@ const ContactPage = ({ baseUrl, isCrawler }) => {
   );
 };
 
-/**
- * Enable Server-Side Rendering
- * Ensures AI crawlers and search engines see server-rendered HTML
- */
 export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler')
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
+  const { isCrawler } = await import('../lib/isCrawler');
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
+  const baseUrl = getSiteUrlFromHeaders(req);
   const userAgent = req.headers['user-agent'] || '';
-  const isBot = isCrawler(userAgent);
   return {
-    props: { 
+    props: {
       baseUrl,
-      isCrawler: isBot
+      isCrawler: isCrawler(userAgent),
     },
   };
 }

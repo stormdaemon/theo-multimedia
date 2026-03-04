@@ -1,426 +1,403 @@
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
+import { motion } from 'motion/react';
+import { ArrowRight, Lightbulb, Target, Heart, Users, Code, Palette, Search, BarChart3, Bot, Globe } from 'lucide-react';
+import SEO, { createLocalBusinessSchema, createWebPageSchema, createBreadcrumbSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl';
-import ConditionalMotion from '../components/ConditionalMotion';
-import { isCrawler } from '../lib/isCrawler';
 
 const values = [
   {
-    icon: "💡",
+    icon: Lightbulb,
     title: 'Innovation',
-    description: "J'explore constamment les nouvelles technologies et les tendances design pour offrir des solutions modernes et performantes.",
+    description: "Technologies de pointe et veille permanente pour des solutions web toujours a la pointe du marche.",
   },
   {
-    icon: "🎯",
+    icon: Target,
     title: 'Excellence',
-    description: "Chaque projet est traité avec le plus grand soin. Je ne livre que des solutions dont je suis fier.",
+    description: "Chaque projet est traite avec exigence. Je ne livre que des sites dont je suis fier et qui performent.",
   },
   {
-    icon: "❤️",
+    icon: Heart,
     title: 'Passion',
-    description: "Le développement web est ma passion. J'aime créer des expériences numériques qui font la différence.",
+    description: "Le web est ma passion depuis plus de 10 ans. Cette energie se retrouve dans chaque pixel de vos projets.",
   },
   {
-    icon: "🤝",
+    icon: Users,
     title: 'Collaboration',
-    description: "Je travaille en étroite collaboration avec mes clients pour comprendre leurs besoins et dépasser leurs attentes.",
-  }
+    description: "Travail en etroite collaboration pour comprendre vos besoins et depasser vos attentes a chaque etape.",
+  },
 ];
 
 const skills = [
-  { name: 'Design & UX/UI', level: 95 },
-  { name: 'Développement Web', level: 98 },
-  { name: 'SEO & Performance', level: 92 },
-  { name: 'Gestion de Projet', level: 90 },
+  { icon: Palette, name: 'Design & UX/UI', level: 95, detail: 'Interfaces modernes, responsive, accessibles' },
+  { icon: Code, name: 'Developpement Web', level: 98, detail: 'Next.js, React, Node.js, API' },
+  { icon: Search, name: 'SEO Google & IA', level: 92, detail: 'Referencement Google, ChatGPT, Perplexity' },
+  { icon: BarChart3, name: 'Strategie Digitale', level: 90, detail: 'Conversion, analytics, accompagnement' },
 ];
 
-const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
-  // Create LOCAL SEO structured data schemas
+const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
-    'À Propos - Qui suis-je ?',
-    'Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans.',
+    'A Propos - Theo Lafont, Developpeur Web a Angouleme',
+    'Theo Lafont, developpeur web full-stack et expert SEO a Angouleme. Plus de 10 ans d\'experience en creation de sites internet performants, eco-responsables et optimises pour Google et les IA.',
     `${baseUrl}/about`
   );
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: 'Accueil', url: '/' },
+    { name: 'A Propos', url: '/about' },
+  ]);
 
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [localBusinessSchema, aboutPageSchema]
+    '@graph': [localBusinessSchema, aboutPageSchema, breadcrumbSchema]
   };
 
   return (
     <>
       <SEO
-        title="À Propos - Qui suis-je ?"
-        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans."
+        title="A Propos - Developpeur Web Full-Stack Angouleme"
+        description="Theo Lafont, developpeur web full-stack et expert SEO a Angouleme. Creation de sites internet ultra-rapides, eco-responsables, optimises pour Google et les IA (ChatGPT, Perplexity)."
         canonical="/about"
         schema={schema}
         enableLocalSEO={true}
       />
 
       <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="À Propos - Théo Multimédia"
-        description="Je suis Théo, développeur web passionné à Angoulême. Je crée des expériences digitales exceptionnelles depuis plus de 10 ans."
+        isCrawler={isCrawlerBot}
+        title="A Propos de Theo Multimedia - Developpeur Web a Angouleme"
+        description="Theo Lafont est un developpeur web full-stack et expert en referencement SEO base a Angouleme, en Charente. Specialise dans la creation de sites internet ultra-rapides, eco-responsables et optimises pour les moteurs de recherche Google et les intelligences artificielles comme ChatGPT, Perplexity et Gemini."
         sections={[
           {
-            title: "Mon histoire",
-            content: "Je suis Théo, développeur web et designer passionné. Mon parcours dans le digital a commencé il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer. Ce qui me distingue ? Mon engagement total dans chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences qui captivent, engagent et convertissent. Que ce soit pour une startup qui lance son premier site ou une entreprise établie qui souhaite se réinventer, j'apporte la même attention aux détails et la même passion pour l'excellence.",
+            title: "Mon parcours",
+            content: "Avec plus de 10 ans d'experience dans le developpement web et le design digital, je cree des experiences numeriques qui captivent, engagent et convertissent. Mon expertise couvre le developpement full-stack avec Next.js et React, le design UX/UI, le referencement SEO classique et le nouveau referencement IA (GEO - Generative Engine Optimization). Basee a Angouleme en Charente, mon agence Theo Multimedia accompagne les entreprises de toute la France dans leur transformation digitale.",
+          },
+          {
+            title: "Expertise SEO Google et IA",
+            content: "En 2026, la visibilite en ligne ne se limite plus a Google. 800 millions de personnes utilisent ChatGPT chaque semaine, et 10% du trafic web provient deja des IA. J'optimise chaque site pour etre visible sur Google ET recommande par les intelligences artificielles (ChatGPT, Perplexity, Gemini, Claude). Cela inclut le balisage schema.org enrichi, les contenus structures pour les LLM, et l'optimisation technique pour les AI crawlers.",
           },
           {
             title: "Mes valeurs",
             items: values.map(v => `${v.title}: ${v.description}`),
           },
           {
-            title: "Mon expertise",
-            items: skills.map(s => `${s.name} (${s.level}% de maîtrise)`),
+            title: "Competences techniques",
+            items: skills.map(s => `${s.name} (${s.level}%): ${s.detail}`),
           },
           {
-            title: "Expérience",
+            title: "Chiffres cles",
             items: [
-              "Plus de 10 années d'expérience",
-              "Plus de 50 projets réalisés",
-              "100% de clients satisfaits",
-              "Livraison express en 24h disponible"
+              "Plus de 10 annees d'experience en developpement web",
+              "Plus de 50 projets web livres avec succes",
+              "Sites 3x plus rapides que la moyenne du marche",
+              "60% d'empreinte carbone en moins grace a l'eco-conception",
+              "Livraison express en 24h disponible",
             ],
           },
         ]}
       />
 
       <div className="bg-background">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 px-6">
-          <div className="container mx-auto max-w-5xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
+        {/* ─── HERO ─── */}
+        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+          <div className="max-w-6xl mx-auto relative">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-6"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              <ConditionalMotion
-                disableAnimations={disableAnimations}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
-              >
-                <span className="text-sm font-medium text-accent">À propos</span>
-              </ConditionalMotion>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="text-xs font-medium text-accent uppercase tracking-wider">A propos</span>
+              </div>
 
-              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
-                Créateur d'expériences<br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  digitales mémorables
-                </span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6" data-speakable="true">
+                Createur de sites web<br />
+                <span className="text-accent">qui performent.</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Basé à Angoulême, je transforme des idées en sites web exceptionnels
-                depuis plus de 10 ans.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                Base a Angouleme, je transforme vos idees en sites internet ultra-rapides,
+                visibles sur Google et recommandes par les IA. Depuis plus de 10 ans.
               </p>
-            </ConditionalMotion>
+            </motion.div>
           </div>
         </section>
 
-        {/* Story Section */}
-        <section className="py-20 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
-              initial={{ opacity: 0, y: 40 }}
+        {/* ─── STORY ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="mb-16"
             >
-              <div className="space-y-6 text-lg text-foreground/70 leading-relaxed">
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
+                Mon parcours
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-xl">
+                10 ans d'experience, une passion intacte.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6 text-muted-foreground leading-relaxed"
+              >
                 <p>
-                  Bonjour ! Je suis <span className="text-foreground font-semibold">Théo</span>,
-                  développeur web et designer passionné. Mon parcours dans le digital a commencé
-                  il y a plus de 10 ans, et depuis, je n'ai cessé d'apprendre, d'innover et de créer.
+                  Je suis <span className="text-foreground font-semibold">Theo Lafont</span>,
+                  developpeur web full-stack et designer. Mon parcours dans le digital a commence
+                  il y a plus de 10 ans, et depuis, je n'ai cesse d'apprendre, d'innover et de creer.
                 </p>
                 <p>
                   Ce qui me distingue ? <span className="text-accent font-semibold">Mon engagement total</span> dans
-                  chaque projet. Je ne me contente pas de créer des sites web, je crée des expériences
-                  qui captivent, engagent et convertissent.
+                  chaque projet. Je ne me contente pas de creer des sites web — je cree des outils de croissance
+                  qui captivent, engagent et convertissent vos visiteurs en clients.
                 </p>
                 <p>
-                  Que ce soit pour une startup qui lance son premier site ou une entreprise établie
-                  qui souhaite se réinventer, j'apporte la même attention aux détails et la même
+                  Que ce soit pour une startup qui lance son premier site ou une entreprise etablie
+                  qui souhaite se reinventer, j'apporte la meme exigence et la meme
                   passion pour l'excellence.
                 </p>
-              </div>
-            </ConditionalMotion>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                {[
+                  { value: '10+', label: 'Annees d\'experience' },
+                  { value: '50+', label: 'Projets livres' },
+                  { value: '3x', label: 'Plus rapide' },
+                  { value: '-60%', label: 'Empreinte CO2' },
+                ].map((stat, i) => (
+                  <div key={i} className="p-5 rounded-xl border border-border bg-card text-center">
+                    <div className="text-2xl md:text-3xl font-bold text-accent font-[var(--font-heading)]">{stat.value}</div>
+                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* AI SEO Expertise Section */}
-        <section className="py-32 px-6 bg-gradient-to-br from-accent/5 via-background to-background">
-          <div className="container mx-auto max-w-6xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
+        {/* ─── AI SEO EXPERTISE ─── */}
+        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="mb-16"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-                <span className="text-sm font-medium text-accent">Expertise unique</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-4">
+                <Bot className="w-3.5 h-3.5 text-accent" />
+                <span className="text-xs font-medium text-accent uppercase tracking-wider">Expertise unique</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-semibold mb-6 tracking-tight">
-                Visible sur <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">ChatGPT</span> et Google
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4" data-speakable="true">
+                Visible sur Google ET sur ChatGPT
               </h2>
-              <p className="text-xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Aujourd'hui, vos clients vous cherchent sur Google... mais aussi sur ChatGPT, Perplexity et autres IA.
-                Je maîtrise les deux pour que vous soyez trouvé partout.
+              <p className="text-muted-foreground text-lg max-w-2xl">
+                Vos clients vous cherchent sur Google, mais aussi sur ChatGPT, Perplexity et Gemini.
+                Je maitrise les deux pour maximiser votre visibilite.
               </p>
-            </ConditionalMotion>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <ConditionalMotion
-                disableAnimations={disableAnimations}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+            <div className="grid md:grid-cols-2 gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-3xl bg-card border border-border"
+                className="p-6 rounded-xl border border-border bg-background"
               >
-                <div className="text-5xl mb-6">🔍</div>
-                <h3 className="text-2xl font-semibold mb-4">Référencement Google classique</h3>
-                <p className="text-foreground/60 leading-relaxed mb-6">
-                  C'est la base : mots-clés, contenu optimisé, structure technique parfaite.
-                  Résultat : vous apparaissez quand vos clients tapent vos services sur Google.
+                <Globe className="w-8 h-8 text-muted-foreground mb-4" />
+                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">Referencement Google</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Audit technique, strategie de mots-cles, contenu optimise, netlinking. Resultats mesurables et suivi mensuel de vos positions.
                 </p>
-                <ul className="space-y-3 text-foreground/70">
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>Première page Google sur vos mots-clés stratégiques</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>Trafic qualifié qui cherche exactement vos services</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>Suivi mensuel de vos positions et résultats</span>
-                  </li>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Premiere page Google sur vos mots-cles</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Core Web Vitals optimises</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Trafic qualifie et mesurable</li>
                 </ul>
-              </ConditionalMotion>
+              </motion.div>
 
-              <ConditionalMotion
-                disableAnimations={disableAnimations}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-3xl bg-gradient-to-br from-accent/10 to-blue-500/10 border-2 border-accent/30"
+                transition={{ delay: 0.1 }}
+                className="p-6 rounded-xl border-2 border-accent/30 bg-background"
               >
-                <div className="text-5xl mb-6">🤖</div>
-                <h3 className="text-2xl font-semibold mb-4">
-                  Référencement IA{' '}
-                  <span className="text-sm font-normal text-accent">(ChatGPT, Perplexity)</span>
+                <Bot className="w-8 h-8 text-accent mb-4" />
+                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">
+                  Referencement IA <span className="text-xs font-normal text-accent">(GEO)</span>
                 </h3>
-                <p className="text-foreground/60 leading-relaxed mb-6">
-                  C'est l'avenir (et déjà le présent) : 800 millions de personnes utilisent ChatGPT chaque semaine.
-                  J'optimise votre site pour que les IA vous recommandent à leurs utilisateurs.
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Optimisation pour les moteurs IA : contenu structure, schema.org enrichi, FAQ strategiques, llms.txt. Les IA vous recommandent.
                 </p>
-                <ul className="space-y-3 text-foreground/70">
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>ChatGPT recommande votre entreprise quand on lui demande</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>Perplexity cite votre site dans ses réponses (+527% de visibilité)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent mt-1">✓</span>
-                    <span>Contenu structuré pour être compris et cité par les IA</span>
-                  </li>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> ChatGPT recommande votre entreprise</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Perplexity cite votre site</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Structured data pour +40% de citations IA</li>
                 </ul>
-              </ConditionalMotion>
+              </motion.div>
             </div>
 
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-8 md:p-12 rounded-3xl bg-muted/50 border border-border text-center"
+              className="mt-4 grid grid-cols-3 gap-4"
             >
-              <h3 className="text-2xl md:text-3xl font-semibold mb-4">
-                Pourquoi c'est important pour vous ?
-              </h3>
-              <p className="text-lg text-foreground/70 max-w-3xl mx-auto leading-relaxed mb-6">
-                Imaginez : vos clients demandent à ChatGPT <span className="text-foreground font-semibold">"Trouve-moi un coiffeur à Angoulême"</span> ou
-                <span className="text-foreground font-semibold"> "Je cherche un serrurier disponible la nuit"</span>.
-              </p>
-              <p className="text-xl font-semibold text-accent mb-6">
-                Si votre site est optimisé pour l'IA, c'est VOUS que ChatGPT recommande. 🎯
-              </p>
-              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div>
-                  <div className="text-3xl font-bold text-accent mb-2">800M</div>
-                  <div className="text-sm text-foreground/60">utilisateurs ChatGPT/semaine</div>
+              {[
+                { value: '800M', label: 'utilisateurs ChatGPT/semaine' },
+                { value: '+527%', label: 'trafic IA en 2025' },
+                { value: '10%', label: 'du trafic web vient des IA' },
+              ].map((stat, i) => (
+                <div key={i} className="p-4 rounded-xl border border-border bg-background text-center">
+                  <div className="text-xl md:text-2xl font-bold text-accent font-[var(--font-heading)]">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-accent mb-2">+527%</div>
-                  <div className="text-sm text-foreground/60">de trafic venant des IA en 2025</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-accent mb-2">10%</div>
-                  <div className="text-sm text-foreground/60">du trafic web vient déjà des IA</div>
-                </div>
-              </div>
-            </ConditionalMotion>
+              ))}
+            </motion.div>
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="py-32 px-6 bg-muted/30">
-          <div className="container mx-auto max-w-6xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
+        {/* ─── VALUES ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
                 Mes valeurs
               </h2>
-              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Ce qui guide mon travail au quotidien
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Ce qui guide chaque projet et chaque decision.
               </p>
-            </ConditionalMotion>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {values.map((value, index) => (
-                <ConditionalMotion
-                  disableAnimations={disableAnimations}
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-8 rounded-3xl bg-card border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10"
+                  transition={{ delay: index * 0.08 }}
+                  className="p-6 rounded-xl border border-border bg-card hover:border-accent/30 transition-colors"
                 >
-                  <div className="text-5xl mb-6">{value.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed">
-                    {value.description}
-                  </p>
-                </ConditionalMotion>
+                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4">
+                    <value.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 font-[var(--font-heading)]">{value.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
+        {/* ─── SKILLS ─── */}
+        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
                 Mon expertise
               </h2>
-              <p className="text-xl text-foreground/60 font-light">
-                Des compétences affûtées par des années d'expérience
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Des competences affutees par 10 ans d'experience.
               </p>
-            </ConditionalMotion>
+            </motion.div>
 
-            <div className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-4">
               {skills.map((skill, index) => (
-                <ConditionalMotion
-                  disableAnimations={disableAnimations}
+                <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="space-y-3"
+                  transition={{ delay: index * 0.08 }}
+                  className="p-6 rounded-xl border border-border bg-background"
                 >
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg font-medium">{skill.name}</span>
-                    <span className="text-sm text-foreground/60">{skill.level}%</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                        <skill.icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold font-[var(--font-heading)]">{skill.name}</h3>
+                        <p className="text-xs text-muted-foreground">{skill.detail}</p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-bold text-accent font-[var(--font-heading)]">{skill.level}%</span>
                   </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <ConditionalMotion
-                      disableAnimations={disableAnimations}
+                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                    <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
-                      className="h-full bg-gradient-to-r from-accent to-blue-500 rounded-full"
+                      className="h-full bg-accent rounded-full"
                     />
                   </div>
-                </ConditionalMotion>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 px-6 bg-gradient-to-br from-accent via-blue-500 to-accent">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-4 gap-12 text-center text-white">
-              {[
-                { value: "3x", label: "Plus rapide" },
-                { value: "+40%", label: "De conversions" },
-                { value: "-60%", label: "De CO2" },
-                { value: "24h", label: "Livraison express" }
-              ].map((stat, index) => (
-                <ConditionalMotion
-                  disableAnimations={disableAnimations}
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className="text-5xl md:text-6xl font-bold mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-white/80">{stat.label}</div>
-                </ConditionalMotion>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-4xl">
-            <ConditionalMotion
-              disableAnimations={disableAnimations}
-              initial={{ opacity: 0, y: 40 }}
+        {/* ─── CTA ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-muted/50 to-muted/30 border border-border"
+              className="p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight">
-                Travaillons ensemble
-              </h2>
-              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Je suis toujours enthousiaste à l'idée de nouveaux projets
-                et de rencontrer des entrepreneurs passionnés.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Link href="/contact" className="btn btn-primary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
-                  Discuter du projet
-                </Link>
-                <Link href="/portfolio" className="btn btn-secondary text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 whitespace-nowrap">
-                  Voir le portfolio
-                </Link>
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">
+                  Travaillons ensemble
+                </h2>
+                <p className="text-accent-foreground/80 text-lg mb-8 max-w-lg mx-auto">
+                  Vous avez un projet web ? Discutons de votre vision.
+                  Devis gratuit, reponse en moins de 24h.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent rounded-lg font-medium hover:bg-white/90 transition-colors"
+                  >
+                    Discuter du projet
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/portfolio"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-accent-foreground border border-white/20 rounded-lg font-medium hover:bg-white/20 transition-colors"
+                  >
+                    Voir le portfolio
+                  </Link>
+                </div>
               </div>
-            </ConditionalMotion>
+            </motion.div>
           </div>
         </section>
       </div>
@@ -428,20 +405,15 @@ const AboutPage = ({ baseUrl, disableAnimations, isCrawler }) => {
   );
 };
 
-/**
- * Enable Server-Side Rendering
- * Ensures AI crawlers and search engines see server-rendered HTML
- */
 export async function getServerSideProps({ req }) {
+  const { isCrawler } = await import('../lib/isCrawler');
+  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
+  const baseUrl = getSiteUrlFromHeaders(req);
   const userAgent = req.headers['user-agent'] || '';
-  const isBot = isCrawler(userAgent);
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
   return {
-    props: { 
+    props: {
       baseUrl,
-      disableAnimations: isBot,
-      isCrawler: isBot
+      isCrawler: isCrawler(userAgent),
     },
   };
 }

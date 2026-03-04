@@ -1,55 +1,37 @@
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FiGithub, FiTwitter, FiLinkedin, FiMail } from 'react-icons/fi';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const socialLinks = [
-  {
-    name: 'GitHub',
-    icon: <FiGithub className="w-5 h-5" />,
-    href: 'https://github.com',
-  },
-  {
-    name: 'Twitter',
-    icon: <FiTwitter className="w-5 h-5" />,
-    href: 'https://twitter.com',
-  },
-  {
-    name: 'LinkedIn',
-    icon: <FiLinkedin className="w-5 h-5" />,
-    href: 'https://linkedin.com',
-  },
-  {
-    name: 'Email',
-    icon: <FiMail className="w-5 h-5" />,
-    href: 'mailto:contact@theo-multimedia.com',
-  },
+  { name: 'GitHub', icon: Github, href: 'https://github.com/stormdaemon' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/theo-lafont' },
+  { name: 'Email', icon: Mail, href: 'mailto:contact@theo-multimedia.com' },
 ];
 
-const footerLinks = [
+const footerSections = [
   {
     title: 'Navigation',
     links: [
       { name: 'Accueil', href: '/' },
       { name: 'Services', href: '/services' },
       { name: 'Portfolio', href: '/portfolio' },
-      { name: 'À propos', href: '/about' },
+      { name: 'A propos', href: '/about' },
       { name: 'Contact', href: '/contact' },
     ],
   },
   {
     title: 'Services',
     links: [
-      { name: 'Sites web', href: '/services#web' },
-      { name: 'Design', href: '/services#design' },
-      { name: 'SEO', href: '/services#seo' },
-      { name: 'Support', href: '/services#support' },
+      { name: 'Sites ultra-rapides', href: '/services' },
+      { name: 'Design & UX', href: '/services' },
+      { name: 'SEO Google & IA', href: '/services' },
+      { name: 'E-commerce', href: '/services' },
     ],
   },
   {
-    title: 'Légal',
+    title: 'Legal',
     links: [
-      { name: 'Mentions légales', href: '/mentions-legales' },
-      { name: 'Confidentialité', href: '/politique-confidentialite' },
+      { name: 'Mentions legales', href: '/mentions-legales' },
+      { name: 'Confidentialite', href: '/politique-confidentialite' },
       { name: 'CGV', href: '/cgv' },
       { name: 'CGU', href: '/cgu' },
     ],
@@ -60,53 +42,53 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-border/50 bg-background">
-      <div className="container mx-auto px-6 py-20">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-          {/* Brand section */}
-          <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="inline-block">
-              <span className="text-2xl font-semibold tracking-tight">
-                Théo Multimédia
+    <footer className="border-t border-border bg-card">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="inline-flex items-center gap-2">
+              <div className="w-8 h-8 bg-accent rounded-md flex items-center justify-center">
+                <span className="text-accent-foreground text-sm font-bold font-[var(--font-heading)]">TM</span>
+              </div>
+              <span className="text-lg font-semibold tracking-tight font-[var(--font-heading)]">
+                Theo Multimedia
               </span>
             </Link>
-            <p className="text-foreground/60 leading-relaxed max-w-md text-[15px]">
-              Je crée des expériences numériques qui captivent et convertissent.
-              Design, développement et stratégie digitale en un seul endroit.
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
+              Agence web a Angouleme. Sites ultra-rapides, eco-responsables
+              et optimises pour convertir. Expertise SEO Google et IA.
             </p>
-
-            {/* Social links */}
-            <div className="flex space-x-3">
+            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Angouleme, France</span>
+            </div>
+            <div className="flex gap-2 pt-2">
               {socialLinks.map((social) => (
-                <motion.a
+                <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-muted/50 text-foreground/60 hover:text-accent hover:bg-accent/10 transition-all duration-300"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
                   aria-label={social.name}
                 >
-                  {social.icon}
-                </motion.a>
+                  <social.icon className="w-4 h-4" />
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Footer links sections */}
-          {footerLinks.map((section, index) => (
-            <div key={index} className="space-y-5">
-              <h3 className="text-foreground font-semibold text-sm tracking-wide uppercase">
+          {footerSections.map((section) => (
+            <div key={section.title} className="space-y-4">
+              <h3 className="text-xs font-semibold text-foreground uppercase tracking-wider">
                 {section.title}
               </h3>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-foreground/60 hover:text-accent transition-colors duration-300 text-[15px]"
+                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -117,13 +99,12 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom section */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-foreground/50 text-sm">
-            © {currentYear} Théo Multimédia. Tous droits réservés.
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-muted-foreground">
+            &copy; {currentYear} Theo Multimedia. Tous droits reserves.
           </p>
-          <p className="text-foreground/50 text-sm">
-            Fait avec passion à Angoulême 🇫🇷
+          <p className="text-xs text-muted-foreground">
+            Concu et developpe a Angouleme, Charente
           </p>
         </div>
       </div>

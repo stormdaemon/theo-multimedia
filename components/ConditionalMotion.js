@@ -8,7 +8,7 @@
  * For bots/crawlers: Static content, no hidden initial states
  */
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export const ConditionalMotion = ({ children, disableAnimations, ...motionProps }) => {
   // If animations are disabled (crawler detected), render a static div

@@ -1,131 +1,133 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
+import { ArrowRight, Zap, Target, Search, Leaf, ShoppingCart, Headphones, Check, Clock } from 'lucide-react';
+import SEO, { createLocalBusinessSchema, createWebPageSchema, createHowToSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 
 const services = [
   {
-    icon: "⚡",
+    icon: Zap,
     title: 'Sites ultra-rapides',
-    description: "Vos visiteurs partent si votre site met plus de 3 secondes à charger. Je crée des sites 3x plus rapides que la moyenne. Résultat : plus de visiteurs qui restent, plus de ventes.",
+    description: "Vos visiteurs partent si votre site met plus de 3 secondes a charger. Je cree des sites 3x plus rapides que la moyenne. Resultat : plus de visiteurs qui restent, plus de ventes.",
     features: [
       'Temps de chargement < 1 seconde',
-      'Optimisé pour mobile et tablette',
+      'Optimise pour mobile et tablette',
       'Score Google 95/100 garanti',
       'Livraison express en 24h'
     ],
     highlight: true
   },
   {
-    icon: "🎯",
+    icon: Target,
     title: 'Design qui convertit',
     description: "Un beau site c'est bien. Un site qui transforme vos visiteurs en clients, c'est mieux. J'applique les techniques de design persuasif pour maximiser vos conversions.",
     features: [
       '+40% de conversions en moyenne',
-      'Parcours utilisateur optimisé',
-      "Boutons d'action stratégiques",
+      'Parcours utilisateur optimise',
+      "Boutons d'action strategiques",
       'A/B testing inclus'
     ]
   },
   {
-    icon: "🔍",
+    icon: Search,
     title: 'Visible sur Google',
-    description: "Être en première page Google, ça change tout. J'optimise votre site pour qu'il apparaisse quand vos clients vous cherchent. Sans jargon technique.",
+    description: "Etre en premiere page Google, ca change tout. J'optimise votre site pour qu'il apparaisse quand vos clients vous cherchent. Sans jargon technique.",
     features: [
-      'Audit complet de visibilité',
-      'Mots-clés stratégiques trouvés',
-      'Contenu optimisé pour Google',
+      'Audit complet de visibilite',
+      'Mots-cles strategiques trouves',
+      'Contenu optimise pour Google',
       'Suivi mensuel de position'
     ]
   },
   {
-    icon: "🌱",
-    title: 'Éco-responsable',
-    description: "Internet pollue autant que l'aviation. Je conçois des sites légers qui consomment 60% d'énergie en moins. Bon pour la planète, et pour votre image.",
+    icon: Leaf,
+    title: 'Eco-responsable',
+    description: "Internet pollue autant que l'aviation. Je concois des sites legers qui consomment 60% d'energie en moins. Bon pour la planete, et pour votre image.",
     features: [
       "-60% d'empreinte carbone",
-      'Code optimisé et léger',
-      'Images compressées intelligemment',
-      'Hébergement vert disponible'
+      'Code optimise et leger',
+      'Images compressees intelligemment',
+      'Hebergement vert disponible'
     ]
   },
   {
-    icon: "🛠️",
+    icon: ShoppingCart,
     title: 'E-commerce performant',
-    description: "Vendez en ligne sans complications. Boutique rapide, paiement sécurisé, gestion simple. Tout est pensé pour que vous vendiez plus.",
+    description: "Vendez en ligne sans complications. Boutique rapide, paiement securise, gestion simple. Tout est pense pour que vous vendiez plus.",
     features: [
-      "Panier optimisé (moins d'abandons)",
-      'Paiements sécurisés multiples',
+      "Panier optimise (moins d'abandons)",
+      'Paiements securises multiples',
       'Gestion de stock automatique',
-      'Intégration livraison'
+      'Integration livraison'
     ]
   },
   {
-    icon: "🤝",
-    title: 'Support & Évolution',
-    description: "Votre site vit et évolue. Je reste disponible pour l'améliorer, le mettre à jour, et répondre à vos questions. Sans langue de bois.",
+    icon: Headphones,
+    title: 'Support & Evolution',
+    description: "Votre site vit et evolue. Je reste disponible pour l'ameliorer, le mettre a jour, et repondre a vos questions. Sans langue de bois.",
     features: [
-      'Réponse < 24h garantie',
-      'Mises à jour sécurité',
+      'Reponse < 24h garantie',
+      'Mises a jour securite',
       'Sauvegardes quotidiennes',
-      'Évolutions sur demande'
+      'Evolutions sur demande'
     ]
   }
 ];
 
-const process = [
+const processSteps = [
   {
     step: "01",
-    title: "Découverte",
+    title: "Decouverte",
     description: "Je prends le temps de comprendre votre projet, vos objectifs et votre audience pour proposer la meilleure solution."
   },
   {
     step: "02",
     title: "Conception",
-    description: "Je crée des maquettes et prototypes pour valider ensemble la direction créative avant le développement."
+    description: "Je cree des maquettes et prototypes pour valider ensemble la direction creative avant le developpement."
   },
   {
     step: "03",
-    title: "Développement",
-    description: "Je développe votre projet avec les dernières technologies, en assurant qualité et performance."
+    title: "Developpement",
+    description: "Je developpe votre projet avec les dernieres technologies, en assurant qualite et performance."
   },
   {
     step: "04",
     title: "Lancement",
-    description: "Je déploie votre projet et vous accompagne pour un lancement réussi avec formation et documentation."
+    description: "Je deploie votre projet et vous accompagne pour un lancement reussi avec formation et documentation."
   }
 ];
 
 const ServicesPage = ({ baseUrl, isCrawler }) => {
-  const organizationSchema = createOrganizationSchema();
+  const localBusinessSchema = createLocalBusinessSchema();
   const servicesPageSchema = createWebPageSchema(
-    'Mes Services',
-    'Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême.',
+    'Mes Services - Creation de sites web en 24h',
+    'Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme.',
     `${baseUrl}/services`
   );
+  const howToSchema = createHowToSchema(processSteps);
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [organizationSchema, servicesPageSchema]
+    '@graph': [localBusinessSchema, servicesPageSchema, howToSchema]
   };
 
   return (
     <>
       <SEO
-        title="Mes Services - Création de sites web en 24h"
-        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        title="Mes Services - Creation de sites web en 24h"
+        description="Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme."
         canonical="/services"
         schema={schema}
       />
 
       <CrawlerPageContent
         isCrawler={isCrawler}
-        title="Mes Services - Création de sites web en 24h"
-        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        title="Mes Services - Creation de sites web en 24h"
+        description="Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme."
         sections={[
           {
             title: "Votre site en ligne demain - Livraison 24h",
-            content: "Lancement urgent ? Opportunité business ? Je livre votre site professionnel, rapide et optimisé en 24 heures chrono.",
+            content: "Lancement urgent ? Opportunite business ? Je livre votre site professionnel, rapide et optimise en 24 heures chrono.",
           },
           {
             title: "Comment je peux vous aider",
@@ -135,124 +137,141 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
             })),
           },
           {
-            title: "Ma méthodologie",
-            items: process.map(p => `${p.step}. ${p.title}: ${p.description}`),
+            title: "Ma methodologie",
+            items: processSteps.map(p => `${p.step}. ${p.title}: ${p.description}`),
           },
           {
-            title: "Prêt à démarrer ?",
-            content: "Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs. Contactez-moi pour parler de votre projet ou consultez mon portfolio.",
+            title: "Pret a demarrer ?",
+            content: "Discutons de votre projet et voyons comment je peux vous aider a atteindre vos objectifs. Contactez-moi pour parler de votre projet ou consultez mon portfolio.",
           },
         ]}
       />
 
       <div className="bg-background">
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 px-6">
-          <div className="container mx-auto max-w-6xl">
+        {/* ─── HERO ─── */}
+        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
+          <div className="max-w-6xl mx-auto relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-6"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20"
-              >
-                <span className="text-sm font-medium text-accent">Mes services</span>
-              </motion.div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <span className="text-xs font-medium text-accent uppercase tracking-wider">Mes services</span>
+              </div>
 
-              <h1 className="text-5xl md:text-7xl font-semibold tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6">
                 Des sites qui<br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-blue-500 to-accent">
-                  cartonnent vraiment
-                </span>
+                <span className="text-accent">cartonnent vraiment.</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto font-light leading-relaxed">
-                Rapides, optimisés pour Google, et éco-conçus. Mes sites sont conçus
-                pour transformer vos visiteurs en clients fidèles.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                Rapides, optimises pour Google, et eco-concus. Mes sites sont concus
+                pour transformer vos visiteurs en clients fideles.
               </p>
-            </motion.div>
-          </div>
-        </section>
 
-        {/* 24h Highlight Banner */}
-        <section className="py-16 px-6 bg-gradient-to-r from-accent/10 via-blue-500/10 to-accent/10 border-y border-accent/20">
-          <div className="container mx-auto max-w-5xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center space-y-4"
-            >
-              <div className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-blue-500">
-                24h
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+                >
+                  Demarrer mon projet
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-card border border-border text-foreground rounded-lg font-medium hover:bg-muted transition-colors"
+                >
+                  Voir le portfolio
+                </Link>
               </div>
-              <h2 className="text-3xl md:text-4xl font-semibold">
-                Votre site en ligne demain
-              </h2>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                Lancement urgent ? Opportunité business ? Je livre votre site professionnel,
-                rapide et optimisé en 24 heures chrono.
-              </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-7xl">
+        {/* ─── 24H HIGHLIGHT ─── */}
+        <section className="py-16 px-6 bg-card border-y border-border">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="flex flex-col md:flex-row items-center gap-8"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+              <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-xl bg-accent/10 border border-accent/20">
+                <Clock className="w-10 h-10 text-accent" />
+              </div>
+              <div>
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="text-4xl md:text-5xl font-extrabold text-accent font-[var(--font-heading)]">24h</span>
+                  <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight">
+                    Votre site en ligne demain
+                  </h2>
+                </div>
+                <p className="text-muted-foreground text-lg max-w-2xl">
+                  Lancement urgent ? Opportunite business ? Je livre votre site professionnel,
+                  rapide et optimise en 24 heures chrono.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── SERVICES GRID ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
                 Comment je peux vous aider
               </h2>
-              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Une expertise complète pour tous vos besoins digitaux
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Une expertise complete pour tous vos besoins digitaux.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                   className={`group relative ${service.highlight ? 'md:col-span-2 lg:col-span-1' : ''}`}
                 >
-                  <div className={`h-full p-8 rounded-3xl border transition-all duration-500 ${
+                  <div className={`h-full p-6 rounded-xl border transition-colors ${
                     service.highlight
-                      ? 'bg-gradient-to-br from-accent/5 to-blue-500/5 border-accent/30 hover:border-accent/50'
+                      ? 'bg-accent/5 border-accent/30 hover:border-accent/50'
                       : 'bg-card border-border hover:border-accent/30'
-                  } hover:shadow-2xl hover:shadow-accent/10`}>
-                    <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                      {service.icon}
-                    </div>
-                    {service.highlight && (
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-medium mb-4">
-                        ⚡ Livraison 24h disponible
+                  }`}>
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
+                        <service.icon className="w-5 h-5" />
                       </div>
-                    )}
-                    <h3 className="text-2xl font-semibold mb-4">{service.title}</h3>
-                    <p className="text-foreground/60 leading-relaxed mb-6">
+                      {service.highlight && (
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-accent/10 border border-accent/20">
+                          <Zap className="w-3 h-3 text-accent" />
+                          <span className="text-xs font-medium text-accent">Express 24h</span>
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-semibold mb-2 font-[var(--font-heading)]">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                       {service.description}
                     </p>
                     <ul className="space-y-2">
                       {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-foreground/60">
-                          <svg className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {feature}
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -263,42 +282,42 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-32 px-6 bg-muted/30">
-          <div className="container mx-auto max-w-6xl">
+        {/* ─── PROCESS ─── */}
+        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
-                Ma méthodologie
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
+                Ma methodologie
               </h2>
-              <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-light">
-                Un processus éprouvé pour des résultats garantis
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Un processus eprouve pour des resultats garantis.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {process.map((item, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {processSteps.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative"
+                  className="relative p-6 rounded-xl border border-border bg-background"
                 >
-                  <div className="text-6xl font-bold text-accent/20 mb-4">
+                  <span className="text-5xl font-extrabold text-accent/15 font-[var(--font-heading)] leading-none select-none">
                     {item.step}
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed">
+                  </span>
+                  <h3 className="text-lg font-semibold mt-2 mb-2 font-[var(--font-heading)]">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
-                  {index < process.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 -right-4 w-8 h-0.5 bg-accent/20" />
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-2.5 w-5 h-px bg-border" />
                   )}
                 </motion.div>
               ))}
@@ -306,64 +325,41 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-32 px-6">
-          <div className="container mx-auto max-w-4xl">
+        {/* ─── CTA ─── */}
+        <section className="py-24 md:py-32 px-6">
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center space-y-10 p-16 rounded-[3rem] bg-gradient-to-br from-accent via-blue-500 to-accent relative overflow-hidden"
+              transition={{ duration: 0.6 }}
+              className="p-10 md:p-16 rounded-xl border border-border bg-card text-center"
             >
-              {/* Animated background */}
-              <div className="absolute inset-0 opacity-20">
-                {[...Array(15)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-white rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -20, 0],
-                      opacity: [0.3, 0.8, 0.3]
-                    }}
-                    transition={{
-                      duration: 2 + Math.random() * 2,
-                      repeat: Infinity,
-                      delay: Math.random() * 2
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight mb-6">
-                  Prêt à démarrer ?
-                </h2>
-                <p className="text-xl text-white/90 max-w-2xl mx-auto font-light mb-10">
-                  Discutons de votre projet et voyons comment je peux vous aider
-                  à atteindre vos objectifs.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-accent rounded-full text-lg font-medium hover:scale-105 transition-transform">
-                    Parler de mon projet
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                  <Link href="/portfolio" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full text-lg font-medium hover:bg-white/20 transition-all">
-                    Voir mon portfolio
-                  </Link>
-                </div>
+              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
+                Pret a demarrer ?
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+                Discutons de votre projet et voyons comment je peux vous aider
+                a atteindre vos objectifs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-accent-foreground rounded-lg text-lg font-medium hover:opacity-90 transition-opacity"
+                >
+                  Parler de mon projet
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-background border border-border text-foreground rounded-lg text-lg font-medium hover:bg-muted transition-colors"
+                >
+                  Voir mon portfolio
+                </Link>
               </div>
             </motion.div>
           </div>
         </section>
-
-        
       </div>
     </>
   );
@@ -380,7 +376,7 @@ export async function getServerSideProps({ req }) {
   const userAgent = req.headers['user-agent'] || '';
   const isBot = isCrawler(userAgent);
   return {
-    props: { 
+    props: {
       baseUrl,
       isCrawler: isBot
     },
