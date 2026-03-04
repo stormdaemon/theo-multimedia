@@ -276,7 +276,7 @@ const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         {/* ─── STATS ─── */}
         <section className="py-16 px-6 bg-card border-y border-border">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
                 { value: "3x", label: "Plus rapide que la moyenne" },
                 { value: "+40%", label: "Taux de conversion" },
@@ -307,7 +307,7 @@ const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
+              className="p-6 sm:p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
             >
               <div className="relative z-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">
