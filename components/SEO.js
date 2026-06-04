@@ -1,28 +1,39 @@
 import Head from 'next/head';
+import { absoluteUrl, business } from '../lib/business';
 
 const SEO = ({
   title,
   description,
   canonical,
-  ogImage = '/theo_multimedia.png',
+  ogImage = business.socialImage,
   ogType = 'website',
   schema = null,
   additionalMetaTags = [],
   enableLocalSEO = false,
+  keywords = [],
+  noindex = false,
 }) => {
-  const siteName = 'Théo Multimédia';
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} - Agence Web Angoulême`;
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
-  const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  const siteName = business.brandName;
+  const fullTitle = title
+    ? title.includes(siteName) ? title : `${title} | ${siteName}`
+    : `${siteName} - Agence web en Charente`;
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl).replace(/\/$/, '');
+  const fullCanonical = canonical
+    ? canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`
+    : siteUrl;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+  const robots = noindex
+    ? 'noindex, nofollow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
   return (
     <Head>
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="author" content="Théo LAFONT" />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="author" content={business.legalName} />
+      <meta name="robots" content={robots} />
+      {keywords.length > 0 && <meta name="keywords" content={keywords.slice(0, 8).join(', ')} />}
       <link rel="canonical" href={fullCanonical} />
 
       <meta httpEquiv="content-language" content="fr-FR" />
@@ -31,9 +42,7 @@ const SEO = ({
       {enableLocalSEO && (
         <>
           <meta name="geo.region" content="FR-16" />
-          <meta name="geo.placename" content="Angoulême" />
-          <meta name="geo.position" content="45.6484;0.1560" />
-          <meta name="ICBM" content="45.6484, 0.1560" />
+          <meta name="geo.placename" content="Cognac, Angoulême, Saintes, Charente" />
         </>
       )}
 
@@ -70,54 +79,98 @@ const SEO = ({
 export default SEO;
 
 export const createLocalBusinessSchema = () => {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl).replace(/\/$/, '');
   return {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['ProfessionalService', 'LocalBusiness'],
     '@id': `${siteUrl}/#business`,
-      name: 'Théo Multimédia',
-      alternateName: 'Théo Multimédia - Agence Web Angoulême',
-      description: 'Agence web à Angoulême spécialisée dans la création de sites internet ultra-rapides, éco-responsables et optimisés SEO. Expertise Google et IA (ChatGPT, Perplexity). Livraison express 24h.',
-      url: siteUrl,
-      email: 'contact@theo-multimedia.com',
-      telephone: '+33 7 68 51 95 68',
-    geo: { '@type': 'GeoCoordinates', latitude: 45.6484, longitude: 0.1560 },
+    name: business.brandName,
+    legalName: business.legalName,
+    alternateName: `${business.brandName} - Agence web en Charente`,
+    description: business.publicPositioning,
+    url: siteUrl,
+    email: business.email,
+    telephone: business.phoneE164,
     address: {
       '@type': 'PostalAddress',
-        addressLocality: 'Angoulême',
-      addressRegion: 'Charente',
-      postalCode: '16000',
-      addressCountry: 'FR',
+      addressLocality: business.legalAddress.city,
+      addressRegion: business.legalAddress.region,
+      postalCode: business.legalAddress.postalCode,
+      addressCountry: business.legalAddress.country,
     },
-    areaServed: [
-        { '@type': 'City', name: 'Angoulême' },
-      { '@type': 'State', name: 'Nouvelle-Aquitaine' },
-      { '@type': 'Country', name: 'France' },
-    ],
+    areaServed: business.serviceAreas.map((name) => ({
+      '@type': name.includes('Charente') || name.includes('Aquitaine') ? 'AdministrativeArea' : 'City',
+      name,
+    })),
     openingHoursSpecification: [{
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
+      dayOfWeek: business.openingHours.days,
+      opens: business.openingHours.opens,
+      closes: business.openingHours.closes,
     }],
-      priceRange: '$$',
-    logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`, width: 512, height: 512 },
-    image: [`${siteUrl}/theo_multimedia.png`],
+    priceRange: '$$',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`,
+      width: 512,
+      height: 512,
+    },
+    image: [`${siteUrl}/og-image.jpg`],
     founder: {
       '@type': 'Person',
-          name: 'Théo LAFONT',
-          jobTitle: 'Développeur Web Full-Stack & Expert SEO',
+      name: business.founder,
+      jobTitle: 'Développeur web full-stack et consultant SEO',
       url: `${siteUrl}/about`,
-      sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
+      sameAs: business.sameAs,
     },
-    sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
+    sameAs: business.sameAs,
     makesOffer: [
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Création de sites internet', description: 'Développement de sites web sur-mesure avec Next.js et React' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Référencement SEO local', description: 'Optimisation pour Google, ChatGPT, Perplexity et moteurs IA' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Livraison express 24h', description: 'Sites professionnels livres en 24 heures' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Éco-conception web', description: 'Sites web éco-responsables à faible empreinte carbone' } },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Création de sites internet',
+          description: 'Sites vitrines, refontes et pages locales rapides en Charente.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Référencement SEO local',
+          description: 'Structure, contenus, maillage et données structurées pour la visibilité locale.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Site vitrine en 24h',
+          description: 'Livraison express quand le périmètre est cadré.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'CRM, LMS et e-commerce sur mesure',
+          description: 'Outils métier et boutiques adaptés aux besoins réels.',
+        },
+      },
     ],
-        knowsAbout: ['agence web angoulême', 'création site internet angoulême', 'développeur web charente', 'seo angoulême', 'SEO', 'Next.js', 'React', 'web design', 'éco-conception web', 'référencement IA', 'ChatGPT SEO', 'GEO optimisation'],
+    knowsAbout: [
+      'agence web Cognac',
+      'création site internet Angoulême',
+      'création site internet Saintes',
+      'création site internet Charente',
+      'SEO local',
+      'Next.js',
+      'React',
+      'web design',
+      'référencement IA',
+      'GEO',
+      'llms.txt',
+    ],
   };
 };
 
@@ -130,8 +183,8 @@ export const createWebPageSchema = (title, description, url) => ({
   inLanguage: 'fr-FR',
   isPartOf: {
     '@type': 'WebSite',
-    name: 'Théo Multimédia',
-    url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com'),
+    name: business.brandName,
+    url: (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl),
   },
   dateModified: new Date().toISOString().split('T')[0],
   speakable: {
@@ -157,26 +210,32 @@ export const createBreadcrumbSchema = (items) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: item.name,
-    item: `${(process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '')}${item.url}`,
+    item: absoluteUrl(item.url),
   })),
 });
 
 export const createOrganizationSchema = () => {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl).replace(/\/$/, '');
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
-    name: 'Théo Multimédia',
+    name: business.brandName,
+    legalName: business.legalName,
     url: siteUrl,
-    email: 'contact@theo-multimedia.com',
-    logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`, width: 512, height: 512 },
+    email: business.email,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`,
+      width: 512,
+      height: 512,
+    },
     founder: {
       '@type': 'Person',
-      name: 'Théo LAFONT',
-      jobTitle: 'Développeur Web Full-Stack & Expert SEO',
+      name: business.founder,
+      jobTitle: 'Développeur web full-stack et consultant SEO',
     },
-    sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
+    sameAs: business.sameAs,
   };
 };
 
@@ -184,7 +243,7 @@ export const createHowToSchema = (steps) => ({
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'Comment je crée votre site web',
-  description: 'Methodologie de création de sites web professionnels par Théo Multimédia',
+  description: `Méthodologie de création de sites web professionnels par ${business.brandName}`,
   step: steps.map((step, index) => ({
     '@type': 'HowToStep',
     position: index + 1,

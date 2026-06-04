@@ -10,6 +10,7 @@ export default function Document() {
         <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
         <link rel="icon" type="image/webp" href="/assets/favicon-tm-orange-v2.webp" />
         <link rel="apple-touch-icon" href="/assets/logo-theo-multimedia-orange-v2.webp" />
+        <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
       <body className="antialiased">
         <Main />

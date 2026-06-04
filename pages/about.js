@@ -19,8 +19,8 @@ const values = [
   },
   {
     icon: '/assets/icon-star-rating-orange.webp',
-    title: 'Passion',
-    description: "Le web est ma passion depuis plus de 10 ans. Cette énergie se retrouve dans chaque pixel de vos projets.",
+    title: 'Clarté',
+    description: "Chaque écran doit aider le visiteur à comprendre, comparer et passer à l’action sans friction inutile.",
   },
   {
     icon: '/assets/icon-users-orange.webp',
@@ -39,8 +39,8 @@ const skills = [
 const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
-    'À propos - Théo Lafont, développeur web à Angoulême',
-    'Théo Lafont, développeur web full-stack et expert SEO à Angoulême. Plus de 10 ans d’expérience en création de sites internet performants, éco-responsables et optimisés pour Google et les IA.',
+    'À propos - Théo Lafont, développeur web en Charente',
+    'Théo Lafont, développeur web full-stack et consultant SEO en Charente. Création de sites internet rapides, SEO local et visibilité IA.',
     `${baseUrl}/about`
   );
   const breadcrumbSchema = createBreadcrumbSchema([
@@ -56,8 +56,8 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   return (
     <>
       <SEO
-        title="À propos - Développeur web full-stack Angoulême"
-        description="Théo Lafont, développeur web full-stack et expert SEO à Angoulême. Création de sites internet ultra-rapides, éco-responsables, optimisés pour Google et les IA (ChatGPT, Perplexity)."
+        title="À propos - Développeur web full-stack en Charente"
+        description="Théo Lafont, développeur web full-stack et consultant SEO en Charente. Sites rapides, SEO local, visibilité IA et outils sur mesure."
         canonical="/about"
         schema={schema}
         enableLocalSEO={true}
@@ -65,12 +65,12 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
       <CrawlerPageContent
         isCrawler={isCrawlerBot}
-        title="À propos de Théo Multimédia - Développeur web à Angoulême"
-        description="Théo Lafont est un développeur web full-stack et expert en référencement SEO basé à Angoulême, en Charente. Spécialisé dans la création de sites internet ultra-rapides, éco-responsables et optimisés pour les moteurs de recherche Google et les intelligences artificielles comme ChatGPT, Perplexity et Gemini."
+        title="À propos de Théo Multimédia - Développeur web en Charente"
+        description="Théo Lafont est développeur web full-stack et consultant SEO en Charente. Théo Multimédia crée des sites rapides, utiles et structurés pour Google et les assistants IA."
         sections={[
           {
             title: "Mon parcours",
-            content: "Avec plus de 10 ans d'expérience dans le développement web et le design digital, je crée des expériences numériques qui captivent, engagent et convertissent. Mon expertise couvre le développement full-stack avec Next.js et React, le design UX/UI, le référencement SEO classique et le nouveau référencement IA (GEO - Generative Engine Optimization). Basée à Angoulême en Charente, mon agence Théo Multimédia accompagne les entreprises de toute la France dans leur transformation digitale.",
+            content: "Avec plus de 10 ans d'expérience dans le développement web et le design digital, je crée des interfaces qui expliquent clairement une activité et facilitent la prise de contact. Mon expertise couvre le développement full-stack avec Next.js et React, le design UX/UI, le référencement SEO local et le référencement IA (GEO - Generative Engine Optimization). Théo Multimédia accompagne les entreprises de Cognac, Angoulême, Saintes et plus largement de Charente.",
           },
           {
             title: "Expertise SEO Google et IA",
@@ -120,8 +120,8 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                Basé à Angoulême, je transforme vos idées en sites internet ultra-rapides,
-                visibles sur Google et recommandés par les IA. Depuis plus de 10 ans.
+                Basé commercialement en Charente, j’accompagne Cognac, Angoulême et Saintes avec des sites rapides,
+                lisibles pour Google et mieux structurés pour les assistants IA.
               </p>
             </motion.div>
           </div>
@@ -238,7 +238,7 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                   Audit technique, stratégie de mots-clés, contenu optimisé, netlinking. Résultats mesurables et suivi mensuel de vos positions.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Première page Google sur vos mots-clés</li>
+                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Structure pensée pour vos recherches prioritaires</li>
                   <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Core Web Vitals optimisés</li>
                   <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Trafic qualifié et mesurable</li>
                 </ul>

@@ -1,0 +1,22 @@
+{
+  "name": "Théo Multimédia",
+  "short_name": "Théo Multimédia",
+  "description": "Agence web en Charente : site vitrine en 24h, SEO local et solutions sur mesure.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#03070c",
+  "theme_color": "#ff5a00",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "/assets/favicon-tm-orange-v2.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/assets/logo-theo-multimedia-orange-v2.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

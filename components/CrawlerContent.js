@@ -8,6 +8,7 @@
  */
 
 import React from 'react';
+import { business } from '../lib/business';
 
 /**
  * Complete page content for crawlers
@@ -54,10 +55,10 @@ export const CrawlerPageContent = ({ title, description, sections = [], isCrawle
 
       <footer>
         <p>
-          <strong>Théo Multimédia</strong> - Création de sites internet à Angoulême
+          <strong>{business.brandName}</strong> - Création de sites internet en Charente
         </p>
-        <p>Charente, Nouvelle-Aquitaine, France</p>
-        <p>Email: contact@theo-multimedia.com</p>
+        <p>Cognac, Angoulême, Saintes, Charente et Charente-Maritime</p>
+        <p>Email: {business.email}</p>
       </footer>
     </article>
   );

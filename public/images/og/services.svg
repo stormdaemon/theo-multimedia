@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Services Théo Multimédia">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#02060a"/>
+      <stop offset=".55" stop-color="#071421"/>
+      <stop offset="1" stop-color="#03070c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="960" cy="260" r="320" fill="#ff5a00" opacity=".22"/>
+  <circle cx="220" cy="520" r="260" fill="#0b4f7a" opacity=".22"/>
+  <rect x="76" y="76" width="1052" height="482" rx="32" fill="rgba(255,255,255,.06)" stroke="#ff8a42" stroke-opacity=".48"/>
+  <text x="108" y="150" fill="#ff7a2a" font-family="Arial, sans-serif" font-size="28" font-weight="700">Services web</text>
+  <text x="108" y="272" fill="#fff" font-family="Arial, sans-serif" font-size="64" font-weight="800">Site vitrine, SEO local,</text>
+  <text x="108" y="350" fill="#fff" font-family="Arial, sans-serif" font-size="64" font-weight="800">CRM, LMS & e-commerce</text>
+  <text x="108" y="452" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Des pages rapides, utiles et prêtes à convertir.</text>
+</svg>

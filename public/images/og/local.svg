@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Création site internet Cognac Angoulême Saintes">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#03070c"/>
+      <stop offset=".6" stop-color="#08111b"/>
+      <stop offset="1" stop-color="#020408"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M780 70 C980 120 1120 260 1090 430 C1060 580 820 590 690 500 C560 410 590 230 780 70Z" fill="#ff5a00" opacity=".24"/>
+  <rect x="76" y="76" width="1052" height="482" rx="32" fill="rgba(255,255,255,.055)" stroke="#ff8a42" stroke-opacity=".48"/>
+  <text x="108" y="150" fill="#ff7a2a" font-family="Arial, sans-serif" font-size="28" font-weight="700">Création de site internet local</text>
+  <text x="108" y="272" fill="#fff" font-family="Arial, sans-serif" font-size="66" font-weight="800">Cognac • Angoulême</text>
+  <text x="108" y="350" fill="#fff" font-family="Arial, sans-serif" font-size="66" font-weight="800">Saintes</text>
+  <text x="108" y="452" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="30">Pages locales utiles, sans doorway pages.</text>
+</svg>

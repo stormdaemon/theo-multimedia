@@ -22,7 +22,7 @@ describe('Theo Multimedia orange glass redesign', () => {
     expect(home).toContain('/assets/process-section-developer-working.webp');
     expect(home).toContain('/assets/audit-seo-target-rocket.webp');
     expect(home).toContain('Votre site vitrine');
-    expect(home).toContain('en 24h chrono.');
+    expect(home).toContain('Votre visibilité se construit dès le premier pixel.');
   });
 
   test('shared navigation and footer use the new visual identity', () => {
@@ -31,8 +31,9 @@ describe('Theo Multimedia orange glass redesign', () => {
 
     expect(navbar).toContain('tm-navbar');
     expect(navbar).toContain('BrandLogo');
-    expect(navbar).toContain("path: '/seo'");
+    expect(navbar).toContain("path: '/referencement-local'");
     expect(navbar).toContain("path: '/solutions'");
+    expect(navbar).toContain("path: '/blog'");
     expect(navbar).not.toContain('/services#');
     expect(navbar).toContain('Audit gratuit');
     expect(footer).toContain('tm-footer');
@@ -43,12 +44,15 @@ describe('Theo Multimedia orange glass redesign', () => {
     const layout = read('components/Layout.js');
     const scroll = read('components/ScrollToTopOnRoute.js');
     const sitemap = read('pages/sitemap.xml.js');
+    const serviceData = read('lib/services-data.js');
 
     expect(layout).toContain('ScrollToTopOnRoute');
     expect(scroll).toContain("events.on('routeChangeComplete'");
     expect(scroll).toContain("window.scrollTo({ top: 0");
-    expect(sitemap).toContain("url: '/seo'");
+    expect(sitemap).toContain('contentPages');
+    expect(serviceData).toContain("canonical: '/referencement-local'");
     expect(sitemap).toContain("url: '/solutions'");
+    expect(sitemap).toContain("url: '/blog'");
   });
 
   test('homepage uses generated icons instead of Lucide placeholders', () => {

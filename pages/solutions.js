@@ -6,10 +6,10 @@ import PageFeatureBand from '../components/PageFeatureBand';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 
 const solutions = [
-  { icon: '/assets/icon-crm-orange.webp', image: '/assets/services-crm-pipeline-dashboard.webp', title: 'CRM sur mesure', text: 'Clients, devis, relances et suivi commercial réunis dans un outil qui colle à votre organisation.' },
-  { icon: '/assets/icon-lms-orange.webp', image: '/assets/services-lms-course-dashboard.webp', title: 'LMS & E-learning', text: 'Parcours, ressources et espaces utilisateurs pour organismes de formation, écoles et équipes internes.' },
-  { icon: '/assets/icon-ecommerce-orange.webp', image: '/assets/services-ecommerce-cart-dashboard.webp', title: 'E-commerce', text: 'Une boutique rapide avec les bons parcours de vente, sans vous enfermer dans un thème générique.' },
-  { icon: '/assets/icon-code-orange.webp', image: '/assets/about-expertise-dashboard.webp', title: 'Applications web', text: 'Un outil métier, un espace membre ou une plateforme spécifique construite autour de votre besoin réel.' },
+  { icon: '/assets/icon-crm-orange.webp', image: '/assets/services-crm-pipeline-dashboard.webp', title: 'CRM sur mesure', text: 'Clients, devis, relances et suivi commercial réunis dans un outil qui colle à votre organisation.', href: '/crm-sur-mesure' },
+  { icon: '/assets/icon-lms-orange.webp', image: '/assets/services-lms-course-dashboard.webp', title: 'LMS & E-learning', text: 'Parcours, ressources et espaces utilisateurs pour organismes de formation, écoles et équipes internes.', href: '/lms-elearning' },
+  { icon: '/assets/icon-ecommerce-orange.webp', image: '/assets/services-ecommerce-cart-dashboard.webp', title: 'E-commerce', text: 'Une boutique rapide avec les bons parcours de vente, sans vous enfermer dans un thème générique.', href: '/ecommerce-sur-mesure' },
+  { icon: '/assets/icon-code-orange.webp', image: '/assets/about-expertise-dashboard.webp', title: 'Applications web', text: 'Un outil métier, un espace membre ou une plateforme spécifique construite autour de votre besoin réel.', href: '/creation-site-internet' },
 ];
 
 const SolutionsPage = ({ baseUrl, isCrawler }) => {
@@ -60,12 +60,14 @@ const SolutionsPage = ({ baseUrl, isCrawler }) => {
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {solutions.map((solution, index) => (
                 <motion.article key={solution.title} initial={{ opacity: 1, y: 0 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .07 }} className="tm-thick-glass overflow-hidden rounded-2xl">
+                  <Link href={solution.href} className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                   <img src={solution.image} alt="" className="h-48 w-full object-cover opacity-90" />
                   <div className="p-6">
                     <img src={solution.icon} alt="" className="h-10 w-10 object-contain" />
                     <h3 className="mt-4 text-2xl font-bold">{solution.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-300">{solution.text}</p>
                   </div>
+                  </Link>
                 </motion.article>
               ))}
             </div>

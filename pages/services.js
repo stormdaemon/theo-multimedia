@@ -12,11 +12,12 @@ const services = [
     title: 'Sites ultra-rapides',
     description: "Un site rapide rassure et facilite la prise de contact. Je crée des interfaces légères et soignées pour que vos visiteurs accèdent immédiatement à l’essentiel.",
     features: [
-      'Temps de chargement < 1 seconde',
+      'Chargement rapide et mesurable',
       'Optimisé pour mobile et tablette',
       'Performance technique optimisée',
       'Livraison express en 24h'
     ],
+    href: '/site-vitrine-24h',
     highlight: true
   },
   {
@@ -28,20 +29,22 @@ const services = [
       'Parcours de conversion travaillé',
       'Parcours utilisateur optimisé',
       "Boutons d’action stratégiques",
-      'A/B testing inclus'
-    ]
+      'Optimisation itérative possible'
+    ],
+    href: '/creation-site-internet'
   },
   {
     icon: '/assets/icon-seo-local-orange.webp',
     preview: '/assets/services-seo-local-map-dashboard.webp',
     title: 'Visible sur Google',
-    description: "Être en première page Google, ça change tout. J’optimise votre site pour qu’il apparaisse quand vos clients vous cherchent. Sans jargon technique.",
+    description: "Être visible quand vos clients cherchent, ça change tout. J’optimise votre site pour renforcer sa lisibilité locale, sans jargon technique ni promesse abusive.",
     features: [
       'Audit complet de visibilité',
       'Mots-clés stratégiques trouvés',
       'Contenu optimisé pour Google',
       'Suivi mensuel de position'
-    ]
+    ],
+    href: '/referencement-local'
   },
   {
     icon: '/assets/icon-rocket-orange.webp',
@@ -53,7 +56,8 @@ const services = [
       'Code optimisé et léger',
       'Images compressées intelligemment',
       'Hébergement vert disponible'
-    ]
+    ],
+    href: '/maintenance-site-web'
   },
   {
     icon: '/assets/icon-ecommerce-orange.webp',
@@ -65,7 +69,8 @@ const services = [
       'Paiements sécurisés multiples',
       'Gestion de stock automatique',
       'Intégration livraison'
-    ]
+    ],
+    href: '/ecommerce-sur-mesure'
   },
   {
     icon: '/assets/icon-crm-orange.webp',
@@ -73,11 +78,12 @@ const services = [
     title: 'Support & Évolution',
     description: "Votre site vit et évolue. Je reste disponible pour l’améliorer, le mettre à jour, et répondre à vos questions. Sans langue de bois.",
     features: [
-      'Réponse < 24h garantie',
+      'Réponse sous 24h ouvrées',
       'Mises à jour sécurité',
       'Sauvegardes quotidiennes',
       'Évolutions sur demande'
-    ]
+    ],
+    href: '/maintenance-site-web'
   }
 ];
 
@@ -107,8 +113,8 @@ const processSteps = [
 const ServicesPage = ({ baseUrl, isCrawler }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const servicesPageSchema = createWebPageSchema(
-    'Mes Services - Création de sites web en 24h',
-    'Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême.',
+    'Services web - Site vitrine, SEO local et sur mesure',
+    'Site vitrine en 24h, SEO local, audit SEO, CRM, LMS, e-commerce et maintenance pour entreprises en Charente.',
     `${baseUrl}/services`
   );
   const howToSchema = createHowToSchema(processSteps);
@@ -120,16 +126,16 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
   return (
     <>
       <SEO
-        title="Mes Services - Création de sites web en 24h"
-        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        title="Services web - Site vitrine, SEO local et sur mesure"
+        description="Site vitrine en 24h, SEO local, audit SEO, CRM, LMS, e-commerce et maintenance pour entreprises en Charente."
         canonical="/services"
         schema={schema}
       />
 
       <CrawlerPageContent
         isCrawler={isCrawler}
-        title="Mes Services - Création de sites web en 24h"
-        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
+        title="Services web - Site vitrine, SEO local et sur mesure"
+        description="Site vitrine en 24h, SEO local, audit SEO, CRM, LMS, e-commerce et maintenance pour entreprises en Charente."
         sections={[
           {
             title: "Votre site en ligne demain - Livraison 24h",
@@ -266,7 +272,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                   transition={{ delay: index * 0.08 }}
                   className={`group relative ${service.highlight ? 'md:col-span-2 lg:col-span-1' : ''}`}
                 >
-                  <div className={`tm-subpage-card h-full rounded-xl border transition-colors overflow-hidden ${
+                  <Link href={service.href} className={`tm-subpage-card block h-full rounded-xl border transition-colors overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                     service.highlight
                       ? 'bg-accent/5 border-accent/30 hover:border-accent/50'
                       : 'bg-card border-border hover:border-accent/30'
@@ -297,7 +303,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                       ))}
                     </ul>
                     </div>
-                  </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -317,7 +323,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                 Ma methodologie
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl">
-                Un processus eprouve pour des résultats garantis.
+                Un processus clair pour avancer sans flou.
               </p>
             </motion.div>
 

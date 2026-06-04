@@ -93,7 +93,7 @@ const MentionsLegales = ({ baseUrl }) => {
               <p>Pour toute question ou demande d'information concernant le site, ou tout signalement de contenu ou d'activités illicites, contactez-moi :</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
-                <li>Par téléphone : <a href="tel:+33123456789" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
+                <li>Par téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
                 <li>Par courrier : 16000 Angoulême, France</li>
               </ul>
             </section>

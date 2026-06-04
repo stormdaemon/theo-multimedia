@@ -5,11 +5,12 @@ import BrandLogo from './BrandLogo';
 
 const navItems = [
   { name: 'Accueil', path: '/', exact: true },
-  { name: 'Sites vitrines', path: '/services', exact: true },
-  { name: 'SEO & Visibilité', path: '/seo', exact: true },
-  { name: 'Solutions sur mesure', path: '/solutions', exact: true },
+  { name: 'Services', path: '/services', exact: true },
+  { name: 'Site 24h', path: '/site-vitrine-24h', exact: true },
+  { name: 'SEO local', path: '/referencement-local', exact: true },
+  { name: 'Sur mesure', path: '/solutions', exact: true },
   { name: 'Réalisations', path: '/portfolio', exact: true },
-  { name: 'À propos', path: '/about', exact: true },
+  { name: 'Blog', path: '/blog', exact: true },
   { name: 'Contact', path: '/contact', exact: true },
 ];
 
@@ -44,7 +45,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <Link href="/contact" className="tm-desktop-audit tm-button tm-button-primary shrink-0 px-7">
+        <Link href="/audit-seo-gratuit" className="tm-desktop-audit tm-button tm-button-primary shrink-0 px-7">
           <img src="/assets/icon-seo-audit-orange.webp" alt="" className="h-5 w-5 brightness-0 invert" />
           Audit gratuit
         </Link>
@@ -64,7 +65,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link href="/contact" className="tm-button tm-button-primary mt-3" onClick={() => setOpen(false)}>
+            <Link href="/audit-seo-gratuit" className="tm-button tm-button-primary mt-3" onClick={() => setOpen(false)}>
               Audit gratuit
             </Link>
           </div>

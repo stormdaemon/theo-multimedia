@@ -1,11 +1,13 @@
 ﻿import { motion } from 'motion/react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useForm, ValidationError } from '@formspree/react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema, createBreadcrumbSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 import PageFeatureBand from '../components/PageFeatureBand';
+import { business } from '../lib/business';
 
 const contactInfo = [
   {
@@ -17,7 +19,7 @@ const contactInfo = [
   {
     icon: '/assets/icon-footer-location-orange.webp',
     title: "Localisation",
-    value: "Angoulême, Charente",
+    value: "Cognac / Charente",
     link: null
   },
   {
@@ -35,7 +37,7 @@ const faqs = [
   },
   {
     question: "Livraison en 24h, c’est vraiment possible ?",
-    answer: "Oui, pour les sites vitrines et landing pages. C’est idéal pour les lancements urgents, les événements ou les opportunités business qui n’attendent pas. La qualité et la performance restent garanties."
+    answer: "Oui, pour les sites vitrines et landing pages quand le périmètre est clair. C’est idéal pour les lancements urgents, les événements ou les opportunités business qui n’attendent pas. La qualité et la performance restent prioritaires."
   },
   {
     question: "C’est quoi l’éco-conception web ?",
@@ -49,11 +51,13 @@ const faqs = [
 
 const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const [state, handleSubmit] = useForm("mblypyew");
+  const { query } = useRouter();
+  const requestedService = typeof query.service === 'string' ? query.service : '';
 
   const localBusinessSchema = createLocalBusinessSchema();
   const contactPageSchema = createWebPageSchema(
-    'Contact - Parlez-nous de votre projet web',
-    'Contactez Théo Multimédia pour discuter de votre projet de site internet. Devis gratuit en 24h. Agence web à Angoulême, spécialisée SEO Google et IA.',
+    'Contact - Parlez de votre projet web',
+    'Contactez Théo Multimédia pour votre site internet, SEO local, CRM, LMS ou e-commerce. Réponse sous 24h ouvrées en Charente.',
     `${baseUrl}/contact`
   );
   const faqSchema = createFAQSchema(faqs);
@@ -107,8 +111,8 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   return (
     <>
       <SEO
-        title="Contact - Discutons de votre projet web"
-        description="Contactez Théo Multimédia pour votre projet de site internet à Angoulême. Devis gratuit en 24h. Spécialiste SEO Google et IA (ChatGPT, Perplexity). Livraison express disponible."
+        title="Contact - Site internet, SEO local et sur mesure"
+        description="Contactez Théo Multimédia pour votre projet web en Charente : site vitrine 24h, SEO local, audit gratuit, CRM, LMS ou e-commerce."
         canonical="/contact"
         schema={schema}
         enableLocalSEO={true}
@@ -116,8 +120,8 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
       <CrawlerPageContent
         isCrawler={isCrawlerBot}
-        title="Contact - Théo Multimédia, Agence Web Angoulême"
-        description="Contactez Théo Multimédia pour discuter de votre projet de site internet. Devis gratuit en moins de 24 heures. Agence web basée à Angoulême, Charente, spécialisée dans la création de sites ultra-rapides, éco-responsables et optimisés pour le référencement Google et les moteurs de recherche IA."
+        title="Contact - Théo Multimédia, Agence Web en Charente"
+        description="Contactez Théo Multimédia pour discuter de votre projet de site internet, SEO local, CRM, LMS ou e-commerce. Réponse sous 24h ouvrées."
         sections={[
           {
             title: "Parlons de votre projet",
@@ -126,9 +130,10 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
           {
             title: "Coordonnées",
             items: [
-              "Email : contact@theo-multimedia.com",
-              "Localisation : Angoulême, Charente, Nouvelle-Aquitaine, France",
-              "Délai de réponse : sous 24 heures",
+              `Email : ${business.email}`,
+              "Localisation commerciale : Cognac / Charente",
+              "Zones : Angoulême, Cognac, Saintes, Jarnac, Charente et Charente-Maritime",
+              "Délai de réponse : sous 24h ouvrées",
               "Horaires : lundi au vendredi, 9h-18h",
             ],
           },
@@ -175,7 +180,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
                 Site ultra-rapide, éco-conçu, visible sur Google et les IA ?
-                Devis gratuit en moins de 24h.
+                Réponse sous 24h ouvrées, avec un premier retour concret.
               </p>
             </motion.div>
           </div>
@@ -232,7 +237,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               className="tm-glass p-8 md:p-10 rounded-2xl"
             >
               <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight mb-8 text-center">
-                Envoyez-moi un message
+                Envoyer ma demande
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -268,7 +273,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-1.5">
-                    Telephone <span className="text-muted-foreground">(optionnel)</span>
+                    Téléphone <span className="text-muted-foreground">(optionnel)</span>
                   </label>
                   <input
                     id="phone"
@@ -280,8 +285,48 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                 </div>
 
                 <div>
+                  <label htmlFor="city" className="block text-sm font-medium mb-1.5">
+                    Ville
+                  </label>
+                  <input
+                    id="city"
+                    type="text"
+                    name="city"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
+                    placeholder="Cognac, Angoulême, Saintes..."
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="projectType" className="block text-sm font-medium mb-1.5">
+                    Type de projet
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    required
+                    key={requestedService || 'projectType'}
+                    defaultValue={requestedService}
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
+                  >
+                    <option value="">Sélectionnez un type de projet</option>
+                    <option value="site-vitrine-24h">Site vitrine en 24h</option>
+                    <option value="creation-site-internet">Création de site internet</option>
+                    <option value="audit-seo">Audit SEO gratuit</option>
+                    <option value="referencement-local">SEO local</option>
+                    <option value="seo-ia">SEO IA / GEO</option>
+                    <option value="crm-sur-mesure">CRM sur mesure</option>
+                    <option value="lms-elearning">LMS / E-learning</option>
+                    <option value="ecommerce-sur-mesure">E-commerce sur mesure</option>
+                    <option value="refonte-site-internet">Refonte de site</option>
+                    <option value="maintenance-site-web">Maintenance</option>
+                    <option value="projet-similaire">Projet similaire au portfolio</option>
+                  </select>
+                </div>
+
+                <div>
                   <label htmlFor="budget" className="block text-sm font-medium mb-1.5">
-                    Budget estime
+                    Budget estimé
                   </label>
                   <select
                     id="budget"
@@ -289,11 +334,28 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                     required
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
                   >
-                    <option value="">Selectionnez une fourchette</option>
+                    <option value="">Sélectionnez une fourchette</option>
                     <option value="1000-3000">1 000 - 3 000 euros</option>
                     <option value="3000-5000">3 000 - 5 000 euros</option>
                     <option value="5000-10000">5 000 - 10 000 euros</option>
                     <option value="10000+">Plus de 10 000 euros</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="delay" className="block text-sm font-medium mb-1.5">
+                    Délai souhaité
+                  </label>
+                  <select
+                    id="delay"
+                    name="delay"
+                    className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
+                  >
+                    <option value="">Sélectionnez un délai</option>
+                    <option value="24h">24h / urgent</option>
+                    <option value="1-2-semaines">1 à 2 semaines</option>
+                    <option value="1-mois">Dans le mois</option>
+                    <option value="a-cadrer">À cadrer ensemble</option>
                   </select>
                 </div>
 
@@ -328,12 +390,25 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                   </label>
                 </div>
 
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="auditSeo"
+                    name="auditSeo"
+                    defaultChecked={requestedService === 'audit-seo'}
+                    className="mt-1 w-4 h-4 rounded border-border text-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                  <label htmlFor="auditSeo" className="text-sm text-muted-foreground">
+                    Je souhaite aussi recevoir un audit SEO gratuit de mon site actuel.
+                  </label>
+                </div>
+
                 <button
                   type="submit"
                   disabled={state.submitting}
                   className="w-full py-3.5 bg-accent text-accent-foreground rounded-xl font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:opacity-90"
                 >
-                  {state.submitting ? "Envoi en cours..." : "Envoyer mon message"}
+                  {state.submitting ? "Envoi en cours..." : "Envoyer ma demande"}
                 </button>
               </form>
             </motion.div>
