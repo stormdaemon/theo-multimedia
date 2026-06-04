@@ -1,363 +1,145 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'motion/react';
-import { ArrowRight, Zap, Search, Palette, Leaf, Bot, Globe } from 'lucide-react';
-import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema } from '../components/SEO';
+﻿import Link from 'next/link';
+import SEO, { createFAQSchema, createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 
-const features = [
-  {
-    icon: Zap,
-    title: 'Ultra-rapide',
-    stat: '< 1s',
-    description: 'Temps de chargement inferieur a 1 seconde. 3x plus rapide que la moyenne. Vos visiteurs restent, Google vous recompense.',
-  },
-  {
-    icon: Palette,
-    title: 'Design qui convertit',
-    stat: '+40%',
-    description: 'Design persuasif qui transforme vos visiteurs en clients. Chaque element est pense pour la conversion.',
-  },
-  {
-    icon: Search,
-    title: 'SEO Google & IA',
-    stat: 'Top 3',
-    description: 'Visible sur Google ET sur ChatGPT, Perplexity, Gemini. Double optimisation pour capter 100% du trafic.',
-  },
-  {
-    icon: Leaf,
-    title: 'Eco-responsable',
-    stat: '-60%',
-    description: "Sites legers qui consomment 60% d'energie en moins. Bon pour la planete, bon pour votre image.",
-  },
+const icon = (src, className = 'h-6 w-6') => <img src={src} alt="" className={`${className} object-contain`} />;
+
+const serviceStrip = [
+  ['/assets/icon-design-orange.webp', 'Site Vitrine', 'En 24h'],
+  ['/assets/icon-seo-local-orange.webp', 'SEO Local', 'Google & IA'],
+  ['/assets/icon-seo-audit-orange.webp', 'Audit SEO', 'Gratuit'],
+  ['/assets/icon-crm-orange.webp', 'CRM sur mesure', 'Gestion clients'],
+  ['/assets/icon-lms-orange.webp', 'LMS & E-learning', 'Universités'],
+  ['/assets/icon-ecommerce-orange.webp', 'E-commerce', 'Sans Shopify'],
 ];
 
-const portfolioHighlights = [
-  { title: "SOS Chretiens d'Occident", category: 'Site vitrine', imageUrl: '/sos_chretien_d_occident.png', url: 'https://soschretiensdoccident.fr/' },
-  { title: 'Institut Irenee', category: 'Application web', imageUrl: '/irenee_institut.png', url: 'https://www.irenee-institut.org/' },
-  { title: 'Heaven Radio', category: 'Web radio', imageUrl: '/heavenradio.png', url: 'https://heavenradio.fr/' },
-  { title: 'TRACKWARS', category: 'Application web', imageUrl: '/trackwars.png', url: 'https://trackwars.fr/' },
+const services = [
+  ['/assets/icon-design-orange.webp', 'Site vitrine en 24h', 'Un site professionnel, moderne et rapide, livré en 24h maximum.', '/assets/service-card-site-vitrine-preview.webp'],
+  ['/assets/icon-seo-local-orange.webp', 'SEO Local & Référencement', 'Soyez visible sur Google à Cognac, en Charente et alentours.', '/assets/service-card-seo-local-preview.webp'],
+  ['/assets/icon-seo-audit-orange.webp', 'Audit SEO gratuit', 'J’analyse votre site et vous donne un plan d’action clair.', '/assets/service-card-audit-seo-preview.webp'],
+  ['/assets/icon-crm-orange.webp', 'CRM sur mesure', 'Gérez vos clients, devis, relances et suivi dans un outil adapté.', '/assets/service-card-crm-preview.webp'],
+  ['/assets/icon-lms-orange.webp', 'LMS / E-learning', 'Plateformes de formation pour écoles, universités et organismes.', '/assets/service-card-lms-preview.webp'],
+  ['/assets/icon-ecommerce-orange.webp', 'E-commerce sur mesure', 'Boutiques rapides, sécurisées, sans les limites de Shopify.', '/assets/service-card-ecommerce-preview.webp'],
+];
+
+const projects = [
+  ["SOS Chrétiens d’Occident", 'Site vitrine', '/assets/project-sos-chretiens-occident-preview.webp'],
+  ['Institut Irénée', 'Site vitrine', '/assets/project-institut-irenee-preview.webp'],
+  ['Heaven Radio', 'Web Radio', '/assets/project-heaven-radio-preview.webp'],
+  ['TRACKWARS', 'Application web', '/assets/project-trackwars-preview.webp'],
+];
+
+const stats = [
+  ['/assets/icon-clock-orange.webp', '24h', 'Délai max de livraison'],
+  ['/assets/icon-target-orange.webp', 'SEO', 'Optimisation locale incluse'],
+  ['/assets/icon-users-orange.webp', 'Local', 'Accompagnement direct'],
+  ['/assets/icon-star-rating-orange.webp', 'Sur mesure', 'Aucun template générique'],
+];
+
+const steps = [
+  ['1', 'On échange', 'Vous me parlez de votre projet (10 min).'],
+  ['2', 'Je conçois', 'Je crée votre site ou solution sur mesure.'],
+  ['3', 'Je livre en 24h', 'Votre site est en ligne, prêt à performer.'],
+  ['4', 'Vous développez votre activité', 'Grâce au SEO et à une stratégie efficace.'],
 ];
 
 const HomePage = ({ baseUrl, isCrawler }) => {
-  const localBusinessSchema = createLocalBusinessSchema();
-  const homePageSchema = createWebPageSchema(
-    'Agence Web Angouleme - Sites ultra-rapides, SEO Google & IA',
-    'Theo Multimedia cree des sites internet ultra-rapides, eco-responsables et optimises pour Google et les IA. Livraison express 24h. Angouleme, Charente.',
-    baseUrl
-  );
-  const faqSchema = createFAQSchema([
-    { question: 'Combien coute un site internet ?', answer: 'Les tarifs varient selon le projet. Un site vitrine demarre a partir de 1 000 euros. Contactez-moi pour un devis gratuit et personnalise.' },
-    { question: 'Vous livrez vraiment en 24h ?', answer: 'Oui, pour les sites vitrines et landing pages. Parfait pour les lancements urgents. Qualite et performance garanties.' },
-    { question: "Qu'est-ce que le SEO IA ?", answer: "C'est l'optimisation de votre site pour etre recommande par les IA comme ChatGPT et Perplexity. 800 millions de personnes utilisent ChatGPT chaque semaine." },
-  ]);
-  const schema = { '@context': 'https://schema.org', '@graph': [localBusinessSchema, homePageSchema, faqSchema] };
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      createLocalBusinessSchema(),
+      createWebPageSchema('Agence Web Cognac - Site vitrine en 24h', 'Sites vitrines, SEO local et solutions web sur mesure à Cognac et en Charente.', baseUrl),
+      createFAQSchema([{ question: 'Combien coûte un site vitrine ?', answer: 'Chaque projet est chiffré gratuitement après un échange rapide.' }]),
+    ],
+  };
 
   return (
     <>
-      <SEO
-        title="Agence Web Angouleme - Sites ultra-rapides, SEO Google & IA"
-        description="Theo Multimedia cree des sites internet ultra-rapides, eco-responsables et optimises pour Google et les IA (ChatGPT, Perplexity). Livraison express 24h. Angouleme."
-        canonical="/"
-        schema={schema}
-        enableLocalSEO={true}
-      />
+      <SEO title="Agence Web Cognac - Site vitrine en 24h" description="Théo Multimédia crée votre site vitrine en 24h à Cognac. SEO local, audit gratuit et solutions web sur mesure." canonical="/" schema={schema} enableLocalSEO={true} />
+      <CrawlerPageContent isCrawler={isCrawler} title="Théo Multimédia - Agence Web Cognac" description="Sites vitrines, SEO local et solutions sur mesure." sections={services.map((s) => ({ title: s[1], content: s[2] }))} />
 
-      <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="Theo Multimedia - Agence Web Angouleme"
-        description="Creation de sites internet ultra-rapides, eco-responsables et optimises pour Google et les moteurs de recherche IA. Basee a Angouleme, Charente."
-        sections={[
-          { title: 'Votre site web professionnel en 24 heures', content: 'Theo Multimedia est une agence web basee a Angouleme specialisee dans la creation de sites internet ultra-rapides, eco-responsables et optimises pour convertir. Livraison express en 24h disponible.' },
-          { title: 'Pourquoi choisir Theo Multimedia ?', items: features.map(f => `${f.title} (${f.stat}): ${f.description}`) },
-          { title: 'Portfolio', items: portfolioHighlights.map(p => `${p.title} - ${p.category} (${p.url})`) },
-          { title: 'Technologies', items: ['Next.js 16 avec SSR pour performance maximale', 'React 19 pour interfaces modernes', 'Tailwind CSS v4 pour design sur-mesure', 'Optimisation SEO Google + IA (ChatGPT, Perplexity, Gemini)'] },
-        ]}
-      />
-
-      <div className="bg-background">
-        {/* ─── HERO ─── */}
-        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
-          <div className="max-w-6xl mx-auto relative">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-medium text-accent uppercase tracking-wider">Livraison 24h disponible</span>
-              </div>
-
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6" data-speakable="true">
-                Votre site web.<br />
-                <span className="text-accent">En 24 heures.</span>
+      <div className="tm-site-shell">
+        <section className="tm-hero">
+          <div className="tm-hero-rays" />
+          <div className="tm-container tm-hero-container relative grid items-center">
+            <div className="tm-hero-copy relative z-10">
+              <span className="tm-badge">+ Agence web à Cognac & Charente</span>
+              <h1 className="tm-title mt-5 text-[50px] leading-[1.01] md:text-[64px] xl:text-[68px]" aria-label="Votre site vitrine en 24h chrono.">
+                <span className="hidden whitespace-nowrap sm:inline">Votre site vitrine</span><span className="sm:hidden">Votre site<br />vitrine</span><br /><span className="tm-orange tm-brush sm:whitespace-nowrap">en 24h<span className="sm:hidden"><br /></span><span className="hidden sm:inline"> </span>chrono.</span>
               </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                Sites ultra-rapides, eco-responsables et optimises pour Google et les IA.
-                Votre prochain client vous cherche en ce moment — soyez la.
+              <p className="mt-8 max-w-[560px] text-[19px] leading-7 text-slate-100">
+                Sites rapides, modernes et optimisés SEO.<br /><b>Plus de visibilité. Plus de clients.</b>
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
-                >
-                  Demarrer mon projet
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-card border border-border text-foreground rounded-lg font-medium hover:bg-muted transition-colors"
-                >
-                  Voir le portfolio
-                </Link>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {['Livraison en 24h', 'Design sur mesure', 'SEO inclus'].map((label) => <span key={label} className="tm-chip">◉ <span>{label}</span></span>)}
               </div>
-            </motion.div>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link href="/contact" className="tm-button tm-button-primary tm-button-hero">Demander un site en 24h {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4')}</Link>
+                <Link href="/contact" className="tm-button tm-button-dark">Audit SEO gratuit {icon('/assets/icon-search-white.webp', 'h-4 w-4')}</Link>
+              </div>
+              <p className="mt-7 text-[13px] leading-6 text-slate-300"><b className="text-white">Basé à Cognac, en Charente.</b><br />Un interlocuteur direct pour votre projet web.</p>
+            </div>
+
+            <div className="tm-hero-visual relative">
+              <div className="tm-delivery-card">
+                <span><i /> Livraison</span><b>24h</b><small>max</small>
+              </div>
+              {icon('/assets/icon-rocket-orange.webp', 'absolute left-[3%] top-[8%] h-12 w-12')}
+              <img src="/assets/hero-curved-arrow-orange.webp" alt="" className="absolute left-[8%] top-[23%] h-32 w-28 object-contain" />
+              <img src="/assets/hero-devices-electricien-restaurant.webp" alt="Site artisan électricien et restaurant sur ordinateur et mobile" className="absolute inset-0 h-full w-full object-contain object-right-bottom" />
+            </div>
           </div>
         </section>
 
-        {/* ─── MARQUEE ─── */}
-        <div className="border-y border-border py-4 overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex items-center gap-8 mr-8 text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                <span>Performance</span><span className="text-accent">&#9670;</span>
-                <span>Design</span><span className="text-accent">&#9670;</span>
-                <span>SEO Google</span><span className="text-accent">&#9670;</span>
-                <span>SEO IA</span><span className="text-accent">&#9670;</span>
-                <span>Eco-conception</span><span className="text-accent">&#9670;</span>
-                <span>24h Express</span><span className="text-accent">&#9670;</span>
-              </div>
+        <section className="tm-container tm-thick-glass tm-service-strip">
+          <div className="grid md:grid-cols-3 lg:grid-cols-6">
+            {serviceStrip.map(([asset, title, text]) => <div className="tm-service-strip-item flex items-center gap-4 px-5 py-4" key={title}>{icon(asset, 'h-10 w-10')}<span><b className="block text-sm">{title}</b><small className="text-[11px] text-slate-300">{text}</small></span></div>)}
+          </div>
+        </section>
+
+        <section className="tm-section tm-container grid items-center gap-8 lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
+          <div><h2 className="tm-title text-4xl">Une agence locale,<br />des <span className="tm-orange">résultats concrets.</span></h2><p className="mt-4 text-sm leading-6 text-slate-300">Pas de template impersonnel.<br />Chaque interface répond à vos objectifs.</p></div>
+          <div className="tm-thick-glass grid min-w-0 rounded-[24px] sm:grid-cols-4">
+            {stats.map(([asset, value, label]) => <div className="tm-stat px-6 py-7 text-center" key={value}>{icon(asset, 'mx-auto h-9 w-9')}<b className="mt-2 block text-3xl text-orange-500">{value}</b><small className="text-[11px] text-slate-300">{label}</small></div>)}
+          </div>
+        </section>
+
+        <section className="tm-section tm-container">
+          <h2 className="tm-title mb-7 text-center text-3xl">Ce que je peux faire pour vous</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+            {services.map(([asset,title,text,image]) => <article className="tm-service-card tm-glass rounded-[22px]" key={title}><img src={image} alt="" /><div className="p-5">{icon(asset, 'mb-3 h-8 w-8')}<h3 className="text-sm font-bold">{title}</h3><p className="mt-3 text-[12px] leading-5 text-slate-300">{text}</p><span className="tm-round-arrow">{icon('/assets/icon-arrow-right-white.webp', 'h-3 w-3')}</span></div></article>)}
+          </div>
+        </section>
+
+        <section className="tm-section tm-container">
+          <h2 className="tm-title mb-7 text-center text-3xl">Ils m’ont fait confiance</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {projects.map(([title,category,image]) => (
+              <article className="tm-project-card tm-glass rounded-[22px] p-3" key={title}>
+                <div className="tm-project-media">
+                  <img src={image} alt={title} />
+                  <span className="tm-project-badge">{category}</span>
+                </div>
+                <h3 className="mt-3 text-sm font-bold">{title}</h3>
+                <p className="text-[11px] text-slate-300">{category}</p>
+              </article>
             ))}
           </div>
-        </div>
+          <Link href="/portfolio" className="mt-5 flex items-center justify-center gap-2 text-sm font-bold text-orange-500">Voir toutes les réalisations {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4')}</Link>
+        </section>
 
-        {/* ─── FEATURES ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Pourquoi ca marche
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-xl">
-                Chaque site est concu avec 4 piliers non-negociables.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group p-6 rounded-xl border border-border bg-card hover:border-accent/30 transition-colors"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
-                      <feature.icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-2xl font-bold text-accent font-[var(--font-heading)]">{feature.stat}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 font-[var(--font-heading)]">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                </motion.div>
-              ))}
-            </div>
+        <section className="tm-process tm-container tm-thick-glass my-8 rounded-[28px] px-7 py-7 md:px-10" style={{ backgroundImage: "linear-gradient(90deg, rgba(5,9,14,.98), rgba(5,9,14,.92) 62%, rgba(5,9,14,.28)), url('/assets/process-section-developer-working.webp')" }}>
+          <h2 className="tm-title mb-8 text-3xl">Comment ça marche ?</h2>
+          <div className="tm-process-grid grid gap-4 md:grid-cols-4 lg:w-[72%]">
+            {steps.map(([number,title,text]) => <div className="tm-glass-soft relative rounded-[18px] px-5 py-8 text-center" key={number}><b className="tm-step-number">{number}</b><h3 className="mt-3 text-sm font-bold">{title}</h3><p className="mt-3 text-[12px] leading-5 text-slate-300">{text}</p></div>)}
           </div>
         </section>
 
-        {/* ─── AI SEO ─── */}
-        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-4">
-                <Bot className="w-3.5 h-3.5 text-accent" />
-                <span className="text-xs font-medium text-accent uppercase tracking-wider">Expertise unique</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4" data-speakable="true">
-                Visible sur Google ET sur ChatGPT
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl">
-                800 millions de personnes utilisent ChatGPT chaque semaine. Vos clients vous y cherchent deja.
-                Je fais en sorte que les IA vous recommandent.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="p-6 rounded-xl border border-border bg-background"
-              >
-                <Globe className="w-8 h-8 text-muted-foreground mb-4" />
-                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">SEO Google classique</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Mots-cles, contenu optimise, structure technique parfaite. Vous apparaissez quand vos clients tapent vos services.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Premiere page Google</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Trafic qualifie cible</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Suivi mensuel des positions</li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="p-6 rounded-xl border-2 border-accent/30 bg-background"
-              >
-                <Bot className="w-8 h-8 text-accent mb-4" />
-                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">
-                  SEO IA <span className="text-xs font-normal text-accent">(ChatGPT, Perplexity, Gemini)</span>
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  J'optimise votre site pour que les IA vous recommandent quand vos clients leur posent des questions.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> ChatGPT vous recommande</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Perplexity cite votre site</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Contenu structure pour les IA</li>
-                </ul>
-              </motion.div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3"
-            >
-              {[
-                { value: '800M', label: 'utilisateurs ChatGPT/semaine' },
-                { value: '+527%', label: 'trafic IA en 2025' },
-                { value: '10%', label: 'du trafic web vient des IA' },
-              ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-xl border border-border bg-background text-center">
-                  <div className="text-xl md:text-2xl font-bold text-accent font-[var(--font-heading)]">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ─── PORTFOLIO ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-end justify-between mb-12">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-2">
-                  Projets recents
-                </h2>
-                <p className="text-muted-foreground">Des sites qui generent des resultats.</p>
-              </div>
-              <Link href="/portfolio" className="hidden md:inline-flex items-center gap-1.5 text-sm text-accent hover:underline">
-                Tout voir <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {portfolioHighlights.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-muted mb-4">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={85}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    {project.url && (
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <a
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-5 py-2.5 bg-white text-black rounded-lg text-sm font-medium hover:scale-105 transition-transform"
-                        >
-                          Voir le projet
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                  <span className="text-xs text-accent font-medium uppercase tracking-wider">{project.category}</span>
-                  <h3 className="text-lg font-semibold mt-1 font-[var(--font-heading)] group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-8 md:hidden text-center">
-              <Link href="/portfolio" className="inline-flex items-center gap-1.5 text-sm text-accent">
-                Voir tous les projets <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── CTA ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="p-6 sm:p-10 md:p-16 rounded-2xl bg-accent text-center relative overflow-hidden"
-            >
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">
-                  Pret a booster votre business ?
-                </h2>
-                <p className="text-accent-foreground/80 text-lg mb-8 max-w-lg mx-auto">
-                  Discutons de votre projet. Devis gratuit, reponse en moins de 24h.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent rounded-lg font-medium hover:bg-white/90 transition-colors"
-                  >
-                    Parler de mon projet
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-accent-foreground border border-white/20 rounded-lg font-medium hover:bg-white/20 transition-colors"
-                  >
-                    Voir les services
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+        <section id="audit" className="tm-audit tm-container tm-thick-glass mb-8 grid items-center rounded-[28px] md:grid-cols-[22%_31%_28%_19%]">
+          <div className="relative hidden min-h-[180px] md:block"><img src="/assets/audit-seo-target-rocket.webp" className="absolute inset-0 h-full w-full object-cover" alt="" /></div>
+          <div className="relative z-10 p-6"><p className="tm-kicker">Offerte - sans engagement</p><h2 className="tm-title mt-1 text-4xl">Audit SEO gratuit</h2><p className="mt-3 text-sm leading-6 text-slate-200">Découvrez ce qui bloque votre visibilité sur Google et comment attirer plus de clients.</p></div>
+          <ul className="relative z-10 border-l border-white/10 px-6 py-5 text-[13px] leading-8 text-slate-100">{['Analyse complète de votre site','Points bloquants identifiés','Plan d’action concret et priorisé','Recommandations SEO & IA'].map((x) => <li key={x}>{icon('/assets/icon-check-green.webp', 'mr-2 inline h-4 w-4')}{x}</li>)}</ul>
+          <div className="relative z-10 p-5 text-center"><Link href="/contact" className="tm-button tm-button-white text-sm font-black">Demander mon audit {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4 brightness-0')}</Link><p className="mt-4 text-[11px]">Réponse sous 24h</p></div>
         </section>
       </div>
     </>
@@ -367,9 +149,7 @@ const HomePage = ({ baseUrl, isCrawler }) => {
 export async function getServerSideProps({ req }) {
   const { isCrawler } = await import('../lib/isCrawler');
   const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
-  const baseUrl = getSiteUrlFromHeaders(req);
-  const userAgent = req.headers['user-agent'] || '';
-  return { props: { baseUrl, isCrawler: isCrawler(userAgent) } };
+  return { props: { baseUrl: getSiteUrlFromHeaders(req), isCrawler: isCrawler(req.headers['user-agent'] || '') } };
 }
 
 export default HomePage;

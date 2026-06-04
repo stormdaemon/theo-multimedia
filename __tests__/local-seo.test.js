@@ -73,13 +73,13 @@ describe('Local SEO - Angoulême Tests', () => {
     expect(seoContent).toContain('Référencement SEO local');
   });
 
-  test('LocalBusiness Schema includes aggregate rating', () => {
+  test('LocalBusiness Schema does not publish unverified aggregate ratings', () => {
     const seoPath = path.join(__dirname, '../components/SEO.js');
     const seoContent = fs.readFileSync(seoPath, 'utf8');
 
-    expect(seoContent).toContain('aggregateRating');
-    expect(seoContent).toContain('AggregateRating');
-    expect(seoContent).toContain('ratingValue');
+    expect(seoContent).not.toContain('aggregateRating');
+    expect(seoContent).not.toContain('AggregateRating');
+    expect(seoContent).not.toContain('ratingValue');
   });
 
   test('Geo meta tags support exists in SEO component', () => {
@@ -149,7 +149,7 @@ describe('Local SEO Coverage Summary', () => {
       'Opening hours': true,
       'Contact info': true,
       'Services offered': true,
-      'Reviews/ratings': true,
+      'No unverified ratings': true,
     };
 
     Object.entries(checklist).forEach(([name, exists]) => {
@@ -163,7 +163,7 @@ describe('Local SEO Coverage Summary', () => {
     console.log('✅ Opening hours specification');
     console.log('✅ Complete contact information');
     console.log('✅ Detailed services offered');
-    console.log('✅ Aggregate rating schema');
+    console.log('✅ No unverified aggregate rating schema');
     console.log('🚀 READY TO CRUSH LOCAL COMPETITION!');
   });
 });

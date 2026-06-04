@@ -23,7 +23,7 @@ const ScrollToTopButton = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-lg bg-card border border-border text-foreground flex items-center justify-center hover:bg-muted transition-colors shadow-lg"
+          className="tm-glass-soft fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition-colors hover:bg-muted"
           aria-label="Retour en haut"
         >
           <ArrowUp className="w-4 h-4" />

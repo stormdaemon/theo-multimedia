@@ -1,76 +1,82 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import Link from 'next/link';
-import { ArrowRight, Zap, Target, Search, Leaf, ShoppingCart, Headphones, Check, Clock } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createHowToSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import PageFeatureBand from '../components/PageFeatureBand';
 
 const services = [
   {
-    icon: Zap,
+    icon: '/assets/icon-design-orange.webp',
+    preview: '/assets/services-site-vitrine-workstation.webp',
     title: 'Sites ultra-rapides',
-    description: "Vos visiteurs partent si votre site met plus de 3 secondes a charger. Je cree des sites 3x plus rapides que la moyenne. Resultat : plus de visiteurs qui restent, plus de ventes.",
+    description: "Un site rapide rassure et facilite la prise de contact. Je crée des interfaces légères et soignées pour que vos visiteurs accèdent immédiatement à l’essentiel.",
     features: [
       'Temps de chargement < 1 seconde',
-      'Optimise pour mobile et tablette',
-      'Score Google 95/100 garanti',
+      'Optimisé pour mobile et tablette',
+      'Performance technique optimisée',
       'Livraison express en 24h'
     ],
     highlight: true
   },
   {
-    icon: Target,
+    icon: '/assets/icon-target-orange.webp',
+    preview: '/assets/service-card-site-vitrine-preview.webp',
     title: 'Design qui convertit',
-    description: "Un beau site c'est bien. Un site qui transforme vos visiteurs en clients, c'est mieux. J'applique les techniques de design persuasif pour maximiser vos conversions.",
+    description: "Un beau site, c’est bien. Un site qui transforme vos visiteurs en clients, c’est mieux. J’applique les techniques de design persuasif pour maximiser vos conversions.",
     features: [
-      '+40% de conversions en moyenne',
-      'Parcours utilisateur optimise',
-      "Boutons d'action strategiques",
+      'Parcours de conversion travaillé',
+      'Parcours utilisateur optimisé',
+      "Boutons d’action stratégiques",
       'A/B testing inclus'
     ]
   },
   {
-    icon: Search,
+    icon: '/assets/icon-seo-local-orange.webp',
+    preview: '/assets/services-seo-local-map-dashboard.webp',
     title: 'Visible sur Google',
-    description: "Etre en premiere page Google, ca change tout. J'optimise votre site pour qu'il apparaisse quand vos clients vous cherchent. Sans jargon technique.",
+    description: "Être en première page Google, ça change tout. J’optimise votre site pour qu’il apparaisse quand vos clients vous cherchent. Sans jargon technique.",
     features: [
-      'Audit complet de visibilite',
-      'Mots-cles strategiques trouves',
-      'Contenu optimise pour Google',
+      'Audit complet de visibilité',
+      'Mots-clés stratégiques trouvés',
+      'Contenu optimisé pour Google',
       'Suivi mensuel de position'
     ]
   },
   {
-    icon: Leaf,
-    title: 'Eco-responsable',
-    description: "Internet pollue autant que l'aviation. Je concois des sites legers qui consomment 60% d'energie en moins. Bon pour la planete, et pour votre image.",
+    icon: '/assets/icon-rocket-orange.webp',
+    preview: '/assets/services-audit-seo-diagnostics.webp',
+    title: 'Éco-responsable',
+    description: "Je conçois des sites légers et efficaces, avec des images compressées et un code maîtrisé. Une approche sobre qui profite aussi aux performances.",
     features: [
-      "-60% d'empreinte carbone",
-      'Code optimise et leger',
-      'Images compressees intelligemment',
-      'Hebergement vert disponible'
+      "Conception numérique plus sobre",
+      'Code optimisé et léger',
+      'Images compressées intelligemment',
+      'Hébergement vert disponible'
     ]
   },
   {
-    icon: ShoppingCart,
+    icon: '/assets/icon-ecommerce-orange.webp',
+    preview: '/assets/services-ecommerce-cart-dashboard.webp',
     title: 'E-commerce performant',
-    description: "Vendez en ligne sans complications. Boutique rapide, paiement securise, gestion simple. Tout est pense pour que vous vendiez plus.",
+    description: "Vendez en ligne sans complications. Boutique rapide, paiement sécurisé, gestion simple. Tout est pensé pour que vous vendiez plus.",
     features: [
-      "Panier optimise (moins d'abandons)",
-      'Paiements securises multiples',
+      "Panier optimisé (moins d’abandons)",
+      'Paiements sécurisés multiples',
       'Gestion de stock automatique',
-      'Integration livraison'
+      'Intégration livraison'
     ]
   },
   {
-    icon: Headphones,
-    title: 'Support & Evolution',
-    description: "Votre site vit et evolue. Je reste disponible pour l'ameliorer, le mettre a jour, et repondre a vos questions. Sans langue de bois.",
+    icon: '/assets/icon-crm-orange.webp',
+    preview: '/assets/services-crm-pipeline-dashboard.webp',
+    title: 'Support & Évolution',
+    description: "Votre site vit et évolue. Je reste disponible pour l’améliorer, le mettre à jour, et répondre à vos questions. Sans langue de bois.",
     features: [
-      'Reponse < 24h garantie',
-      'Mises a jour securite',
+      'Réponse < 24h garantie',
+      'Mises à jour sécurité',
       'Sauvegardes quotidiennes',
-      'Evolutions sur demande'
+      'Évolutions sur demande'
     ]
   }
 ];
@@ -78,31 +84,31 @@ const services = [
 const processSteps = [
   {
     step: "01",
-    title: "Decouverte",
+    title: "Découverte",
     description: "Je prends le temps de comprendre votre projet, vos objectifs et votre audience pour proposer la meilleure solution."
   },
   {
     step: "02",
     title: "Conception",
-    description: "Je cree des maquettes et prototypes pour valider ensemble la direction creative avant le developpement."
+    description: "Je crée des maquettes et prototypes pour valider ensemble la direction créative avant le développement."
   },
   {
     step: "03",
-    title: "Developpement",
-    description: "Je developpe votre projet avec les dernieres technologies, en assurant qualite et performance."
+    title: "Développement",
+    description: "Je développe votre projet avec les dernières technologies, en assurant qualité et performance."
   },
   {
     step: "04",
     title: "Lancement",
-    description: "Je deploie votre projet et vous accompagne pour un lancement reussi avec formation et documentation."
+    description: "Je déploie votre projet et vous accompagne pour un lancement réussi avec formation et documentation."
   }
 ];
 
 const ServicesPage = ({ baseUrl, isCrawler }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const servicesPageSchema = createWebPageSchema(
-    'Mes Services - Creation de sites web en 24h',
-    'Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme.',
+    'Mes Services - Création de sites web en 24h',
+    'Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême.',
     `${baseUrl}/services`
   );
   const howToSchema = createHowToSchema(processSteps);
@@ -114,20 +120,20 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
   return (
     <>
       <SEO
-        title="Mes Services - Creation de sites web en 24h"
-        description="Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme."
+        title="Mes Services - Création de sites web en 24h"
+        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
         canonical="/services"
         schema={schema}
       />
 
       <CrawlerPageContent
         isCrawler={isCrawler}
-        title="Mes Services - Creation de sites web en 24h"
-        description="Je cree votre site internet en 24h. Design, developpement, SEO et maintenance. Services web professionnels a Angouleme."
+        title="Mes Services - Création de sites web en 24h"
+        description="Je crée votre site internet en 24h. Design, développement, SEO et maintenance. Services web professionnels à Angoulême."
         sections={[
           {
             title: "Votre site en ligne demain - Livraison 24h",
-            content: "Lancement urgent ? Opportunite business ? Je livre votre site professionnel, rapide et optimise en 24 heures chrono.",
+            content: "Lancement urgent ? Opportunité business ? Je livre votre site professionnel, rapide et optimisé en 24 heures chrono.",
           },
           {
             title: "Comment je peux vous aider",
@@ -141,7 +147,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
             items: processSteps.map(p => `${p.step}. ${p.title}: ${p.description}`),
           },
           {
-            title: "Pret a demarrer ?",
+            title: "Prêt à démarrer ?",
             content: "Discutons de votre projet et voyons comment je peux vous aider a atteindre vos objectifs. Contactez-moi pour parler de votre projet ou consultez mon portfolio.",
           },
         ]}
@@ -149,11 +155,12 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
 
       <div className="bg-background">
         {/* ─── HERO ─── */}
-        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+        <section className="tm-subpage-hero relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/services-hero-solutions.webp')" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
           <div className="max-w-6xl mx-auto relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
@@ -169,8 +176,8 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                Rapides, optimises pour Google, et eco-concus. Mes sites sont concus
-                pour transformer vos visiteurs en clients fideles.
+                Rapides, optimisés pour Google, et éco-conçus. Mes sites sont conçus
+                pour transformer vos visiteurs en clients fidèles.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -178,8 +185,8 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
                 >
-                  Demarrer mon projet
-                  <ArrowRight className="w-4 h-4" />
+                  Démarrer mon projet
+                  <img src="/assets/icon-arrow-right-white.webp" alt="" className="w-4 h-4 object-contain" />
                 </Link>
                 <Link
                   href="/portfolio"
@@ -192,17 +199,29 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
           </div>
         </section>
 
+        <PageFeatureBand
+          eyebrow="Une production complète"
+          title="Chaque site est pensé comme un outil de travail."
+          description="Direction artistique, performance, visibilité et suivi: les briques ne sont pas juxtaposées, elles sont composées ensemble."
+          artwork="/assets/services-process-orange-orbit.webp"
+          items={[
+            { icon: '/assets/icon-design-orange.webp', title: 'Direction artistique', text: 'Une interface sur mesure avec une vraie hiérarchie visuelle et des points de conversion lisibles.' },
+            { icon: '/assets/icon-seo-local-orange.webp', title: 'Visibilité locale', text: 'Structure technique, contenus et signaux locaux sont prévus dès la conception.' },
+            { icon: '/assets/icon-crm-orange.webp', title: 'Évolution durable', text: 'Le site peut recevoir de nouvelles fonctions sans repartir de zéro.' },
+          ]}
+        />
+
         {/* ─── 24H HIGHLIGHT ─── */}
-        <section className="py-16 px-6 bg-card border-y border-border">
+        <section className="py-16 px-6 border-y border-border">
           <div className="max-w-5xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="flex flex-col md:flex-row items-center gap-8"
             >
-              <div className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-xl bg-accent/10 border border-accent/20">
-                <Clock className="w-10 h-10 text-accent" />
+              <div className="tm-glass-soft flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-xl">
+                <img src="/assets/icon-clock-orange.webp" alt="" className="w-11 h-11 object-contain" />
               </div>
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 mb-2">
@@ -212,8 +231,8 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                   </h2>
                 </div>
                 <p className="text-muted-foreground text-lg max-w-2xl">
-                  Lancement urgent ? Opportunite business ? Je livre votre site professionnel,
-                  rapide et optimise en 24 heures chrono.
+                  Lancement urgent ? Opportunité business ? Je livre votre site professionnel,
+                  rapide et optimisé en 24 heures chrono.
                 </p>
               </div>
             </motion.div>
@@ -224,7 +243,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
         <section className="py-24 md:py-32 px-6">
           <div className="max-w-6xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="mb-16"
@@ -233,7 +252,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                 Comment je peux vous aider
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl">
-                Une expertise complete pour tous vos besoins digitaux.
+                Une expertise complète pour tous vos besoins digitaux.
               </p>
             </motion.div>
 
@@ -241,24 +260,26 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                   className={`group relative ${service.highlight ? 'md:col-span-2 lg:col-span-1' : ''}`}
                 >
-                  <div className={`h-full p-6 rounded-xl border transition-colors ${
+                  <div className={`tm-subpage-card h-full rounded-xl border transition-colors overflow-hidden ${
                     service.highlight
                       ? 'bg-accent/5 border-accent/30 hover:border-accent/50'
                       : 'bg-card border-border hover:border-accent/30'
                   }`}>
+                    <img src={service.preview} alt="" className="w-full h-32 object-cover" />
+                    <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
-                        <service.icon className="w-5 h-5" />
+                        <img src={service.icon} alt="" className="w-6 h-6 object-contain" />
                       </div>
                       {service.highlight && (
                         <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-accent/10 border border-accent/20">
-                          <Zap className="w-3 h-3 text-accent" />
+                          <img src="/assets/icon-rocket-orange.webp" alt="" className="w-3.5 h-3.5 object-contain" />
                           <span className="text-xs font-medium text-accent">Express 24h</span>
                         </div>
                       )}
@@ -270,11 +291,12 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                     <ul className="space-y-2">
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                          <img src="/assets/icon-check-green.webp" alt="" className="w-4 h-4 mt-0.5 flex-shrink-0 object-contain" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -283,10 +305,10 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
         </section>
 
         {/* ─── PROCESS ─── */}
-        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+        <section className="py-24 md:py-32 px-6 border-y border-border">
           <div className="max-w-6xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="mb-16"
@@ -295,7 +317,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                 Ma methodologie
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl">
-                Un processus eprouve pour des resultats garantis.
+                Un processus eprouve pour des résultats garantis.
               </p>
             </motion.div>
 
@@ -303,11 +325,11 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
               {processSteps.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative p-6 rounded-xl border border-border bg-background"
+                  className="tm-glass-soft relative p-6 rounded-xl"
                 >
                   <span className="text-5xl font-extrabold text-accent/15 font-[var(--font-heading)] leading-none select-none">
                     {item.step}
@@ -329,14 +351,14 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
         <section className="py-24 md:py-32 px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-6 sm:p-10 md:p-16 rounded-xl border border-border bg-card text-center"
+              className="tm-glass p-6 sm:p-10 md:p-16 rounded-xl text-center"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Pret a demarrer ?
+                Prêt à démarrer ?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
                 Discutons de votre projet et voyons comment je peux vous aider
@@ -348,7 +370,7 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-accent text-accent-foreground rounded-lg text-base sm:text-lg font-medium hover:opacity-90 transition-opacity"
                 >
                   Parler de mon projet
-                  <ArrowRight className="w-5 h-5" />
+                  <img src="/assets/icon-arrow-right-white.webp" alt="" className="w-5 h-5 object-contain" />
                 </Link>
                 <Link
                   href="/portfolio"

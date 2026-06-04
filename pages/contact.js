@@ -1,27 +1,28 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import Link from 'next/link';
 import { useForm, ValidationError } from '@formspree/react';
-import { ArrowRight, Mail, MapPin, Clock, Zap, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema, createBreadcrumbSchema } from '../components/SEO';
 import { CrawlerPageContent } from '../components/CrawlerContent';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import PageFeatureBand from '../components/PageFeatureBand';
 
 const contactInfo = [
   {
-    icon: Mail,
+    icon: '/assets/icon-footer-mail-orange.webp',
     title: "Email",
     value: "contact@theo-multimedia.com",
     link: "mailto:contact@theo-multimedia.com"
   },
   {
-    icon: MapPin,
+    icon: '/assets/icon-footer-location-orange.webp',
     title: "Localisation",
-    value: "Angouleme, Charente",
+    value: "Angoulême, Charente",
     link: null
   },
   {
-    icon: Clock,
-    title: "Delai de reponse",
+    icon: '/assets/icon-clock-orange.webp',
+    title: "Délai de réponse",
     value: "Sous 24 heures",
     link: null
   }
@@ -29,20 +30,20 @@ const contactInfo = [
 
 const faqs = [
   {
-    question: "Combien coute la creation d'un site internet ?",
-    answer: "Les tarifs dependent de la complexite du projet. Un site vitrine professionnel demarre a partir de 1 000 euros. Une boutique e-commerce ou une application web sur-mesure sera evaluee selon vos besoins specifiques. Contactez-moi pour un devis gratuit et detaille en moins de 24h."
+    question: "Combien coûte la création d’un site internet ?",
+    answer: "Les tarifs dépendent de la complexité du projet. Un site vitrine professionnel démarre à partir de 1 000 euros. Une boutique e-commerce ou une application web sur mesure sera évaluée selon vos besoins spécifiques. Contactez-moi pour un devis gratuit et détaillé en moins de 24h."
   },
   {
-    question: "Livraison en 24h, c'est vraiment possible ?",
-    answer: "Oui, pour les sites vitrines et landing pages. C'est ideal pour les lancements urgents, les evenements ou les opportunites business qui n'attendent pas. La qualite et la performance restent garanties."
+    question: "Livraison en 24h, c’est vraiment possible ?",
+    answer: "Oui, pour les sites vitrines et landing pages. C’est idéal pour les lancements urgents, les événements ou les opportunités business qui n’attendent pas. La qualité et la performance restent garanties."
   },
   {
-    question: "C'est quoi l'eco-conception web ?",
-    answer: "L'eco-conception web consiste a creer des sites legers et optimises qui consomment moins d'energie. Mes sites ont une empreinte carbone 60% inferieure a la moyenne. Resultat : un site plus rapide, un meilleur referencement Google, et un impact positif sur votre image de marque."
+    question: "C’est quoi l’éco-conception web ?",
+    answer: "L’éco-conception web consiste à créer des sites légers et optimisés qui consomment moins d’énergie. Je travaille les images, le code et les parcours pour livrer un site plus sobre, plus rapide et plus simple à utiliser."
   },
   {
-    question: "Comment fonctionne le referencement IA (SEO IA) ?",
-    answer: "Le referencement IA (ou GEO - Generative Engine Optimization) consiste a optimiser votre site pour etre cite et recommande par les intelligences artificielles comme ChatGPT, Perplexity et Gemini. J'utilise le balisage schema.org enrichi, du contenu structure et des techniques specifiques pour que les IA comprennent et recommandent votre activite."
+    question: "Comment fonctionne le référencement IA (SEO IA) ?",
+    answer: "Le référencement IA (ou GEO - Generative Engine Optimization) consiste à optimiser votre site pour être cité et recommandé par les intelligences artificielles comme ChatGPT, Perplexity et Gemini. J’utilise le balisage schema.org enrichi, du contenu structuré et des techniques spécifiques pour que les IA comprennent et recommandent votre activité."
   }
 ];
 
@@ -52,7 +53,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const localBusinessSchema = createLocalBusinessSchema();
   const contactPageSchema = createWebPageSchema(
     'Contact - Parlez-nous de votre projet web',
-    'Contactez Theo Multimedia pour discuter de votre projet de site internet. Devis gratuit en 24h. Agence web a Angouleme, specialisee SEO Google et IA.',
+    'Contactez Théo Multimédia pour discuter de votre projet de site internet. Devis gratuit en 24h. Agence web à Angoulême, spécialisée SEO Google et IA.',
     `${baseUrl}/contact`
   );
   const faqSchema = createFAQSchema(faqs);
@@ -69,14 +70,14 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
     return (
       <>
         <SEO
-          title="Message envoye - Merci !"
-          description="Merci pour votre message. Je vous repondrai dans les 24 heures."
+          title="Message envoyé - Merci !"
+          description="Merci pour votre message. Je vous répondrai dans les 24 heures."
           canonical="/contact"
           schema={schema}
         />
         <div className="min-h-screen flex items-center justify-center bg-background px-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 1, scale: 1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-lg"
@@ -85,16 +86,16 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               <CheckCircle className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-              Message recu !
+              Message reçu !
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Merci pour votre message. Je vous repondrai dans les 24 heures.
+              Merci pour votre message. Je vous répondrai dans les 24 heures.
             </p>
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
             >
-              Retour a l'accueil
+              Retour à l’accueil
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -107,7 +108,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
     <>
       <SEO
         title="Contact - Discutons de votre projet web"
-        description="Contactez Theo Multimedia pour votre projet de site internet a Angouleme. Devis gratuit en 24h. Specialiste SEO Google et IA (ChatGPT, Perplexity). Livraison express disponible."
+        description="Contactez Théo Multimédia pour votre projet de site internet à Angoulême. Devis gratuit en 24h. Spécialiste SEO Google et IA (ChatGPT, Perplexity). Livraison express disponible."
         canonical="/contact"
         schema={schema}
         enableLocalSEO={true}
@@ -115,36 +116,36 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
       <CrawlerPageContent
         isCrawler={isCrawlerBot}
-        title="Contact - Theo Multimedia, Agence Web Angouleme"
-        description="Contactez Theo Multimedia pour discuter de votre projet de site internet. Devis gratuit en moins de 24 heures. Agence web basee a Angouleme, Charente, specialisee dans la creation de sites ultra-rapides, eco-responsables et optimises pour le referencement Google et les moteurs de recherche IA."
+        title="Contact - Théo Multimédia, Agence Web Angoulême"
+        description="Contactez Théo Multimédia pour discuter de votre projet de site internet. Devis gratuit en moins de 24 heures. Agence web basée à Angoulême, Charente, spécialisée dans la création de sites ultra-rapides, éco-responsables et optimisés pour le référencement Google et les moteurs de recherche IA."
         sections={[
           {
             title: "Parlons de votre projet",
-            content: "Vous avez un projet de site web, de boutique en ligne ou d'application ? Je suis la pour vous ecouter et vous accompagner. Que ce soit pour une creation, une refonte ou une optimisation SEO, discutons ensemble de vos objectifs et de votre vision.",
+            content: "Vous avez un projet de site web, de boutique en ligne ou d’application ? Je suis là pour vous écouter et vous accompagner. Que ce soit pour une création, une refonte ou une optimisation SEO, discutons ensemble de vos objectifs et de votre vision.",
           },
           {
-            title: "Coordonnees",
+            title: "Coordonnées",
             items: [
               "Email : contact@theo-multimedia.com",
-              "Localisation : Angouleme, Charente, Nouvelle-Aquitaine, France",
-              "Delai de reponse : sous 24 heures",
+              "Localisation : Angoulême, Charente, Nouvelle-Aquitaine, France",
+              "Délai de réponse : sous 24 heures",
               "Horaires : lundi au vendredi, 9h-18h",
             ],
           },
           {
-            title: "Services proposes",
+            title: "Services proposés",
             items: [
-              "Creation de sites internet ultra-rapides et eco-responsables",
-              "Refonte de sites existants pour ameliorer performances et SEO",
+              "Création de sites internet ultra-rapides et éco-responsables",
+              "Refonte de sites existants pour améliorer performances et SEO",
               "Boutiques e-commerce et solutions de vente en ligne",
               "Applications web sur-mesure avec React et Next.js",
-              "Referencement SEO Google et IA (ChatGPT, Perplexity, Gemini)",
+              "Référencement SEO Google et IA (ChatGPT, Perplexity, Gemini)",
               "Livraison express en 24 heures pour sites vitrines et landing pages",
               "Maintenance et support technique continu",
             ],
           },
           {
-            title: "Questions frequentes",
+            title: "Questions fréquentes",
             items: faqs.map(f => `${f.question} : ${f.answer}`),
           },
         ]}
@@ -152,11 +153,12 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
 
       <div className="bg-background">
         {/* ─── HERO ─── */}
-        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+        <section className="tm-subpage-hero relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
+          <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/contact-cognac-night.webp')" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
           <div className="max-w-6xl mx-auto relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
@@ -172,12 +174,24 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                Site ultra-rapide, eco-concu, visible sur Google et les IA ?
+                Site ultra-rapide, éco-conçu, visible sur Google et les IA ?
                 Devis gratuit en moins de 24h.
               </p>
             </motion.div>
           </div>
         </section>
+
+        <PageFeatureBand
+          eyebrow="Un premier échange utile"
+          title="Votre demande arrive directement au bon endroit."
+          description="Le formulaire sert à comprendre votre besoin, votre urgence et le niveau d’accompagnement attendu. Vous recevez une réponse exploitable, pas une relance automatique."
+          artwork="/assets/contact-form-orange-glow.webp"
+          items={[
+            { icon: '/assets/icon-footer-mail-orange.webp', title: 'Réponse directe', text: 'Votre demande est lue et traitée personnellement, avec une première orientation concrète.' },
+            { icon: '/assets/icon-clock-orange.webp', title: 'Retour sous 24h', text: 'Le délai de réponse est court pour ne pas laisser un lancement ou une refonte en attente.' },
+            { icon: '/assets/icon-footer-location-orange.webp', title: 'Ancrage local', text: 'Basé à Cognac et actif en Charente, avec la possibilité de travailler à distance.' },
+          ]}
+        />
 
         {/* ─── CONTACT INFO ─── */}
         <section className="py-6 px-6">
@@ -186,13 +200,13 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 + 0.3 }}
-                  className="p-5 rounded-xl border border-border bg-card text-center"
+                  className="tm-glass-soft p-5 rounded-xl text-center"
                 >
                   <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mx-auto mb-3">
-                    <info.icon className="w-5 h-5" />
+                    <img src={info.icon} alt="" className="w-6 h-6 object-contain" />
                   </div>
                   <h3 className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">{info.title}</h3>
                   {info.link ? (
@@ -209,13 +223,13 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         </section>
 
         {/* ─── FORM ─── */}
-        <section className="py-16 md:py-24 px-6">
+        <section id="audit" className="py-16 md:py-24 px-6 scroll-mt-24">
           <div className="max-w-2xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="p-8 md:p-10 rounded-2xl bg-card border border-border"
+              className="tm-glass p-8 md:p-10 rounded-2xl"
             >
               <h2 className="text-2xl md:text-3xl font-bold font-[var(--font-heading)] tracking-tight mb-8 text-center">
                 Envoyez-moi un message
@@ -293,7 +307,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                     required
                     rows="5"
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-sm"
-                    placeholder="Decrivez votre projet, vos objectifs, vos besoins..."
+                    placeholder="Décrivez votre projet, vos objectifs, vos besoins..."
                   />
                   <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
@@ -307,10 +321,10 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                   />
                   <label htmlFor="urgent" className="text-sm text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-accent" />
+                      <img src="/assets/icon-rocket-orange.webp" alt="" className="w-4 h-4 object-contain" />
                       <span className="font-medium text-accent">Livraison express 24h</span>
                     </span>
-                    {' '} — J'ai besoin de mon site rapidement
+                    {' '} — J’ai besoin de mon site rapidement
                   </label>
                 </div>
 
@@ -327,19 +341,19 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         </section>
 
         {/* ─── FAQ ─── */}
-        <section className="py-24 md:py-32 px-6 bg-card border-y border-border">
+        <section className="py-24 md:py-32 px-6 border-y border-border">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Questions frequentes
+                Questions fréquentes
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl">
-                Tout ce que vous devez savoir avant de demarrer.
+                Tout ce que vous devez savoir avant de démarrer.
               </p>
             </motion.div>
 
@@ -347,11 +361,11 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
               {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className="p-6 rounded-xl border border-border bg-background"
+                  className="tm-glass-soft p-6 rounded-xl"
                 >
                   <h3 className="text-base font-semibold font-[var(--font-heading)] mb-2">{faq.question}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
@@ -29,10 +29,10 @@ const MentionsLegales = ({ baseUrl }) => {
 
       <main className="container mx-auto px-4 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto bg-card rounded-2xl p-8 md:p-12 shadow-sm border border-border"
+          className="tm-legal-shell max-w-4xl mx-auto bg-card rounded-2xl p-8 md:p-12 shadow-sm border border-border"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Mentions Légales</h1>
           

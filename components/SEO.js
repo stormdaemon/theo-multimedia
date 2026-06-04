@@ -10,8 +10,8 @@ const SEO = ({
   additionalMetaTags = [],
   enableLocalSEO = false,
 }) => {
-  const siteName = 'Theo Multimedia';
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} - Agence Web Angouleme`;
+  const siteName = 'Théo Multimédia';
+  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} - Agence Web Angoulême`;
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com').replace(/\/$/, '');
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
@@ -21,7 +21,7 @@ const SEO = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="author" content="Theo LAFONT" />
+      <meta name="author" content="Théo LAFONT" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={fullCanonical} />
 
@@ -31,7 +31,7 @@ const SEO = ({
       {enableLocalSEO && (
         <>
           <meta name="geo.region" content="FR-16" />
-          <meta name="geo.placename" content="Angouleme" />
+          <meta name="geo.placename" content="Angoulême" />
           <meta name="geo.position" content="45.6484;0.1560" />
           <meta name="ICBM" content="45.6484, 0.1560" />
         </>
@@ -75,21 +75,22 @@ export const createLocalBusinessSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     '@id': `${siteUrl}/#business`,
-    name: 'Theo Multimedia',
-    alternateName: 'Theo Multimedia - Agence Web Angouleme',
-    description: 'Agence web a Angouleme specialisee dans la creation de sites internet ultra-rapides, eco-responsables et optimises SEO. Expertise Google et IA (ChatGPT, Perplexity). Livraison express 24h.',
-    url: siteUrl,
-    email: 'contact@theo-multimedia.com',
+      name: 'Théo Multimédia',
+      alternateName: 'Théo Multimédia - Agence Web Angoulême',
+      description: 'Agence web à Angoulême spécialisée dans la création de sites internet ultra-rapides, éco-responsables et optimisés SEO. Expertise Google et IA (ChatGPT, Perplexity). Livraison express 24h.',
+      url: siteUrl,
+      email: 'contact@theo-multimedia.com',
+      telephone: '+33 7 68 51 95 68',
     geo: { '@type': 'GeoCoordinates', latitude: 45.6484, longitude: 0.1560 },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Angouleme',
+        addressLocality: 'Angoulême',
       addressRegion: 'Charente',
       postalCode: '16000',
       addressCountry: 'FR',
     },
     areaServed: [
-      { '@type': 'City', name: 'Angouleme' },
+        { '@type': 'City', name: 'Angoulême' },
       { '@type': 'State', name: 'Nouvelle-Aquitaine' },
       { '@type': 'Country', name: 'France' },
     ],
@@ -99,24 +100,24 @@ export const createLocalBusinessSchema = () => {
       opens: '09:00',
       closes: '18:00',
     }],
-    priceRange: '$$',
-    logo: { '@type': 'ImageObject', url: `${siteUrl}/theo_multimedia_logo.png`, width: 512, height: 512 },
+      priceRange: '$$',
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`, width: 512, height: 512 },
     image: [`${siteUrl}/theo_multimedia.png`],
     founder: {
       '@type': 'Person',
-      name: 'Theo LAFONT',
-      jobTitle: 'Developpeur Web Full-Stack & Expert SEO',
+          name: 'Théo LAFONT',
+          jobTitle: 'Développeur Web Full-Stack & Expert SEO',
       url: `${siteUrl}/about`,
       sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
     },
     sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
     makesOffer: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Creation de sites internet', description: 'Developpement de sites web sur-mesure avec Next.js et React' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Referencement SEO Google & IA', description: 'Optimisation pour Google, ChatGPT, Perplexity et moteurs IA' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Création de sites internet', description: 'Développement de sites web sur-mesure avec Next.js et React' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Référencement SEO local', description: 'Optimisation pour Google, ChatGPT, Perplexity et moteurs IA' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Livraison express 24h', description: 'Sites professionnels livres en 24 heures' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Eco-conception web', description: 'Sites web eco-responsables a faible empreinte carbone' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Éco-conception web', description: 'Sites web éco-responsables à faible empreinte carbone' } },
     ],
-    knowsAbout: ['creation site internet', 'SEO', 'Next.js', 'React', 'web design', 'eco-conception web', 'referencement IA', 'ChatGPT SEO', 'GEO optimisation'],
+        knowsAbout: ['agence web angoulême', 'création site internet angoulême', 'développeur web charente', 'seo angoulême', 'SEO', 'Next.js', 'React', 'web design', 'éco-conception web', 'référencement IA', 'ChatGPT SEO', 'GEO optimisation'],
   };
 };
 
@@ -129,7 +130,7 @@ export const createWebPageSchema = (title, description, url) => ({
   inLanguage: 'fr-FR',
   isPartOf: {
     '@type': 'WebSite',
-    name: 'Theo Multimedia',
+    name: 'Théo Multimédia',
     url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com'),
   },
   dateModified: new Date().toISOString().split('T')[0],
@@ -166,14 +167,14 @@ export const createOrganizationSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${siteUrl}/#organization`,
-    name: 'Theo Multimedia',
+    name: 'Théo Multimédia',
     url: siteUrl,
     email: 'contact@theo-multimedia.com',
-    logo: { '@type': 'ImageObject', url: `${siteUrl}/theo_multimedia_logo.png`, width: 512, height: 512 },
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/assets/logo-theo-multimedia-orange-v2.webp`, width: 512, height: 512 },
     founder: {
       '@type': 'Person',
-      name: 'Theo LAFONT',
-      jobTitle: 'Developpeur Web Full-Stack & Expert SEO',
+      name: 'Théo LAFONT',
+      jobTitle: 'Développeur Web Full-Stack & Expert SEO',
     },
     sameAs: ['https://www.linkedin.com/in/theo-lafont', 'https://github.com/stormdaemon'],
   };
@@ -182,8 +183,8 @@ export const createOrganizationSchema = () => {
 export const createHowToSchema = (steps) => ({
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'Comment je cree votre site web',
-  description: 'Methodologie de creation de sites web professionnels par Theo Multimedia',
+  name: 'Comment je crée votre site web',
+  description: 'Methodologie de création de sites web professionnels par Théo Multimédia',
   step: steps.map((step, index) => ({
     '@type': 'HowToStep',
     position: index + 1,

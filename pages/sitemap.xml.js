@@ -1,4 +1,4 @@
-// Dynamic sitemap generation for SEO
+﻿// Dynamic sitemap generation for SEO
 import { getSiteUrlFromHeaders } from '../lib/siteUrl'
 
 function generateSiteMap(baseUrl) {
@@ -6,6 +6,8 @@ function generateSiteMap(baseUrl) {
     { url: '', changefreq: 'weekly', priority: '1.0' },
     { url: '/about', changefreq: 'monthly', priority: '0.8' },
     { url: '/services', changefreq: 'weekly', priority: '0.9' },
+    { url: '/seo', changefreq: 'weekly', priority: '0.9' },
+    { url: '/solutions', changefreq: 'weekly', priority: '0.9' },
     { url: '/portfolio', changefreq: 'weekly', priority: '0.9' },
     { url: '/contact', changefreq: 'monthly', priority: '0.8' },
     { url: '/mentions-legales', changefreq: 'yearly', priority: '0.3' },
