@@ -1,4 +1,5 @@
-﻿import '../styles/globals.css';
+﻿import 'mapbox-gl/dist/mapbox-gl.css';
+import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { ThemeProvider } from 'next-themes';
 import { dmSans, outfit } from '../lib/fonts';

@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' blob:",
+  "worker-src 'self' blob:",
+  "child-src 'self' blob:",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://api.mapbox.com",
+  "img-src 'self' data: blob: https://api.mapbox.com https://*.tiles.mapbox.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://formspree.io",
+  "connect-src 'self' https://formspree.io https://api.mapbox.com https://events.mapbox.com https://*.tiles.mapbox.com",
   "form-action 'self' https://formspree.io",
   "frame-ancestors 'self'",
   "base-uri 'self'",
