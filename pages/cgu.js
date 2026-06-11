@@ -52,7 +52,7 @@ const CGU = () => {
                 <p>Entreprise individuelle</p>
                 <p>N° SIRET : 884 758 970 00054</p>
                 <p>N° TVA intracommunautaire : FR59884758970</p>
-                <p>16000 Angoulême, France</p>
+                <p>149 rue Henri Fichon, 16100 Cognac, France</p>
                 <p>Email : contact@theo-multimedia.com</p>
                 <p>Téléphone : +33 7 68 51 95 68</p>
               </address>
@@ -132,7 +132,7 @@ const CGU = () => {
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
                 <li>Par téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
-                <li>Par courrier : 16000 Angoulême, France</li>
+                <li>Par courrier : 149 rue Henri Fichon, 16100 Cognac, France</li>
               </ul>
             </section>
           </div>

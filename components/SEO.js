@@ -95,6 +95,7 @@ export const createLocalBusinessSchema = () => {
     telephone: business.phoneE164,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: business.legalAddress.streetAddress,
       addressLocality: business.legalAddress.city,
       addressRegion: business.legalAddress.region,
       postalCode: business.legalAddress.postalCode,
