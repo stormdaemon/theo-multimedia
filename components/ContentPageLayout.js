@@ -5,13 +5,12 @@ import SEO, {
   createLocalBusinessSchema,
   createWebPageSchema,
 } from './SEO';
-import { CrawlerPageContent } from './CrawlerContent';
+import { absoluteUrl } from '../lib/business';
 
 const icon = (src, className = 'h-5 w-5') => <img src={src} alt="" className={`${className} object-contain`} />;
 
-export default function ContentPageLayout({ page, baseUrl, isCrawler = false }) {
+export default function ContentPageLayout({ page }) {
   const isLocal = page.type === 'local';
-  const ogImage = `/api/og?type=${encodeURIComponent(isLocal ? 'Création de site internet local' : 'Service web')}&title=${encodeURIComponent(page.metaTitle)}`;
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: 'Accueil', url: '/' },
     { name: isLocal ? page.city : page.eyebrow, url: page.canonical },
@@ -21,30 +20,11 @@ export default function ContentPageLayout({ page, baseUrl, isCrawler = false }) 
     '@context': 'https://schema.org',
     '@graph': [
       createLocalBusinessSchema(),
-      createWebPageSchema(page.title, page.metaDescription, `${baseUrl}${page.canonical}`),
+      createWebPageSchema(page.title, page.metaDescription, absoluteUrl(page.canonical), page.updatedAt),
       breadcrumbSchema,
       ...(faqSchema ? [faqSchema] : []),
     ],
   };
-
-  const crawlerSections = [
-    { title: 'Introduction', content: page.intro },
-    ...(page.sections || []).map((section) => ({
-      title: section.title,
-      content: section.body?.join(' '),
-      items: section.items,
-    })),
-    ...(isLocal
-      ? [
-          { title: `Pour quels professionnels à ${page.city} ?`, items: page.professionals },
-          { title: `SEO local à ${page.city}`, content: page.localSeo },
-          ...(page.detailSections || []).map((section) => ({
-            title: section.title,
-            content: section.body.join(' '),
-          })),
-        ]
-      : []),
-  ];
 
   return (
     <>
@@ -52,11 +32,9 @@ export default function ContentPageLayout({ page, baseUrl, isCrawler = false }) 
         title={page.metaTitle}
         description={page.metaDescription}
         canonical={page.canonical}
-        ogImage={ogImage}
         schema={schema}
         keywords={page.keywords}
       />
-      <CrawlerPageContent isCrawler={isCrawler} title={page.title} description={page.metaDescription} sections={crawlerSections} />
 
       <div className="bg-background">
         <section className="tm-subpage-hero relative overflow-hidden px-6 pb-20 pt-24 md:pb-28 md:pt-32">

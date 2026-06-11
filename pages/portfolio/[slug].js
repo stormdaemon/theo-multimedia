@@ -26,6 +26,7 @@ export default function ProjectPage({ project }) {
         },
         image: absoluteUrl(project.imageDesktop),
         url: absoluteUrl(canonical),
+        dateModified: project.updatedAt,
       },
     ],
   };

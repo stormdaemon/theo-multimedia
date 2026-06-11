@@ -1,9 +1,8 @@
 ﻿import { motion } from 'motion/react';
 import Link from 'next/link';
 import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
 import PageFeatureBand from '../components/PageFeatureBand';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import { absoluteUrl } from '../lib/business';
 
 const solutions = [
   { icon: '/assets/icon-crm-orange.webp', image: '/assets/services-crm-pipeline-dashboard.webp', title: 'CRM sur mesure', text: 'Clients, devis, relances et suivi commercial réunis dans un outil qui colle à votre organisation.', href: '/crm-sur-mesure' },
@@ -12,19 +11,18 @@ const solutions = [
   { icon: '/assets/icon-code-orange.webp', image: '/assets/about-expertise-dashboard.webp', title: 'Applications web', text: 'Un outil métier, un espace membre ou une plateforme spécifique construite autour de votre besoin réel.', href: '/creation-site-internet' },
 ];
 
-const SolutionsPage = ({ baseUrl, isCrawler }) => {
+const SolutionsPage = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       createLocalBusinessSchema(),
-      createWebPageSchema('Solutions web sur mesure', 'CRM, LMS, e-commerce et applications web sur mesure pour entreprises et organismes.', `${baseUrl}/solutions`),
+      createWebPageSchema('Solutions web sur mesure', 'CRM, LMS, e-commerce et applications web sur mesure pour entreprises et organismes.', absoluteUrl('/solutions')),
     ],
   };
 
   return (
     <>
       <SEO title="Solutions web sur mesure: CRM, LMS et E-commerce" description="CRM, LMS, e-commerce et applications web conçus selon vos usages. Solutions sur mesure avec accompagnement direct." canonical="/solutions" schema={schema} />
-      <CrawlerPageContent isCrawler={isCrawler} title="Solutions web sur mesure" description="CRM, LMS, e-commerce et outils métier adaptés." sections={solutions.map(({ title, text }) => ({ title, content: text }))} />
       <div className="bg-background">
         <section className="tm-subpage-hero relative overflow-hidden px-6 pb-20 pt-24 md:pb-28 md:pt-32">
           <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/services-crm-pipeline-dashboard.webp')" }} />
@@ -86,10 +84,5 @@ const SolutionsPage = ({ baseUrl, isCrawler }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  return { props: { baseUrl: getSiteUrlFromHeaders(req), isCrawler: isCrawler(req.headers['user-agent'] || '') } };
-}
 
 export default SolutionsPage;

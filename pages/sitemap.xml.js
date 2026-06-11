@@ -1,68 +1,53 @@
 import { blogPosts } from '../lib/blog-data';
 import { projects } from '../lib/projects';
 import { contentPages } from '../lib/services-data';
+import { business } from '../lib/business';
 
-function generateSiteMap(baseUrl) {
-  const staticPages = [
-    { url: '', changefreq: 'weekly', priority: '1.0' },
-    { url: '/about', changefreq: 'monthly', priority: '0.7' },
-    { url: '/services', changefreq: 'weekly', priority: '0.9' },
-    { url: '/seo', changefreq: 'weekly', priority: '0.7' },
-    { url: '/solutions', changefreq: 'weekly', priority: '0.8' },
-    { url: '/portfolio', changefreq: 'weekly', priority: '0.9' },
-    { url: '/blog', changefreq: 'weekly', priority: '0.8' },
-    { url: '/contact', changefreq: 'monthly', priority: '0.8' },
-    { url: '/mentions-legales', changefreq: 'yearly', priority: '0.3' },
-    { url: '/politique-confidentialite', changefreq: 'yearly', priority: '0.3' },
-    { url: '/cgu', changefreq: 'yearly', priority: '0.3' },
-    { url: '/cgv', changefreq: 'yearly', priority: '0.3' },
+// Dernière modification réelle des pages statiques. À mettre à jour quand le
+// contenu d'une page change (pas à chaque déploiement).
+const STATIC_PAGES = [
+  { url: '', lastmod: '2026-06-05' },
+  { url: '/about', lastmod: '2026-06-05' },
+  { url: '/services', lastmod: '2026-06-05' },
+  { url: '/seo', lastmod: '2026-06-05' },
+  { url: '/solutions', lastmod: '2026-06-05' },
+  { url: '/portfolio', lastmod: '2026-06-05' },
+  { url: '/blog', lastmod: '2026-06-05' },
+  { url: '/contact', lastmod: '2026-06-05' },
+  { url: '/mentions-legales', lastmod: '2025-06-24' },
+  { url: '/politique-confidentialite', lastmod: '2025-06-24' },
+  { url: '/cgu', lastmod: '2025-06-24' },
+  { url: '/cgv', lastmod: '2025-06-24' },
+];
+
+export function generateSiteMap(baseUrl) {
+  const pages = [
+    ...STATIC_PAGES,
+    ...contentPages.map((page) => ({ url: page.canonical, lastmod: page.updatedAt })),
+    ...blogPosts.map((post) => ({ url: `/blog/${post.slug}`, lastmod: post.updatedAt })),
+    ...projects.map((project) => ({ url: `/portfolio/${project.slug}`, lastmod: project.updatedAt })),
   ];
 
-  const seoPages = contentPages.map((page) => ({
-    url: page.canonical,
-    changefreq: page.type === 'local' ? 'monthly' : 'weekly',
-    priority: page.type === 'local' ? '0.85' : '0.9',
-  }));
-
-  const blogPages = blogPosts.map((post) => ({
-    url: `/blog/${post.slug}`,
-    changefreq: 'monthly',
-    priority: '0.65',
-  }));
-
-  const projectPages = projects.map((project) => ({
-    url: `/portfolio/${project.slug}`,
-    changefreq: 'monthly',
-    priority: '0.65',
-  }));
-
-  const pages = [...staticPages, ...seoPages, ...blogPages, ...projectPages];
-  const lastmod = new Date().toISOString();
-
   return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${pages
-       .map(({ url, changefreq, priority }) => `
-       <url>
-          <loc>${baseUrl}${url}</loc>
-          <lastmod>${lastmod}</lastmod>
-          <changefreq>${changefreq}</changefreq>
-          <priority>${priority}</priority>
-       </url>
-     `)
-       .join('')}
-   </urlset>
- `;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages
+    .map(({ url, lastmod }) => `  <url>
+    <loc>${baseUrl}${url}</loc>${lastmod ? `
+    <lastmod>${lastmod}</lastmod>` : ''}
+  </url>`)
+    .join('\n')}
+</urlset>
+`;
 }
 
 function SiteMap() {}
 
-export async function getServerSideProps({ req, res }) {
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
-  const baseUrl = getSiteUrlFromHeaders(req);
+export async function getServerSideProps({ res }) {
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl).replace(/\/$/, '');
   const sitemap = generateSiteMap(baseUrl);
 
   res.setHeader('Content-Type', 'text/xml');
+  res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
   res.write(sitemap);
   res.end();
 

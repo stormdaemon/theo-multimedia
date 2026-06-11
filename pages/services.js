@@ -1,8 +1,7 @@
 ﻿import { motion } from 'motion/react';
 import Link from 'next/link';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createHowToSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import { absoluteUrl } from '../lib/business';
 import PageFeatureBand from '../components/PageFeatureBand';
 
 const services = [
@@ -110,12 +109,12 @@ const processSteps = [
   }
 ];
 
-const ServicesPage = ({ baseUrl, isCrawler }) => {
+const ServicesPage = () => {
   const localBusinessSchema = createLocalBusinessSchema();
   const servicesPageSchema = createWebPageSchema(
     'Services web - Site vitrine, SEO local et sur mesure',
     'Site vitrine en 24h, SEO local, audit SEO, CRM, LMS, e-commerce et maintenance pour entreprises en Charente.',
-    `${baseUrl}/services`
+    absoluteUrl('/services')
   );
   const howToSchema = createHowToSchema(processSteps);
   const schema = {
@@ -132,32 +131,6 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
         schema={schema}
       />
 
-      <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="Services web - Site vitrine, SEO local et sur mesure"
-        description="Site vitrine en 24h, SEO local, audit SEO, CRM, LMS, e-commerce et maintenance pour entreprises en Charente."
-        sections={[
-          {
-            title: "Votre site en ligne demain - Livraison 24h",
-            content: "Lancement urgent ? Opportunité business ? Je livre votre site professionnel, rapide et optimisé en 24 heures chrono.",
-          },
-          {
-            title: "Comment je peux vous aider",
-            items: services.map(s => ({
-              title: s.title,
-              description: `${s.description} Inclus : ${s.features.join(', ')}`,
-            })),
-          },
-          {
-            title: "Ma methodologie",
-            items: processSteps.map(p => `${p.step}. ${p.title}: ${p.description}`),
-          },
-          {
-            title: "Prêt à démarrer ?",
-            content: "Discutons de votre projet et voyons comment je peux vous aider a atteindre vos objectifs. Contactez-moi pour parler de votre projet ou consultez mon portfolio.",
-          },
-        ]}
-      />
 
       <div className="bg-background">
         {/* ─── HERO ─── */}
@@ -392,23 +365,5 @@ const ServicesPage = ({ baseUrl, isCrawler }) => {
     </>
   );
 };
-
-/**
- * Enable Server-Side Rendering
- * Ensures AI crawlers and search engines see server-rendered HTML
- */
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler')
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
-  const userAgent = req.headers['user-agent'] || '';
-  const isBot = isCrawler(userAgent);
-  return {
-    props: {
-      baseUrl,
-      isCrawler: isBot
-    },
-  };
-}
 
 export default ServicesPage;

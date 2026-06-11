@@ -1,16 +1,14 @@
 ﻿import { motion } from 'motion/react';
+import Link from 'next/link';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { absoluteUrl } from '../lib/business';
 
-// Next.js 16: Force SSR (Nov 2025 requirement)
-export const dynamic = 'force-dynamic';
-
-const MentionsLegales = ({ baseUrl }) => {
+const MentionsLegales = () => {
   const organizationSchema = createOrganizationSchema();
   const legalPageSchema = createWebPageSchema(
     'Mentions légales',
     'Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web.',
-    `${baseUrl}/mentions-legales`
+    absoluteUrl('/mentions-legales')
   );
   const schema = {
     '@context': 'https://schema.org',
@@ -75,12 +73,12 @@ const MentionsLegales = ({ baseUrl }) => {
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">5. Données personnelles</h2>
               <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : contact@theo-multimedia.com</p>
-              <p className="mt-4">Pour plus d'informations sur la manière dont je traite vos données, consultez notre <a href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</a>.</p>
+              <p className="mt-4">Pour plus d'informations sur la manière dont je traite vos données, consultez notre <Link href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</Link>.</p>
             </section>
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">6. Cookies</h2>
-              <p>Le site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur ce site, vous acceptez l'utilisation des cookies conformément à notre politique en la matière. Pour en savoir plus, consultez notre <a href="/politique-confidentialite#cookies" className="text-accent hover:underline">Politique de Cookies</a>.</p>
+              <p>Le site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur ce site, vous acceptez l'utilisation des cookies conformément à notre politique en la matière. Pour en savoir plus, consultez notre <Link href="/politique-confidentialite#cookies" className="text-accent hover:underline">Politique de Cookies</Link>.</p>
             </section>
 
             <section className="mb-12">
@@ -108,8 +106,3 @@ const MentionsLegales = ({ baseUrl }) => {
 
 export default MentionsLegales;
 
-export async function getServerSideProps({ req }) {
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
-  return { props: { baseUrl } }
-}

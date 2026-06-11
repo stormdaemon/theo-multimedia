@@ -5,7 +5,6 @@ import { absoluteUrl, business } from '../../lib/business';
 
 export default function BlogPostPage({ post, sections }) {
   const canonical = `/blog/${post.slug}`;
-  const ogImage = `/api/og?type=${encodeURIComponent(`Blog • ${post.category}`)}&title=${encodeURIComponent(post.title)}`;
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -25,6 +24,8 @@ export default function BlogPostPage({ post, sections }) {
           '@type': 'Person',
           name: business.founder,
         },
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt,
         publisher: {
           '@type': 'Organization',
           name: business.brandName,
@@ -34,7 +35,7 @@ export default function BlogPostPage({ post, sections }) {
           },
         },
         mainEntityOfPage: absoluteUrl(canonical),
-        image: absoluteUrl('/images/og/blog.svg'),
+        image: absoluteUrl('/og-image.jpg'),
       },
     ],
   };
@@ -45,7 +46,6 @@ export default function BlogPostPage({ post, sections }) {
         title={`${post.title} | Blog`}
         description={post.summary}
         canonical={canonical}
-        ogImage={ogImage}
         ogType="article"
         schema={schema}
         keywords={[post.keyword, post.category, post.city]}
@@ -63,7 +63,9 @@ export default function BlogPostPage({ post, sections }) {
             <span className="tm-badge">{post.category}</span>
             <h1 className="tm-title mt-5 text-4xl leading-[1.06] md:text-6xl">{post.title}</h1>
             <p className="mt-6 text-lg leading-8 text-slate-300">{post.summary}</p>
-            <p className="mt-5 text-sm text-slate-500">Mot-clé cible : {post.keyword}</p>
+            <p className="mt-5 text-sm text-slate-500">
+              <time dateTime={post.publishedAt}>Publié le {new Date(`${post.publishedAt}T00:00:00`).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </p>
           </div>
         </header>
 
@@ -96,7 +98,7 @@ export default function BlogPostPage({ post, sections }) {
               <section className="mt-10 rounded-2xl border border-accent/30 bg-accent/10 p-5">
                 <h2 className="tm-title text-2xl">Conclusion</h2>
                 <p className="mt-4 text-sm leading-7 text-slate-200">
-                  Une bonne page ne cherche pas à tout dire. Elle répond à une intention, donne confiance, reste rapide et propose une action claire. Pour {post.keyword}, le plus important est de relier le contenu au besoin réel du visiteur.
+                  Une bonne page ne cherche pas à tout dire. Elle répond à une intention, donne confiance, reste rapide et propose une action claire. Le plus important est de relier le contenu au besoin réel de vos visiteurs.
                 </p>
               </section>
             </div>

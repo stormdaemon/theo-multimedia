@@ -1,16 +1,14 @@
 ﻿import { motion } from 'motion/react';
+import Link from 'next/link';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { absoluteUrl } from '../lib/business';
 
-// Next.js 16: Force SSR (Nov 2025 requirement)
-export const dynamic = 'force-dynamic';
-
-const CGV = ({ baseUrl }) => {
+const CGV = () => {
   const organizationSchema = createOrganizationSchema();
   const cgvPageSchema = createWebPageSchema(
     'Conditions Générales de Vente',
     'Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux.',
-    `${baseUrl}/cgv`
+    absoluteUrl('/cgv')
   );
   const schema = {
     '@context': 'https://schema.org',
@@ -124,7 +122,7 @@ const CGV = ({ baseUrl }) => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 13 - Données personnelles</h2>
-              <p>Les données personnelles collectées sont traitées conformément à notre <a href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</a>.</p>
+              <p>Les données personnelles collectées sont traitées conformément à notre <Link href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</Link>.</p>
             </section>
 
             <section className="mb-12">
@@ -151,8 +149,3 @@ const CGV = ({ baseUrl }) => {
 
 export default CGV;
 
-export async function getServerSideProps({ req }) {
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
-  return { props: { baseUrl } }
-}

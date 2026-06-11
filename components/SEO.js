@@ -35,6 +35,8 @@ const SEO = ({
       <meta name="robots" content={robots} />
       {keywords.length > 0 && <meta name="keywords" content={keywords.slice(0, 8).join(', ')} />}
       <link rel="canonical" href={fullCanonical} />
+      <link rel="alternate" hrefLang="fr" href={fullCanonical} />
+      <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
 
       <meta httpEquiv="content-language" content="fr-FR" />
       <meta name="language" content="French" />
@@ -174,7 +176,7 @@ export const createLocalBusinessSchema = () => {
   };
 };
 
-export const createWebPageSchema = (title, description, url) => ({
+export const createWebPageSchema = (title, description, url, dateModified) => ({
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   name: title,
@@ -186,7 +188,7 @@ export const createWebPageSchema = (title, description, url) => ({
     name: business.brandName,
     url: (process.env.NEXT_PUBLIC_SITE_URL || business.siteUrl),
   },
-  dateModified: new Date().toISOString().split('T')[0],
+  ...(dateModified ? { dateModified } : {}),
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', 'h2', '[data-speakable]'],

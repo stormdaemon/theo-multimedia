@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import SEO, { createFAQSchema, createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
+import { business } from '../lib/business';
 import { homepageServices } from '../lib/services-data';
 import { getFeaturedProjects } from '../lib/projects';
 
@@ -32,7 +32,7 @@ const steps = [
   ['4', 'On lance', 'Mise en ligne, vérifications SEO et prochaines actions claires.'],
 ];
 
-const HomePage = ({ baseUrl, isCrawler }) => {
+const HomePage = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -40,7 +40,7 @@ const HomePage = ({ baseUrl, isCrawler }) => {
       createWebPageSchema(
         'Site vitrine en 24h et SEO local',
         'Sites rapides, SEO local et solutions web sur mesure à Cognac, Angoulême, Saintes et en Charente.',
-        baseUrl
+        business.siteUrl
       ),
       createFAQSchema([
         {
@@ -54,18 +54,12 @@ const HomePage = ({ baseUrl, isCrawler }) => {
   return (
     <>
       <SEO
-        title="Site vitrine en 24h & SEO local"
+        title="Site vitrine en 24h & SEO local à Cognac"
         description="Création de sites rapides, modernes et optimisés SEO à Cognac, Angoulême, Saintes et en Charente. Audit gratuit et contact direct."
         canonical="/"
         schema={schema}
         enableLocalSEO={true}
         keywords={['site vitrine en 24h', 'agence web Cognac', 'création site internet Charente', 'SEO local']}
-      />
-      <CrawlerPageContent
-        isCrawler={isCrawler}
-        title="Théo Multimédia - Agence Web Cognac"
-        description="Sites vitrines, SEO local et solutions sur mesure."
-        sections={services.map((service) => ({ title: service.title, content: service.description }))}
       />
 
       <div className="tm-site-shell">
@@ -222,11 +216,5 @@ const HomePage = ({ baseUrl, isCrawler }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
-  return { props: { baseUrl: getSiteUrlFromHeaders(req), isCrawler: isCrawler(req.headers['user-agent'] || '') } };
-}
 
 export default HomePage;

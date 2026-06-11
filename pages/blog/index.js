@@ -22,7 +22,6 @@ export default function BlogIndex({ baseUrl }) {
         title="Blog SEO local, création de site & visibilité IA"
         description="Guides pratiques pour créer un site rapide, améliorer le SEO local, préparer le référencement IA et transformer les visiteurs en demandes."
         canonical="/blog"
-        ogImage="/images/og/blog.svg"
         schema={schema}
       />
 
@@ -64,7 +63,6 @@ export default function BlogIndex({ baseUrl }) {
                   <Link href={`/blog/${post.slug}`} className="hover:text-accent">{post.title}</Link>
                 </h2>
                 <p className="mt-4 text-sm leading-6 text-slate-300">{post.summary}</p>
-                <p className="mt-4 text-xs text-slate-500">Mot-clé cible : {post.keyword}</p>
                 <Link href={`/blog/${post.slug}`} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-accent">
                   Lire l’article <span aria-hidden="true">→</span>
                 </Link>

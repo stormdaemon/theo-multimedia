@@ -1,9 +1,8 @@
 ﻿import { motion } from 'motion/react';
 import Link from 'next/link';
 import SEO, { createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
 import PageFeatureBand from '../components/PageFeatureBand';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import { absoluteUrl } from '../lib/business';
 
 const pillars = [
   { icon: '/assets/icon-seo-audit-orange.webp', title: 'Audit technique', text: 'Structure, vitesse, indexation, maillage et priorités: vous savez quoi corriger et dans quel ordre.' },
@@ -14,19 +13,18 @@ const pillars = [
   { icon: '/assets/icon-rocket-orange.webp', title: 'Google et IA', text: 'Balisage structuré et informations claires pour faciliter la lecture par les moteurs et assistants IA.' },
 ];
 
-const SeoPage = ({ baseUrl, isCrawler }) => {
+const SeoPage = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       createLocalBusinessSchema(),
-      createWebPageSchema('SEO local et visibilité Google', 'Audit SEO, référencement local et optimisation pour Google et les assistants IA.', `${baseUrl}/seo`),
+      createWebPageSchema('SEO local et visibilité Google', 'Audit SEO, référencement local et optimisation pour Google et les assistants IA.', absoluteUrl('/seo')),
     ],
   };
 
   return (
     <>
       <SEO title="SEO Local, Audit et Visibilité Google" description="Audit SEO, référencement local et contenus optimisés pour Google et les assistants IA. Accompagnement direct à Cognac et en Charente." canonical="/seo" schema={schema} enableLocalSEO={true} />
-      <CrawlerPageContent isCrawler={isCrawler} title="SEO local et visibilité Google" description="Audit, référencement local, contenus et données structurées." sections={pillars.map(({ title, text }) => ({ title, content: text }))} />
       <div className="bg-background">
         <section className="tm-subpage-hero relative overflow-hidden px-6 pb-20 pt-24 md:pb-28 md:pt-32">
           <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/services-seo-local-map-dashboard.webp')" }} />
@@ -83,10 +81,5 @@ const SeoPage = ({ baseUrl, isCrawler }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  return { props: { baseUrl: getSiteUrlFromHeaders(req), isCrawler: isCrawler(req.headers['user-agent'] || '') } };
-}
 
 export default SeoPage;

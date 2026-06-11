@@ -1,16 +1,14 @@
 ﻿import { motion } from 'motion/react';
+import Link from 'next/link';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { absoluteUrl } from '../lib/business';
 
-// Next.js 16: Force SSR (Nov 2025 requirement)
-export const dynamic = 'force-dynamic';
-
-const CGU = ({ baseUrl }) => {
+const CGU = () => {
   const organizationSchema = createOrganizationSchema();
   const cguPageSchema = createWebPageSchema(
     'Conditions Générales d\'Utilisation',
     'Conditions générales utilisation Théo Multimédia. Informations légales utilisation services web et solutions digitales.',
-    `${baseUrl}/cgu`
+    absoluteUrl('/cgu')
   );
   const schema = {
     '@context': 'https://schema.org',
@@ -98,7 +96,7 @@ const CGU = ({ baseUrl }) => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 7 - Données personnelles</h2>
-              <p>Les données personnelles sont traitées conformément à notre <a href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</a>.</p>
+              <p>Les données personnelles sont traitées conformément à notre <Link href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</Link>.</p>
               <p className="mt-4">Conformément à la loi "informatique et libertés" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant.</p>
             </section>
 
@@ -106,7 +104,7 @@ const CGU = ({ baseUrl }) => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 8 - Cookies</h2>
               <p>Le Site peut utiliser des cookies. Un cookie est un fichier texte stocké sur le disque dur de l'ordinateur de l'Utilisateur lors de sa navigation sur le Site.</p>
               <p className="mt-4">L'Utilisateur peut s'opposer à l'enregistrement de cookies en configurant son navigateur. Cependant, cette désactivation pourrait empêcher l'accès à certaines fonctionnalités du Site.</p>
-              <p className="mt-4">Pour plus d'informations, consultez notre <a href="/politique-confidentialite#cookies" className="text-accent hover:underline">Politique de Cookies</a>.</p>
+              <p className="mt-4">Pour plus d'informations, consultez notre <Link href="/politique-confidentialite#cookies" className="text-accent hover:underline">Politique de Cookies</Link>.</p>
             </section>
 
             <section className="mb-12">
@@ -146,8 +144,3 @@ const CGU = ({ baseUrl }) => {
 
 export default CGU;
 
-export async function getServerSideProps({ req }) {
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
-  return { props: { baseUrl } }
-}

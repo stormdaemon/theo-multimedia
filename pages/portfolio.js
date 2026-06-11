@@ -3,12 +3,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import SEO, { createBreadcrumbSchema, createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import { absoluteUrl } from '../lib/business';
 import PageFeatureBand from '../components/PageFeatureBand';
 import { projectCategories, projects } from '../lib/projects';
 
-const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
+const PortfolioPage = () => {
   const [filter, setFilter] = useState('Tous les projets');
   const filteredProjects = filter === 'Tous les projets'
     ? projects
@@ -21,7 +20,7 @@ const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
       createWebPageSchema(
         'Portfolio - Réalisations web en Charente',
         'Sites vitrines, applications web, web radios, landing pages et projets sur mesure créés par Théo Multimédia.',
-        `${baseUrl}/portfolio`
+        absoluteUrl('/portfolio')
       ),
       createBreadcrumbSchema([
         { name: 'Accueil', url: '/' },
@@ -36,21 +35,9 @@ const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         title="Portfolio - Sites web, SEO local et applications"
         description="Découvrez les réalisations Théo Multimédia : sites vitrines, applications web, web radio, landing pages et projets sur mesure."
         canonical="/portfolio"
-        ogImage="/images/og/default.svg"
         schema={schema}
       />
 
-      <CrawlerPageContent
-        isCrawler={isCrawlerBot}
-        title="Portfolio - Réalisations de Théo Multimédia"
-        description="Sites internet, applications web et projets digitaux créés par Théo Multimédia."
-        sections={[
-          {
-            title: 'Projets',
-            items: projects.map((project) => `${project.title} - ${project.category}: ${project.shortDescription}`),
-          },
-        ]}
-      />
 
       <div className="bg-background">
         <section className="tm-subpage-hero relative overflow-hidden px-6 pb-20 pt-24 md:pb-28 md:pt-32">
@@ -187,17 +174,5 @@ const PortfolioPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  const baseUrl = getSiteUrlFromHeaders(req);
-  const userAgent = req.headers['user-agent'] || '';
-  return {
-    props: {
-      baseUrl,
-      isCrawler: isCrawler(userAgent),
-    },
-  };
-}
 
 export default PortfolioPage;

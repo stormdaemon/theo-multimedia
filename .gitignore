@@ -14,3 +14,7 @@ dist/
 
 # SEO test reports
 seo_report_*.json
+
+# OS / outillage
+.DS_Store
+.codex*

@@ -2,8 +2,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createBreadcrumbSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
+import { absoluteUrl } from '../lib/business';
 import PageFeatureBand from '../components/PageFeatureBand';
 
 const values = [
@@ -36,12 +35,12 @@ const skills = [
   { icon: '/assets/icon-target-orange.webp', name: 'Stratégie digitale', detail: 'Conversion, analytics, accompagnement' },
 ];
 
-const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
+const AboutPage = () => {
   const localBusinessSchema = createLocalBusinessSchema();
   const aboutPageSchema = createWebPageSchema(
     'À propos - Théo Lafont, développeur web en Charente',
     'Théo Lafont, développeur web full-stack et consultant SEO en Charente. Création de sites internet rapides, SEO local et visibilité IA.',
-    `${baseUrl}/about`
+    absoluteUrl('/about')
   );
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: 'Accueil', url: '/' },
@@ -63,39 +62,6 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         enableLocalSEO={true}
       />
 
-      <CrawlerPageContent
-        isCrawler={isCrawlerBot}
-        title="À propos de Théo Multimédia - Développeur web en Charente"
-        description="Théo Lafont est développeur web full-stack et consultant SEO en Charente. Théo Multimédia crée des sites rapides, utiles et structurés pour Google et les assistants IA."
-        sections={[
-          {
-            title: "Mon parcours",
-            content: "Avec plus de 10 ans d'expérience dans le développement web et le design digital, je crée des interfaces qui expliquent clairement une activité et facilitent la prise de contact. Mon expertise couvre le développement full-stack avec Next.js et React, le design UX/UI, le référencement SEO local et le référencement IA (GEO - Generative Engine Optimization). Théo Multimédia accompagne les entreprises de Cognac, Angoulême, Saintes et plus largement de Charente.",
-          },
-          {
-            title: "Expertise SEO Google et IA",
-            content: "La visibilité en ligne ne se limite plus à Google. J’optimise chaque site pour être lisible par les moteurs de recherche et par les assistants IA. Cela inclut le balisage schema.org enrichi, les contenus structurés pour les LLM, et l’optimisation technique pour les AI crawlers.",
-          },
-          {
-            title: "Mes valeurs",
-            items: values.map(v => `${v.title}: ${v.description}`),
-          },
-          {
-            title: "Compétences techniques",
-            items: skills.map(s => `${s.name}: ${s.detail}`),
-          },
-          {
-            title: "Chiffres clés",
-            items: [
-              "Plus de 10 années d'expérience en développement web",
-              "Création de sites vitrines, e-commerce et outils sur mesure",
-              "Optimisation des performances techniques et du SEO local",
-              "Approche sobre avec images compressées et code maîtrisé",
-              "Livraison express en 24h disponible",
-            ],
-          },
-        ]}
-      />
 
       <div className="bg-background">
         {/* ─── HERO ─── */}
@@ -256,7 +222,7 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
                   Référencement IA <span className="text-xs font-normal text-accent">(GEO)</span>
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Optimisation pour les moteurs IA : contenu structuré, schema.org enrichi, FAQ stratégiques, llms.txt. Les IA vous recommandent.
+                  Optimisation pour les moteurs IA : un site structuré et lisible par ChatGPT, Perplexity et Gemini, pour que les IA recommandent votre activité.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> ChatGPT recommande votre entreprise</li>
@@ -408,18 +374,5 @@ const AboutPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
-  const baseUrl = getSiteUrlFromHeaders(req);
-  const userAgent = req.headers['user-agent'] || '';
-  return {
-    props: {
-      baseUrl,
-      isCrawler: isCrawler(userAgent),
-    },
-  };
-}
 
 export default AboutPage;

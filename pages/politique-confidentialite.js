@@ -1,16 +1,13 @@
 ﻿import { motion } from 'motion/react';
 import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl'
+import { absoluteUrl } from '../lib/business';
 
-// Next.js 16: Force SSR (Nov 2025 requirement)
-export const dynamic = 'force-dynamic';
-
-const PolitiqueConfidentialite = ({ baseUrl }) => {
+const PolitiqueConfidentialite = () => {
   const organizationSchema = createOrganizationSchema();
   const privacyPageSchema = createWebPageSchema(
     'Politique de confidentialité',
     'Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD.',
-    `${baseUrl}/politique-confidentialite`
+    absoluteUrl('/politique-confidentialite')
   );
   const schema = {
     '@context': 'https://schema.org',
@@ -166,8 +163,3 @@ const PolitiqueConfidentialite = ({ baseUrl }) => {
 
 export default PolitiqueConfidentialite;
 
-export async function getServerSideProps({ req }) {
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl')
-  const baseUrl = getSiteUrlFromHeaders(req)
-  return { props: { baseUrl } }
-}

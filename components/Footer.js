@@ -77,7 +77,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="tm-container mt-4 flex flex-wrap justify-between gap-3 text-[10px] text-slate-500">
-      <span>© {new Date().getFullYear()} {business.brandName} - Tous droits réservés.</span>
+      <span suppressHydrationWarning>© {new Date().getFullYear()} {business.brandName} - Tous droits réservés.</span>
       <span className="flex gap-4"><Link href="/mentions-legales">Mentions légales</Link><Link href="/politique-confidentialite">Confidentialité</Link><Link href="/cgv">CGV</Link></span>
     </div>
   </footer>

@@ -1,4 +1,4 @@
-# Netlify configuration for Next.js 16+
+# Netlify configuration for Next.js 16 (Pages Router, fully static pages)
 
 [build]
   command = "npm run build"
@@ -7,36 +7,18 @@
 [build.environment]
   NODE_VERSION = "20.19.0"
   NEXT_TELEMETRY_DISABLED = "1"
-  # CRITICAL: Disable auto-generated Edge Functions that block crawlers
-  # The @netlify/plugin-nextjs automatically creates Edge Functions for middleware
-  # This causes 502/504 timeouts for all bots (Googlebot, Gemini, ChatGPT)
-  # Reference: https://docs.netlify.com/frameworks/next-js/overview/
-  NEXT_DISABLE_NETLIFY_EDGE = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Headers for crawler accessibility (Nov 2025)
-# CRITICAL: These headers ensure bots (Google, AI crawlers) can access all pages
+# Long-lived immutable caching for static assets.
+# Security headers (CSP, HSTS, etc.) are defined once, in next.config.js.
 [[headers]]
-  for = "/*"
+  for = "/assets/*"
   [headers.values]
-    X-Robots-Tag = "index, follow, all"
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, HEAD, OPTIONS"
-    Access-Control-Allow-Headers = "User-Agent, Content-Type"
-    # Prevent timeout issues for slow crawlers
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, s-maxage=31536000, immutable"
 
-[functions]
-  directory = "netlify/functions"
-  # Increased timeout for SSR pages to prevent crawler timeouts
-  node_bundler = "esbuild"
-
-# Next.js Runtime configuration for better crawler support
-[functions."__next_route_handler_*"]
-  included_files = ["**/*"]
-
-# Edge Functions removed - they were causing 502/504 timeouts for crawlers (Googlebot, AI bots)
-# Headers are already configured in [[headers]] section above
-# Reference: Netlify support forums Jan 2025 - Edge Functions on /* block crawlers
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, s-maxage=31536000, immutable"

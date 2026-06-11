@@ -1,8 +1,8 @@
 import ContentPageLayout from '../components/ContentPageLayout';
 import { contentPages, getContentPage } from '../lib/services-data';
 
-export default function DynamicContentPage({ page, baseUrl, isCrawler }) {
-  return <ContentPageLayout page={page} baseUrl={baseUrl} isCrawler={isCrawler} />;
+export default function DynamicContentPage({ page }) {
+  return <ContentPageLayout page={page} />;
 }
 
 export async function getStaticPaths() {
@@ -19,11 +19,5 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
   }
 
-  return {
-    props: {
-      page,
-      baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com',
-      isCrawler: false,
-    },
-  };
+  return { props: { page } };
 }

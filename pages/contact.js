@@ -4,10 +4,8 @@ import { useRouter } from 'next/router';
 import { useForm, ValidationError } from '@formspree/react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema, createBreadcrumbSchema } from '../components/SEO';
-import { CrawlerPageContent } from '../components/CrawlerContent';
-import { getSiteUrlFromHeaders } from '../lib/siteUrl';
 import PageFeatureBand from '../components/PageFeatureBand';
-import { business } from '../lib/business';
+import { absoluteUrl, business } from '../lib/business';
 
 const contactInfo = [
   {
@@ -49,7 +47,7 @@ const faqs = [
   }
 ];
 
-const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
+const ContactPage = () => {
   const [state, handleSubmit] = useForm("mblypyew");
   const { query } = useRouter();
   const requestedService = typeof query.service === 'string' ? query.service : '';
@@ -58,7 +56,7 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
   const contactPageSchema = createWebPageSchema(
     'Contact - Parlez de votre projet web',
     'Contactez Théo Multimédia pour votre site internet, SEO local, CRM, LMS ou e-commerce. Réponse sous 24h ouvrées en Charente.',
-    `${baseUrl}/contact`
+    absoluteUrl('/contact')
   );
   const faqSchema = createFAQSchema(faqs);
   const breadcrumbSchema = createBreadcrumbSchema([
@@ -118,43 +116,6 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
         enableLocalSEO={true}
       />
 
-      <CrawlerPageContent
-        isCrawler={isCrawlerBot}
-        title="Contact - Théo Multimédia, Agence Web en Charente"
-        description="Contactez Théo Multimédia pour discuter de votre projet de site internet, SEO local, CRM, LMS ou e-commerce. Réponse sous 24h ouvrées."
-        sections={[
-          {
-            title: "Parlons de votre projet",
-            content: "Vous avez un projet de site web, de boutique en ligne ou d’application ? Je suis là pour vous écouter et vous accompagner. Que ce soit pour une création, une refonte ou une optimisation SEO, discutons ensemble de vos objectifs et de votre vision.",
-          },
-          {
-            title: "Coordonnées",
-            items: [
-              `Email : ${business.email}`,
-              "Localisation commerciale : Cognac / Charente",
-              "Zones : Angoulême, Cognac, Saintes, Jarnac, Charente et Charente-Maritime",
-              "Délai de réponse : sous 24h ouvrées",
-              "Horaires : lundi au vendredi, 9h-18h",
-            ],
-          },
-          {
-            title: "Services proposés",
-            items: [
-              "Création de sites internet ultra-rapides et éco-responsables",
-              "Refonte de sites existants pour améliorer performances et SEO",
-              "Boutiques e-commerce et solutions de vente en ligne",
-              "Applications web sur-mesure avec React et Next.js",
-              "Référencement SEO Google et IA (ChatGPT, Perplexity, Gemini)",
-              "Livraison express en 24 heures pour sites vitrines et landing pages",
-              "Maintenance et support technique continu",
-            ],
-          },
-          {
-            title: "Questions fréquentes",
-            items: faqs.map(f => `${f.question} : ${f.answer}`),
-          },
-        ]}
-      />
 
       <div className="bg-background">
         {/* ─── HERO ─── */}
@@ -453,18 +414,5 @@ const ContactPage = ({ baseUrl, isCrawler: isCrawlerBot }) => {
     </>
   );
 };
-
-export async function getServerSideProps({ req }) {
-  const { isCrawler } = await import('../lib/isCrawler');
-  const { getSiteUrlFromHeaders } = await import('../lib/siteUrl');
-  const baseUrl = getSiteUrlFromHeaders(req);
-  const userAgent = req.headers['user-agent'] || '';
-  return {
-    props: {
-      baseUrl,
-      isCrawler: isCrawler(userAgent),
-    },
-  };
-}
 
 export default ContactPage;

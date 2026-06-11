@@ -1,29 +1,26 @@
-# Théo Multimédia - Site Web de l'Agence
+# Théo Multimédia — Site de l'agence
 
-Ce projet est le site web de l'agence de webdesign "Théo Multimédia", créé avec Next.js, Tailwind CSS et Framer Motion.
+Site web de l'agence « Théo Multimédia » (Cognac / Charente), construit avec Next.js (Pages Router), Tailwind CSS 4 et Motion. Toutes les pages sont générées statiquement ; seul `/sitemap.xml` est servi dynamiquement.
 
 ## Pour commencer
 
-Pour lancer le projet en local, suivez ces étapes :
+```bash
+npm install
+npm run dev
+```
 
-1.  **Installer les dépendances :**
-
-    ```bash
-    npm install
-    ```
-
-2.  **Lancer le serveur de développement :**
-
-    ```bash
-    npm run dev
-    ```
-
-    Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
 ## Scripts disponibles
 
--   `npm run dev`: Lance l'application en mode développement.
--   `npm run build`: Construit l'application pour la production.
--   `npm run start`: Lance un serveur de production.
--   `npm run lint`: Lance l'outil de linting de Next.js.
-"# theo-multimedia" 
+- `npm run dev` : serveur de développement.
+- `npm run build` : build de production (toutes les pages doivent rester `○ Static` ou `● SSG`).
+- `npm run start` : serveur de production.
+- `npm run lint` : ESLint (config `eslint.config.mjs`).
+- `npm test` : tests Jest (intégrité des données, composant SEO, sitemap).
+
+## Points d'attention
+
+- Les contenus (blog, projets, pages services/locales) vivent dans `lib/*-data.js` ; chaque entrée porte un `updatedAt` (`YYYY-MM-DD`) utilisé par le sitemap et les schémas — le mettre à jour quand le contenu change réellement.
+- Les headers de sécurité et de cache sont définis dans `next.config.js` ; `netlify.toml` ne gère que le cache long des assets.
+- Images : tout est en WebP dans `public/assets/`. Pour en ajouter, passer par `scripts/optimize-images.js` (sharp).
