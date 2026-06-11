@@ -137,7 +137,7 @@ const PolitiqueConfidentialite = () => {
                 <li>Droit d'opposition</li>
                 <li>Définir des directives relatives au sort de vos données après votre décès</li>
               </ul>
-              <p className="mt-4">Pour exercer ces droits, contactez-moi à l'adresse : contact@theo-multimedia.com</p>
+              <p className="mt-4">Pour exercer ces droits, contactez-moi à l'adresse : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
               <p className="mt-2">Vous avez également le droit d'introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
             </section>
 

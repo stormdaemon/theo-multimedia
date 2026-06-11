@@ -29,7 +29,7 @@ const values = [
 ];
 
 const skills = [
-  { icon: '/assets/icon-design-orange.webp', name: 'Design & UX/UI', detail: 'Interfaces modernes, responsive, accessibles' },
+  { icon: '/assets/icon-design-orange.webp', name: 'Design & UX/UI', detail: 'Interfaces modernes, adaptées à tous les écrans, accessibles' },
   { icon: '/assets/icon-crm-orange.webp', name: 'Développement Web', detail: 'Next.js, React, Node.js, API' },
   { icon: '/assets/icon-seo-audit-orange.webp', name: 'SEO Google & IA', detail: 'Référencement Google, ChatGPT, Perplexity' },
   { icon: '/assets/icon-target-orange.webp', name: 'Stratégie digitale', detail: 'Conversion, analytics, accompagnement' },

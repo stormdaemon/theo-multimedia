@@ -147,8 +147,8 @@ export default function ContentPageLayout({ page }) {
         <section className="px-6 pb-16 md:pb-24">
           <div className="tm-audit tm-thick-glass mx-auto grid max-w-5xl gap-6 rounded-3xl p-7 md:grid-cols-[1fr_auto] md:items-center md:p-10">
             <div>
-              <p className="tm-kicker">Audit offert</p>
-              <h2 className="tm-title mt-2 text-3xl">Un premier regard clair sur votre projet.</h2>
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-sm font-black uppercase tracking-wide text-accent-foreground">100 % offert</span>
+              <h2 className="tm-title mt-3 text-3xl">Un premier regard clair sur votre projet.</h2>
               <p className="mt-3 text-sm leading-7 text-slate-200">
                 Envoyez votre URL ou votre idée. Vous recevez une réponse directe, avec les priorités à traiter.
               </p>
@@ -176,8 +176,8 @@ export default function ContentPageLayout({ page }) {
 
         <section className="px-6 py-16 md:py-24">
           <div className="mx-auto max-w-6xl">
-            <p className="tm-kicker">Maillage utile</p>
-            <h2 className="tm-title mt-2 text-3xl">Continuer naturellement</h2>
+            <p className="tm-kicker">Pour aller plus loin</p>
+            <h2 className="tm-title mt-2 text-3xl">Pages à consulter ensuite</h2>
             <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {page.relatedLinks?.map(([label, href]) => (
                 <Link key={`${label}-${href}`} href={href} className="tm-glass-soft flex min-h-24 items-center justify-between rounded-2xl p-5 text-sm font-bold text-slate-100 transition-colors hover:text-accent">

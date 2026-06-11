@@ -1,20 +1,20 @@
 import Link from 'next/link';
 import SEO, { createBreadcrumbSchema, createLocalBusinessSchema, createWebPageSchema } from '../../components/SEO';
+import { absoluteUrl } from '../../lib/business';
 import { blogPosts } from '../../lib/blog-data';
 
-export default function BlogIndex({ baseUrl }) {
+export default function BlogIndex() {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       createLocalBusinessSchema(),
-      createWebPageSchema('Blog SEO, création de site et visibilité locale', 'Guides pratiques pour sites vitrines, SEO local, SEO IA, CRM, LMS, e-commerce et performance web.', `${baseUrl}/blog`),
+      createWebPageSchema('Blog SEO, création de site et visibilité locale', 'Guides pratiques pour sites vitrines, SEO local, SEO IA, CRM, LMS, e-commerce et performance web.', absoluteUrl('/blog')),
       createBreadcrumbSchema([
         { name: 'Accueil', url: '/' },
         { name: 'Blog', url: '/blog' },
       ]),
     ],
   };
-  const categories = Array.from(new Set(blogPosts.map((post) => post.category)));
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function BlogIndex({ baseUrl }) {
           <div className="mx-auto max-w-6xl relative">
             <span className="tm-badge">Blog SEO & acquisition locale</span>
             <h1 className="tm-title mt-5 max-w-4xl text-4xl leading-[1.05] md:text-6xl">
-              Guides pratiques pour créer un site qui charge vite, se comprend vite et convertit mieux.
+              Guides pratiques pour créer un site qui charge vite, se comprend en un clin d’œil et convertit mieux.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
               SEO local, site vitrine en 24h, refonte, visibilité IA, CRM, LMS, e-commerce, performance et accessibilité.
@@ -39,19 +39,7 @@ export default function BlogIndex({ baseUrl }) {
           </div>
         </section>
 
-        <section className="px-6 py-10">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <span key={category} className="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-bold text-accent">
-                  {category}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 pb-20 md:pb-28">
+        <section className="px-6 pb-20 md:pb-28 pt-10">
           <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-3">
             {blogPosts.map((post) => (
               <article key={post.slug} className="tm-glass-soft flex min-h-[300px] flex-col rounded-2xl p-6">
@@ -73,12 +61,4 @@ export default function BlogIndex({ baseUrl }) {
       </div>
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      baseUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://theo-multimedia.com',
-    },
-  };
 }

@@ -63,7 +63,7 @@ const PortfolioPage = () => {
           artwork="/assets/portfolio-case-study-orange-glow.webp"
           items={[
             { icon: '/assets/icon-design-orange.webp', title: 'Univers distincts', text: 'Association, formation, radio, événementiel ou artisanat : chaque interface change de langage.' },
-            { icon: '/assets/icon-laptop-orange.webp', title: 'Responsive travaillé', text: 'Les parcours restent lisibles sur ordinateur, tablette et mobile.' },
+            { icon: '/assets/icon-laptop-orange.webp', title: 'Adapté à tous les écrans', text: 'Les parcours restent lisibles sur ordinateur, tablette et mobile.' },
             { icon: '/assets/icon-target-orange.webp', title: 'Objectif visible', text: 'Chaque écran conduit vers une action claire : contact, inscription, écoute ou conversion.' },
           ]}
         />

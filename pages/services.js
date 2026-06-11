@@ -228,10 +228,10 @@ const ServicesPage = () => {
               className="mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Comment je peux vous aider
+                Comment puis-je vous aider ?
               </h2>
               <p className="text-muted-foreground text-lg max-w-xl">
-                Une expertise complète pour tous vos besoins digitaux.
+                Voici les solutions que je conçois pour répondre à chaque besoin digital.
               </p>
             </motion.div>
 

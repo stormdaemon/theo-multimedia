@@ -16,9 +16,13 @@ const navItems = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { pathname, events } = useRouter();
+  const { asPath, events } = useRouter();
 
-  const isActive = (item) => pathname === item.path;
+  // On compare le chemin réel (asPath) et non `pathname` : les pages comme
+  // /site-vitrine-24h ou /referencement-local sont rendues par [slug].js,
+  // donc `pathname` vaut "/[slug]" et l'onglet actif ne s'allumerait jamais.
+  const currentPath = asPath.split(/[?#]/)[0].replace(/\/$/, '') || '/';
+  const isActive = (item) => currentPath === item.path;
 
   useEffect(() => {
     const closeMenu = () => setOpen(false);

@@ -27,7 +27,7 @@ const stats = [
 
 const steps = [
   ['1', 'On échange', 'Vous me parlez de votre projet, de vos priorités et de votre délai.'],
-  ['2', 'Je structure', 'Pages, messages, maillage, CTA et SEO local sont cadrés avant le design.'],
+  ['2', 'Je structure', 'Pages, messages, liens internes et appels à l’action sont cadrés avant le design.'],
   ['3', 'Je conçois', 'Design premium, développement rapide, performance et accessibilité.'],
   ['4', 'On lance', 'Mise en ligne, vérifications SEO et prochaines actions claires.'],
 ];
@@ -176,7 +176,7 @@ const HomePage = () => {
             ))}
           </div>
           <Link href="/portfolio" className="mt-5 flex items-center justify-center gap-2 text-sm font-bold text-orange-500">
-            Voir toutes les réalisations {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4')}
+            Voir des projets déjà mis en ligne {icon('/assets/icon-arrow-right-orange.webp', 'h-4 w-4')}
           </Link>
         </section>
 

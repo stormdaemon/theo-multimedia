@@ -5,7 +5,7 @@ import PageFeatureBand from '../components/PageFeatureBand';
 import { absoluteUrl } from '../lib/business';
 
 const pillars = [
-  { icon: '/assets/icon-seo-audit-orange.webp', title: 'Audit technique', text: 'Structure, vitesse, indexation, maillage et priorités: vous savez quoi corriger et dans quel ordre.' },
+  { icon: '/assets/icon-seo-audit-orange.webp', title: 'Audit technique', text: 'Structure, vitesse, indexation, liens internes et priorités : vous savez quoi corriger et dans quel ordre.' },
   { icon: '/assets/icon-seo-local-orange.webp', title: 'SEO local', text: 'Pages de zone, contenus utiles et signaux locaux pour apparaître au moment où vos prospects cherchent.' },
   { icon: '/assets/icon-target-orange.webp', title: 'Contenus utiles', text: 'Des pages organisées autour des intentions de recherche, sans remplissage ni jargon artificiel.' },
   { icon: '/assets/icon-audit-graph-orange.webp', title: 'Suivi lisible', text: 'Des indicateurs simples pour relier les actions SEO aux prises de contact et aux opportunités.' },
@@ -71,8 +71,8 @@ const SeoPage = () => {
 
         <section className="px-6 pb-24">
           <div className="tm-audit tm-thick-glass mx-auto max-w-5xl rounded-2xl p-8 text-center md:p-12">
-            <p className="tm-kicker">Audit offert</p>
-            <h2 className="tm-title mt-2 text-4xl">Commençons par ce qui bloque vraiment.</h2>
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-sm font-black uppercase tracking-wide text-accent-foreground">100 % offert</span>
+            <h2 className="tm-title mt-4 text-4xl">Commençons par ce qui bloque vraiment.</h2>
             <p className="mx-auto mt-4 max-w-2xl text-slate-200">Vous recevez un premier regard concret sur votre visibilité et les priorités à traiter.</p>
             <Link href="/contact" className="tm-button tm-button-primary mt-7">Demander mon audit SEO</Link>
           </div>
