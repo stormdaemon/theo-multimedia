@@ -44,8 +44,8 @@ const MentionsLegales = () => {
                 <p>N° TVA intracommunautaire : FR59884758970</p>
                 <p>Code APE : 8211Z - Services administratifs combinés de bureau</p>
                 <p>149 rue Henri Fichon, 16100 Cognac, France</p>
-                <p>Email : contact@theo-multimedia.com</p>
-                <p>Téléphone : +33 7 68 51 95 68</p>
+                <p>Email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
+                <p>Téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></p>
               </address>
             </section>
 
@@ -71,7 +71,7 @@ const MentionsLegales = () => {
 
             <section className="mb-12">
               <h2 className="text-2xl font-semibold text-foreground mb-4">5. Données personnelles</h2>
-              <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : contact@theo-multimedia.com</p>
+              <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
               <p className="mt-4">Pour plus d'informations sur la manière dont je traite vos données, consultez notre <Link href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</Link>.</p>
             </section>
 
