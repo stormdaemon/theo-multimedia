@@ -14,10 +14,10 @@ const STATIC_PAGES = [
   { url: '/portfolio', lastmod: '2026-06-05' },
   { url: '/blog', lastmod: '2026-06-05' },
   { url: '/contact', lastmod: '2026-06-05' },
-  { url: '/mentions-legales', lastmod: '2025-06-24' },
-  { url: '/politique-confidentialite', lastmod: '2025-06-24' },
-  { url: '/cgu', lastmod: '2025-06-24' },
-  { url: '/cgv', lastmod: '2025-06-24' },
+  { url: '/mentions-legales', lastmod: '2026-06-11' },
+  { url: '/politique-confidentialite', lastmod: '2026-06-11' },
+  { url: '/cgu', lastmod: '2026-06-11' },
+  { url: '/cgv', lastmod: '2026-06-11' },
 ];
 
 export function generateSiteMap(baseUrl) {

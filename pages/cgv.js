@@ -22,7 +22,6 @@ const CGV = () => {
         description="Conditions générales vente Théo Multimédia. Modalités prestations web, tarifs et conditions contractuelles services digitaux."
         canonical="/cgv"
         schema={schema}
-        ogImage="/og-cgv.jpg"
       />
 
       <main className="container mx-auto px-4 py-16">
@@ -36,7 +35,7 @@ const CGV = () => {
           
           <div className="prose prose-invert max-w-none">
             <p className="text-muted-foreground mb-8">
-              En vigueur au 24 juin 2025
+              En vigueur au 11 juin 2026
             </p>
 
             <section className="mb-12">
@@ -49,7 +48,7 @@ const CGV = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">Article 2 - Identification du Prestataire</h2>
               <p>Je suis Théo LAFONT</p>
               <p>Entreprise individuelle</p>
-              <p>N° SIRET : 884 758 970 00039</p>
+              <p>N° SIRET : 884 758 970 00054</p>
               <p>N° TVA intracommunautaire : FR59884758970</p>
               <p>16000 Angoulême, France</p>
               <p>Email : contact@theo-multimedia.com</p>

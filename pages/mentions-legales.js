@@ -22,7 +22,6 @@ const MentionsLegales = () => {
         description="Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web."
         canonical="/mentions-legales"
         schema={schema}
-        ogImage="/og-legal.jpg"
       />
 
       <main className="container mx-auto px-4 py-16">
@@ -41,9 +40,9 @@ const MentionsLegales = () => {
               <address className="not-italic mt-4 space-y-1">
                 <p>Monsieur Théo LAFONT</p>
                 <p>Entreprise individuelle</p>
-                <p>N° SIRET : 884 758 970 00039</p>
+                <p>N° SIRET : 884 758 970 00054</p>
                 <p>N° TVA intracommunautaire : FR59884758970</p>
-                <p>Code APE : 4791B - Vente à distance sur catalogue spécialisé</p>
+                <p>Code APE : 8211Z - Services administratifs combinés de bureau</p>
                 <p>16000 Angoulême, France</p>
                 <p>Email : contact@theo-multimedia.com</p>
                 <p>Téléphone : +33 7 68 51 95 68</p>
@@ -59,9 +58,9 @@ const MentionsLegales = () => {
               <h2 className="text-2xl font-semibold text-foreground mb-4">3. Hébergement</h2>
               <p>J'héberge ce site chez :</p>
               <address className="not-italic mt-2">
-                <p>O2SWITCH</p>
-                <p>Chem. des Pardiaux 63000 Clermont-Ferrand</p>
-                <p>Site web : <a href="https://www.o2switch.fr/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.o2switch.fr</a></p>
+                <p>Netlify, Inc.</p>
+                <p>101 2nd Street, San Francisco, CA 94105, États-Unis</p>
+                <p>Site web : <a href="https://www.netlify.com/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.netlify.com</a></p>
               </address>
             </section>
 
@@ -96,7 +95,7 @@ const MentionsLegales = () => {
               </ul>
             </section>
 
-            <p className="text-sm text-muted-foreground">Dernière mise à jour : 24 juin 2025</p>
+            <p className="text-sm text-muted-foreground">Dernière mise à jour : 11 juin 2026</p>
           </div>
         </motion.div>
       </main>

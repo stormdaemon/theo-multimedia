@@ -21,7 +21,6 @@ const PolitiqueConfidentialite = () => {
         description="Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD."
         canonical="/politique-confidentialite"
         schema={schema}
-        ogImage="/og-privacy.jpg"
       />
 
       <main className="container mx-auto px-4 py-16">
@@ -35,7 +34,7 @@ const PolitiqueConfidentialite = () => {
           
           <div className="prose prose-invert max-w-none">
             <p className="text-muted-foreground mb-8">
-              Dernière mise à jour : 24 juin 2025
+              Dernière mise à jour : 11 juin 2026
             </p>
 
             <section className="mb-12">
@@ -50,7 +49,7 @@ const PolitiqueConfidentialite = () => {
                 <p>16000 Angoulême, France</p>
                 <p>Email : contact@theo-multimedia.com</p>
                 <p>Téléphone : +33 7 68 51 95 68</p>
-                <p>N° SIRET : 884 758 970 00039</p>
+                <p>N° SIRET : 884 758 970 00054</p>
               </address>
             </section>
 
