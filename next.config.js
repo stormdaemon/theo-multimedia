@@ -3,7 +3,7 @@ const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://api.mapbox.com",
   "font-src 'self' data:",
   "connect-src 'self' https://formspree.io",
   "form-action 'self' https://formspree.io",

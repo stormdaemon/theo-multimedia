@@ -5,6 +5,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import SEO, { createLocalBusinessSchema, createWebPageSchema, createFAQSchema, createBreadcrumbSchema } from '../components/SEO';
 import PageFeatureBand from '../components/PageFeatureBand';
+import LocationMap from '../components/LocationMap';
 import { absoluteUrl, business } from '../lib/business';
 
 const contactInfo = [
@@ -188,6 +189,9 @@ const ContactPage = () => {
           </div>
         </section>
 
+        {/* ─── CARTE ─── */}
+        <LocationMap />
+
         {/* ─── FORM ─── */}
         <section id="audit" className="py-16 md:py-24 px-6 scroll-mt-24">
           <div className="max-w-2xl mx-auto">
@@ -249,13 +253,17 @@ const ContactPage = () => {
                   <label htmlFor="city" className="block text-sm font-medium mb-1.5">
                     Ville
                   </label>
-                  <input
+                  <select
                     id="city"
-                    type="text"
                     name="city"
                     className="w-full px-4 py-3 rounded-xl bg-background border border-border focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-sm"
-                    placeholder="Cognac, Angoulême, Saintes..."
-                  />
+                  >
+                    <option value="">Sélectionnez votre secteur</option>
+                    {business.serviceAreas.map((area) => (
+                      <option key={area} value={area}>{area}</option>
+                    ))}
+                    <option value="autre">Autre / hors Charente</option>
+                  </select>
                 </div>
 
                 <div>

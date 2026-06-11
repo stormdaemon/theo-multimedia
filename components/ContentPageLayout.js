@@ -164,9 +164,12 @@ export default function ContentPageLayout({ page }) {
               <h2 className="tm-title mt-2 text-3xl md:text-4xl">Questions fréquentes</h2>
               <div className="mt-8 space-y-4">
                 {page.faqs.map(([question, answer]) => (
-                  <details key={question} className="tm-glass-soft rounded-2xl p-5">
-                    <summary className="cursor-pointer text-base font-bold text-white">{question}</summary>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">{answer}</p>
+                  <details key={question} className="tm-faq group tm-glass-soft rounded-2xl">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-base font-bold text-white">
+                      <span>{question}</span>
+                      <span aria-hidden="true" className="tm-faq-chevron shrink-0 text-accent transition-transform duration-200 group-open:rotate-180">▾</span>
+                    </summary>
+                    <p className="px-5 pb-5 text-sm leading-7 text-slate-300">{answer}</p>
                   </details>
                 ))}
               </div>

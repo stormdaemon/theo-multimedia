@@ -3,6 +3,8 @@ node_modules/
 
 # Autres exclusions recommandées
 .env
+.env.*
+!.env.example
 .next/
 out/
 dist/

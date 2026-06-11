@@ -166,6 +166,11 @@
   box-shadow: 0 12px 38px rgba(0,0,0,.28), 0 0 26px rgba(255,91,0,.06);
   backdrop-filter: blur(30px) saturate(145%);
 }
+.tm-faq summary::-webkit-details-marker { display: none; }
+.tm-faq summary { transition: color .2s; }
+.tm-faq summary:hover { color: var(--tm-orange); }
+.tm-faq-chevron { font-size: 18px; line-height: 1; }
+
 .tm-nav-link { position: relative; color: #d8dde4; font-size: 14px; font-weight: 650; transition: color .2s; }
 .tm-nav-link:hover, .tm-nav-link-active { color: white; }
 .tm-nav-link-active::after {
