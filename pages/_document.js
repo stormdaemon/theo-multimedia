@@ -9,8 +9,8 @@ export default function Document() {
             <meta name="theme-color" content="#03070c" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/webp" href="/assets/favicon-tm-orange-v2.webp" />
-        <link rel="apple-touch-icon" href="/assets/logo-theo-multimedia-orange-v2.webp" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </Head>
       <body className="antialiased">
