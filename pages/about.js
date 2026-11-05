@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import AnswerBox from '../components/AnswerBox';
 import Heat from '../components/Heat';
-import { business, fullAddress, mapsUrl } from '../lib/business';
+import { business, fullAddress } from '../lib/business';
 
 const principles = [
   [
@@ -36,7 +36,7 @@ export default function About() {
         description="Théo Multimédia, c’est Théo Lafont : développeur web et consultant GEO installé à Cognac. Un seul interlocuteur, des sites rapides et une visibilité construite sans promesse intenable."
         path="/about"
         pageType="AboutPage"
-        dateModified="2026-11-05"
+        dateModified="2026-11-06"
         crumbs={crumbs}
       />
       <PageHero
@@ -117,9 +117,9 @@ export default function About() {
               <a href={`tel:${business.phoneE164}`} className="btn btn-dark">
                 {business.phone} <span className="arrow">→</span>
               </a>
-              <a href={mapsUrl} className="link-arrow" target="_blank" rel="noopener">
-                Itinéraire <span className="arrow">↗</span>
-              </a>
+              <Link href="/contact" className="link-arrow">
+                Écrire un message <span className="arrow">→</span>
+              </Link>
             </div>
           </div>
           <dl className="facts">
@@ -136,7 +136,7 @@ export default function About() {
               </dd>
             </div>
             <div>
-              <dt>Adresse</dt>
+              <dt>Siège</dt>
               <dd>{fullAddress}</dd>
             </div>
             <div>
@@ -144,8 +144,12 @@ export default function About() {
               <dd>{business.openingHours.label}</dd>
             </div>
             <div>
+              <dt>Échanges</dt>
+              <dd>À distance, par téléphone et en visio (pas de rendez-vous sur place)</dd>
+            </div>
+            <div>
               <dt>Zones</dt>
-              <dd>Cognac, Jarnac, Angoulême, Saintes, Charente et Charente-Maritime, et à distance</dd>
+              <dd>Cognac, Jarnac, Angoulême, Saintes, Charente et Charente-Maritime</dd>
             </div>
             <div>
               <dt>SIRET</dt>

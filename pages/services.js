@@ -40,7 +40,7 @@ const faqs = [
   ],
   [
     'Travaillez-vous uniquement en Charente ?',
-    'L’agence est installée à Cognac et travaille surtout avec des entreprises de Charente et de Charente-Maritime. Les projets à distance sont possibles : les échanges se font alors par téléphone et en visio.',
+    'L’agence est installée à Cognac et travaille surtout avec des entreprises de Charente et de Charente-Maritime. Tous les échanges se font à distance, par téléphone et en visio : un projet mené ailleurs en France se déroule donc de la même façon.',
   ],
   [
     'Qui réalise le travail ?',
@@ -56,7 +56,7 @@ export default function Services({ services, locals }) {
         title="Services web à Cognac : GEO, SEO local, sites sur mesure"
         description="GEO, SEO local, création et refonte de site, e-commerce, CRM et LMS sur mesure, maintenance et préversion express : les services de Théo Multimédia à Cognac."
         path="/services"
-        dateModified="2026-11-05"
+        dateModified="2026-11-06"
         crumbs={[
           ['Accueil', '/'],
           ['Services', '/services'],

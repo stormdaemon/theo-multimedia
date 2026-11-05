@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
 import { Disclaimer } from '../components/AnswerBox';
-import { business, fullAddress, mapsUrl } from '../lib/business';
+import { business, fullAddress } from '../lib/business';
 
 const SERVICES = [
   ['audit-geo', 'Audit SEO & GEO offert'],
@@ -75,7 +75,7 @@ export default function Contact() {
         description={`Contactez Théo Multimédia à Cognac : audit SEO & GEO offert, création ou refonte de site, outil sur mesure. Téléphone ${business.phone}, du lundi au vendredi.`}
         path="/contact"
         pageType="ContactPage"
-        dateModified="2026-11-05"
+        dateModified="2026-11-06"
         crumbs={crumbs}
       />
       <PageHero
@@ -193,16 +193,16 @@ export default function Contact() {
               <p>{business.openingHours.label}</p>
             </div>
             <div className="contact-block">
-              <h2 className="h3">À Cognac</h2>
+              <h2 className="h3">À distance</h2>
+              <p>
+                Pas de rendez-vous sur place : tout se fait par téléphone et en visio, que vous soyez à Cognac, Jarnac,
+                Angoulême, Saintes ou plus loin.
+              </p>
               <address>
-                {business.brandName}
+                Siège : {business.brandName}
                 <br />
                 {fullAddress}
               </address>
-              <a href={mapsUrl} className="link-arrow" target="_blank" rel="noopener">
-                Itinéraire <span className="arrow">↗</span>
-              </a>
-              <p className="muted">Rendez-vous sur place ou en visio, à Cognac, Jarnac, Angoulême, Saintes et alentours.</p>
             </div>
           </aside>
         </div>

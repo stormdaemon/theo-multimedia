@@ -4,7 +4,7 @@
 
 Ce fichier réunit le texte des pages services, des réalisations et des guides publiés sur https://theo-multimedia.netlify.app/
 Sommaire du site : https://theo-multimedia.netlify.app/llms.txt
-Dernière mise à jour du contenu : 5 novembre 2026
+Dernière mise à jour du contenu : 6 novembre 2026
 
 ## L’entreprise
 
@@ -731,7 +731,7 @@ Pas si elle est propre : contenu réel, pages rapides, informations exactes. On 
 ### Création de site internet à Angoulême pour les entreprises qui veulent être vues et choisies
 
 - URL : https://theo-multimedia.netlify.app/creation-site-internet-angouleme
-- Mise à jour : 5 novembre 2026
+- Mise à jour : 6 novembre 2026
 
 Réponse courte : Théo Multimédia crée des sites internet pour les entreprises d’Angoulême et du Grand Angoulême : artisans, commerces, studios créatifs et PME. L’agence est installée à Cognac, dans le même département, et adapte chaque page au contexte local : services, zone, preuves et contact.
 
@@ -799,7 +799,7 @@ Pour Angoulême, le contenu doit éviter la page locale interchangeable. On trav
 #### Questions fréquentes
 
 **Travaillez-vous avec des entreprises d’Angoulême ?**
-Oui. Théo Multimédia est installé à Cognac, à moins d’une heure de route d’Angoulême, et accompagne les entreprises du Grand Angoulême par téléphone, en visio ou sur rendez-vous.
+Oui. Théo Multimédia est installé à Cognac et accompagne les entreprises du Grand Angoulême à distance : les échanges se font par téléphone et en visio, sans rendez-vous sur place.
 
 **Un site créatif peut-il rester rapide ?**
 Oui. L’esthétique ne doit pas sacrifier la performance : images optimisées, structure légère et animations maîtrisées.
@@ -905,7 +905,7 @@ Oui, avec inventaire des URLs, contenus à conserver, redirections et contrôle 
 ### Création de site internet à Saintes pour gagner en visibilité locale
 
 - URL : https://theo-multimedia.netlify.app/creation-site-internet-saintes
-- Mise à jour : 5 novembre 2026
+- Mise à jour : 6 novembre 2026
 
 Réponse courte : Théo Multimédia accompagne les entreprises de Saintes et de Charente-Maritime : création de site, refonte et référencement local. L’agence est installée à Cognac, à proximité, et adapte chaque page au contexte de Saintes : commerces, artisans, tourisme et services.
 
@@ -973,7 +973,7 @@ Pour Saintes, la visibilité locale passe par une page claire, des contenus util
 #### Questions fréquentes
 
 **Avez-vous une adresse à Saintes ?**
-Non. Théo Multimédia est installé à Cognac, à une demi-heure de route de Saintes, et accompagne les entreprises saintaises à distance comme sur rendez-vous.
+Non. Théo Multimédia est installé à Cognac et accompagne les entreprises saintaises à distance : les échanges se font par téléphone et en visio, sans rendez-vous sur place.
 
 **Quel type de site pour un commerce à Saintes ?**
 Un site vitrine clair avec horaires, services, photos, avis réels si disponibles et CTA mobile peut déjà générer des demandes.
@@ -992,9 +992,9 @@ Oui, à condition de traiter la ville avec un contenu distinct, utile et cohére
 ### Zones d’intervention : Cognac, Angoulême, Saintes et alentours
 
 - URL : https://theo-multimedia.netlify.app/zones-intervention
-- Mise à jour : 5 novembre 2026
+- Mise à jour : 6 novembre 2026
 
-Réponse courte : Théo Multimédia est installée à Cognac et intervient à Cognac, Jarnac, Angoulême, Saintes, en Charente et en Charente-Maritime. Les rendez-vous se font sur place ou à distance, et une page locale n’existe que là où elle apporte un contenu réellement utile.
+Réponse courte : Théo Multimédia est installée à Cognac et travaille avec des entreprises de Cognac, Jarnac, Angoulême, Saintes, de Charente et de Charente-Maritime. Tout se fait à distance, par téléphone et en visio, sans rendez-vous sur place, et une page locale n’existe que là où elle apporte un contenu réellement utile.
 
 La visibilité locale doit rester honnête. Les zones secondaires sont listées ici sans créer de pages pauvres ou interchangeables.
 

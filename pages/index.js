@@ -29,7 +29,7 @@ const homeFaqs = [
   ],
   [
     'Où intervenez-vous ?',
-    'L’agence est installée à Cognac, au 149 rue Henri Fichon. Elle travaille avec des entreprises de Cognac, Jarnac, Angoulême, Saintes et de toute la Charente, et à distance quand le projet s’y prête.',
+    'L’agence est installée à Cognac et travaille avec des entreprises de Cognac, Jarnac, Angoulême, Saintes et de toute la Charente. Tout se fait à distance, par téléphone et en visio : il n’y a pas de rendez-vous sur place.',
   ],
   [
     'Que contient l’audit SEO & GEO offert ?',
@@ -48,7 +48,7 @@ export default function Home({ services, steps, work, guides }) {
         title="Théo Multimédia : agence GEO & web à Cognac (Charente)"
         description="Agence GEO et web à Cognac : votre entreprise visible sur Google et Google Maps, et citée par ChatGPT, Perplexity et Gemini. SEO local, sites rapides, audit offert."
         path="/"
-        dateModified="2026-11-05"
+        dateModified="2026-11-06"
         schema={[faqNode('/', homeFaqs), itemListNode('/', services.map((s) => [s.title, `/${s.slug}`]))]}
       />
 

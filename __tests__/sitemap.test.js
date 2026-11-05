@@ -5,7 +5,7 @@ import { projects } from '../lib/projects.js';
 import { articles } from '../lib/blog.js';
 import { STATIC_ROUTES, expectedRoutes, generated, redirectedPaths } from './helpers/site.js';
 
-const STATIC_LASTMOD = '2026-11-05';
+const STATIC_LASTMOD = '2026-11-06';
 const max = (dates) => dates.reduce((a, b) => (b > a ? b : a), STATIC_LASTMOD);
 
 describe('sitemap.xml', () => {
@@ -65,7 +65,7 @@ describe('sitemap.xml', () => {
     for (const a of articles) expect(lastmodOf(`/blog/${a.slug}`)).toBe(a.updatedAt || a.publishedAt);
   });
 
-  test('les pages statiques datent du 2026-11-05, les listes suivent leur contenu le plus récent', () => {
+  test('les pages statiques datent du 2026-11-06, les listes suivent leur contenu le plus récent', () => {
     for (const route of STATIC_ROUTES.filter((r) => r !== '/blog' && r !== '/portfolio')) {
       expect(lastmodOf(route)).toBe(STATIC_LASTMOD);
     }

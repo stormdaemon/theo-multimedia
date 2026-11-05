@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero';
 import { business, fullAddress } from '../lib/business';
 
 const PATH = '/politique-confidentialite';
-const UPDATED = '2026-11-05';
+const UPDATED = '2026-11-06';
 const crumbs = [
   ['Accueil', '/'],
   ['Politique de confidentialité', PATH],
@@ -60,7 +60,7 @@ export default function PolitiqueConfidentialite() {
         <div className="container">
           <div className="legal">
             <p>
-              Dernière mise à jour : <time dateTime={UPDATED}>5 novembre 2026</time>
+              Dernière mise à jour : <time dateTime={UPDATED}>6 novembre 2026</time>
             </p>
             <p>
               Chez {business.brandName}, je m’engage à protéger et à respecter votre vie privée. Cette politique de
@@ -187,8 +187,7 @@ export default function PolitiqueConfidentialite() {
               moment où vous l’envoyez.
             </p>
             <p>
-              Certains liens mènent vers des services tiers, comme Google Maps pour l’itinéraire ou les sites de mes
-              clients. Ces services ne reçoivent des informations que si vous cliquez sur le lien, et leur propre
+              Certains liens mènent vers des services tiers, comme les sites de mes clients. Ces services ne reçoivent des informations que si vous cliquez sur le lien, et leur propre
               politique de confidentialité s’applique alors.
             </p>
 

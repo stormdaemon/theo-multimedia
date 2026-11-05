@@ -17,7 +17,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = join(root, 'public');
 
 /** lastmod of the pages written by hand in pages/: bump it when one of them really changes. */
-export const STATIC_LASTMOD = '2026-11-05';
+export const STATIC_LASTMOD = '2026-11-06';
 
 const HUB_ROUTES = ['/', '/services', '/seo', '/solutions'];
 const AGENCY_ROUTES = ['/about', '/contact'];

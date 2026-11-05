@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { business, mapsUrl } from '../lib/business';
+import { business } from '../lib/business';
 
 const columns = [
   {
@@ -67,9 +67,7 @@ export default function Footer() {
                 {business.phone}
               </a>
               <span>{business.openingHours.label}</span>
-              <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
-                Itinéraire ↗
-              </a>
+              <span>Par téléphone et en visio</span>
             </address>
           </div>
           {columns.map((col) => (
