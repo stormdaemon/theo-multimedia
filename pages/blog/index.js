@@ -1,64 +1,102 @@
+import { useState } from 'react';
 import Link from 'next/link';
-import SEO, { createBreadcrumbSchema, createLocalBusinessSchema, createWebPageSchema } from '../../components/SEO';
-import { absoluteUrl } from '../../lib/business';
-import { blogPosts } from '../../lib/blog-data';
+import SEO from '../../components/SEO';
+import PageHero from '../../components/PageHero';
+import AnswerBox from '../../components/AnswerBox';
+import Heat from '../../components/Heat';
+import { itemListNode } from '../../lib/schema';
+import { articles, categories, featuredSlugs, getArticle, summarize } from '../../lib/blog';
 
-export default function BlogIndex() {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      createLocalBusinessSchema(),
-      createWebPageSchema('Blog SEO, création de site et visibilité locale', 'Guides pratiques pour sites vitrines, SEO local, SEO IA, CRM, LMS, e-commerce et performance web.', absoluteUrl('/blog')),
-      createBreadcrumbSchema([
-        { name: 'Accueil', url: '/' },
-        { name: 'Blog', url: '/blog' },
-      ]),
-    ],
-  };
+export default function Blog({ posts, featured, cats }) {
+  const [cat, setCat] = useState('Tous');
+  const crumbs = [
+    ['Accueil', '/'],
+    ['Guides', '/blog'],
+  ];
+  const count = (c) => (c === 'Tous' ? posts.length : posts.filter((p) => p.category === c).length);
 
   return (
     <>
       <SEO
-        title="Blog SEO local, création de site & visibilité IA"
-        description="Guides pratiques pour créer un site rapide, améliorer le SEO local, préparer le référencement IA et transformer les visiteurs en demandes."
-        canonical="/blog"
-        schema={schema}
+        title="Guides GEO, SEO local et création de site"
+        description={`${posts.length} guides pratiques pour être visible sur Google, sur Google Maps et dans les réponses des IA : GEO, SEO local, création et refonte de site, outils sur mesure.`}
+        path="/blog"
+        pageType="CollectionPage"
+        dateModified={posts[0]?.updatedAt}
+        crumbs={crumbs}
+        schema={[
+          itemListNode(
+            '/blog',
+            posts.map((p) => [p.title, `/blog/${p.slug}`]),
+          ),
+        ]}
+      />
+      <PageHero
+        eyebrow="Ressources"
+        title="Des guides clairs, [[sans jargon ni promesse.]]"
+        lede="GEO, SEO local, création de site, refonte, outils sur mesure : chaque guide commence par une réponse courte, puis détaille la méthode, avec des exemples concrets."
+        crumbs={crumbs}
+      />
+      <AnswerBox
+        label="En bref"
+        text={`Le blog de Théo Multimédia rassemble ${posts.length} guides pratiques pour les entreprises de Charente et d’ailleurs : être cité par ChatGPT, Perplexity ou Gemini, apparaître sur Google Maps, réussir une création ou une refonte de site, et choisir un outil sur mesure.`}
       />
 
-      <div className="bg-background">
-        <section className="tm-subpage-hero relative overflow-hidden px-6 pb-20 pt-24 md:pb-28 md:pt-32">
-          <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/services-audit-seo-diagnostics.webp')" }} />
-          <div className="mx-auto max-w-6xl relative">
-            <span className="tm-badge">Blog SEO & acquisition locale</span>
-            <h1 className="tm-title mt-5 max-w-4xl text-4xl leading-[1.05] md:text-6xl">
-              Guides pratiques pour créer un site qui charge vite, se comprend en un clin d’œil et convertit mieux.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              SEO local, site vitrine en 24h, refonte, visibilité IA, CRM, LMS, e-commerce, performance et accessibilité.
-            </p>
+      <section className="section" aria-labelledby="featured-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Pour commencer</p>
+            <Heat id="featured-title" className="h2" text="Trois guides [[pour tout comprendre au GEO.]]" />
           </div>
-        </section>
-
-        <section className="px-6 pb-20 md:pb-28 pt-10">
-          <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {blogPosts.map((post) => (
-              <article key={post.slug} className="tm-glass-soft flex min-h-[300px] flex-col rounded-2xl p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="tm-kicker">{post.category}</span>
-                  <span className="text-xs text-slate-500">{post.city}</span>
-                </div>
-                <h2 className="mt-4 text-xl font-bold leading-tight font-[var(--font-heading)]">
-                  <Link href={`/blog/${post.slug}`} className="hover:text-accent">{post.title}</Link>
-                </h2>
-                <p className="mt-4 text-sm leading-6 text-slate-300">{post.summary}</p>
-                <Link href={`/blog/${post.slug}`} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-accent">
-                  Lire l’article <span aria-hidden="true">→</span>
-                </Link>
-              </article>
+          <div className="featured-posts">
+            {featured.map((g) => (
+              <Link key={g.slug} href={`/blog/${g.slug}`}>
+                <span className="k">{g.category}</span>
+                <h3>{g.title}</h3>
+                <span className="rt">{g.readingMinutes} min de lecture →</span>
+              </Link>
             ))}
           </div>
-        </section>
-      </div>
+
+          <h2 id="all-title" className="h3 all-title">
+            Tous les guides
+          </h2>
+          <div className="cat-nav" role="group" aria-label="Filtrer les guides par thème">
+            {['Tous', ...cats].map((c) => (
+              <button key={c} type="button" aria-pressed={cat === c} onClick={() => setCat(c)}>
+                {c} <span className="n">{count(c)}</span>
+              </button>
+            ))}
+          </div>
+          <div className="post-list">
+            {posts.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="post-row"
+                hidden={cat !== 'Tous' && p.category !== cat}
+              >
+                <span className="cat">{p.category}</span>
+                <div>
+                  <h3 className="post-title">{p.title}</h3>
+                  <p>{p.description}</p>
+                </div>
+                <span className="rt">{p.readingMinutes} min</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      posts: articles.map(summarize),
+      featured: featuredSlugs.map((s) => summarize(getArticle(s))),
+      cats: categories,
+    },
+  };
 }

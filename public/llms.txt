@@ -1,37 +1,103 @@
 # Théo Multimédia
 
-> Agence web en Charente spécialisée en sites vitrines rapides, SEO local, outils sur mesure et visibilité IA.
+> Théo Multimédia est une agence web installée à Cognac (Charente). Elle rend les entreprises visibles sur Google et citables par les IA (ChatGPT, Perplexity, Gemini) : GEO, SEO local, création et refonte de sites rapides, outils sur mesure.
 
-## À propos
+Adresse : 149 rue Henri Fichon, 16100 Cognac (Charente, Nouvelle-Aquitaine). Téléphone : 07 68 51 95 68. Horaires : du lundi au vendredi, 9 h – 18 h. Zone d’intervention : Cognac, Jarnac, Angoulême, Saintes, Charente, Charente-Maritime et Nouvelle-Aquitaine. Pas d’adresse e-mail publique : les demandes écrites passent par le formulaire de la page Contact. Interlocuteur : Théo Lafont (fondateur, développeur web et consultant GEO). Entreprise individuelle, SIRET 884 758 970 00054.
 
-Théo Multimédia accompagne les entreprises, artisans, associations, commerces, organismes de formation et PME à Cognac, Angoulême, Saintes et dans les alentours. Le site présente une offre de création de site internet, site vitrine en 24h, SEO local, audit SEO gratuit, CRM sur mesure, LMS/e-learning et e-commerce sur mesure.
+Texte complet des pages services et des guides : https://theo-multimedia.netlify.app/llms-full.txt
 
-## Pages clés
+## Services
 
-- Accueil : https://theo-multimedia.com/
-- Services : https://theo-multimedia.com/services
-- Site vitrine en 24h : https://theo-multimedia.com/site-vitrine-24h
-- Création de site internet : https://theo-multimedia.com/creation-site-internet
-- SEO local : https://theo-multimedia.com/referencement-local
-- Audit SEO gratuit : https://theo-multimedia.com/audit-seo-gratuit
-- SEO IA / GEO : https://theo-multimedia.com/seo-ia
-- Portfolio : https://theo-multimedia.com/portfolio
-- Blog : https://theo-multimedia.com/blog
-- Contact : https://theo-multimedia.com/contact
+- [GEO · référencement IA](https://theo-multimedia.netlify.app/geo-referencement-ia): Être compris, repris et cité par ChatGPT, Perplexity, Gemini et les AI Overviews de Google.
+- [SEO local & Google Maps](https://theo-multimedia.netlify.app/referencement-local): Pages locales utiles, fiche Google cohérente, données structurées : être trouvé près de chez vous.
+- [Création de site internet](https://theo-multimedia.netlify.app/creation-site-internet): Des sites rapides, sur mesure et pensés pour transformer une visite en demande.
+- [Refonte sans perte de SEO](https://theo-multimedia.netlify.app/refonte-site-internet): Moderniser sans casser ce qui fonctionne : inventaire des URL, redirections, performance.
+- [E-commerce sur mesure](https://theo-multimedia.netlify.app/ecommerce-sur-mesure): Une boutique rapide, lisible par Google et par les IA, sans dépendre d’un thème générique.
+- [CRM sur mesure](https://theo-multimedia.netlify.app/crm-sur-mesure): Clients, devis et relances dans un outil taillé pour votre façon de travailler.
+- [LMS & e-learning](https://theo-multimedia.netlify.app/lms-elearning): Des plateformes de formation simples pour l’apprenant, fiables pour l’équipe.
+- [Maintenance & suivi](https://theo-multimedia.netlify.app/maintenance-site-web): Un site qui reste rapide, sécurisé, à jour et cohérent avec votre offre.
+- [Audit SEO & GEO offert](https://theo-multimedia.netlify.app/audit-seo-gratuit): Ce qui freine votre visibilité sur Google, Maps et dans les réponses des IA, avec un plan clair.
+- [Préversion express 24 h](https://theo-multimedia.netlify.app/preversion-express-24h): Une première version en ligne vite, en urgence ou pour lancer l’indexation. Pas un site définitif : il est ensuite finalisé.
+- [Création de site internet à Angoulême pour les entreprises qui veulent être vues et choisies](https://theo-multimedia.netlify.app/creation-site-internet-angouleme): Agence web en Charente pour créer un site rapide, clair et optimisé SEO à Angoulême. Site vitrine, refonte, audit et visibilité locale.
+- [Agence web à Cognac](https://theo-multimedia.netlify.app/creation-site-internet-cognac): Création de sites internet à Cognac : site vitrine, refonte, SEO local, design sur mesure et accompagnement direct avec Théo Multimédia.
+- [Création de site internet à Saintes pour gagner en visibilité locale](https://theo-multimedia.netlify.app/creation-site-internet-saintes): Création de site internet à Saintes pour commerces, artisans et PME : site rapide, responsive, SEO local et pensé pour convertir.
+- [Zones d’intervention](https://theo-multimedia.netlify.app/zones-intervention): Théo Multimédia accompagne les entreprises à Cognac, Angoulême, Saintes, Jarnac, en Charente et Charente-Maritime, sans pages locales artificielles.
 
-## Zones prioritaires
+## Guides GEO et SEO
 
-- Cognac : https://theo-multimedia.com/creation-site-internet-cognac
-- Angoulême : https://theo-multimedia.com/creation-site-internet-angouleme
-- Saintes : https://theo-multimedia.com/creation-site-internet-saintes
-- Zones d’intervention : https://theo-multimedia.com/zones-intervention
+- [GEO : définition du référencement IA pour dirigeants](https://theo-multimedia.netlify.app/blog/geo-definition-referencement-ia): GEO, référencement IA : la définition claire pour un dirigeant, comment un moteur de réponse choisit ses sources, et ce qui change ou non face au SEO.
+- [Comment être cité par ChatGPT ? Les leviers réalistes](https://theo-multimedia.netlify.app/blog/comment-etre-cite-par-chatgpt): Comment être cité par ChatGPT ? Robot OAI-SearchBot, pages accessibles et factuelles, sources tierces fiables : ce qui aide vraiment, sans fausse promesse.
+- [SEO ou GEO : que choisir quand on dirige une PME locale ?](https://theo-multimedia.netlify.app/blog/seo-ou-geo-2026): SEO ou GEO ? Pour une PME locale, le GEO repose sur un SEO sain. Voici une grille de choix selon votre situation : sans site, lent, invisible ou bien classé.
+- [AI Overviews de Google : que faire pour une entreprise locale ?](https://theo-multimedia.netlify.app/blog/google-ai-overviews-entreprise-locale): AI Overviews et AI Mode de Google : conditions d’éligibilité décrites par Google, place du pack local et de Maps, actions concrètes pour une entreprise locale.
+- [Comment écrire un contenu citable par les IA : atelier](https://theo-multimedia.netlify.app/blog/contenu-citable-par-ia): Contenu citable par les IA : réponse en tête, définitions autonomes, chiffres sourcés, listes, auteur et dates. Avec un exemple avant/après à reproduire.
+- [Comment mesurer le trafic venu de ChatGPT et de Perplexity ?](https://theo-multimedia.netlify.app/blog/mesurer-trafic-ia-chatgpt-perplexity): Mesurer le trafic ChatGPT : sites référents, utm_source=chatgpt.com, canal GA4 dédié et journaux serveur. Méthode pas à pas, avec ses limites.
+- [robots.txt et GPTBot : quels robots IA autoriser pour être cité ?](https://theo-multimedia.netlify.app/blog/robots-txt-crawlers-ia): Robots.txt GPTBot : distinguez robots d’entraînement et de recherche IA, et voyez quoi autoriser pour être cité. Exemple commenté prêt à copier.
+- [llms.txt pour un site d’entreprise : utile ou gadget ?](https://theo-multimedia.netlify.app/blog/llms-txt-site-entreprise): llms.txt pour un site d’entreprise : ce qu’est ce fichier, son statut réel de simple proposition, un exemple pour PME et ce à quoi il ne sert pas.
+- [Référencement IA d’une PME en Charente : plan en 30 jours](https://theo-multimedia.netlify.app/blog/referencement-ia-pme-locale): Référencement IA pour une PME de Charente : plan en 30 jours, étape par étape. Fiche Google, pages services et villes, FAQ, données structurées, avis, mesure.
+- [SEO web radio et podcast : structurer les épisodes pour être trouvé](https://theo-multimedia.netlify.app/blog/seo-site-web-radio-podcast): Pages d’épisodes, transcriptions, données structurées et lecteur rapide : les bases du SEO pour une web radio ou un podcast, étape par étape.
+- [Audit SEO gratuit pour entreprise locale : contenu et lecture](https://theo-multimedia.netlify.app/blog/audit-seo-gratuit-entreprise-locale): Audit SEO gratuit pour entreprise locale : ce que contient l’audit SEO et GEO de Théo Multimédia, ce que vous vérifiez seul en 15 minutes, et comment le lire.
+- [Comment être visible sur Google Maps à Cognac ?](https://theo-multimedia.netlify.app/blog/comment-etre-visible-google-maps-cognac): Pertinence, distance et proéminence : comprendre ce qui fait apparaître une entreprise de Cognac dans le pack local Google Maps, et agir sur chaque levier.
+- [Consultant SEO local à Angoulême : bien le choisir et travailler avec lui](https://theo-multimedia.netlify.app/blog/consultant-seo-local-angouleme): Questions à poser, livrables attendus, signaux d’alerte et rythme de travail : le mode d’emploi pour choisir un consultant SEO local à Angoulême.
+- [Maillage interne en référencement local : relier services, villes et blog](https://theo-multimedia.netlify.app/blog/maillage-interne-referencement-local): Relier services, pages villes, réalisations et blog : une méthode simple de maillage interne pour mieux référencer un site d’entreprise locale.
+- [Optimiser sa fiche Google Business Profile à Saintes, pas à pas](https://theo-multimedia.netlify.app/blog/optimiser-fiche-google-business-profile-saintes): Catégories, services, horaires, photos, posts, avis et questions : la méthode pour optimiser sa fiche Google Business Profile à Saintes, étape par étape.
+- [Page de service local en Charente : une intention, une page](https://theo-multimedia.netlify.app/blog/landing-page-service-local-charente): Construire une page de service local pour le référencement naturel en Charente : une intention par page, titre clair, preuves réelles et formulaire court.
+- [Pages locales SEO sans duplicate content : la méthode propre](https://theo-multimedia.netlify.app/blog/pages-locales-seo-sans-duplicate-content): Créer des pages ville utiles, avec un angle réel pour chaque commune : quand les créer, quoi écrire et comment éviter les pages clonées ou dupliquées.
+- [Schema LocalBusiness : que renseigner, sans rien inventer ?](https://theo-multimedia.netlify.app/blog/schema-localbusiness-seo-local): Schema.org LocalBusiness pour le SEO local : exemple JSON-LD commenté, propriétés utiles, erreurs fréquentes et test des résultats enrichis de Google.
+- [SEO local pour artisan du bâtiment : montrer les services et la zone](https://theo-multimedia.netlify.app/blog/seo-local-artisan-batiment): Zones d’intervention, réalisations de chantier, avis et pages métiers : comment un artisan du bâtiment se rend visible en Charente, étape par étape.
+- [Site internet pour commerce à Saintes : horaires, stock et contact mobile](https://theo-multimedia.netlify.app/blog/site-internet-commerce-saintes): Site pour commerce de proximité à Saintes : horaires, services, click and collect éventuel et fiche Google alignée. Les étapes à suivre.
+- [Site one page ou multipage pour le SEO local ? La grille de décision](https://theo-multimedia.netlify.app/blog/site-one-page-ou-multipage-seo-local): Site one page ou multipage pour le SEO local ? Une grille de décision en six critères, les pièges des pages locales et la manière de passer de l’un à l’autre.
 
-## Contact
+## Réalisations
 
-- Email : contact@theo-multimedia.com
-- Téléphone : 07 68 51 95 68
-- Positionnement commercial : Cognac / Charente
+- [CBD Impact](https://theo-multimedia.netlify.app/portfolio/cbd-impact): E-commerce · Boutique en ligne sur mesure : catalogue, fiches produits, parcours d’achat rapide et contenus pensés pour être lus par Google et par les IA. Premières commandes arrivées depuis ChatGPT (liens marqués utm_source=chatgpt.com). Site en ligne : https://cbd-impact.com/
+- [CelAssistPro](https://theo-multimedia.netlify.app/portfolio/celassistpro): Site vitrine · Site d’une assistante administrative indépendante en Charente : offre claire, services détaillés et prise de rendez-vous directe. Site en ligne : https://celassistpro.fr/
+- [BR16 Bâtiment](https://theo-multimedia.netlify.app/portfolio/br16-batiment): Site vitrine · Site d’une entreprise de rénovation intérieure en Charente : placo, isolation, menuiserie, parquet et démoussage, avec demande de devis directe. Site en ligne : https://br16batiment.com/
+- [Institut Irénée](https://theo-multimedia.netlify.app/portfolio/institut-irenee): Application web · Plateforme de formation avec présentation institutionnelle, contenus structurés et parcours d’inscription crédible. Projet archivé : le site n’est plus en ligne.
+- [Heaven Radio](https://theo-multimedia.netlify.app/portfolio/heaven-radio): Web radio · Web radio avec écoute en ligne, identité visuelle assumée et expérience rapide sur mobile comme sur ordinateur. Projet archivé : le site n’est plus en ligne.
+- [SOS Chrétiens d’Occident](https://theo-multimedia.netlify.app/portfolio/sos-chretiens-occident): Site vitrine · Site vitrine associatif avec hiérarchie éditoriale claire, appels à l’action visibles et parcours de contact lisible. Projet archivé : le site n’est plus en ligne.
+- [Ultreia Event](https://theo-multimedia.netlify.app/portfolio/ultreia-event): Site vitrine · Site événementiel pour présenter une offre de diffusion et donner une image professionnelle dès la première visite. Projet archivé : le site n’est plus en ligne.
+- [WikiBible](https://theo-multimedia.netlify.app/portfolio/wikibible): Application web · Bibliothèque numérique avec interface sobre, structurée et pensée pour la consultation. Projet archivé : le site n’est plus en ligne.
+- [Le Baptême Catholique](https://theo-multimedia.netlify.app/portfolio/bapteme-catholique): Landing page · Landing page pédagogique avec une progression claire et un parcours de contact travaillé. Projet archivé : le site n’est plus en ligne.
+- [OnlyPrompt](https://theo-multimedia.netlify.app/portfolio/onlyprompt): Application web · Produit IA en bêta, orienté prompts, génération et productivité. Projet archivé : le site n’est plus en ligne.
+- [Révélation Radio](https://theo-multimedia.netlify.app/portfolio/revelation-radio): Web radio · Site vitrine d’une web radio : présentation des émissions et univers éditorial identifiable. Projet archivé : le site n’est plus en ligne.
+- [Fesch 2025](https://theo-multimedia.netlify.app/portfolio/fesch-2025): Landing page · Site promotionnel d’un documentaire, au design cinématographique, pensé pour le partage. Projet archivé : le site n’est plus en ligne.
+- [TRACKWARS](https://theo-multimedia.netlify.app/portfolio/trackwars): Application web · Jeu de blind test musical pour professionnels de l’événementiel, pensé pour l’animation en direct. Projet archivé : le site n’est plus en ligne.
 
-## Règles de citation
+## Optional
 
-Ne pas inventer de résultats chiffrés, d’avis clients, de notes ou d’adresse physique non confirmée. Le positionnement local exact et le NAP Google Business Profile restent à confirmer par le propriétaire.
+- [Tous les services](https://theo-multimedia.netlify.app/services): Vue d’ensemble des services de l’agence.
+- [SEO et GEO : le hub](https://theo-multimedia.netlify.app/seo): Point d’entrée vers les pages et les guides sur le référencement Google et dans les IA.
+- [Solutions sur mesure](https://theo-multimedia.netlify.app/solutions): CRM, LMS et outils métier développés sur mesure.
+- [L’agence](https://theo-multimedia.netlify.app/about): Présentation de Théo Multimédia et de son fondateur, Théo Lafont.
+- [Contact](https://theo-multimedia.netlify.app/contact): Formulaire de contact et coordonnées.
+- [Réalisations](https://theo-multimedia.netlify.app/portfolio): Tous les projets : sites en ligne et archives.
+- [Blog](https://theo-multimedia.netlify.app/blog): Tous les guides GEO, SEO et web.
+- [Accessibilité d’un site de PME : les bases du RGAA à appliquer](https://theo-multimedia.netlify.app/blog/accessibilite-rgaa-site-pme): Contrastes, navigation au clavier, textes alternatifs et formulaires : les bases du RGAA pour qu’un site de PME soit utilisable par tous les visiteurs.
+- [Animations web qui aident la conversion, sans ralentir le site](https://theo-multimedia.netlify.app/blog/animations-web-conversion): Quelles animations aident un visiteur à comprendre une offre sans ralentir le site ? transform, opacity, prefers-reduced-motion : les règles à suivre.
+- [Créer un site web pour restaurant à Cognac : menu, réservation, horaires](https://theo-multimedia.netlify.app/blog/creation-site-web-restaurant-cognac): Site de restaurant à Cognac : menu lisible sur mobile, réservation simple, horaires à jour et fiche Google cohérente. Les points à vérifier avant lancement.
+- [Landing page Google Ads en Charente : transformer les clics en demandes](https://theo-multimedia.netlify.app/blog/landing-page-google-ads-charente): Landing page Google Ads en Charente : cohérence annonce-page, mesure des conversions et vitesse mobile. Les points à vérifier avant de lancer une campagne.
+- [Préversion de site en 24 h : à quoi ça sert vraiment ?](https://theo-multimedia.netlify.app/blog/preversion-site-en-24h): Une préversion de site en 24 h répond à une urgence ou lance le référencement. Ce qu’elle contient, ce qu’elle ne contient pas, et ce qui suit.
+- [Site d’organisme de formation en Charente : catalogue et contact](https://theo-multimedia.netlify.app/blog/site-internet-organisme-formation-charente): Catalogue, fiches formation, accessibilité handicap et prise de contact : ce que doit contenir le site public d’un organisme de formation en Charente.
+- [Site internet d’artisan à Angoulême : quelles pages, quelles preuves ?](https://theo-multimedia.netlify.app/blog/creation-site-internet-artisan-angouleme): Site d’artisan à Angoulême : les pages indispensables, les preuves de chantier, une demande de devis visible et un affichage pensé pour le téléphone.
+- [Site internet pour maison de cognac : histoire, gammes, visites et export](https://theo-multimedia.netlify.app/blog/site-internet-maison-de-cognac): Site internet pour maison de cognac : histoire, gammes, visites, export et langues. Ce qu’il faut prévoir pour rester conforme à la loi Évin.
+- [Site vitrine pour association en Charente : mission, adhésion et bénévoles](https://theo-multimedia.netlify.app/blog/site-vitrine-association-charente): Site d’association en Charente : mission claire, agenda, adhésion, dons, appel aux bénévoles et transparence sur les comptes. Les pages à prévoir.
+- [Site vitrine pour vigneron en Charente : vente directe, caveau et visites](https://theo-multimedia.netlify.app/blog/site-vitrine-vigneron-charente): Site pour vigneron en Charente : présenter le domaine, le Pineau et les vins de pays, gérer le caveau, les visites et la vente directe au quotidien.
+- [Audit technique SEO : la checklist en 10 points pour votre site](https://theo-multimedia.netlify.app/blog/audit-technique-seo-checklist): Audit technique SEO : une checklist ordonnée, de l’indexation à l’accès des robots IA, avec pour chaque point l’outil gratuit pour le vérifier.
+- [Core Web Vitals pour site vitrine : LCP, INP et CLS expliqués](https://theo-multimedia.netlify.app/blog/core-web-vitals-site-vitrine): LCP, INP, CLS : les seuils officiels de Google, comment les mesurer avec PageSpeed Insights et Search Console, et les corrections d’un site vitrine.
+- [Images WebP, AVIF et SEO : optimiser sans perdre la qualité](https://theo-multimedia.netlify.app/blog/images-webp-avif-seo): WebP, AVIF, dimensions, width et height, lazy loading, texte alternatif : les réglages qui allègent un site sans nuire à son référencement et à sa lisibilité.
+- [Refonte de site avec Next.js : performance, SEO et limites du choix](https://theo-multimedia.netlify.app/blog/refonte-site-nextjs-performance): Next.js accélère un site et améliore son rendu pour Google. Découvrez ce qu’il apporte, les cas où il n’est pas justifié et comment décider.
+- [Refonte de site internet à Cognac sans perdre le SEO : la méthode](https://theo-multimedia.netlify.app/blog/refonte-site-internet-cognac-sans-perdre-seo): Migrer sans perdre vos positions : inventaire des URL, redirections 301, balises, suivi dans Search Console. La méthode pas à pas pour une refonte à Cognac.
+- [Refonte WordPress à Angoulême : quoi garder, quoi remplacer ?](https://theo-multimedia.netlify.app/blog/refonte-site-wordpress-angouleme): Votre site WordPress vieillit ? Découvrez quand le remplacer, quand l’assainir (extensions, thème, sécurité, vitesse) et comment décider sans risque.
+- [Site internet rapide pour artisan : pourquoi la vitesse fait la différence](https://theo-multimedia.netlify.app/blog/site-internet-rapide-artisan-charente): Pourquoi la vitesse d’un site d’artisan compte pour les clients sur chantier, et comment obtenir un site rapide sur mobile, en Charente. Méthode concrète.
+- [Alternative à Shopify sur mesure : déroulé d’un projet de boutique](https://theo-multimedia.netlify.app/blog/alternative-shopify-sur-mesure): Fonctions, paiement, back-office, migration des produits et des URL : voici comment se déroule une boutique en ligne sur mesure, étape par étape.
+- [CRM pour gérer devis et relances : les fonctions à prévoir](https://theo-multimedia.netlify.app/blog/crm-gerer-devis-relances): Suivez chaque devis, de l’envoi à la signature : statuts, rappels datés, modèles de relance et tableau de bord. Le flux d’un CRM sur mesure, étape par étape.
+- [CRM simple pour PME en Charente : quand le tableur ne suffit plus](https://theo-multimedia.netlify.app/blog/crm-simple-pme-charente): Quand un tableur ne suffit plus, un CRM minimal réunit contacts, historique et tâches. Comment choisir entre un outil du marché et un outil sur mesure.
+- [E-commerce local à Cognac : vendre en ligne, retrait et livraison locale](https://theo-multimedia.netlify.app/blog/ecommerce-local-cognac): Vendre en ligne depuis un commerce de Cognac : catalogue court, retrait en boutique, livraison locale, fiche Google cohérente. La méthode pas à pas.
+- [E-commerce sans Shopify pour PME : quand choisir le sur mesure ?](https://theo-multimedia.netlify.app/blog/ecommerce-sans-shopify-pme): Shopify n’est pas obligatoire pour vendre en ligne. Comparez abonnement, boutique sur mesure, catalogue, logistique, dépendance et SEO avant de choisir.
+- [LMS au quotidien : inscriptions, progression, évaluations et exports](https://theo-multimedia.netlify.app/blog/lms-elearning-organisme-formation): Inscriptions, progression, évaluations et exports pour les financeurs : les fonctions d’un LMS utilisées chaque jour dans un organisme de formation.
+- [Plateforme e-learning pour organisme de formation : quel choix ?](https://theo-multimedia.netlify.app/blog/plateforme-elearning-organisme-formation): Hébergée ou sur mesure ? Les critères pour choisir une plateforme e-learning : parcours, rôles, suivi, attestations et accessibilité, avant tout développement.
+- [Site web événementiel en Charente : programme, billetterie et pic de trafic](https://theo-multimedia.netlify.app/blog/site-web-evenementiel-charente): Site pour festival ou événement en Charente : programme, billetterie, infos pratiques, pic de trafic le jour J et vie du site après l’événement.
+- [Combien coûte un site internet à Angoulême ? Les postes de coût expliqués](https://theo-multimedia.netlify.app/blog/combien-coute-site-internet-angouleme): Ce qui fait varier le prix d’un site internet à Angoulême : périmètre, contenus, design, SEO, fonctionnalités et maintenance. Et comment comparer les devis.
+- [Combien coûte un site vitrine à Cognac ? Inclusions et coûts cachés](https://theo-multimedia.netlify.app/blog/combien-coute-site-vitrine-cognac): Site vitrine à Cognac : ce qui est inclus, les coûts cachés (hébergement, nom de domaine, contenus, maintenance) et les questions à poser avant de signer.
+- [Mentions légales](https://theo-multimedia.netlify.app/mentions-legales): Éditeur du site et informations légales.
+- [Texte complet du site](https://theo-multimedia.netlify.app/llms-full.txt): Pages services et guides réunis dans un seul fichier texte.

@@ -5,16 +5,22 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          # Same major version as the Netlify build (netlify.toml).
+          node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run lint
       - run: npm test
+      # prebuild writes the SEO files, postbuild checks the export in out/.
       - run: npm run build

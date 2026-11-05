@@ -1,144 +1,208 @@
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
-import SEO, { createBreadcrumbSchema, createLocalBusinessSchema } from '../../components/SEO';
-import { absoluteUrl, business } from '../../lib/business';
-import { getProject, projects } from '../../lib/projects';
+import SEO from '../../components/SEO';
+import PageHero from '../../components/PageHero';
+import AnswerBox from '../../components/AnswerBox';
+import Heat from '../../components/Heat';
+import Picture from '../../components/Picture';
+import ShotScroll from '../../components/ShotScroll';
+import { projectNode } from '../../lib/schema';
+import { projects, getProject } from '../../lib/projects';
+import { serviceIndex } from '../../lib/services-data';
+import { formatDate } from '../../lib/text';
 
-export default function ProjectPage({ project }) {
-  const canonical = `/portfolio/${project.slug}`;
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      createLocalBusinessSchema(),
-      createBreadcrumbSchema([
-        { name: 'Accueil', url: '/' },
-        { name: 'Portfolio', url: '/portfolio' },
-        { name: project.title, url: canonical },
-      ]),
-      {
-        '@type': 'CreativeWork',
-        '@id': `${absoluteUrl(canonical)}#creativework`,
-        name: project.title,
-        description: project.longDescription,
-        creator: {
-          '@type': 'Organization',
-          name: business.brandName,
-        },
-        image: absoluteUrl(project.imageDesktop),
-        url: absoluteUrl(canonical),
-        dateModified: project.updatedAt,
-      },
-    ],
-  };
+const host = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+export default function Project({ p, services, prev, next, updatedLabel }) {
+  const path = `/portfolio/${p.slug}`;
+  const crumbs = [
+    ['Accueil', '/'],
+    ['Réalisations', '/portfolio'],
+    [p.title, path],
+  ];
+  const cover = `${p.shots?.desktop || p.image}.webp`;
 
   return (
     <>
       <SEO
-        title={`${project.title} | Réalisation web`}
-        description={project.shortDescription}
-        canonical={canonical}
-        ogImage={project.imageDesktop}
-        schema={schema}
-        keywords={project.tags}
+        title={`${p.title} : ${p.category.toLowerCase()} | Réalisation`}
+        description={p.shortDescription}
+        path={path}
+        image={p.shots ? cover : undefined}
+        imageSize={p.shots ? [1440, 900] : undefined}
+        crumbs={crumbs}
+        dateModified={p.updatedAt}
+        schema={[projectNode(p, cover)]}
       />
+      <PageHero
+        eyebrow={`${p.category} · ${p.online ? 'En ligne' : 'Archive'}`}
+        title={p.online ? `${p.title} [[en ligne.]]` : p.title}
+        lede={p.shortDescription}
+        crumbs={crumbs}
+      >
+        <div className="hero-ctas">
+          {p.online && p.url ? (
+            <a href={p.url} className="btn btn-primary" target="_blank" rel="noopener">
+              Visiter {host(p.url)} <span className="arrow">↗</span>
+            </a>
+          ) : null}
+          <Link href={`/contact?service=${services[0]?.slug || 'creation-site-internet'}`} className="link-arrow">
+            Un projet similaire ? <span className="arrow">→</span>
+          </Link>
+        </div>
+        <p className="page-meta">
+          Fiche mise à jour le <time dateTime={p.updatedAt}>{updatedLabel}</time>
+        </p>
+      </PageHero>
+      <AnswerBox label="Le projet en bref" text={p.longDescription} />
 
-      <div className="bg-background">
-        <section className="tm-subpage-hero relative overflow-hidden px-6 pb-16 pt-24 md:pb-24 md:pt-32">
-          <div className="tm-subpage-art" style={{ backgroundImage: `url('${project.imageDesktop}')` }} />
-          <div className="mx-auto max-w-6xl relative">
-            <nav aria-label="Fil d’Ariane" className="mb-6 text-xs text-slate-400">
-              <Link href="/" className="hover:text-accent">Accueil</Link>
-              <span className="mx-2">/</span>
-              <Link href="/portfolio" className="hover:text-accent">Portfolio</Link>
-            </nav>
-            <span className="tm-badge">{project.category}</span>
-            <h1 className="tm-title mt-5 max-w-4xl text-4xl leading-[1.05] md:text-6xl">{project.title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{project.shortDescription}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              {project.url && (
-                <a href={project.url} target="_blank" rel="noopener noreferrer" className="tm-button tm-button-primary">
-                  Voir le projet <ExternalLink className="h-4 w-4" />
-                </a>
-              )}
-              <Link href="/contact?service=projet-similaire" className="tm-button tm-button-dark">Créer un projet similaire</Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 py-16 md:py-24">
-          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.2fr_.8fr]">
-            <div className="tm-thick-glass overflow-hidden rounded-3xl">
-              <img src={project.imageDesktop} alt={`${project.title} - aperçu de réalisation web`} className="aspect-video w-full object-cover" />
-              <div className="p-6 md:p-8">
-                <p className="tm-kicker">Contexte et mission</p>
-                <h2 className="tm-title mt-2 text-3xl">Un projet construit autour d’un besoin concret.</h2>
-                <p className="mt-5 text-sm leading-7 text-slate-300">{project.longDescription}</p>
-              </div>
-            </div>
-
-            <aside className="space-y-4">
-              <div className="tm-glass-soft rounded-2xl p-5">
-                <p className="tm-kicker">Tags</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-bold text-accent">
-                      {tag}
-                    </span>
-                  ))}
+      <section className="section" aria-label="Captures du site">
+        <div className="container">
+          {p.shots ? (
+            <div className="device-pair">
+              <figure className="browser">
+                <div className="chrome" aria-hidden="true">
+                  <span className="dots">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span className="url">{host(p.url)}</span>
                 </div>
-              </div>
-              <div className="tm-glass-soft rounded-2xl p-5">
-                <p className="tm-kicker">Technologies</p>
-                <ul className="mt-4 space-y-2 text-sm text-slate-300">
-                  {project.technologies.map((tech) => <li key={tech}>{tech}</li>)}
-                </ul>
-              </div>
-              <div className="tm-glass-soft rounded-2xl p-5">
-                <p className="tm-kicker">Objectifs</p>
-                <ul className="mt-4 space-y-2 text-sm text-slate-300">
-                  {project.objectives.map((objective) => <li key={objective}>{objective}</li>)}
-                </ul>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <section className="px-6 pb-20 md:pb-28">
-          <div className="mx-auto max-w-6xl">
-            <p className="tm-kicker">Services liés</p>
-            <h2 className="tm-title mt-2 text-3xl">Construire une base similaire</h2>
-            <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {project.services.map((href) => (
-                <Link key={href} href={href} className="tm-glass-soft flex min-h-24 items-center justify-between rounded-2xl p-5 text-sm font-bold text-slate-100 hover:text-accent">
-                  <span>{href.replace('/', '').replaceAll('-', ' ')}</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
-              ))}
-              <Link href="/contact?service=projet-similaire" className="tm-glass-soft flex min-h-24 items-center justify-between rounded-2xl p-5 text-sm font-bold text-slate-100 hover:text-accent">
-                <span>Créer un projet similaire</span>
-                <span aria-hidden="true">→</span>
-              </Link>
+                <ShotScroll src={p.shots.full} width={1200} height={4600} alt={`Page d’accueil complète du site ${p.title}`} />
+              </figure>
+              <figure className="phone">
+                <Picture src={p.shots.mobile} width={585} height={1266} alt={`Le site ${p.title} sur mobile`} sizes="260px" />
+              </figure>
             </div>
+          ) : (
+            <figure className="browser archive-shot">
+              <div className="chrome" aria-hidden="true">
+                <span className="dots">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className="url">Archive · {p.title}</span>
+              </div>
+              <Picture src={p.image} width={800} height={500} alt={`Capture du projet ${p.title}`} sizes="(min-width: 1100px) 1000px, 92vw" />
+              <figcaption>Ce site n’est plus en ligne : la capture montre le projet tel qu’il a été livré.</figcaption>
+            </figure>
+          )}
+        </div>
+      </section>
+
+      <section className="section section--tint" aria-labelledby="details-title">
+        <div className="container split split--top">
+          <div className="section-head">
+            <p className="eyebrow">Le projet</p>
+            <Heat id="details-title" className="h2" text="Objectifs [[et réponses.]]" />
+            <dl className="facts">
+              <div>
+                <dt>Type</dt>
+                <dd>{p.category}</dd>
+              </div>
+              <div>
+                <dt>Statut</dt>
+                <dd>
+                  {p.online && p.url ? (
+                    <a className="text-link" href={p.url} target="_blank" rel="noopener">
+                      En ligne · {host(p.url)}
+                    </a>
+                  ) : (
+                    'Archive, plus en ligne'
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt>Techniques</dt>
+                <dd>{p.technologies.join(', ')}</dd>
+              </div>
+              <div>
+                <dt>Réalisé par</dt>
+                <dd>Théo Multimédia, Cognac</dd>
+              </div>
+            </dl>
           </div>
-        </section>
-      </div>
+          <div className="project-notes">
+            <h3>Objectifs</h3>
+            <ul className="ticks">
+              {p.objectives.map((o) => (
+                <li key={o}>{o}</li>
+              ))}
+            </ul>
+            {p.results.length > 0 && (
+              <>
+                <h3>Résultats</h3>
+                <ul className="ticks">
+                  {p.results.map((r) => (
+                    <li key={r}>{r}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {services.length > 0 && (
+              <>
+                <h3>Services mobilisés</h3>
+                <nav className="related" aria-label="Services liés au projet">
+                  {services.map((s) => (
+                    <Link key={s.slug} href={`/${s.slug}`}>
+                      {s.title}
+                      <span className="arrow" aria-hidden="true">
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </nav>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <nav className="section section-tight project-nav" aria-label="Autres réalisations">
+        <div className="container">
+          <Link href={`/portfolio/${prev.slug}`} className="prev">
+            <span className="k">Projet précédent</span>
+            <span className="t">← {prev.title}</span>
+          </Link>
+          <Link href={`/portfolio/${next.slug}`} className="next">
+            <span className="k">Projet suivant</span>
+            <span className="t">{next.title} →</span>
+          </Link>
+        </div>
+      </nav>
     </>
   );
 }
 
 export async function getStaticPaths() {
-  return {
-    paths: projects.map((project) => ({ params: { slug: project.slug } })),
-    fallback: false,
-  };
+  return { paths: projects.map((p) => ({ params: { slug: p.slug } })), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const project = getProject(params.slug);
-
-  if (!project) {
-    return { notFound: true };
-  }
-
-  return { props: { project } };
+  const p = getProject(params.slug);
+  if (!p) return { notFound: true };
+  const i = projects.findIndex((x) => x.slug === p.slug);
+  const prev = projects[(i - 1 + projects.length) % projects.length];
+  const next = projects[(i + 1) % projects.length];
+  const services = (p.services || [])
+    .map((href) => serviceIndex.find((s) => `/${s.slug}` === href))
+    .filter(Boolean)
+    .map((s) => ({ slug: s.slug, title: s.title }));
+  return {
+    props: {
+      p: {
+        ...p,
+        url: p.url || null,
+        shots: p.shots || null,
+        results: p.results || [],
+        objectives: p.objectives || [],
+        technologies: p.technologies || [],
+      },
+      services,
+      prev: { slug: prev.slug, title: prev.title },
+      next: { slug: next.slug, title: next.title },
+      updatedLabel: formatDate(p.updatedAt),
+    },
+  };
 }

@@ -1,378 +1,159 @@
-﻿import Link from 'next/link';
-import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
-import SEO, { createLocalBusinessSchema, createWebPageSchema, createBreadcrumbSchema } from '../components/SEO';
-import { absoluteUrl } from '../lib/business';
-import PageFeatureBand from '../components/PageFeatureBand';
+import Link from 'next/link';
+import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
+import AnswerBox from '../components/AnswerBox';
+import Heat from '../components/Heat';
+import { business, fullAddress, mapsUrl } from '../lib/business';
 
-const values = [
-  {
-    icon: '/assets/icon-rocket-orange.webp',
-    title: 'Innovation',
-    description: "Technologies de pointe et veille permanente pour des solutions web toujours à la pointe du marché.",
-  },
-  {
-    icon: '/assets/icon-target-orange.webp',
-    title: 'Excellence',
-    description: "Chaque projet est traité avec exigence. Je ne livre que des sites dont je suis fier et qui performent.",
-  },
-  {
-    icon: '/assets/icon-star-rating-orange.webp',
-    title: 'Clarté',
-    description: "Chaque écran doit aider le visiteur à comprendre, comparer et passer à l’action sans friction inutile.",
-  },
-  {
-    icon: '/assets/icon-users-orange.webp',
-    title: 'Collaboration',
-    description: "Travail en étroite collaboration pour comprendre vos besoins et dépasser vos attentes à chaque étape.",
-  },
+const principles = [
+  [
+    'Pas de promesse de classement',
+    'Personne ne contrôle Google ni ChatGPT. L’engagement porte sur le travail : des fondations techniques propres, des contenus clairs, une mesure honnête des résultats.',
+  ],
+  [
+    'Un seul interlocuteur',
+    'Design, développement, SEO et GEO : la même personne, du premier audit au suivi après la mise en ligne. Vous savez qui décide et qui livre.',
+  ],
+  [
+    'Du code, pas un thème',
+    'Des pages construites pour votre activité : rapides, accessibles, lisibles par les robots, et faciles à faire évoluer.',
+  ],
+  [
+    'Des pages utiles, rien d’autre',
+    'Pas de pages locales clonées ni de bourrage de mots-clés. Une page existe quand elle répond vraiment à une question de vos clients.',
+  ],
 ];
 
-const skills = [
-  { icon: '/assets/icon-design-orange.webp', name: 'Design & UX/UI', detail: 'Interfaces modernes, adaptées à tous les écrans, accessibles' },
-  { icon: '/assets/icon-crm-orange.webp', name: 'Développement Web', detail: 'Next.js, React, Node.js, API' },
-  { icon: '/assets/icon-seo-audit-orange.webp', name: 'SEO Google & IA', detail: 'Référencement Google, ChatGPT, Perplexity' },
-  { icon: '/assets/icon-target-orange.webp', name: 'Stratégie digitale', detail: 'Conversion, analytics, accompagnement' },
-];
-
-const AboutPage = () => {
-  const localBusinessSchema = createLocalBusinessSchema();
-  const aboutPageSchema = createWebPageSchema(
-    'À propos - Théo Lafont, développeur web en Charente',
-    'Théo Lafont, développeur web full-stack et consultant SEO en Charente. Création de sites internet rapides, SEO local et visibilité IA.',
-    absoluteUrl('/about')
-  );
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: 'Accueil', url: '/' },
-    { name: 'À propos', url: '/about' },
-  ]);
-
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [localBusinessSchema, aboutPageSchema, breadcrumbSchema]
-  };
-
+export default function About() {
+  const crumbs = [
+    ['Accueil', '/'],
+    ['L’agence', '/about'],
+  ];
   return (
     <>
       <SEO
-        title="À propos - Développeur web full-stack en Charente"
-        description="Théo Lafont, développeur web full-stack et consultant SEO en Charente. Sites rapides, SEO local, visibilité IA et outils sur mesure."
-        canonical="/about"
-        schema={schema}
-        enableLocalSEO={true}
+        title="L’agence : Théo Lafont, web et GEO à Cognac"
+        description="Théo Multimédia, c’est Théo Lafont : développeur web et consultant GEO installé à Cognac. Un seul interlocuteur, des sites rapides et une visibilité construite sans promesse intenable."
+        path="/about"
+        pageType="AboutPage"
+        dateModified="2026-11-05"
+        crumbs={crumbs}
+      />
+      <PageHero
+        eyebrow="L’agence"
+        title="Un interlocuteur, [[du premier audit à la mise en ligne.]]"
+        lede="Théo Multimédia est née à Cognac d’une conviction simple : un site doit d’abord être trouvé, compris et choisi. Le design, le code et la visibilité se décident ensemble."
+        crumbs={crumbs}
+      >
+        <div className="hero-ctas">
+          <Link href="/contact" className="btn btn-primary">
+            Prendre contact <span className="arrow">→</span>
+          </Link>
+          <Link href="/portfolio" className="link-arrow">
+            Voir les réalisations <span className="arrow">→</span>
+          </Link>
+        </div>
+      </PageHero>
+      <AnswerBox
+        label="Qui est derrière l’agence"
+        text={`Théo Multimédia est une entreprise individuelle installée au ${fullAddress} (Charente), fondée par ${business.founder}, développeur web et consultant GEO. L’agence crée des sites rapides et rend les entreprises visibles sur Google, sur Google Maps et dans les réponses des IA comme ChatGPT, Perplexity ou Gemini.`}
       />
 
-
-      <div className="bg-background">
-        {/* ─── HERO ─── */}
-        <section className="tm-subpage-hero relative pt-24 pb-20 md:pt-32 md:pb-28 px-6 overflow-hidden">
-          <div className="tm-subpage-art" style={{ backgroundImage: "url('/assets/about-developer-studio.webp')" }} />
-          <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
-          <div className="max-w-6xl mx-auto relative">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-medium text-accent uppercase tracking-wider">À propos</span>
-              </div>
-
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight font-[var(--font-heading)] leading-[1.1] mb-6" data-speakable="true">
-                Créateur de sites web<br />
-                <span className="text-accent">qui performent.</span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-                Basé commercialement en Charente, j’accompagne Cognac, Angoulême et Saintes avec des sites rapides,
-                lisibles pour Google et mieux structurés pour les assistants IA.
-              </p>
-            </motion.div>
+      <section className="section" aria-labelledby="why-title">
+        <div className="container split split--top">
+          <div className="section-head">
+            <p className="eyebrow">Ma façon de travailler</p>
+            <Heat id="why-title" className="h2" text="Quatre principes, [[tenus sur chaque projet.]]" />
+            <p className="lede">
+              Le web local a vu passer beaucoup de promesses. Ici, on parle de ce qui se mesure, et on dit quand une idée ne
+              vaut pas l’investissement.
+            </p>
           </div>
-        </section>
+          <ol className="steps">
+            {principles.map(([title, text]) => (
+              <li key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-        <PageFeatureBand
-          eyebrow="Atelier web indépendant"
-          title="Un interlocuteur unique, du cadrage au lancement."
-          description="Le design, la technique et la visibilité sont traités dans la même direction. Vous savez qui décide, qui conçoit et qui livre."
-          artwork="/assets/about-expertise-dashboard.webp"
-          items={[
-            { icon: '/assets/icon-users-orange.webp', title: 'Échange direct', text: 'Pas de chaîne de validation opaque: les décisions avancent rapidement avec le bon niveau de détail.' },
-            { icon: '/assets/icon-design-orange.webp', title: 'Exigence graphique', text: 'Chaque page reçoit une composition, une hiérarchie et des visuels adaptés à son rôle.' },
-            { icon: '/assets/icon-seo-audit-orange.webp', title: 'Vision complète', text: 'Le site doit être beau, rapide, compréhensible par Google et facile à faire évoluer.' },
-          ]}
-        />
-
-        {/* ─── STORY ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Mon parcours
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-xl">
-                10 ans d'expérience, une passion intacte.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6 text-muted-foreground leading-relaxed"
-              >
-                <p>
-                  Je suis <span className="text-foreground font-semibold">Théo Lafont</span>,
-                  développeur web full-stack et designer. Mon parcours dans le digital a commencé
-                  il y a plus de 10 ans, et depuis, je n’ai cessé d’apprendre, d’innover et de créer.
-                </p>
-                <p>
-                  Ce qui me distingue ? <span className="text-accent font-semibold">Mon engagement total</span> dans
-                  chaque projet. Je ne me contente pas de créer des sites web — je crée des outils de croissance
-                  qui captivent, engagent et convertissent vos visiteurs en clients.
-                </p>
-                <p>
-                  Que ce soit pour une startup qui lance son premier site ou une entreprise établie
-                  qui souhaite se réinventer, j’apporte la même exigence et la même
-                  passion pour l’excellence.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="grid grid-cols-2 gap-4"
-              >
-                {[
-                  { value: '10+', label: 'Annees d\'expérience' },
-                  { value: '24h', label: 'Option express vitrine' },
-                  { value: 'SEO', label: 'Visibilité locale incluse' },
-                  { value: 'IA', label: 'Contenus structurés' },
-                ].map((stat, i) => (
-                  <div key={i} className="tm-glass-soft p-5 rounded-xl text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-accent font-[var(--font-heading)]">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-                  </div>
-                ))}
-              </motion.div>
+      <section className="section section--navy on-dark grain" aria-labelledby="geo-title">
+        <div className="container split">
+          <div className="section-head">
+            <p className="eyebrow on-dark">Pourquoi le GEO</p>
+            <Heat id="geo-title" className="h2" text="Vos clients posent [[leurs questions aux IA.]]" />
+            <p className="lede">
+              Une partie des recherches passe désormais par ChatGPT, Perplexity, Gemini ou les AI Overviews de Google. Être
+              cité dans ces réponses demande les mêmes fondations qu’un bon SEO, plus une écriture qui répond d’abord. C’est
+              le cœur du travail de l’agence, et la boutique CBD Impact en a reçu ses premières commandes.
+            </p>
+            <div className="hero-ctas">
+              <Link href="/geo-referencement-ia" className="btn btn-primary">
+                Le GEO en détail <span className="arrow">→</span>
+              </Link>
+              <Link href="/portfolio/cbd-impact" className="link-arrow">
+                Le cas CBD Impact <span className="arrow">→</span>
+              </Link>
             </div>
           </div>
-        </section>
+          <ul className="ticks ticks--lg">
+            <li>Sites rapides développés sur mesure, sans thème générique</li>
+            <li>SEO local : Google Business Profile, pages par service et par ville</li>
+            <li>GEO : contenus citables, données structurées, robots d’IA autorisés</li>
+            <li>Outils métier : e-commerce, CRM, plateformes de formation</li>
+          </ul>
+        </div>
+      </section>
 
-        {/* ─── AI SEO EXPERTISE ─── */}
-        <section className="py-24 md:py-32 px-6 border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/10 border border-accent/20 mb-4">
-                <img src="/assets/icon-seo-audit-orange.webp" alt="" className="w-4 h-4 object-contain" />
-                <span className="text-xs font-medium text-accent uppercase tracking-wider">Expertise unique</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4" data-speakable="true">
-                Visible sur Google ET sur ChatGPT
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl">
-                Vos clients vous cherchent sur Google, mais aussi sur ChatGPT, Perplexity et Gemini.
-                Je maîtrise les deux pour maximiser votre visibilité.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="tm-glass-soft p-6 rounded-xl"
-              >
-                <img src="/assets/icon-seo-local-orange.webp" alt="" className="w-9 h-9 object-contain mb-4" />
-                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">Référencement Google</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Audit technique, stratégie de mots-clés, contenu optimisé, netlinking. Résultats mesurables et suivi mensuel de vos positions.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Structure pensée pour vos recherches prioritaires</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Core Web Vitals optimisés</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Trafic qualifié et mesurable</li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 1, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="tm-glass p-6 rounded-xl"
-              >
-                <img src="/assets/icon-seo-audit-orange.webp" alt="" className="w-9 h-9 object-contain mb-4" />
-                <h3 className="text-xl font-semibold mb-3 font-[var(--font-heading)]">
-                  Référencement IA <span className="text-xs font-normal text-accent">(GEO)</span>
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Optimisation pour les moteurs IA : un site structuré et lisible par ChatGPT, Perplexity et Gemini, pour que les IA recommandent votre activité.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> ChatGPT recommande votre entreprise</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Perplexity cite votre site</li>
-                  <li className="flex items-start gap-2"><span className="text-accent mt-0.5">&#10003;</span> Structured data pour faciliter les citations IA</li>
-                </ul>
-              </motion.div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3"
-            >
-              {[
-                { value: 'SEO', label: 'optimisation Google locale' },
-                { value: 'GEO', label: 'contenus lisibles par les IA' },
-                { value: 'Schema', label: 'données structurées enrichies' },
-              ].map((stat, i) => (
-                <div key={i} className="tm-glass-soft p-4 rounded-xl text-center">
-                  <div className="text-xl md:text-2xl font-bold text-accent font-[var(--font-heading)]">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ─── VALUES ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Mes valeurs
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-xl">
-                Ce qui guide chaque projet et chaque décision.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 1, y: 0 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="tm-glass-soft p-6 rounded-xl hover:border-accent/60 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mb-4">
-                    <img src={value.icon} alt="" className="w-6 h-6 object-contain" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 font-[var(--font-heading)]">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                </motion.div>
-              ))}
+      <section className="section" aria-labelledby="id-title">
+        <div className="container split split--top">
+          <div className="section-head">
+            <p className="eyebrow">Identité</p>
+            <Heat id="id-title" className="h2" text="Installée à Cognac, [[joignable en semaine.]]" />
+            <div className="hero-ctas">
+              <a href={`tel:${business.phoneE164}`} className="btn btn-dark">
+                {business.phone} <span className="arrow">→</span>
+              </a>
+              <a href={mapsUrl} className="link-arrow" target="_blank" rel="noopener">
+                Itinéraire <span className="arrow">↗</span>
+              </a>
             </div>
           </div>
-        </section>
-
-        {/* ─── SKILLS ─── */}
-        <section className="py-24 md:py-32 px-6 border-y border-border">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold font-[var(--font-heading)] tracking-tight mb-4">
-                Mon expertise
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-xl">
-                Des compétences affûtées par 10 ans d’expérience.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 1, y: 0 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="tm-glass-soft p-6 rounded-xl"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
-                        <img src={skill.icon} alt="" className="w-6 h-6 object-contain" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold font-[var(--font-heading)]">{skill.name}</h3>
-                        <p className="text-xs text-muted-foreground">{skill.detail}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+          <dl className="facts">
+            <div>
+              <dt>Entreprise</dt>
+              <dd>
+                {business.brandName} ({business.legalName}, {business.legalForm.toLowerCase()})
+              </dd>
             </div>
-          </div>
-        </section>
-
-        {/* ─── CTA ─── */}
-        <section className="py-24 md:py-32 px-6">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 1, y: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="tm-audit tm-glass p-6 sm:p-10 md:p-16 rounded-2xl text-center relative overflow-hidden"
-            >
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground font-[var(--font-heading)] tracking-tight mb-4">
-                  Travaillons ensemble
-                </h2>
-                <p className="text-accent-foreground/80 text-lg mb-8 max-w-lg mx-auto">
-                  Vous avez un projet web ? Discutons de votre vision.
-                  Devis gratuit, réponse en moins de 24h.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-accent rounded-lg font-medium hover:bg-white/90 transition-colors"
-                  >
-                    Discuter du projet
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    href="/portfolio"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 text-accent-foreground border border-white/20 rounded-lg font-medium hover:bg-white/20 transition-colors"
-                  >
-                    Voir le portfolio
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </div>
+            <div>
+              <dt>Fondateur</dt>
+              <dd>
+                {business.founder}, {business.founderRole.charAt(0).toLowerCase() + business.founderRole.slice(1)}
+              </dd>
+            </div>
+            <div>
+              <dt>Adresse</dt>
+              <dd>{fullAddress}</dd>
+            </div>
+            <div>
+              <dt>Horaires</dt>
+              <dd>{business.openingHours.label}</dd>
+            </div>
+            <div>
+              <dt>Zones</dt>
+              <dd>Cognac, Jarnac, Angoulême, Saintes, Charente et Charente-Maritime, et à distance</dd>
+            </div>
+            <div>
+              <dt>SIRET</dt>
+              <dd>{business.siret}</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
     </>
   );
-};
-
-export default AboutPage;
+}

@@ -1,23 +1,27 @@
-﻿import 'mapbox-gl/dist/mapbox-gl.css';
-import '../styles/globals.css';
-import Layout from '../components/Layout';
-import { ThemeProvider } from 'next-themes';
-import { dmSans, outfit } from '../lib/fonts';
+﻿import '../styles/globals.css';
+import { useEffect } from 'react';
 import Head from 'next/head';
+import Layout from '../components/Layout';
+import { geologica } from '../lib/fonts';
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    window.__tmHydrated = true;
+  }, []);
+
   return (
-    <div className={`${dmSans.variable} ${outfit.variable}`}>
+    <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </Head>
-      <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </div>
+      <style jsx global>{`
+        :root {
+          --font-geologica: ${geologica.style.fontFamily};
+        }
+      `}</style>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
-
-export default MyApp;

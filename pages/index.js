@@ -1,220 +1,273 @@
 import Link from 'next/link';
-import SEO, { createFAQSchema, createLocalBusinessSchema, createWebPageSchema } from '../components/SEO';
+import SEO from '../components/SEO';
+import StrikeHero from '../components/StrikeHero';
+import Heat from '../components/Heat';
+import Resonance from '../components/Resonance';
+import AiDemo from '../components/AiDemo';
+import ServiceList from '../components/ServiceList';
+import Drum from '../components/Drum';
+import Faq from '../components/Faq';
+import Picture from '../components/Picture';
 import { business } from '../lib/business';
-import { homepageServices } from '../lib/services-data';
-import { getFeaturedProjects } from '../lib/projects';
+import { faqNode, itemListNode } from '../lib/schema';
+import { getContentPage, serviceIndex } from '../lib/services-data';
+import { projects } from '../lib/projects';
+import { featuredSlugs, getArticle, summarize } from '../lib/blog';
 
-const icon = (src, className = 'h-6 w-6') => <img src={src} alt="" className={`${className} object-contain`} />;
-
-const serviceStrip = [
-  ['/assets/icon-design-orange.webp', 'Site Vitrine', 'En 24h'],
-  ['/assets/icon-seo-local-orange.webp', 'SEO Local', 'Google & IA'],
-  ['/assets/icon-seo-audit-orange.webp', 'Audit SEO', 'Gratuit'],
-  ['/assets/icon-crm-orange.webp', 'CRM sur mesure', 'Gestion clients'],
-  ['/assets/icon-lms-orange.webp', 'LMS & E-learning', 'Formation'],
-  ['/assets/icon-ecommerce-orange.webp', 'E-commerce', 'Sur mesure'],
+const homeFaqs = [
+  [
+    'Qu’est-ce que le GEO ?',
+    'Le GEO (Generative Engine Optimization) regroupe les actions qui aident les moteurs de réponse IA, comme ChatGPT, Perplexity, Gemini ou les AI Overviews de Google, à comprendre une entreprise, à reprendre ses informations et à citer son site comme source. Il prolonge le SEO, il ne le remplace pas.',
+  ],
+  [
+    'Le GEO remplace-t-il le SEO ?',
+    'Non. Un moteur de réponse s’appuie sur des pages qu’il peut trouver, lire et vérifier : sans indexation ni contenu clair, rien ne peut être cité. Le travail commence par les fondations SEO, puis par l’écriture de réponses nettes.',
+  ],
+  [
+    'Peut-on garantir d’être cité par ChatGPT ?',
+    'Non, et personne ne peut le garantir honnêtement. On améliore les signaux qui comptent (accès des robots, clarté, cohérence des informations, preuves), puis on mesure les visites venues des IA et on ajuste.',
+  ],
+  [
+    'Où intervenez-vous ?',
+    'L’agence est installée à Cognac, au 149 rue Henri Fichon. Elle travaille avec des entreprises de Cognac, Jarnac, Angoulême, Saintes et de toute la Charente, et à distance quand le projet s’y prête.',
+  ],
+  [
+    'Que contient l’audit SEO & GEO offert ?',
+    'Une analyse de votre site, de votre fiche Google et de votre présence dans les réponses des IA (ChatGPT, Perplexity, Gemini, AI Overviews). Vous recevez les blocages prioritaires et un plan d’action ordonné, sans jargon et sans promesse de classement.',
+  ],
+  [
+    'Et si j’ai besoin d’être en ligne en urgence ?',
+    'La préversion express 24 h publie une première version propre quand le délai l’impose, ou pour lancer l’indexation plus tôt. Ce n’est pas un site définitif : il est ensuite enrichi et finalisé.',
+  ],
 ];
 
-const services = homepageServices;
-const projects = getFeaturedProjects(6);
-
-const stats = [
-  ['/assets/icon-clock-orange.webp', '24h', 'Option express cadrée'],
-  ['/assets/icon-target-orange.webp', 'SEO', 'Structure locale incluse'],
-  ['/assets/icon-users-orange.webp', 'Local', 'Cognac, Angoulême, Saintes'],
-  ['/assets/icon-star-rating-orange.webp', 'Sur mesure', 'Aucun template générique'],
-];
-
-const steps = [
-  ['1', 'On échange', 'Vous me parlez de votre projet, de vos priorités et de votre délai.'],
-  ['2', 'Je structure', 'Pages, messages, liens internes et appels à l’action sont cadrés avant le design.'],
-  ['3', 'Je conçois', 'Design premium, développement rapide, performance et accessibilité.'],
-  ['4', 'On lance', 'Mise en ligne, vérifications SEO et prochaines actions claires.'],
-];
-
-const HomePage = () => {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      createLocalBusinessSchema(),
-      createWebPageSchema(
-        'Site vitrine en 24h et SEO local',
-        'Sites rapides, SEO local et solutions web sur mesure à Cognac, Angoulême, Saintes et en Charente.',
-        business.siteUrl
-      ),
-      createFAQSchema([
-        {
-          question: 'Un site vitrine peut-il vraiment être livré en 24h ?',
-          answer: 'Oui si le périmètre est cadré : offre claire, contenus disponibles et validations rapides.',
-        },
-      ]),
-    ],
-  };
-
+export default function Home({ services, steps, work, guides }) {
   return (
     <>
       <SEO
-        title="Site vitrine en 24h & SEO local à Cognac"
-        description="Création de sites rapides, modernes et optimisés SEO à Cognac, Angoulême, Saintes et en Charente. Audit gratuit et contact direct."
-        canonical="/"
-        schema={schema}
-        enableLocalSEO={true}
-        keywords={['site vitrine en 24h', 'agence web Cognac', 'création site internet Charente', 'SEO local']}
+        title="Théo Multimédia : agence GEO & web à Cognac (Charente)"
+        description="Agence GEO et web à Cognac : votre entreprise visible sur Google et Google Maps, et citée par ChatGPT, Perplexity et Gemini. SEO local, sites rapides, audit offert."
+        path="/"
+        dateModified="2026-11-05"
+        schema={[faqNode('/', homeFaqs), itemListNode('/', services.map((s) => [s.title, `/${s.slug}`]))]}
       />
 
-      <div className="tm-site-shell">
-        <section className="tm-hero">
-          <div className="tm-hero-rays" />
-          <div className="tm-container tm-hero-container relative grid items-center">
-            <div className="tm-hero-copy relative z-10">
-              <span className="tm-badge">+ Agence web à Cognac, Angoulême & Saintes</span>
-              <h1 className="tm-title mt-5 text-[44px] leading-[1.04] md:text-[60px] xl:text-[66px]">
-                Votre site vitrine en 24h.<br />
-                <span className="tm-orange tm-brush">Votre visibilité se construit dès le premier pixel.</span>
-              </h1>
-              <p className="mt-8 max-w-[620px] text-[18px] leading-8 text-slate-100">
-                Théo Multimédia crée des sites rapides, élégants et optimisés pour capter des demandes qualifiées à Cognac, Angoulême, Saintes et en Charente. Design sur mesure, SEO local, copywriting et suivi clair.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {['Livraison express', 'SEO local inclus', 'Design sur mesure', 'Optimisé Google & IA'].map((label) => (
-                  <span key={label} className="tm-chip">◉ <span>{label}</span></span>
-                ))}
-              </div>
-              <div className="mt-6 flex flex-wrap gap-4">
-                <Link href="/contact?service=site-vitrine-24h" className="tm-button tm-button-primary tm-button-hero">
-                  Demander mon site en 24h {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4')}
-                </Link>
-                <Link href="/audit-seo-gratuit" className="tm-button tm-button-dark">
-                  Recevoir mon audit SEO gratuit {icon('/assets/icon-search-white.webp', 'h-4 w-4')}
-                </Link>
-              </div>
-              <p className="mt-7 text-[13px] leading-6 text-slate-300">
-                <b className="text-white">Agence web en Charente, basée à Cognac.</b><br />
-                Un interlocuteur direct pour votre projet web.
-              </p>
-            </div>
+      <StrikeHero />
 
-            <div className="tm-hero-visual relative">
-              <div className="tm-delivery-card">
-                <span><i /> Livraison</span><b>24h</b><small>max</small>
-              </div>
-              {icon('/assets/icon-rocket-orange.webp', 'absolute left-[3%] top-[8%] h-12 w-12')}
-              <img src="/assets/hero-curved-arrow-orange.webp" alt="" className="absolute left-[8%] top-[23%] h-32 w-28 object-contain" />
-              <img src="/assets/hero-devices-electricien-restaurant.webp" alt="Aperçu de sites vitrines sur ordinateur et mobile" className="absolute inset-0 h-full w-full object-contain object-right-bottom" />
-            </div>
-          </div>
-        </section>
-
-        <section className="tm-container tm-thick-glass tm-service-strip">
-          <div className="grid md:grid-cols-3 lg:grid-cols-6">
-            {serviceStrip.map(([asset, title, text]) => (
-              <div className="tm-service-strip-item flex items-center gap-4 px-5 py-4" key={title}>
-                {icon(asset, 'h-10 w-10')}
-                <span><b className="block text-sm">{title}</b><small className="text-[11px] text-slate-300">{text}</small></span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="tm-section tm-container grid items-center gap-8 lg:grid-cols-[minmax(0,38%)_minmax(0,62%)]">
-          <div>
-            <h2 className="tm-title text-4xl">Un site beau, c’est bien.<br />Un site qui <span className="tm-orange">travaille pour vous</span>, c’est mieux.</h2>
-            <p className="mt-4 text-sm leading-6 text-slate-300">
-              Chaque page doit avoir un rôle : rassurer, expliquer, prouver, convertir.
+      <section className="section" aria-labelledby="geo-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Le GEO, en clair</p>
+            <Heat id="geo-title" className="h2" text="On ne cherche plus seulement des liens. [[On demande une réponse.]]" />
+            <p className="lede">
+              ChatGPT, Perplexity, Gemini et les AI Overviews de Google rédigent des réponses et citent quelques sources. Le
+              GEO consiste à faire de votre site l’une d’elles : des pages que les robots peuvent lire, des réponses nettes,
+              des informations identiques partout.
             </p>
           </div>
-          <div className="tm-stats-grid tm-thick-glass grid min-w-0 grid-cols-2 rounded-[24px] md:grid-cols-4">
-            {stats.map(([asset, value, label]) => (
-              <div className="tm-stat tm-stat-card text-center" key={value}>
-                {icon(asset, 'mx-auto h-9 w-9')}
-                <b className="mt-2 block text-2xl text-orange-500 md:text-3xl">{value}</b>
-                <small className="mt-1 block text-[11px] leading-4 text-slate-300">{label}</small>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="tm-section tm-container">
-          <h2 className="tm-title mb-3 text-center text-3xl">Ce que je peux faire pour vous</h2>
-          <p className="mx-auto mb-7 max-w-2xl text-center text-sm leading-6 text-slate-300">
-            Je construis votre site comme un outil d’acquisition, pas comme une brochure figée.
-          </p>
-          <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-6">
-            {services.map((service) => (
-              <article className="tm-service-card tm-glass rounded-[22px]" key={service.title}>
-                <Link href={service.href} className="tm-service-card-link" aria-label={service.ariaLabel}>
-                  <img src={service.preview} alt="" />
-                  <div className="p-5">
-                    {icon(service.icon, 'mb-3 h-8 w-8')}
-                    <h3 className="text-sm font-bold">{service.title}</h3>
-                    <p className="mt-3 text-[12px] leading-5 text-slate-300">{service.description}</p>
-                    <span className="tm-round-arrow" aria-hidden="true">{icon('/assets/icon-arrow-right-white.webp', 'h-3 w-3')}</span>
-                  </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="tm-section tm-container">
-          <h2 className="tm-title mb-7 text-center text-3xl">Réalisations récentes</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article className="tm-project-card tm-glass rounded-[22px] p-3" key={project.slug}>
-                <Link href={`/portfolio/${project.slug}`} aria-label={`Voir la réalisation ${project.title}`}>
-                  <div className="tm-project-media">
-                    <img src={project.imageDesktop} alt={`${project.title} - aperçu de réalisation web`} />
-                    <span className="tm-project-badge">{project.category}</span>
-                    <div className="tm-project-tags">
-                      {project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}
-                    </div>
-                  </div>
-                  <h3 className="mt-3 text-sm font-bold">{project.title}</h3>
-                  <p className="mt-1 text-[11px] leading-5 text-slate-300">{project.shortDescription}</p>
-                </Link>
-              </article>
-            ))}
-          </div>
-          <Link href="/portfolio" className="mt-5 flex items-center justify-center gap-2 text-sm font-bold text-orange-500">
-            Voir des projets déjà mis en ligne {icon('/assets/icon-arrow-right-orange.webp', 'h-4 w-4')}
-          </Link>
-        </section>
-
-        <section className="tm-process tm-container tm-thick-glass my-8 rounded-[28px] px-7 py-7 md:px-10" style={{ backgroundImage: "linear-gradient(90deg, rgba(5,9,14,.98), rgba(5,9,14,.92) 62%, rgba(5,9,14,.28)), url('/assets/process-section-developer-working.webp')" }}>
-          <h2 className="tm-title mb-8 text-3xl">Comment ça marche ?</h2>
-          <div className="tm-process-grid grid gap-4 md:grid-cols-4 lg:w-[72%]">
-            {steps.map(([number, title, text]) => (
-              <div className="tm-glass-soft relative rounded-[18px] px-5 py-8 text-center" key={number}>
-                <b className="tm-step-number">{number}</b>
-                <h3 className="mt-3 text-sm font-bold">{title}</h3>
-                <p className="mt-3 text-[12px] leading-5 text-slate-300">{text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="audit" className="tm-audit tm-container tm-thick-glass mb-8 grid items-center rounded-[28px] md:grid-cols-[22%_31%_28%_19%]">
-          <div className="relative hidden min-h-[180px] md:block"><img src="/assets/audit-seo-target-rocket.webp" className="absolute inset-0 h-full w-full object-cover" alt="" /></div>
-          <div className="relative z-10 p-6">
-            <p className="tm-kicker">Offerte - sans engagement</p>
-            <h2 className="tm-title mt-1 text-4xl">Audit SEO gratuit</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-200">Découvrez ce qui bloque votre visibilité sur Google et comment attirer plus de demandes qualifiées.</p>
-          </div>
-          <ul className="relative z-10 border-l border-white/10 px-6 py-5 text-[13px] leading-8 text-slate-100">
-            {['Analyse de votre site', 'Points bloquants identifiés', 'Plan d’action priorisé', 'Recommandations SEO & IA'].map((x) => (
-              <li key={x}>{icon('/assets/icon-check-green.webp', 'mr-2 inline h-4 w-4')}{x}</li>
-            ))}
-          </ul>
-          <div className="relative z-10 p-5 text-center">
-            <Link href="/contact?service=audit-seo" className="tm-button tm-button-white text-sm font-black">
-              Demander mon audit {icon('/assets/icon-arrow-right-white.webp', 'h-4 w-4 brightness-0')}
+          <Resonance />
+          <p className="section-foot">
+            <Link href="/geo-referencement-ia" className="link-arrow">
+              Tout comprendre au GEO <span className="arrow">→</span>
             </Link>
-            <p className="mt-4 text-[11px]">Réponse sous 24h ouvrées</p>
+          </p>
+        </div>
+      </section>
+
+      <section className="section section--navy on-dark grain" aria-labelledby="cite-title">
+        <div className="container split">
+          <div className="section-head">
+            <p className="eyebrow">À quoi ressemble une citation</p>
+            <Heat id="cite-title" className="h2" text="Être cité, c’est apparaître [[dans la réponse]], lien compris." />
+            <p className="lede">
+              Quand une IA répond, elle s’appuie sur quelques pages et renvoie vers elles. Ces visites se mesurent : celles
+              venues de ChatGPT, Perplexity ou Copilot apparaissent dans vos statistiques.
+            </p>
+            <ul className="ticks">
+              <li>Des pages qui répondent d’abord, puis prouvent</li>
+              <li>Des robots d’IA autorisés à lire le site</li>
+              <li>Une adresse, une zone et des services identiques partout</li>
+            </ul>
           </div>
-        </section>
-      </div>
+          <AiDemo />
+        </div>
+      </section>
+
+      <section className="section section--dark on-dark" aria-labelledby="svc-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Services</p>
+            <Heat id="svc-title" className="h2" text="Visible sur Google, [[cité par les IA]], choisi par vos clients." />
+          </div>
+          <ServiceList items={services} />
+          <p className="section-foot">
+            <Link href="/services" className="link-arrow">
+              Tous les services en détail <span className="arrow">→</span>
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="method-title">
+        <div className="container split split--top">
+          <div className="section-head">
+            <p className="eyebrow">Méthode</p>
+            <Heat id="method-title" className="h2" text="Cinq étapes, [[dans cet ordre.]]" />
+            <p className="lede">
+              Le GEO n’est pas une astuce posée sur un site existant. Chaque étape s’appuie sur la précédente : on ne
+              cherche pas à être cité avant d’être lisible.
+            </p>
+            <Link href="/contact?service=audit-geo" className="btn btn-primary">
+              Commencer par l’audit offert <span className="arrow">→</span>
+            </Link>
+          </div>
+          <ol className="steps">
+            {steps.map(([title, text]) => (
+              <li key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section section--tint" aria-labelledby="proof-title">
+        <div className="container proof">
+          <div className="section-head">
+            <p className="eyebrow">Cas concret · CBD Impact</p>
+            <Heat id="proof-title" className="h2" text="Les premières commandes sont arrivées [[depuis ChatGPT.]]" />
+            <p className="lede">
+              CBD Impact est une boutique en ligne développée sur mesure. Ses premières commandes sont venues de liens
+              ChatGPT, repérés dans les statistiques grâce à la mention utm_source=chatgpt.com.
+            </p>
+            <Link href="/portfolio/cbd-impact" className="link-arrow">
+              Voir le projet <span className="arrow">→</span>
+            </Link>
+          </div>
+          <figure className="browser">
+            <div className="chrome" aria-hidden="true">
+              <span className="dots">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="url">cbd-impact.com</span>
+            </div>
+            <Picture src="/assets/portfolio/cbd-impact-desktop" width={1440} height={900} alt="Page d’accueil de la boutique CBD Impact" />
+          </figure>
+        </div>
+      </section>
+
+      <section className="section section--dark on-dark drum-section" aria-labelledby="work-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Réalisations</p>
+            <Heat id="work-title" className="h2" text="Des projets [[qui tournent.]]" />
+            <p className="lede">
+              Faites tourner le tambour : glissez, ou utilisez les flèches. Trois sites sont en ligne aujourd’hui, les autres
+              sont des archives de projets passés.
+            </p>
+          </div>
+        </div>
+        <Drum items={work} />
+        <div className="container">
+          <p className="section-foot center">
+            <Link href="/portfolio" className="link-arrow">
+              Toutes les réalisations <span className="arrow">→</span>
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="agency-title">
+        <div className="container split">
+          <div className="section-head">
+            <p className="eyebrow">L’agence</p>
+            <Heat id="agency-title" className="h2" text="Installée à Cognac, [[au service de la Charente.]]" />
+            <p className="lede">
+              Théo Multimédia, c’est {business.founder} : développeur web et consultant GEO. Un seul interlocuteur, du premier
+              audit à la mise en ligne.
+            </p>
+            <div className="hero-ctas">
+              <Link href="/about" className="btn btn-dark">
+                Découvrir l’agence <span className="arrow">→</span>
+              </Link>
+              <Link href="/zones-intervention" className="link-arrow">
+                Zones d’intervention <span className="arrow">→</span>
+              </Link>
+            </div>
+          </div>
+          <dl className="facts">
+            <div>
+              <dt>Adresse</dt>
+              <dd>
+                {business.legalAddress.streetAddress}, {business.legalAddress.postalCode} {business.legalAddress.city}
+              </dd>
+            </div>
+            <div>
+              <dt>Téléphone</dt>
+              <dd>
+                <a className="text-link" href={`tel:${business.phoneE164}`}>
+                  {business.phone}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Horaires</dt>
+              <dd>{business.openingHours.label}</dd>
+            </div>
+            <div>
+              <dt>Zones</dt>
+              <dd>Cognac, Jarnac, Angoulême, Saintes, Charente et Charente-Maritime</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="section section--tint" aria-labelledby="guides-title">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">Guides</p>
+            <Heat id="guides-title" className="h2" text="Comprendre avant [[d’investir.]]" />
+          </div>
+          <div className="featured-posts">
+            {guides.map((g) => (
+              <Link key={g.slug} href={`/blog/${g.slug}`}>
+                <span className="k">{g.category}</span>
+                <h3>{g.title}</h3>
+                <span className="rt">{g.readingMinutes} min de lecture →</span>
+              </Link>
+            ))}
+          </div>
+          <p className="section-foot">
+            <Link href="/blog" className="link-arrow">
+              Tous les guides <span className="arrow">→</span>
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="faq-title">
+        <div className="container split split--top">
+          <div className="section-head">
+            <p className="eyebrow">Questions</p>
+            <Heat id="faq-title" className="h2" text="Les questions [[qu’on me pose.]]" />
+          </div>
+          <Faq items={homeFaqs} />
+        </div>
+      </section>
     </>
   );
-};
+}
 
-export default HomePage;
+export async function getStaticProps() {
+  return {
+    props: {
+      services: serviceIndex,
+      steps: getContentPage('geo-referencement-ia').steps,
+      work: projects.map((p) => ({ slug: p.slug, title: p.title, category: p.category, online: p.online, image: p.image })),
+      guides: featuredSlugs.map((slug) => summarize(getArticle(slug))),
+    },
+  };
+}

@@ -1,22 +1,14 @@
 {
-  "name": "Théo Multimédia",
+  "name": "Théo Multimédia, agence GEO & web à Cognac",
   "short_name": "Théo Multimédia",
-  "description": "Agence web en Charente : site vitrine en 24h, SEO local et solutions sur mesure.",
+  "description": "Agence GEO et web à Cognac : visible sur Google et Google Maps, cité par les IA. SEO local, sites rapides et outils sur mesure.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#03070c",
-  "theme_color": "#ff5a00",
+  "theme_color": "#03070c",
   "lang": "fr-FR",
   "icons": [
-    {
-      "src": "/assets/favicon-tm-orange-v2.webp",
-      "sizes": "192x192",
-      "type": "image/webp"
-    },
-    {
-      "src": "/assets/logo-theo-multimedia-orange-v2.webp",
-      "sizes": "512x512",
-      "type": "image/webp"
-    }
+    { "src": "/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }

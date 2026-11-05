@@ -20,3 +20,6 @@ seo_report_*.json
 # OS / outillage
 .DS_Store
 .codex*
+
+# Outillage local de l’assistant
+.claude/

@@ -1,107 +1,161 @@
-﻿import { motion } from 'motion/react';
 import Link from 'next/link';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { absoluteUrl } from '../lib/business';
+import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
+import { business, fullAddress } from '../lib/business';
 
-const MentionsLegales = () => {
-  const organizationSchema = createOrganizationSchema();
-  const legalPageSchema = createWebPageSchema(
-    'Mentions légales',
-    'Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web.',
-    absoluteUrl('/mentions-legales')
-  );
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [organizationSchema, legalPageSchema]
-  };
+const PATH = '/mentions-legales';
+const UPDATED = '2026-11-05';
+const crumbs = [
+  ['Accueil', '/'],
+  ['Mentions légales', PATH],
+];
 
-  return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="Mentions Légales | Théo Multimédia - Informations Légales"
-        description="Mentions légales Théo Multimédia. Informations légales, éditeur site, hébergement et conditions utilisation services web."
-        canonical="/mentions-legales"
-        schema={schema}
-      />
-
-      <main className="container mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="tm-legal-shell max-w-4xl mx-auto bg-card rounded-2xl p-8 md:p-12 shadow-sm border border-border"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Mentions Légales</h1>
-          
-          <div className="prose prose-invert max-w-none">
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">1. Éditeur du site</h2>
-              <p>J'édite le site internet <strong>www.theo-multimedia.com</strong> :</p>
-              <address className="not-italic mt-4 space-y-1">
-                <p>Monsieur Théo LAFONT</p>
-                <p>Entreprise individuelle</p>
-                <p>N° SIRET : 884 758 970 00054</p>
-                <p>N° TVA intracommunautaire : FR59884758970</p>
-                <p>Code APE : 8211Z - Services administratifs combinés de bureau</p>
-                <p>149 rue Henri Fichon, 16100 Cognac, France</p>
-                <p>Email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
-                <p>Téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></p>
-              </address>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">2. Directeur de la publication</h2>
-              <p>Je suis le directeur de la publication : Monsieur Théo LAFONT.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">3. Hébergement</h2>
-              <p>J'héberge ce site chez :</p>
-              <address className="not-italic mt-2">
-                <p>Netlify, Inc.</p>
-                <p>101 2nd Street, San Francisco, CA 94105, États-Unis</p>
-                <p>Site web : <a href="https://www.netlify.com/" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.netlify.com</a></p>
-              </address>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">4. Propriété intellectuelle</h2>
-              <p>L'ensemble des éléments constituant ce site (textes, images, vidéos, logos, etc.) sont ma propriété exclusive ou font l'objet d'une autorisation d'utilisation. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans mon autorisation écrite préalable.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">5. Données personnelles</h2>
-              <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données vous concernant. Pour exercer ce droit, vous pouvez me contacter à l'adresse email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
-              <p className="mt-4">Pour plus d'informations sur la manière dont je traite vos données, consultez notre <Link href="/politique-confidentialite" className="text-accent hover:underline">Politique de Confidentialité</Link>.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">6. Cookies</h2>
-              <p>Le site utilise des cookies pour améliorer l'expérience utilisateur. En naviguant sur ce site, vous acceptez l'utilisation des cookies conformément à notre politique en la matière. Pour en savoir plus, consultez notre <Link href="/politique-confidentialite#cookies" className="text-accent hover:underline">Politique de Cookies</Link>.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">7. Droit applicable et juridiction compétente</h2>
-              <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">8. Contact</h2>
-              <p>Pour toute question ou demande d'information concernant le site, ou tout signalement de contenu ou d'activités illicites, contactez-moi :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
-                <li>Par téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></li>
-                <li>Par courrier : 149 rue Henri Fichon, 16100 Cognac, France</li>
-              </ul>
-            </section>
-
-            <p className="text-sm text-muted-foreground">Dernière mise à jour : 11 juin 2026</p>
-          </div>
-        </motion.div>
-      </main>
-    </div>
-  );
+// Hosting provider, as published on netlify.com (privacy policy and terms of use), checked on 2026-11-05.
+const host = {
+  name: 'Netlify, Inc.',
+  address: '101 2nd Street, San Francisco, CA 94105, États-Unis',
+  url: 'https://www.netlify.com',
+  label: 'www.netlify.com',
 };
 
-export default MentionsLegales;
+const siteHost = business.siteUrl.replace(/^https?:\/\//, '');
 
+function Fact({ term, children }) {
+  return (
+    <div>
+      <dt>{term}</dt>
+      <dd>{children}</dd>
+    </div>
+  );
+}
+
+function ExternalLink({ href, children }) {
+  return (
+    <a className="text-link" href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+      <span className="sr-only"> (nouvel onglet)</span>
+    </a>
+  );
+}
+
+export default function MentionsLegales() {
+  const contactForm = (
+    <Link href="/contact" className="text-link">
+      formulaire de contact
+    </Link>
+  );
+  const phone = (
+    <a className="text-link" href={`tel:${business.phoneE164}`}>
+      {business.phone}
+    </a>
+  );
+
+  return (
+    <>
+      <SEO
+        title="Mentions légales"
+        description={`Mentions légales du site ${business.brandName} : éditeur (${business.legalName}, ${business.legalForm.toLowerCase()} à ${business.legalAddress.city}), SIRET, directeur de la publication, hébergeur et contact.`}
+        path={PATH}
+        crumbs={crumbs}
+        dateModified={UPDATED}
+      />
+      <PageHero
+        eyebrow="Informations légales"
+        title="Mentions légales"
+        lede="Qui édite ce site, qui l’héberge et comment me joindre."
+        crumbs={crumbs}
+      />
+
+      <section className="section">
+        <div className="container">
+          <div className="legal">
+            <p>
+              Dernière mise à jour : <time dateTime={UPDATED}>5 novembre 2026</time>
+            </p>
+
+            <h2>1. Éditeur du site</h2>
+            <p>
+              J’édite le site <strong>{siteHost}</strong> :
+            </p>
+            <dl>
+              <Fact term="Éditeur">
+                {business.legalName}, exerçant sous le nom {business.brandName}
+              </Fact>
+              <Fact term="Forme juridique">{business.legalForm}</Fact>
+              <Fact term="N° SIRET">{business.siret}</Fact>
+              <Fact term="N° TVA intracommunautaire">{business.vatNumber}</Fact>
+              <Fact term="Code APE">{business.apeCode}</Fact>
+              <Fact term="Adresse">{fullAddress}, France</Fact>
+              <Fact term="Téléphone">{phone}</Fact>
+              <Fact term="Demandes écrites">Par le {contactForm} ou par courrier à l’adresse ci-dessus</Fact>
+            </dl>
+
+            <h2>2. Directeur de la publication</h2>
+            <p>Je suis le directeur de la publication : {business.founder}.</p>
+
+            <h2>3. Hébergement</h2>
+            <p>Le site est hébergé par :</p>
+            <dl>
+              <Fact term="Hébergeur">{host.name}</Fact>
+              <Fact term="Adresse">{host.address}</Fact>
+              <Fact term="Site web">
+                <ExternalLink href={host.url}>{host.label}</ExternalLink>
+              </Fact>
+            </dl>
+
+            <h2>4. Propriété intellectuelle</h2>
+            <p>
+              L’ensemble des éléments qui composent ce site (textes, images, vidéos, logos, etc.) est ma propriété
+              exclusive ou fait l’objet d’une autorisation d’utilisation. Toute reproduction, représentation,
+              modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou
+              le procédé utilisé, est interdite sans mon autorisation écrite préalable.
+            </p>
+
+            <h2>5. Données personnelles</h2>
+            <p>
+              Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et au Règlement général sur la
+              protection des données (RGPD), vous disposez d’un droit d’accès, de rectification, de suppression et
+              d’opposition aux données vous concernant. Pour exercer ces droits, écrivez-moi via le {contactForm} ou par
+              courrier à l’adresse indiquée ci-dessus.
+            </p>
+            <p>
+              Les messages envoyés depuis le formulaire de contact sont acheminés par le service Formspree. Pour savoir
+              comment je traite vos données, consultez la{' '}
+              <Link href="/politique-confidentialite" className="text-link">
+                politique de confidentialité
+              </Link>
+              .
+            </p>
+
+            <h2>6. Cookies</h2>
+            <p>
+              Ce site ne dépose aucun cookie et n’utilise aucun outil de mesure d’audience ni de publicité. Le détail
+              figure dans la{' '}
+              <Link href="/politique-confidentialite#cookies" className="text-link">
+                politique de confidentialité
+              </Link>
+              .
+            </p>
+
+            <h2>7. Droit applicable et juridiction compétente</h2>
+            <p>
+              Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français
+              seront seuls compétents.
+            </p>
+
+            <h2>8. Contact</h2>
+            <p>
+              Pour toute question ou demande d’information concernant le site, ou pour signaler un contenu ou une
+              activité illicite, contactez-moi :
+            </p>
+            <ul>
+              <li>par le {contactForm} ;</li>
+              <li>par téléphone au {phone} ;</li>
+              <li>par courrier : {fullAddress}, France.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

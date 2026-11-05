@@ -1,4 +1,76 @@
+# robots.txt · Théo Multimédia · https://theo-multimedia.netlify.app
+# Généré par scripts/generate-seo-files.mjs à chaque build : ne pas modifier à la main.
+#
+# Tout le site est ouvert à tous les robots. Les robots des moteurs de recherche
+# et des moteurs de réponse IA sont aussi nommés un par un. Un robot qui trouve
+# un groupe à son nom ignore le groupe « * » : chaque groupe reprend donc la
+# règle complète.
+
 User-agent: *
 Allow: /
 
-Sitemap: https://theo-multimedia.com/sitemap.xml
+# OpenAI · résultats de recherche de ChatGPT
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI · pages ouvertes à la demande d’un utilisateur de ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI · entraînement des modèles
+User-agent: GPTBot
+Allow: /
+
+# Perplexity · résultats de recherche de Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity · pages ouvertes à la demande d’un utilisateur de Perplexity
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic · résultats de recherche de Claude
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic · pages ouvertes à la demande d’un utilisateur de Claude
+User-agent: Claude-User
+Allow: /
+
+# Anthropic · entraînement des modèles
+User-agent: ClaudeBot
+Allow: /
+
+# Google · Google Search, AI Overviews compris
+User-agent: Googlebot
+Allow: /
+
+# Google · jeton de contrôle : entraînement et ancrage des réponses de Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft · Bing, qui alimente aussi Copilot
+User-agent: bingbot
+Allow: /
+
+# Apple · Spotlight, Siri et Safari
+User-agent: Applebot
+Allow: /
+
+# Apple · jeton de contrôle : entraînement des modèles d’Apple
+User-agent: Applebot-Extended
+Allow: /
+
+# Mistral AI · index de recherche de Mistral AI
+User-agent: MistralAI-Index
+Allow: /
+
+# Mistral AI · pages ouvertes à la demande d’un utilisateur
+User-agent: MistralAI-User
+Allow: /
+
+# DuckDuckGo · réponses assistées par IA de DuckDuckGo
+User-agent: DuckAssistBot
+Allow: /
+
+Sitemap: https://theo-multimedia.netlify.app/sitemap.xml

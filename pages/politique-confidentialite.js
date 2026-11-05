@@ -1,164 +1,240 @@
-﻿import { motion } from 'motion/react';
-import SEO, { createOrganizationSchema, createWebPageSchema } from '../components/SEO';
-import { absoluteUrl } from '../lib/business';
+import Link from 'next/link';
+import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
+import { business, fullAddress } from '../lib/business';
 
-const PolitiqueConfidentialite = () => {
-  const organizationSchema = createOrganizationSchema();
-  const privacyPageSchema = createWebPageSchema(
-    'Politique de confidentialité',
-    'Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD.',
-    absoluteUrl('/politique-confidentialite')
-  );
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [organizationSchema, privacyPageSchema]
-  };
+const PATH = '/politique-confidentialite';
+const UPDATED = '2026-11-05';
+const crumbs = [
+  ['Accueil', '/'],
+  ['Politique de confidentialité', PATH],
+];
 
+function Fact({ term, children }) {
   return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="Politique de Confidentialité | Théo Multimédia - RGPD"
-        description="Politique confidentialité Théo Multimédia. Protection données personnelles et respect vie privée selon RGPD."
-        canonical="/politique-confidentialite"
-        schema={schema}
-      />
-
-      <main className="container mx-auto px-4 py-16">
-        <motion.div
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="tm-legal-shell max-w-4xl mx-auto bg-card rounded-2xl p-8 md:p-12 shadow-sm border border-border"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Politique de Confidentialité</h1>
-          
-          <div className="prose prose-invert max-w-none">
-            <p className="text-muted-foreground mb-8">
-              Dernière mise à jour : 11 juin 2026
-            </p>
-
-            <section className="mb-12">
-              <p>Chez Théo Multimédia, je m'engage à protéger et respecter votre vie privée. Cette politique de confidentialité explique comment je collecte, utilise et protège vos données personnelles lorsque vous utilisez mon site web.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">1. Responsable du traitement</h2>
-              <p>Le responsable du traitement des données est :</p>
-              <address className="not-italic mt-2 mb-4">
-                <p>Monsieur Théo LAFONT</p>
-                <p>149 rue Henri Fichon, 16100 Cognac, France</p>
-                <p>Email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
-                <p>Téléphone : <a href="tel:+33768519568" className="text-accent hover:underline">+33 7 68 51 95 68</a></p>
-                <p>N° SIRET : 884 758 970 00054</p>
-              </address>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">2. Données personnelles collectées</h2>
-              <p>Je peux collecter et traiter les données suivantes :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Vos coordonnées (nom, prénom, adresse email, numéro de téléphone)</li>
-                <li>Les informations de connexion (adresse IP, type de navigateur, pages consultées)</li>
-                <li>Les données de navigation et d'audience</li>
-                <li>Toutes autres informations que vous choisissez de me fournir via les formulaires de contact</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">3. Finalités du traitement</h2>
-              <p>Vos données sont utilisées pour :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Répondre à vos demandes d'information</li>
-                <li>Vous fournir les services demandés</li>
-                <li>Améliorer mon site web et mes services</li>
-                <li>Vous envoyer des communications marketing (avec votre consentement)</li>
-                <li>Respecter mes obligations légales et réglementaires</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">4. Base légale du traitement</h2>
-              <p>Le traitement de vos données est fondé sur :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Votre consentement pour l'envoi de communications marketing</li>
-                <li>L'exécution d'un contrat pour la fourniture de mes services</li>
-                <li>Mon intérêt légitime pour améliorer mes services</li>
-                <li>Le respect d'obligations légales</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">5. Destinataires des données</h2>
-              <p>Vos données peuvent être transmises à :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Mes prestataires techniques (hébergeur, développeurs)</li>
-                <li>Les autorités compétentes en cas d'obligation légale</li>
-                <li>D'autres tiers uniquement avec votre consentement explicite</li>
-              </ul>
-              <p className="mt-4">Je m'assure que tous les tiers respectent des normes de sécurité appropriées.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">6. Durée de conservation</h2>
-              <p>Je conserve vos données personnelles uniquement aussi longtemps que nécessaire aux fins pour lesquelles elles ont été collectées :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Données de contact : 3 ans à compter du dernier contact</li>
-                <li>Données de connexion : 13 mois</li>
-                <li>Données de facturation : 10 ans (obligation légale)</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4" id="cookies">7. Cookies et technologies similaires</h2>
-              <p>Mon site utilise des cookies pour :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Faciliter votre navigation</li>
-                <li>Mesurer l'audience</li>
-                <li>Personnaliser le contenu</li>
-              </ul>
-              <p className="mt-4">Vous pouvez configurer votre navigateur pour refuser les cookies, mais certaines fonctionnalités pourraient ne plus être disponibles.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">8. Sécurité des données</h2>
-              <p>Je mets en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, altération, divulgation ou destruction.</p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">9. Vos droits</h2>
-              <p>Conformément à la réglementation sur la protection des données, vous disposez des droits suivants :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Droit d'accès à vos données</li>
-                <li>Droit de rectification</li>
-                <li>Droit à l'effacement (droit à l'oubli)</li>
-                <li>Droit à la limitation du traitement</li>
-                <li>Droit à la portabilité des données</li>
-                <li>Droit d'opposition</li>
-                <li>Définir des directives relatives au sort de vos données après votre décès</li>
-              </ul>
-              <p className="mt-4">Pour exercer ces droits, contactez-moi à l'adresse : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></p>
-              <p className="mt-2">Vous avez également le droit d'introduire une réclamation auprès de la CNIL : <a href="https://www.cnil.fr" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-semibold text-foreground mb-4">10. Modifications de la politique de confidentialité</h2>
-              <p>Je me réserve le droit de modifier cette politique de confidentialité à tout moment. Je vous conseille de la consulter régulièrement.</p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-foreground mb-4">11. Contact</h2>
-              <p>Pour toute question concernant cette politique de confidentialité, vous pouvez me contacter :</p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>Par email : <a href="mailto:contact@theo-multimedia.com" className="text-accent hover:underline">contact@theo-multimedia.com</a></li>
-                <li>Par courrier : 149 rue Henri Fichon, 16100 Cognac, France</li>
-              </ul>
-            </section>
-          </div>
-        </motion.div>
-      </main>
+    <div>
+      <dt>{term}</dt>
+      <dd>{children}</dd>
     </div>
   );
-};
+}
 
-export default PolitiqueConfidentialite;
+function ExternalLink({ href, children }) {
+  return (
+    <a className="text-link" href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+      <span className="sr-only"> (nouvel onglet)</span>
+    </a>
+  );
+}
 
+export default function PolitiqueConfidentialite() {
+  const contactForm = (
+    <Link href="/contact" className="text-link">
+      formulaire de contact
+    </Link>
+  );
+  const phone = (
+    <a className="text-link" href={`tel:${business.phoneE164}`}>
+      {business.phone}
+    </a>
+  );
+
+  return (
+    <>
+      <SEO
+        title="Politique de confidentialité"
+        description={`Politique de confidentialité de ${business.brandName} : données du formulaire de contact, hébergement Netlify, aucun cookie ni mesure d’audience, vos droits RGPD.`}
+        path={PATH}
+        crumbs={crumbs}
+        dateModified={UPDATED}
+      />
+      <PageHero
+        eyebrow="Informations légales"
+        title="Politique de confidentialité"
+        lede="Peu de données, aucun cookie, aucun suivi publicitaire : voici ce que deviennent les informations que vous me confiez."
+        crumbs={crumbs}
+      />
+
+      <section className="section">
+        <div className="container">
+          <div className="legal">
+            <p>
+              Dernière mise à jour : <time dateTime={UPDATED}>5 novembre 2026</time>
+            </p>
+            <p>
+              Chez {business.brandName}, je m’engage à protéger et à respecter votre vie privée. Cette politique de
+              confidentialité explique quelles données personnelles sont traitées lorsque vous utilisez ce site, dans
+              quel but, par qui et pendant combien de temps, ainsi que les droits dont vous disposez.
+            </p>
+            <p className="note">
+              En bref : ce site ne dépose aucun cookie et ne mesure pas l’audience. Les seules données personnelles
+              qu’il traite sont celles que vous envoyez par le formulaire de contact et les données techniques de
+              connexion enregistrées par l’hébergeur.
+            </p>
+
+            <h2>1. Responsable du traitement</h2>
+            <p>Le responsable du traitement des données est :</p>
+            <dl>
+              <Fact term="Responsable">
+                {business.legalName}, {business.legalForm.toLowerCase()} exerçant sous le nom {business.brandName}
+              </Fact>
+              <Fact term="Adresse">{fullAddress}, France</Fact>
+              <Fact term="Téléphone">{phone}</Fact>
+              <Fact term="N° SIRET">{business.siret}</Fact>
+              <Fact term="Demandes écrites">Par le {contactForm} ou par courrier à l’adresse ci-dessus</Fact>
+            </dl>
+
+            <h2>2. Données personnelles collectées</h2>
+            <p>Je peux collecter et traiter les données suivantes :</p>
+            <ul>
+              <li>
+                les informations que vous saisissez dans le formulaire de contact : vos coordonnées (nom, prénom,
+                adresse e-mail, numéro de téléphone), votre message et toute autre information que vous choisissez de me
+                transmettre ;
+              </li>
+              <li>
+                les données techniques de connexion enregistrées par l’hébergeur lors de votre visite (adresse IP, date
+                et heure, page demandée, type de navigateur) ;
+              </li>
+              <li>
+                si vous devenez client, les informations nécessaires au devis, à la réalisation de la prestation et à la
+                facturation.
+              </li>
+            </ul>
+            <p>
+              Le site ne propose pas de compte utilisateur et ne collecte aucune donnée de navigation ou d’audience.
+            </p>
+
+            <h2>3. Finalités du traitement</h2>
+            <p>Vos données sont utilisées pour :</p>
+            <ul>
+              <li>répondre à vos demandes d’information et de devis ;</li>
+              <li>vous fournir les services demandés et assurer le suivi de notre relation ;</li>
+              <li>assurer le fonctionnement et la sécurité du site ;</li>
+              <li>respecter mes obligations légales et réglementaires.</li>
+            </ul>
+            <p>Elles ne sont jamais utilisées à des fins publicitaires.</p>
+
+            <h2>4. Base légale du traitement</h2>
+            <p>Le traitement de vos données est fondé sur :</p>
+            <ul>
+              <li>
+                l’exécution d’un contrat, ou de mesures précontractuelles prises à votre demande comme l’établissement
+                d’un devis ;
+              </li>
+              <li>
+                mon intérêt légitime à répondre à vos messages et à assurer le bon fonctionnement et la sécurité du site
+                ;
+              </li>
+              <li>le respect d’obligations légales, notamment en matière de facturation et de comptabilité.</li>
+            </ul>
+
+            <h2>5. Destinataires des données</h2>
+            <p>Vos données me sont destinées. Elles peuvent être transmises à :</p>
+            <ul>
+              <li>
+                <strong>Netlify, Inc.</strong>, hébergeur du site, établi à San Francisco (États-Unis), qui enregistre
+                les données techniques de connexion (
+                <ExternalLink href="https://www.netlify.com/privacy/">
+                  politique de confidentialité de Netlify
+                </ExternalLink>
+                ) ;
+              </li>
+              <li>
+                <strong>Formspree</strong> (formspree.io), qui reçoit les messages envoyés depuis le formulaire de
+                contact et me les transmet (
+                <ExternalLink href="https://formspree.io/legal/privacy-policy">
+                  politique de confidentialité de Formspree
+                </ExternalLink>
+                ) ;
+              </li>
+              <li>les autorités compétentes, uniquement en cas d’obligation légale ;</li>
+              <li>d’autres tiers, uniquement avec votre consentement explicite.</li>
+            </ul>
+            <p>Je m’assure que ces prestataires appliquent des mesures de sécurité appropriées.</p>
+            <p>
+              La société Netlify, Inc. est établie aux États-Unis et Formspree indique traiter les informations qu’il
+              reçoit aux États-Unis : vos données peuvent donc être transférées hors de l’Union européenne. Les
+              politiques de confidentialité de ces prestataires décrivent les garanties qu’ils appliquent à ces
+              transferts.
+            </p>
+
+            <h2>6. Durée de conservation</h2>
+            <p>
+              Je conserve vos données personnelles uniquement le temps nécessaire aux finalités pour lesquelles elles
+              ont été collectées :
+            </p>
+            <ul>
+              <li>messages et données de contact : 3 ans à compter du dernier contact ;</li>
+              <li>données de facturation : 10 ans (obligation légale) ;</li>
+              <li>
+                données techniques de connexion : conservées par l’hébergeur, selon les durées prévues par sa politique
+                de confidentialité.
+              </li>
+            </ul>
+
+            <h2 id="cookies">7. Cookies, traceurs et services tiers</h2>
+            <p>
+              Ce site ne dépose aucun cookie et n’utilise aucun autre traceur : pas d’outil de mesure d’audience, pas de
+              publicité, pas de bouton ni de module de réseau social. C’est pourquoi aucun bandeau de consentement ne
+              s’affiche.
+            </p>
+            <p>
+              Lorsque vous consultez une page, votre navigateur ne contacte que l’hébergeur du site : les polices de
+              caractères sont hébergées avec le site (aucune requête vers Google Fonts) et le site n’intègre ni carte,
+              ni vidéo, ni contenu provenant d’un service tiers. Le formulaire de contact ne contacte Formspree qu’au
+              moment où vous l’envoyez.
+            </p>
+            <p>
+              Certains liens mènent vers des services tiers, comme Google Maps pour l’itinéraire ou les sites de mes
+              clients. Ces services ne reçoivent des informations que si vous cliquez sur le lien, et leur propre
+              politique de confidentialité s’applique alors.
+            </p>
+
+            <h2>8. Sécurité des données</h2>
+            <p>
+              Je mets en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre
+              tout accès non autorisé, altération, divulgation ou destruction. Le site est servi exclusivement en HTTPS
+              : les échanges entre votre navigateur, le site et le formulaire de contact sont chiffrés.
+            </p>
+
+            <h2>9. Vos droits</h2>
+            <p>Conformément à la réglementation sur la protection des données, vous disposez des droits suivants :</p>
+            <ul>
+              <li>droit d’accès à vos données ;</li>
+              <li>droit de rectification ;</li>
+              <li>droit à l’effacement (droit à l’oubli) ;</li>
+              <li>droit à la limitation du traitement ;</li>
+              <li>droit à la portabilité des données ;</li>
+              <li>droit d’opposition ;</li>
+              <li>droit de définir des directives relatives au sort de vos données après votre décès.</li>
+            </ul>
+            <p>
+              Pour exercer ces droits, écrivez-moi via le {contactForm} ou par courrier à l’adresse : {fullAddress},
+              France.
+            </p>
+            <p>
+              Vous avez également le droit d’introduire une réclamation auprès de la CNIL (Commission nationale de
+              l’informatique et des libertés) : <ExternalLink href="https://www.cnil.fr">www.cnil.fr</ExternalLink>.
+            </p>
+
+            <h2>10. Modifications de la politique de confidentialité</h2>
+            <p>
+              Je me réserve le droit de modifier cette politique de confidentialité à tout moment. Je vous conseille de
+              la consulter régulièrement.
+            </p>
+
+            <h2>11. Contact</h2>
+            <p>Pour toute question concernant cette politique de confidentialité, vous pouvez me contacter :</p>
+            <ul>
+              <li>par le {contactForm} ;</li>
+              <li>par téléphone au {phone} ;</li>
+              <li>par courrier : {fullAddress}, France.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
